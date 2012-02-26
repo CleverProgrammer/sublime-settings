@@ -1,0 +1,52 @@
+{
+	//exclude or include bracket by language type (example: C++ for C++.tmLanguage)
+	//Note: this is particularly useful with Angle. Some languages do not attribute any special scope to angle brackets making it hard
+	//to tell when the bracket is beign used in a valid scenario.  C++ is a perfect example.  It is better to disable completely than
+	//to ignore angle.  Ignoring will not show angle matches, but will also interfere with other bracket matches.
+	"angle_language_list" : ["HTML","HTML 5","XML","PHP"],
+	"tag_language_list"   : ["HTML","HTML 5","XML","PHP"],
+	"quote_language_list" : ["Plain text","Hex"],
+	"curly_language_list" : ["Plain text","Hex"],
+	"round_language_list" : ["Plain text","Hex"],
+	"square_language_list": ["Plain text","Hex"],
+
+	//Scope? (Defined in theme files.) ->
+	//Examples: (keyword/string/number)
+	"quote_scope" : "bracket.quote",
+	"curly_scope" : "bracket.curly",
+	"round_scope" : "bracket.round",
+	"square_scope": "bracket.square",
+	"angle_scope" : "bracket.angle",
+	"tag_scope"   : "bracket.tag",
+
+	//Outline? (solid/outline/underline/none) ->
+	"quote_style" : "underline",
+	"curly_style" : "underline",
+	"round_style" : "underline",
+	"square_style": "underline",
+	"angle_style" : "underline",
+	"tag_style"   : "outline",
+
+	//Icon? (dot/circle/bookmark/cross)
+	"quote_icon" : "dot",
+	"curly_icon" : "dot",
+	"round_icon" : "dot",
+	"square_icon": "dot",
+	"angle_icon" : "dot",
+	"tag_icon"   : "dot",
+
+	//Higlight brackets of tag only instead of entire tag
+	"tag_brackets_only" : false,
+
+	//Type of tag selection? (html/xhtml)
+	"tag_type" : "html",
+
+	//threshold distance to search
+	"search_threshold"     : 2000,
+	"tag_search_threshold" : 2000,
+	"use_search_threshold"     : true,
+	"tag_use_search_threshold" : true,
+
+	//Debounce delay in miliseconds
+	"debounce_delay" : 500
+}

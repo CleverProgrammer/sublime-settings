@@ -1,0 +1,30 @@
+{
+	"auto_upgrade_last_run": 1330211970,
+	"installed_packages":
+	[
+		"Alignment",
+		"ApacheConf.tmLanguage",
+		"Case Conversion",
+		"Clipboard Manager",
+		"ColorPicker",
+		"DetectSyntax",
+		"EncodingHelper",
+		"FileDiffs",
+		"GenerateUUID",
+		"Git",
+		"GitHubinator",
+		"google-search",
+		"HexViewer",
+		"HTML5",
+		"INI",
+		"Logs Colorize",
+		"Markdown Preview",
+		"Package Control",
+		"Shell Turtlestein",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeREPL",
+		"Terminal",
+		"Theme - Soda"
+	]
+}

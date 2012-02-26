@@ -1,0 +1,166 @@
+////////////////////////////////
+// Regex with scope qualifiers//
+////////////////////////////////
+// Required parameters:
+//     find:    Regex description of what you would like to target.
+//
+// Optional parameters:
+//     replace:      description of what you would like to replace target with.
+//                   Variables are okay for non-literal searches and are done by escaping
+//                   the selection number \\1 etc.  Default value is "\\0".
+//     literal:      Boolean setting to define whether the find and replace is literal or not.
+//                   Default is false.
+//     greedy:       Boolean setting to define whether search is greedy or not. Default is true.
+//     case:         Boolean defining case sensitivity.  True equals sensitive. Defualt is true.
+//     scope_filter: an array of scope qualifiers for the match.
+//                       - Any instance of scope qualifies match: scope.name
+//                       - Entire match of scope qualifies match: !scope.name
+//                       - Any instance of scope disqualifies match: -scope.name
+//                       - Entire match of scope disqualifies match: -!scope.name
+
+//////////////////////////////////////////////////////////////
+// Scope search with regex qualifier (also find and replace)//
+//////////////////////////////////////////////////////////////
+// Required parameters:
+//     scope:    scope you would like to target
+//
+// Optional parameters:
+//     find:            regex description that is to be applied to the scope
+//                      to qualify.  Also can be used to find and replace
+//                      within the found scope.  Default is None.
+//     replace:         description of what you would like to replace within the scope.
+//                      Default value is "\\0".
+//     literal:         Boolean setting to define whether the find and replace is literal or not.
+//                      Default is false.
+//     greedy_replace:  Boolean setting to define whether regex search is greedy or not. Default is true.
+//     greedy_scope:    Boolean setting to define whether scope search is greedy or not. Default is true.
+//     case:            Boolean setting to define whether regex search is case sensitive. Default is true.
+//     multi_pass_regex:Boolean setting to define whether there will be multiple sweeps on the scope region
+//                      region to find and replace all instances of the regex, when regex cannot be formatted
+//                      to find all instances in a greedy fashion.  Default is false.
+{
+	"replacements": {
+		// Remove trailing spaces
+		"remove_trailing_spaces": {
+			"find": "[ \\t]+$",
+			"replace": "",
+			"greedy": true,
+			"case": true
+		},
+		// Strip consecutive empty lines down to 1
+		"remove_excessive_newlines": {
+			// (new lines at end of file | new lines at start of file | new lines at start of file)
+			"find": "(((\\r?\\n)+)(?=(\\r?\\n){1}(?![\\s\\S\\r\\n]))|(?<![\\s\\S\\r\\n])((\\r?\\n)+)|((\\r?\\n)+)(?=(\\r?\\n){2}))",
+			"replace": ""
+		},
+		"only_single_newline_at_file_end": {
+			"find": "((\\r?\\n)+)(?=(\\r?\\n){1}(?![\\s\\S\\r\\n]))",
+			"replace": ""
+		},
+		"ensure_newline_at_file_end":{
+			"find": "(([^\n\r])(?![\\s\\S\\r\\n]))",
+			"replace": "\\1\\n"
+		},
+		// Delete a comment or comment block
+		"remove_comments": {
+			"scope": "comment",
+			"find" : "(([^\\n\\r]*)(\\r?\\n))*([^\\n\\r]+)",
+			"replace": "",
+			"greedy_replace": true
+		},
+		// Swap quotes
+		"swap_quotes_to_single": {
+			"scope": "string",
+			"find" : "^\"(.*?)\"$",
+			"replace": "'\\1'",
+			"greedy_replace": false
+		},
+		"escape_single_quotes": {
+			"scope": "string",
+			"find" : "^(\".*?(?<!\\\\))((?:[\\\\]{2})*)'(.*?\")$",
+			"replace": "\\1\\2\\'\\3",
+			"greedy_replace": false,
+			"multi_pass_regex": true
+		},
+		"unescape_double_quotes": {
+			"scope": "string",
+			"find" : "^('.*?(?<!\\\\))((?:[\\\\]{2})*)\\\\\"(.*?')$",
+			"replace": "\\1\\2\"\\3",
+			"greedy_replace": false,
+			"multi_pass_regex": true
+		},
+		"swap_quotes_to_double": {
+			"scope": "string",
+			"find" : "^'(.*?)'$",
+			"replace": "\"\\1\"",
+			"greedy_replace": false
+		},
+		"escape_double_quotes": {
+			"scope": "string",
+			"find" : "^('.*?(?<!\\\\))((?:[\\\\]{2})*)\"(.*?')$",
+			"replace": "\\1\\2\\\"\\3",
+			"greedy_replace": false,
+			"multi_pass_regex": true
+		},
+		"unescape_single_quotes": {
+			"scope": "string",
+			"find" : "^(\".*?(?<!\\\\))((?:[\\\\]{2})*)\\\\'(.*?\")$",
+			"replace": "\\1\\2'\\3",
+			"greedy_replace": false,
+			"multi_pass_regex": true
+		},
+		// Swap Python raw quotes
+		"swap_python_raw_quotes_to_single": {
+			"scope": "string",
+			"find" : "^(r)\"(.*?)\"$",
+			"replace": "\\1'\\2'",
+			"greedy_replace": false
+		},
+		"escape_python_raw_single_quotes": {
+			"scope": "string",
+			"find" : "^(r\".*?(?<!\\\\))((?:[\\\\]{2})*)'(.*?\")$",
+			"replace": "\\1\\2\\'\\3",
+			"greedy_replace": false,
+			"multi_pass_regex": true
+		},
+		"unescape_python_raw_double_quotes": {
+			"scope": "string",
+			"find" : "^(r'.*?(?<!\\\\))((?:[\\\\]{2})*)\\\\\"(.*?')$",
+			"replace": "\\1\\2\"\\3",
+			"greedy_replace": false,
+			"multi_pass_regex": true
+		},
+		"swap_python_raw_quotes_to_double": {
+			"scope": "string",
+			"find" : "^(r)'(.*?)'$",
+			"replace": "\\1\"\\2\"",
+			"greedy_replace": false
+		},
+		"escape_python_raw_double_quotes": {
+			"scope": "string",
+			"find" : "^(r'.*?(?<!\\\\))((?:[\\\\]{2})*)\"(.*?')$",
+			"replace": "\\1\\2\\\"\\3",
+			"greedy_replace": false,
+			"multi_pass_regex": true
+		},
+		"unescape_python_raw_single_quotes": {
+			"scope": "string",
+			"find" : "^(r\".*?(?<!\\\\))((?:[\\\\]{2})*)\\\\'(.*?\")$",
+			"replace": "\\1\\2'\\3",
+			"greedy_replace": false,
+			"multi_pass_regex": true
+		}
+	},
+
+	// Show replace results in panel
+	"results_in_panel": false,
+
+	// Maximum sweep threshold for multi-pass
+	"multi_pass_max_sweeps": 100,
+
+	// Color? (scope)
+	"find_highlight_color": "invalid",
+
+	// Highlight style? (outline|solid|underline)
+	"find_highlight_style": "outline"
+}

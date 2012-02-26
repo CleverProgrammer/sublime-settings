@@ -1,0 +1,23 @@
+[
+	{"id": "side-bar-files-open-with",
+		"children":
+		[
+
+			//application 1
+			{
+				"caption": "Marked",
+				"id": "side-bar-files-open-with-photoshop",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+							"paths": [],
+							"application": "/Applications/Marked.app/Contents/MacOS/Marked",
+							"extensions":"md"  //any file with these extensions
+						}
+			},
+
+			//separator
+			{"caption":"-"}
+		]
+	}
+]
