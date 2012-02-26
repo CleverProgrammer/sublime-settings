@@ -1,0 +1,4 @@
+*.stTheme.cache
+*.tmTheme.cache
+.DS_Store
+Thumbs.db

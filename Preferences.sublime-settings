@@ -1,6 +1,6 @@
 {
 	"caret_style": "phase",
-	"color_scheme": "Packages/Color Scheme - User/Monokai Bright Faceless Mod.tmTheme",
+	"color_scheme": "Packages/User/Color Scheme/Monokai Bright Custom.tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
@@ -108,7 +108,7 @@
 		"Python Django": "python"
 	},
 	"sublimelinter_wrap_find": true,
-	"theme": "Faceless Mod.sublime-theme",
+	"theme": "custom.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true
 }
