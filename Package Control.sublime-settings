@@ -1,7 +1,8 @@
 {
-	"auto_upgrade_last_run": 1330223327,
+	"auto_upgrade_last_run": 1330228218,
 	"installed_packages":
 	[
+		"AAALanguages",
 		"Alignment",
 		"ApacheConf.tmLanguage",
 		"Case Conversion",
@@ -26,5 +27,13 @@
 		"SublimeREPL",
 		"Terminal",
 		"Theme - Soda"
+	],
+	"package_name_map":
+	{
+		"sublime-languages": "AAALanguages"
+	},
+	"repositories":
+	[
+		"https://github.com/facelessuser/sublime-languages"
 	]
 }
