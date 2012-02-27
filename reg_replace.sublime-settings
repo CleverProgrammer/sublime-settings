@@ -40,6 +40,13 @@
 //                      to find all instances in a greedy fashion.  Default is false.
 {
 	"replacements": {
+		// remove_json_dangling_commas
+		"remove_json_dangling_commas": {
+			"find": ",([\\r\\n\\s]*)(\\]|\\})",
+			"replace": "\\1\\2",
+			"greedy": true,
+			"scope_filter": ["-string", "-comment"]
+		},
 		// Remove trailing spaces
 		"remove_trailing_spaces": {
 			"find": "[ \\t]+$",
@@ -51,6 +58,11 @@
 		"remove_excessive_newlines": {
 			// (new lines at end of file | new lines at start of file | new lines at start of file)
 			"find": "(((\\r?\\n)+)(?=(\\r?\\n){1}(?![\\s\\S\\r\\n]))|(?<![\\s\\S\\r\\n])((\\r?\\n)+)|((\\r?\\n)+)(?=(\\r?\\n){2}))",
+			"replace": ""
+		},
+		"trim_excessive_newlines": {
+			// (new lines at end of file | new lines at start of file | new lines at start of file)
+			"find": "(((\\r?\\n)+)(?=(\\r?\\n){1}(?![\\s\\S\\r\\n]))|(?<![\\s\\S\\r\\n])((\\r?\\n)+))",
 			"replace": ""
 		},
 		"only_single_newline_at_file_end": {
