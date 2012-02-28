@@ -1,5 +1,9 @@
 {
+	TODO: Write a plugin script to generate the correct OS specific settings
+	
 	// The command to execute for the terminal, leave blank for the OS default
 	// On OS X the terminal can be set to iTerm.sh to execute iTerm
 	"terminal": "iTerm2.sh"
+	// Windows
+	// "terminal" : "C:\\Windows\\System32\\cmd.exe"
 }
