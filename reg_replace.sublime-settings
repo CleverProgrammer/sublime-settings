@@ -56,8 +56,8 @@
 		},
 		// Strip consecutive empty lines down to 1
 		"remove_excessive_newlines": {
-			// (new lines at end of file | new lines at start of file | new lines throughout the file)
-			"find": "(((\\r?\\n)+)(?=(\\r?\\n){1}(?![\\s\\S\\r\\n]))|(?<![\\s\\S\\r\\n])((\\r?\\n)+)|((\\r?\\n)+)(?=(\\r?\\n){2}))",
+			// (new lines at end of file | new lines between text | new lines at start of file)
+			"find": "(((\\r?\\n)+)(?=(\\r?\\n){1}(?![\\s\\S\\r\\n]))|((\\r?\\n)+)(?=(\\r?\\n){2})|(?<![\\s\\S\\r\\n])((\\r?\\n)+))",
 			"replace": ""
 		},
 		"trim_excessive_newlines": {
