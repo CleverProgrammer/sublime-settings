@@ -2,3 +2,12 @@
 *.tmTheme.cache
 .DS_Store
 Thumbs.db
+*.pyc
+
+SideBarEnhancements/Open With/Side Bar.sublime-menu
+
+Terminal.sublime-settings
+
+Preferences.sublime-settings
+
+Package Control.sublime-settings
