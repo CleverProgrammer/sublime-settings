@@ -28,14 +28,17 @@
 		"SublimeTODO",
 		"SublimeWebColors",
 		"Terminal",
-		"Theme - Soda"
+		"Theme - Soda",
+		"User"
 	],
 	"package_name_map":
 	{
+		"sublime-settings": "User",
 		"sublime-languages": "AAALanguages"
 	},
 	"repositories":
 	[
+		"https://github.com/facelessuser/sublime-settings",
 		"https://github.com/facelessuser/sublime-languages",
 		"http://sublime.wbond.net/testing/packages.json"
 	]
