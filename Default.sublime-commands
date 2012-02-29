@@ -1,4 +1,9 @@
 [
+	// Force Copy OS Specific user files
+	{
+		"caption": "Os Specific User Files: Update User Files",
+		"command": "copy_os_user_files"
+	},
 	// Clean Up
 	{
 		"caption": "Clean Up: JSON",

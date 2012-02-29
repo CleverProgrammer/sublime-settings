@@ -1,0 +1,42 @@
+{
+	"auto_upgrade_last_run": 1330484492,
+	"installed_packages":
+	[
+		"AAALanguages",
+		"Alignment",
+		"ApacheConf.tmLanguage",
+		"BracketHighlighter",
+		"Clipboard Manager",
+		"ColorPicker",
+		"DetectSyntax",
+		"EncodingHelper",
+		"FileDiffs",
+		"GenerateUUID",
+		"Git",
+		"GitHubinator",
+		"google-search",
+		"HexViewer",
+		"HTML5",
+		"INI",
+		"Logs Colorize",
+		"Markdown Preview",
+		"Package Control",
+		"RegReplace",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeREPL",
+		"SublimeTODO",
+		"SublimeWebColors",
+		"Terminal",
+		"Theme - Soda"
+	],
+	"package_name_map":
+	{
+		"sublime-languages": "AAALanguages"
+	},
+	"repositories":
+	[
+		"https://github.com/facelessuser/sublime-languages",
+		"http://sublime.wbond.net/testing/packages.json"
+	]
+}

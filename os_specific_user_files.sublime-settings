@@ -1,0 +1,31 @@
+{
+	"windows": {
+		"files": {
+			"Package Control.sublime-settings": ".",
+			"Terminal.sublime-settings": ".",
+			"Preferences.sublime-settings": "."
+		},
+		"directories": {
+			"SideBarEnhancements": "."
+		}
+	},
+	"osx": {
+		"files": {
+			"Package Control.sublime-settings": ".",
+			"Terminal.sublime-settings": ".",
+			"Preferences.sublime-settings": "."
+		},
+		"directories": {
+			"SideBarEnhancements": "."
+		}
+	},
+	"linux":{
+		"files": {
+			"Package Control.sublime-settings": ".",
+			"Preferences.sublime-settings": "."
+		},
+		"directories": {
+			"SideBarEnhancements": "."
+		}
+	}
+}
