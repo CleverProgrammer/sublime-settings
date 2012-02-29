@@ -17,6 +17,12 @@ def run_copy_thread(force=False):
         t.start()
 
 
+def run_backup_thread(force=False):
+    if not running_thread:
+        t = BackupOsUserFiles(ossettings.get(osplatform, {}), force)
+        t.start()
+
+
 def copy_file(src, dest):
     try:
         shutil.copyfile(src, dest)
@@ -67,6 +73,50 @@ def move_files(src, dest):
         print "Could not move %s" % src
 
 
+class BackupOsUserFiles(threading.Thread):
+    def __init__(self, file_list, force=False):
+        self.force = force
+        self.file_list = file_list
+        threading.Thread.__init__(self)
+
+    def run(self):
+        global running_thread
+        running_thread = True
+        self.copy_all()
+        running_thread = False
+
+    def copy_all(self):
+        # Copy single files
+        for item in self.file_list['files']:
+            key = os.path.normpath(item)
+            value = os.path.normpath(self.file_list['files'][item])
+            dest = os.path.join(ospath, key)
+            src = os.path.join(user, value)
+
+            if os.path.exists(src):
+                copy_file(src, dest)
+
+        # Copy directories
+        for item in self.file_list['directories']:
+            key = os.path.normpath(item)
+            value = os.path.normpath(self.file_list['directories'][item])
+            dest = os.path.join(ospath, key)
+            src = os.path.join(user, value)
+
+            if os.path.exists(src):
+                copy_directory(src, dest)
+
+        # Rename files
+        for item in self.file_list['rename']:
+            key = os.path.normpath(item)
+            value = os.path.normpath(self.file_list['rename'][item])
+            dest = os.path.join(ospath, key)
+            src = os.path.join(ospath, value)
+
+            if os.path.exists(src):
+                move_files(src, dest)
+
+
 class CopyOsUserFiles(threading.Thread):
     def __init__(self, file_list, force=False):
         self.force = force
@@ -86,7 +136,7 @@ class CopyOsUserFiles(threading.Thread):
             value = os.path.normpath(self.file_list['files'][item])
             src = os.path.join(ospath, key)
             dest_dir = os.path.join(user, os.path.dirname(value))
-            dest = os.path.join(dest_dir, key)
+            dest = os.path.join(user, value)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 copy_file(src, dest)
@@ -97,7 +147,7 @@ class CopyOsUserFiles(threading.Thread):
             value = os.path.normpath(self.file_list['directories'][item])
             src = os.path.join(ospath, key)
             dest_dir = os.path.join(user, os.path.dirname(value))
-            dest = os.path.join(dest_dir, key)
+            dest = os.path.join(user, value)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 copy_directory(src, dest)
@@ -111,6 +161,11 @@ class CopyOsUserFiles(threading.Thread):
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src):
                 move_files(src, dest)
+
+
+class BackupOsUserFilesCommand(sublime_plugin.ApplicationCommand):
+    def run(self):
+        run_backup_thread(force=True)
 
 
 class CopyOsUserFilesCommand(sublime_plugin.ApplicationCommand):

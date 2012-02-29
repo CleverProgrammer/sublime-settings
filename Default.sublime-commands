@@ -4,6 +4,10 @@
 		"caption": "Os Specific User Files: Update User Files",
 		"command": "copy_os_user_files"
 	},
+	{
+		"caption": "Os Specific User Files: Backup User Files",
+		"command": "backup_os_user_files"
+	},
 	// Clean Up
 	{
 		"caption": "Clean Up: JSON",
