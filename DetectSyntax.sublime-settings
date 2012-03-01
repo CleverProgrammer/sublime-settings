@@ -33,87 +33,11 @@
 	// exception
 	"reraise_exceptions": false,
 	"syntaxes": [
-		// {
-		// 	// I put XML first because of files like *.tmLanguage. It is unlikely that this rule will result in a
-		// 	// false positive, meaning if it matches, you probably want the XML syntax
-		// 	"name": "XML",
-		// 	"rules": [
-		// 		{"file_name": ".*\\.xml$"},
-		// 		{"first_line": "^<\\?xml"}
-		// 	]
-		// },
-		// {
-		// 	// The Cucumber and RSpec rules come before Rails and Ruby because they end in .rb and will be
-		// 	// identified as Rails or Ruby otherwise.
-		// 	"name": "Cucumber/Cucumber Steps",
-		// 	"rules": [
-		// 		{"file_name": ".*steps\\.rb$"}
-		// 	]
-		// },
-		// {
-		// 	// One could use just the second rule to match every ruby file in a /spec/ directory, but again,
-		// 	// I prefer to more explicit.
-		// 	"name": "RSpec",
-		// 	"rules": [
-		// 		{"file_name": ".*spec\\.rb$"},
-		// 		{"file_name": ".*\/spec\/.*\\.rb$"}
-		// 	]
-		// },
-		// {
-		// 	// This rule could be incorporated into the next one, but I prefer to be more explicit rather than less
-		// 	"name": "Rails/Ruby Haml",
-		// 	"rules": [
-		// 		{"file_name": ".*\\.haml$"}
-		// 	]
-		// },
-		// {
-		// 	// This is an example of using a custom function to decide whether or not to apply this syntax.
-		// 	// source can be an absolute path or relative. If relative, the plugin will look in Packages/User first
-		// 	// and then the plugin directory. The one used here comes with the plugin. Any you write should be
-		// 	// placed in Packages/User. Since no attempt is made to parse "source", you should be able to create
-		// 	// a subdirectory under Packages/User, such as Packages/User/DetectSyntax, for any custom functions you
-		// 	// create.
-		// 	//
-		// 	// If the name of the source file is the same as the name of the function *and* it is located in either
-		// 	// Packages/User or Packages/DetectSyntax, you don't need to specify "source" in the rule. The plugin
-		// 	// will append '.py' to the name if "source" is empty. So
-		// 	//
-		// 	//   {"function": {"name": "is_rails_file"}}
-		// 	//
-		// 	// will have the same affect as
-		// 	//
-		// 	//   {"function": {"name": "is_rails_file", "source": "is_rails_file.py"}}
-		// 	//
-		// 	"name": "Rails/Ruby on Rails",
-		// 	"rules": [
-		// 		{"function": {"name": "is_rails_file"}}
-		// 	]
-		// },
-		// {
-		// 	"name": "Ruby",
-		// 	"rules": [
-		// 		{"file_name": ".*\\.rb$"},
-		// 		{"first_line": "^#\\!(?:.+)ruby"}
-		// 	]
-		// },
-		// {
-		// 	"name": "PHP",
-		// 	"rules": [
-		// 		{"file_name": ".*\\.(php|inc)$"},
-		// 		{"first_line": "^<\\?php"}
-		// 	]
-		// },
-		// {
-		// 	"name": "PHP/Smarty",
-		// 	"rules": [
-		// 		{"file_name": ".*\\.tpl$"}
-		// 	]
-		// },
-		// {
-		// 	"name": "Apache",
-		// 	"rules": [
-		// 		{"file_name": "^(.htaccess|.htgroups|.htpasswd|httpd.conf)$"}
-		// 	]
-		// }
+		{
+			"name": "Makefile",
+			"rules": [
+				{"file_name": ".*\\.mak"}
+			]
+		}
 	]
 }
