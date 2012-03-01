@@ -1,10 +1,11 @@
 {
-	"auto_upgrade_last_run": 1330484492,
+	"auto_upgrade_last_run": 1330581228,
 	"installed_packages":
 	[
 		"AAALanguages",
 		"Alignment",
 		"ApacheConf.tmLanguage",
+		"ASCII Decorator",
 		"BracketHighlighter",
 		"Clipboard Manager",
 		"ColorPicker",
