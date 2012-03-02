@@ -11,6 +11,10 @@ ospath = os.path.join(user, 'OsSpecificUserFiles', osplatform)
 running_thread = False
 
 
+def os_specific_alert():
+    sublime.error_message('OS Specific User Files encountered one or more errors.\nPlease see the console for more info.')
+
+
 def run_copy_thread(force=False):
     if not running_thread:
         t = CopyOsUserFiles(ossettings.get(osplatform, {}), force)
@@ -24,56 +28,65 @@ def run_backup_thread(force=False):
 
 
 def copy_file(src, dest):
+    status = False
     try:
         shutil.copyfile(src, dest)
+        print "OS Specific User Files: SUCCESS - Copied to User: %s" % src
     except:
-        print "Could not copy file: %d" % src
+        print "OS Specific User Files: ERROR - Could not copy file: %d" % src
+        status = True
+    return status
 
 
 def copy_directory(src, dest):
+    status = False
     try:
         if os.path.exists(dest):
-            print "Directory already exists: %s" % dest
-            print "Removing directory before copy"
+            print "OS Specific User Files: REMOVING - Directory already exists: %s" % dest
             shutil.rmtree(dest)
     except:
-        print "Could not remove: %s" % dest
-        return
+        print "OS Specific User Files: ERROR - Could not remove: %s" % dest
+        status = True
+        return status
 
     try:
         shutil.copytree(src, dest)
+        print "OS Specific User Files: SUCCESS - Copied to User: %s" % src
     except:
-        print "Could not copy directory: %d" % src
+        print "OS Specific User Files: ERROR - Could not copy directory: %d" % src
+        status = True
+    return status
 
 
 def move_files(src, dest):
+    status = False
     if os.path.exists(dest):
         if os.path.isdir(dest):
             try:
                 if os.path.exists(dest):
-                    print "Directory already exists: %s" % dest
-                    print "Removing directory before move"
+                    print "OS Specific User Files: REMOVING - Directory already exists: %s" % dest
                     shutil.rmtree(dest)
             except:
-                print "Could not remove: %s" % dest
-                return
-            shutil.move(src, dest)
+                print "OS Specific User Files: ERROR - Could not remove: %s" % dest
+                status = True
+                return status
         else:
             try:
-                print "File already exists: %s" % dest
-                print "Removing file before move"
+                print "OS Specific User Files: REMOVING - File already exists: %s" % dest
                 os.remove(dest)
             except:
-                print "Could not remove: %s" % dest
-                return
-
+                print "OS Specific User Files: ERROR - Could not remove: %s" % dest
+                status = True
+                return status
     try:
         shutil.move(src, dest)
     except:
-        print "Could not move %s" % src
+        print "OS Specific User Files: ERROR - Could not move %s" % src
+        status = True
+    return status
 
 
-class BackupOsUserFiles(threading.Thread):
+class OsUserFiles(threading.Thread):
     def __init__(self, file_list, force=False):
         self.force = force
         self.file_list = file_list
@@ -85,7 +98,13 @@ class BackupOsUserFiles(threading.Thread):
         self.copy_all()
         running_thread = False
 
+
+class BackupOsUserFiles(OsUserFiles):
+    def __init__(self, file_list, force=False):
+        OsUserFiles.__init__(self, file_list, force)
+
     def copy_all(self):
+        errors = False
         # Copy single files
         for item in self.file_list['files']:
             key = os.path.normpath(item)
@@ -94,7 +113,7 @@ class BackupOsUserFiles(threading.Thread):
             src = os.path.join(user, value)
 
             if os.path.exists(src):
-                copy_file(src, dest)
+                errors |= copy_file(src, dest)
 
         # Copy directories
         for item in self.file_list['directories']:
@@ -104,7 +123,7 @@ class BackupOsUserFiles(threading.Thread):
             src = os.path.join(user, value)
 
             if os.path.exists(src):
-                copy_directory(src, dest)
+                errors |= copy_directory(src, dest)
 
         # Rename files
         for item in self.file_list['rename']:
@@ -114,22 +133,18 @@ class BackupOsUserFiles(threading.Thread):
             src = os.path.join(ospath, value)
 
             if os.path.exists(src):
-                move_files(src, dest)
+                errors |= move_files(src, dest)
+
+        if errors:
+            os_specific_alert()
 
 
-class CopyOsUserFiles(threading.Thread):
+class CopyOsUserFiles(OsUserFiles):
     def __init__(self, file_list, force=False):
-        self.force = force
-        self.file_list = file_list
-        threading.Thread.__init__(self)
-
-    def run(self):
-        global running_thread
-        running_thread = True
-        self.copy_all()
-        running_thread = False
+        OsUserFiles.__init__(self, file_list, force)
 
     def copy_all(self):
+        errors = False
         # Copy single files
         for item in self.file_list['files']:
             key = os.path.normpath(item)
@@ -139,7 +154,7 @@ class CopyOsUserFiles(threading.Thread):
             dest = os.path.join(user, value)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
-                copy_file(src, dest)
+                errors |= copy_file(src, dest)
 
         # Copy directories
         for item in self.file_list['directories']:
@@ -150,7 +165,7 @@ class CopyOsUserFiles(threading.Thread):
             dest = os.path.join(user, value)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
-                copy_directory(src, dest)
+                errors |= copy_directory(src, dest)
 
         # Rename files
         for item in self.file_list['rename']:
@@ -160,17 +175,23 @@ class CopyOsUserFiles(threading.Thread):
             dest = os.path.join(user, value)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src):
-                move_files(src, dest)
+                errors |= move_files(src, dest)
+
+        if errors:
+            os_specific_alert()
 
 
 class BackupOsUserFilesCommand(sublime_plugin.ApplicationCommand):
     def run(self):
+        print "OS Specific User Files: Backing up User to OsSpecificUserFiles..."
         run_backup_thread(force=True)
 
 
 class CopyOsUserFilesCommand(sublime_plugin.ApplicationCommand):
     def run(self):
+        print "OS Specific User Files: Copying files to User..."
         run_copy_thread(force=True)
 
 
+print "OS Specific User Files: Checking for files that have never been copied over..."
 run_copy_thread(force=False)
