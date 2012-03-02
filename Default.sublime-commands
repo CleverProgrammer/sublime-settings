@@ -1,4 +1,9 @@
 [
+	// Get Selection Scope
+	{
+		"caption": "Get Selection Scope: Show Scope Under Cursor",
+		"command": "get_selection_scope"
+	},
 	// Force Copy OS Specific user files
 	{
 		"caption": "Os Specific User Files: Update User Files",

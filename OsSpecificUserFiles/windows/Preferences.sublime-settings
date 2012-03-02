@@ -6,9 +6,12 @@
 	"draw_white_space": "all",
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 12.0,
+	"font_size": 11.0,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
+	"highlight_word_outline_style": true,
+	"highlight_word_require_word_select": true,
+	"highlight_word_theme_selector": "highlightword",
 	"hot_exit": false,
 	"ignored_packages":
 	[
@@ -80,6 +83,7 @@
 	"match_brackets_braces": false,
 	"match_brackets_content": false,
 	"match_brackets_square": false,
+	"match_selection": false,
 	"match_tags": false,
 	"move_to_limit_on_up_down": false,
 	"open_files_in_new_window": false,
