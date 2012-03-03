@@ -239,7 +239,7 @@
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
-				<string>bold</string>
+				<string></string>
 				<key>foreground</key>
 				<string>#66D9EF</string>
 			</dict>
@@ -491,13 +491,13 @@
 			<key>name</key>
 			<string>Python Function Call</string>
 			<key>scope</key>
-			<string>meta.function-call.python - meta.function-call.arguments</string>
+			<string>meta.function-call.function-name.python</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
 				<string></string>
 				<key>foreground</key>
-				<string>#66D9EF</string>
+				<string>#FF80F4</string>
 			</dict>
 		</dict>
 	</array>
