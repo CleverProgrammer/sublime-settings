@@ -491,7 +491,7 @@
 			<key>name</key>
 			<string>Python Function Call</string>
 			<key>scope</key>
-			<string>meta.function-call.function-name</string>
+			<string>meta.function-call.function-name, support.function.any-method</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
