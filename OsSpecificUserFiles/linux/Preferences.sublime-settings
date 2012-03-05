@@ -13,7 +13,12 @@
 	"ignored_packages":
 	[
 		"Vintage",
-		"HighlightWord"
+		"Python",
+		"Batch File",
+		"JavaScript",
+		"Perl",
+		"C++",
+		"PHP"
 	],
 	"indent_guide_options":
 	[
