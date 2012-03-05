@@ -11,3 +11,5 @@ Terminal.sublime-settings
 Preferences.sublime-settings
 
 Package Control.sublime-settings
+
+SublimeREPLHistory
