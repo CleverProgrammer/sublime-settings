@@ -19,12 +19,14 @@ import sublime_plugin
 import os
 import shutil
 import threading
+import json
 
-ossettings = sublime.load_settings('os_specific_user_files.sublime-settings')
 osplatform = sublime.platform()
 user = os.path.join(sublime.packages_path(), 'User')
-ospath = os.path.join(user, 'OsSpecificUserFiles', osplatform)
-running_thread = False
+plugin_storage = os.path.join(user, 'OsSpecificUserFiles')
+ospath = os.path.join(plugin_storage, osplatform)
+settings = 'os_specific_user_files.sublime-settings'
+running_thread = True
 
 
 def os_specific_alert():
@@ -35,6 +37,69 @@ def run_copy_thread(force=False):
     if not running_thread:
         t = CopyOsUserFiles(ossettings.get(osplatform, {}), force)
         t.start()
+
+
+def setup():
+    file_errors = []
+    file_storage = plugin_storage
+    linux_dir = os.path.join(file_storage, 'linux')
+    windows_dir = os.path.join(file_storage, 'windows')
+    mac_dir = os.path.join(file_storage, 'osx')
+    settings_file = os.path.join(user, settings)
+
+    # Create main plugin storage directory
+    if not os.path.exists(file_storage):
+        if make_dir(file_storage):
+            file_errors.append(file_storage)
+
+    # Create OS specific folders under main storage directory
+    if len(file_errors) == 0:
+        if not os.path.exists(linux_dir):
+            if make_dir(linux_dir):
+                file_errors.append(linux_dir)
+        if not os.path.exists(windows_dir):
+            if make_dir(windows_dir):
+                file_errors.append(windows_dir)
+        if not os.path.exists(mac_dir):
+            if make_dir(mac_dir):
+                file_errors.append(mac_dir)
+
+    # Create settings file
+    if not os.path.exists(settings_file):
+        try:
+            with open(settings_file, 'w') as f:
+                settings_template = {
+                    "windows": {
+                        "files": {
+                        },
+                        "directories": {
+                        },
+                        "rename": {
+                        }
+                    },
+                    "osx": {
+                        "files": {
+                        },
+                        "directories": {
+                        },
+                        "rename": {
+                        }
+                    },
+                    "linux": {
+                        "files": {
+                        },
+                        "directories": {
+                        },
+                        "rename": {
+                        }
+                    }
+                }
+                j = json.dumps(settings_template, sort_keys=True, indent=4, separators=(',', ': '))
+                f.write(j + "\n")
+        except:
+            file_errors.append(settings_file)
+
+    return file_errors
 
 
 def run_backup_thread(force=False):
@@ -100,6 +165,17 @@ def move_files(src, dest):
         print "OS Specific User Files: ERROR - Could not move %s" % src
         status = True
     return status
+
+
+def make_dir(directory):
+    error = False
+    try:
+        os.makedirs(directory)
+        print "OS Specific User Files: ERROR - Successfully created directory: %s" % directory
+    except:
+        print "OS Specific User Files: ERROR - Could not create directory: %s" % directory
+        error = True
+    return error
 
 
 class OsUserFiles(threading.Thread):
@@ -212,5 +288,20 @@ class CopyOsUserFilesCommand(sublime_plugin.ApplicationCommand):
         run_copy_thread(force=True)
 
 
-print "OS Specific User Files: Checking for files that have never been copied over..."
-run_copy_thread(force=False)
+# Setup
+print "OS Specific User Files: Checking if setup is required..."
+file_errors = setup()
+if len(file_errors) > 0:
+    for f in file_errors:
+        print "OS Specific User Files: Could setup file or directory: %s" % f
+    os_specific_alert()
+else:
+    # Setup success; enable running the backup/copy threads when invoked
+    running_thread = False
+
+    # Load settings
+    ossettings = sublime.load_settings(settings)
+
+    # Run copy thread, but only copy if file is not already present
+    print "OS Specific User Files: Checking for files that have never been copied over..."
+    run_copy_thread(force=False)
