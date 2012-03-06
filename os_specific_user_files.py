@@ -100,6 +100,13 @@ def setup():
     return file_errors
 
 
+def queue_thread(t):
+    if running_thread:
+        sublime.set_timeout(lambda: queue_thread(t), 3000)
+    else:
+        t()
+
+
 def run_copy_thread(force=False):
     if not running_thread:
         t = CopyOsUserFiles(ossettings.get(osplatform, {}), force)
@@ -194,7 +201,7 @@ class MonitorThread():
 
     def __start_monitor(self):
         sublime.status_message("OS Specific User Files: Busy - [>" + "-" * self.max_status + "]")
-        sublime.set_timeout(lambda: self.__monitor(), 300)
+        sublime.set_timeout(lambda: self.__monitor(), 500)
 
     def __monitor(self):
         if self.thread.is_alive():
@@ -215,7 +222,7 @@ class MonitorThread():
             sublime.status_message("OS Specific User Files: Busy - [" + "-" * self.status_pos + indicator + "-" * leftover + "]")
             sublime.set_timeout(self.__monitor, 1)
         else:
-            sublime.set_timeout(self.thread.on_complete, 300)
+            sublime.set_timeout(self.thread.on_complete, 500)
 
 
 class OsUserFiles(threading.Thread):
@@ -255,9 +262,10 @@ class BackupOsUserFiles(OsUserFiles):
             key = os.path.normpath(item)
             value = os.path.normpath(self.file_list['files'][item])
             dest = os.path.join(ospath, key)
+            dest_dir = os.path.dirname(dest)
             src = os.path.join(user, value)
 
-            if os.path.exists(src):
+            if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
                 self.errors |= copy_file(src, dest)
 
@@ -266,9 +274,10 @@ class BackupOsUserFiles(OsUserFiles):
             key = os.path.normpath(item)
             value = os.path.normpath(self.file_list['directories'][item])
             dest = os.path.join(ospath, key)
+            dest_dir = os.path.dirname(dest)
             src = os.path.join(user, value)
 
-            if os.path.exists(src):
+            if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
                 self.errors |= copy_directory(src, dest)
 
@@ -277,9 +286,10 @@ class BackupOsUserFiles(OsUserFiles):
             key = os.path.normpath(item)
             value = os.path.normpath(self.file_list['rename'][item])
             dest = os.path.join(ospath, key)
+            dest_dir = os.path.dirname(dest)
             src = os.path.join(ospath, value)
 
-            if os.path.exists(src):
+            if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
                 self.errors |= move_files(src, dest)
 
@@ -362,3 +372,7 @@ else:
     # Run copy thread, but only copy if file is not already present
     print "OS Specific User Files: Checking for files that have never been copied over..."
     run_copy_thread(force=False)
+
+    # Run backup thread, but only copy if file is not already backed up
+    print "OS Specific User Files: Checking for files that have never been backed up..."
+    queue_thread(lambda: run_backup_thread(force=False))
