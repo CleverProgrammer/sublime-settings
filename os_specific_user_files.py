@@ -31,6 +31,10 @@ def os_specific_alert():
     sublime.error_message('OS Specific User Files encountered one or more errors.\nPlease see the console for more info.')
 
 
+def os_specific_info(text):
+    sublime.set_timeout(lambda: sublime.status_message('OS Specific User Files: ' + text), 100)
+
+
 def run_copy_thread(force=False):
     if not running_thread:
         t = CopyOsUserFiles(ossettings.get(osplatform, {}), force)
@@ -123,6 +127,7 @@ class BackupOsUserFiles(OsUserFiles):
         OsUserFiles.__init__(self, file_list, force)
 
     def copy_all(self):
+        count = 0
         errors = False
         # Copy single files
         for item in self.file_list['files']:
@@ -132,6 +137,7 @@ class BackupOsUserFiles(OsUserFiles):
             src = os.path.join(user, value)
 
             if os.path.exists(src):
+                count += 1
                 errors |= copy_file(src, dest)
 
         # Copy directories
@@ -142,6 +148,7 @@ class BackupOsUserFiles(OsUserFiles):
             src = os.path.join(user, value)
 
             if os.path.exists(src):
+                count += 1
                 errors |= copy_directory(src, dest)
 
         # Rename files
@@ -152,10 +159,16 @@ class BackupOsUserFiles(OsUserFiles):
             src = os.path.join(ospath, value)
 
             if os.path.exists(src):
+                count += 1
                 errors |= move_files(src, dest)
 
         if errors:
             os_specific_alert()
+        else:
+            if count > 0:
+                os_specific_info(str(count) + ' targets backed up successfully!')
+            else:
+                os_specific_info('No backup required!')
 
 
 class CopyOsUserFiles(OsUserFiles):
@@ -163,6 +176,7 @@ class CopyOsUserFiles(OsUserFiles):
         OsUserFiles.__init__(self, file_list, force)
 
     def copy_all(self):
+        count = 0
         errors = False
         # Copy single files
         for item in self.file_list['files']:
@@ -173,6 +187,7 @@ class CopyOsUserFiles(OsUserFiles):
             dest = os.path.join(user, value)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
+                count += 1
                 errors |= copy_file(src, dest)
 
         # Copy directories
@@ -184,6 +199,7 @@ class CopyOsUserFiles(OsUserFiles):
             dest = os.path.join(user, value)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
+                count += 1
                 errors |= copy_directory(src, dest)
 
         # Rename files
@@ -194,10 +210,16 @@ class CopyOsUserFiles(OsUserFiles):
             dest = os.path.join(user, value)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src):
+                count += 1
                 errors |= move_files(src, dest)
 
         if errors:
             os_specific_alert()
+        else:
+            if count > 0:
+                os_specific_info(str(count) + ' targets copied successfully!')
+            else:
+                os_specific_info('No copy required!')
 
 
 class BackupOsUserFilesCommand(sublime_plugin.ApplicationCommand):
