@@ -13,7 +13,63 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
 IN THE SOFTWARE.
+
+
+Documentation:
+
+About:
+OS Specific User Files was created to make backing up a common User directories for different OS platforms.  I back mine up on Github.
+Once you have every thing setup, you can simply clone your your User directory from github, and all of your backed up OS specific files or directories
+will be copied over.  If you update the repository from a different system, you can simply fetch the changes later on the other system, and then
+execute the copy command to copy the new settings over your old ones.  You can define additional files or remove files from your settings at any time
+as well.  If you remove a file or directory form the settings file, and they exist in backup they will remain.  This will be accounted for in the future.
+
+Installation:
+- Drop os_specific_user_files.py into Packages/User.
+- Plugin will automatically create a settings file and the directories to store OS specific files in.
+- Add the following commands to Default.sublime-commands:
+
+    // Force Copy OS Specific User files
+    {
+        "caption": "Os Specific User Files: Update User Files",
+        "command": "copy_os_user_files"
+    },
+    // Force Backup OS Specific User Files
+    {
+        "caption": "Os Specific User Files: Backup User Files",
+        "command": "backup_os_user_files"
+    },
+
+- Define the files you want to backup for your specific OS platform in the auto-generated os_specific_user_files.sublime-settings.
+    Example: windows setup (Backed up file or folder name is the key on the left.  File or folder name the file known as under User is the value
+             on the left).  If you would like to rename any file buried in a directory after copying, you can list the files under the "rename"
+             section. This is particularly useful for menu files that are seen by sublime no matter how deep they are buried in directories.
+             The same naming convention follows for rename: backed up file -> user file.
+
+        "windows": {
+            "files": {
+                "Package Control.sublime-settings": "Package Control.sublime-settings",
+                "Terminal.sublime-settings": "Terminal.sublime-settings",
+                "Preferences.sublime-settings": "Preferences.sublime-settings"
+            },
+            "directories": {
+                "SideBarEnhancements": "SideBarEnhancements"
+            },
+            "rename": {
+                "SideBarEnhancements/Open With/Side Bar.sublime-menu.json": "SideBarEnhancements/Open With/Side Bar.sublime-menu"
+            }
+        },
+
+Usage:
+- Every time Sublime Text is started, the plugin will check if any of your defined files that are backed up are missing from User.
+  It will copy them if they are missing. It will also backup defined files that exist in User but are missing in back up.
+- At any time you backup all defined files wiht the Backup Command you added to the Command Palette.  This will copy over all backed up files.
+- At any time you can copy all of your backed up files over your current user files.
+
+Todo:
+- Handle orphaned backedup files.
 """
+
 import sublime
 import sublime_plugin
 import os
