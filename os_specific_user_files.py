@@ -37,12 +37,6 @@ def os_specific_info(text):
     sublime.set_timeout(lambda: sublime.status_message('OS Specific User Files: ' + text), 100)
 
 
-def run_copy_thread(force=False):
-    if not running_thread:
-        t = CopyOsUserFiles(ossettings.get(osplatform, {}), force)
-        t.start()
-
-
 def setup():
     file_errors = []
     file_storage = plugin_storage
@@ -106,10 +100,18 @@ def setup():
     return file_errors
 
 
+def run_copy_thread(force=False):
+    if not running_thread:
+        t = CopyOsUserFiles(ossettings.get(osplatform, {}), force)
+        t.start()
+        MonitorThread(t)
+
+
 def run_backup_thread(force=False):
     if not running_thread:
         t = BackupOsUserFiles(ossettings.get(osplatform, {}), force)
         t.start()
+        MonitorThread(t)
 
 
 def copy_file(src, dest):
@@ -182,11 +184,54 @@ def make_dir(directory):
     return error
 
 
+class MonitorThread():
+    def __init__(self, t):
+        self.thread = t
+        self.status_pos = 0
+        self.direction = 1
+        self.max_status = 5
+        sublime.set_timeout(lambda: self.__start_monitor(), 0)
+
+    def __start_monitor(self):
+        sublime.status_message("OS Specific User Files: Busy - [>" + "-" * self.max_status + "]")
+        sublime.set_timeout(lambda: self.__monitor(), 300)
+
+    def __monitor(self):
+        if self.thread.is_alive():
+            if self.direction > 0:
+                if self.status_pos < self.max_status:
+                    self.status_pos += 1
+                else:
+                    self.direction = -1
+            else:
+                if self.status_pos > 0:
+                    self.status_pos -= 1
+                else:
+                    self.direction = 1
+
+            indicator = ">" if self.direction > 0 else "<"
+
+            leftover = 5 - self.status_pos
+            sublime.status_message("OS Specific User Files: Busy - [" + "-" * self.status_pos + indicator + "-" * leftover + "]")
+            sublime.set_timeout(self.__monitor, 1)
+        else:
+            sublime.set_timeout(self.thread.on_complete, 300)
+
+
 class OsUserFiles(threading.Thread):
+    errors = False
+    completion_msg = ""
+
     def __init__(self, file_list, force=False):
         self.force = force
         self.file_list = file_list
         threading.Thread.__init__(self)
+
+    def on_complete(self):
+        if self.errors:
+            os_specific_alert()
+        else:
+            os_specific_info(self.completion_msg)
 
     def copy_all(self):
         pass
@@ -204,7 +249,7 @@ class BackupOsUserFiles(OsUserFiles):
 
     def copy_all(self):
         count = 0
-        errors = False
+        self.errors = False
         # Copy single files
         for item in self.file_list['files']:
             key = os.path.normpath(item)
@@ -214,7 +259,7 @@ class BackupOsUserFiles(OsUserFiles):
 
             if os.path.exists(src):
                 count += 1
-                errors |= copy_file(src, dest)
+                self.errors |= copy_file(src, dest)
 
         # Copy directories
         for item in self.file_list['directories']:
@@ -225,7 +270,7 @@ class BackupOsUserFiles(OsUserFiles):
 
             if os.path.exists(src):
                 count += 1
-                errors |= copy_directory(src, dest)
+                self.errors |= copy_directory(src, dest)
 
         # Rename files
         for item in self.file_list['rename']:
@@ -236,15 +281,10 @@ class BackupOsUserFiles(OsUserFiles):
 
             if os.path.exists(src):
                 count += 1
-                errors |= move_files(src, dest)
+                self.errors |= move_files(src, dest)
 
-        if errors:
-            os_specific_alert()
-        else:
-            if count > 0:
-                os_specific_info(str(count) + ' targets backed up successfully!')
-            else:
-                os_specific_info('No backup required!')
+        if not self.errors:
+            self.completion_msg = str(count) + ' targets backed up successfully!' if count > 0 else 'No backup required!'
 
 
 class CopyOsUserFiles(OsUserFiles):
@@ -253,7 +293,7 @@ class CopyOsUserFiles(OsUserFiles):
 
     def copy_all(self):
         count = 0
-        errors = False
+        self.errors = False
         # Copy single files
         for item in self.file_list['files']:
             key = os.path.normpath(item)
@@ -264,7 +304,7 @@ class CopyOsUserFiles(OsUserFiles):
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
-                errors |= copy_file(src, dest)
+                self.errors |= copy_file(src, dest)
 
         # Copy directories
         for item in self.file_list['directories']:
@@ -276,7 +316,7 @@ class CopyOsUserFiles(OsUserFiles):
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
-                errors |= copy_directory(src, dest)
+                self.errors |= copy_directory(src, dest)
 
         # Rename files
         for item in self.file_list['rename']:
@@ -287,15 +327,10 @@ class CopyOsUserFiles(OsUserFiles):
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src):
                 count += 1
-                errors |= move_files(src, dest)
+                self.errors |= move_files(src, dest)
 
-        if errors:
-            os_specific_alert()
-        else:
-            if count > 0:
-                os_specific_info(str(count) + ' targets copied successfully!')
-            else:
-                os_specific_info('No copy required!')
+        if not self.errors:
+            self.completion_msg = str(count) + ' targets copied successfully!' if count > 0 else 'No copy required!'
 
 
 class BackupOsUserFilesCommand(sublime_plugin.ApplicationCommand):
@@ -315,7 +350,7 @@ print "OS Specific User Files: Checking if setup is required..."
 file_errors = setup()
 if len(file_errors) > 0:
     for f in file_errors:
-        print "OS Specific User Files: Could setup file or directory: %s" % f
+        print "OS Specific User Files: Could not setup file or directory: %s" % f
     os_specific_alert()
 else:
     # Setup success; enable running the backup/copy threads when invoked
