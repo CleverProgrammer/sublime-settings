@@ -308,7 +308,7 @@
         "indent_top_level": false,
         "layer0.tint": [20, 20, 20],
         "layer0.opacity": 1.0,
-        "dark_content": false
+        "dark_content": true
     },
     {
         "class": "sidebar_heading",
@@ -373,7 +373,7 @@
         "row_padding": [2, 1],
         "layer0.tint": [25, 25, 25],
         "layer0.opacity": 1.0,
-        "dark_content": false
+        "dark_content": true
     },
     {
         "class": "quick_panel_row",
