@@ -40,6 +40,24 @@
 //                      to find all instances in a greedy fashion.  Default is false.
 {
 	"replacements": {
+		"trim_html_whitespace": {
+			"find": "\\s*(<|>)\\s*",
+			"replace": "\\1",
+			"scope_filter": ["-source.js","-source.php","-string", "-comment"],
+			"greedy": true
+		},
+		"html_reduce_spaces_to_one": {
+			"find": "[ ]{2,}|[\t]+",
+			"replace": " ",
+			"scope_filter": ["-source.js","-source.php","-string", "-comment"],
+			"greedy": true
+		},
+		"html_remove_all_newlines": {
+			"find": "[\r\n]*",
+			"replace": "",
+			"scope_filter": ["-source.js","-source.php"],
+			"greedy": true
+		},
 		// remove_json_dangling_commas
 		"remove_json_dangling_commas": {
 			"find": ",([\\r\\n\\s]*)(\\]|\\})",

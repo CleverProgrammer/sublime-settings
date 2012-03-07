@@ -1,4 +1,10 @@
 [
+	// HTML Compact Format
+	{
+		"caption": "Format: Compact",
+		"command": "reg_replace",
+		"args": {"replacements": ["trim_html_whitespace", "html_reduce_spaces_to_one", "html_remove_all_newlines"]}
+	},
 	// Get Selection Scope
 	{
 		"caption": "Get Selection Scope: Show Scope Under Cursor",
@@ -12,6 +18,10 @@
 	{
 		"caption": "Os Specific User Files: Backup User Files",
 		"command": "backup_os_user_files"
+	},
+	{
+		"caption": "Os Specific User Files: Clean Orphaned Backup Files",
+		"command": "clean_orphaned_os_user_files"
 	},
 	// Clean Up
 	{

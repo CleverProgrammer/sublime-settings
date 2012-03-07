@@ -22,7 +22,8 @@ OS Specific User Files was created to make backing up a common User directories 
 Once you have every thing setup, you can simply clone your your User directory from github, and all of your backed up OS specific files or directories
 will be copied over.  If you update the repository from a different system, you can simply fetch the changes later on the other system, and then
 execute the copy command to copy the new settings over your old ones.  You can define additional files or remove files from your settings at any time
-as well.  If you remove a file or directory form the settings file, and they exist in backup they will remain.  This will be accounted for in the future.
+as well.  If you remove a file or directory from the settings file, and they exist in the backup folder, you can clean the with the
+"Clean Orphaned Backup Files" command.
 
 Installation:
 - Drop os_specific_user_files.py into Packages/User.
@@ -38,6 +39,11 @@ Installation:
     {
         "caption": "Os Specific User Files: Backup User Files",
         "command": "backup_os_user_files"
+    },
+    // Clean Orphaned Backup Files
+    {
+        "caption": "Os Specific User Files: Clean Orphaned Backup Files",
+        "command": "clean_orphaned_os_user_files"
     },
 
 - Define the files you want to backup for your specific OS platform in the auto-generated os_specific_user_files.sublime-settings.
@@ -63,11 +69,10 @@ Installation:
 Usage:
 - Every time Sublime Text is started, the plugin will check if any of your defined files that are backed up are missing from User.
   It will copy them if they are missing. It will also backup defined files that exist in User but are missing in back up.
-- At any time you backup all defined files wiht the Backup Command you added to the Command Palette.  This will copy over all backed up files.
-- At any time you can copy all of your backed up files over your current user files.
-
-Todo:
-- Handle orphaned backedup files.
+- At any time you backup all defined files wiht the "Backup User Files" you added to the Command Palette.  This will copy over all backeup files.
+- At any time you can copy all of your backup files over your current user files using the "Update User Files" command you added in the Command Palette.
+- At any time you can clean up all orphaned files in the backup directory (files that are no longer defined in the settings file, but exist in
+  the backup directory) by using the "Clean Orphaned Backup Files" command you added to the Command Palette.
 """
 
 import sublime
@@ -76,6 +81,7 @@ import os
 import shutil
 import threading
 import json
+from glob import glob
 
 osplatform = sublime.platform()
 user = os.path.join(sublime.packages_path(), 'User')
@@ -161,6 +167,13 @@ def queue_thread(t):
         sublime.set_timeout(lambda: queue_thread(t), 3000)
     else:
         t()
+
+
+def run_orphan_thread(force=True):
+    if not running_thread:
+        t = CleanOrphanedFiles(ossettings.get(osplatform, {}), force)
+        t.start()
+        MonitorThread(t)
 
 
 def run_copy_thread(force=False):
@@ -296,30 +309,91 @@ class OsUserFiles(threading.Thread):
         else:
             os_specific_info(self.completion_msg)
 
-    def copy_all(self):
+    def apply(self):
         pass
 
     def run(self):
         global running_thread
         running_thread = True
-        self.copy_all()
+        self.apply()
         running_thread = False
+
+
+class CleanOrphanedFiles(OsUserFiles):
+    def __init(self, file_list, force=True):
+        OsUserFiles.__init__(self, file_list, True)
+
+    def apply(self):
+        self.errors = False
+        count = 0
+        ospaths = [
+            os.path.join(plugin_storage, 'linux'),
+            os.path.join(plugin_storage, 'windows'),
+            os.path.join(plugin_storage, 'osx')
+        ]
+
+        # Search all OS folders
+        for os_folder in ospaths:
+            print "OS Specific User Files: SEARCHING - OS folder: %s" % os_folder
+            for item in glob(os.path.join(os_folder, "*")):
+                directories = []
+                files = []
+                if os.path.isdir(item):
+                    directories.append(item)
+                else:
+                    files.append(item)
+
+                # Search for orphaned files
+                for found_file in files:
+                    found = False
+                    for item in self.file_list['files']:
+                        reported_file = os.path.normpath(os.path.join(os_folder, item))
+                        if reported_file == found_file:
+                            found = True
+                            break
+                    if not found:
+                        try:
+                            print "OS Specific User Files: REMOVING - Orphaned file: %s" % found_file
+                            os.remove(found_file)
+                            count += 1
+                        except:
+                            print "OS Specific User Files: ERROR - Could not remove: %s" % found_file
+                            self.errors |= True
+
+                # Search for orphaned directories
+                for found_dir in directories:
+                    found = False
+                    for item in self.file_list['directories']:
+                        reported_dir = os.path.normpath(os.path.join(os_folder, item))
+                        if reported_dir == found_dir:
+                            found = True
+                            break
+                    if not found:
+                        try:
+                            print "OS Specific User Files: REMOVING - Orphaned directory: %s" % found_dir
+                            shutil.rmtree(found_dir)
+                            count += 1
+                        except Exception, e:
+                            print e
+                            print "OS Specific User Files: ERROR - Could not remove: %s" % found_dir
+                            self.errors |= True
+
+        if not self.errors:
+            self.completion_msg = str(count) + ' orphaned files/directories removed successfully!' if count > 0 else 'No orphaned files/directories found!'
 
 
 class BackupOsUserFiles(OsUserFiles):
     def __init__(self, file_list, force=False):
         OsUserFiles.__init__(self, file_list, force)
 
-    def copy_all(self):
+    def apply(self):
         count = 0
         self.errors = False
         # Copy single files
         for item in self.file_list['files']:
-            key = os.path.normpath(item)
-            value = os.path.normpath(self.file_list['files'][item])
-            dest = os.path.join(ospath, key)
+            dest = os.path.normpath(os.path.join(ospath, item))
             dest_dir = os.path.dirname(dest)
-            src = os.path.join(user, value)
+            src = os.path.normpath(os.path.join(user, self.file_list['files'][item]))
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
@@ -327,11 +401,9 @@ class BackupOsUserFiles(OsUserFiles):
 
         # Copy directories
         for item in self.file_list['directories']:
-            key = os.path.normpath(item)
-            value = os.path.normpath(self.file_list['directories'][item])
-            dest = os.path.join(ospath, key)
+            dest = os.path.normpath(os.path.join(ospath, item))
             dest_dir = os.path.dirname(dest)
-            src = os.path.join(user, value)
+            src = os.path.normpath(os.path.join(user, self.file_list['directories'][item]))
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
@@ -339,11 +411,9 @@ class BackupOsUserFiles(OsUserFiles):
 
         # Rename files
         for item in self.file_list['rename']:
-            key = os.path.normpath(item)
-            value = os.path.normpath(self.file_list['rename'][item])
-            dest = os.path.join(ospath, key)
+            dest = os.path.normpath(os.path.join(ospath, item))
             dest_dir = os.path.dirname(dest)
-            src = os.path.join(ospath, value)
+            src = os.path.normpath(os.path.join(ospath, self.file_list['rename'][item]))
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
@@ -357,16 +427,14 @@ class CopyOsUserFiles(OsUserFiles):
     def __init__(self, file_list, force=False):
         OsUserFiles.__init__(self, file_list, force)
 
-    def copy_all(self):
+    def apply(self):
         count = 0
         self.errors = False
         # Copy single files
         for item in self.file_list['files']:
-            key = os.path.normpath(item)
-            value = os.path.normpath(self.file_list['files'][item])
-            src = os.path.join(ospath, key)
-            dest_dir = os.path.join(user, os.path.dirname(value))
-            dest = os.path.join(user, value)
+            src = os.path.normpath(os.path.join(ospath, item))
+            dest = os.path.normpath(os.path.join(user, self.file_list['files'][item]))
+            dest_dir = os.path.dirname(dest)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
@@ -374,11 +442,9 @@ class CopyOsUserFiles(OsUserFiles):
 
         # Copy directories
         for item in self.file_list['directories']:
-            key = os.path.normpath(item)
-            value = os.path.normpath(self.file_list['directories'][item])
-            src = os.path.join(ospath, key)
-            dest_dir = os.path.join(user, os.path.dirname(value))
-            dest = os.path.join(user, value)
+            src = os.path.normpath(os.path.join(ospath, item))
+            dest = os.path.normpath(os.path.join(user, self.file_list['directories'][item]))
+            dest_dir = os.path.dirname(dest)
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src) and os.path.exists(dest_dir):
                 count += 1
@@ -386,10 +452,8 @@ class CopyOsUserFiles(OsUserFiles):
 
         # Rename files
         for item in self.file_list['rename']:
-            key = os.path.normpath(item)
-            value = os.path.normpath(self.file_list['rename'][item])
-            src = os.path.join(user, key)
-            dest = os.path.join(user, value)
+            src = os.path.normpath(os.path.join(user, item))
+            dest = os.path.normpath(os.path.join(user, self.file_list['rename'][item]))
 
             if (not os.path.exists(dest) or self.force) and os.path.exists(src):
                 count += 1
@@ -397,6 +461,12 @@ class CopyOsUserFiles(OsUserFiles):
 
         if not self.errors:
             self.completion_msg = str(count) + ' targets copied successfully!' if count > 0 else 'No copy required!'
+
+
+class CleanOrphanedOsUserFilesCommand(sublime_plugin.ApplicationCommand):
+    def run(self):
+        print "OS Specific User Files: Searching for orphaned backed up files..."
+        run_orphan_thread(force=True)
 
 
 class BackupOsUserFilesCommand(sublime_plugin.ApplicationCommand):
