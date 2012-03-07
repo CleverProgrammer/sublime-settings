@@ -1,9 +1,14 @@
 [
+	// Sort Tabs
+	{
+		"caption": "Tabs: Sort Tabs",
+		"command": "sort_tabs"
+	},
 	// HTML Compact Format
 	{
 		"caption": "Format: Compact",
 		"command": "reg_replace",
-		"args": {"replacements": ["trim_html_whitespace", "html_reduce_spaces_to_one", "html_remove_all_newlines"]}
+		"args": {"replacements": ["trim_html_whitespace", "html_compact_tab_whitespace", "html_compact_space_whitespace", "html_remove_all_newlines"]}
 	},
 	// Get Selection Scope
 	{

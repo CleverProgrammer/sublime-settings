@@ -43,19 +43,25 @@
 		"trim_html_whitespace": {
 			"find": "\\s*(<|>)\\s*",
 			"replace": "\\1",
-			"scope_filter": ["-source.js","-source.php","-string", "-comment"],
+			"scope_filter": ["-source.js","-source.php", "-source.css","-string", "-comment"],
 			"greedy": true
 		},
-		"html_reduce_spaces_to_one": {
-			"find": "[ ]{2,}|[\t]+",
+		"html_compact_tab_whitespace": {
+			"find": "[\t]+",
 			"replace": " ",
-			"scope_filter": ["-source.js","-source.php","-string", "-comment"],
+			"scope_filter": ["-source.js","-source.php", "-source.css", "-string", "-comment"],
+			"greedy": true
+		},
+		"html_compact_space_whitespace": {
+			"find": "[ ]{2,}",
+			"replace": " ",
+			"scope_filter": ["-source.js","-source.php", "-source.css", "-string", "-comment"],
 			"greedy": true
 		},
 		"html_remove_all_newlines": {
 			"find": "[\r\n]*",
 			"replace": "",
-			"scope_filter": ["-source.js","-source.php"],
+			"scope_filter": ["-source.js","-source.php", "-source.css"],
 			"greedy": true
 		},
 		// remove_json_dangling_commas
