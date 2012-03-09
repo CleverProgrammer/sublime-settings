@@ -47,7 +47,7 @@
 			"greedy": true
 		},
 		"html_compact_tab_whitespace": {
-			"find": "[\t]+",
+			"find": "[\\t]+",
 			"replace": " ",
 			"scope_filter": ["-source.js","-source.php", "-source.css", "-string", "-comment"],
 			"greedy": true
@@ -59,7 +59,7 @@
 			"greedy": true
 		},
 		"html_remove_all_newlines": {
-			"find": "[\r\n]*",
+			"find": "[\\r\\n]*",
 			"replace": "",
 			"scope_filter": ["-source.js","-source.php", "-source.css"],
 			"greedy": true
@@ -188,15 +188,36 @@
 	// if the file name matches a file pattern, the sequence will be applied before the file is saved.
 	// RegReplace will apply all sequences that apply to a given file in the order they appear below.
 	"on_save": true,
+
+	// Do multi_passes (replacements only)
+	"on_save_multi_pass": false,
+
+	// Highlight visual settings
+	"on_save_highlight_scope": "invalid",
+	"on_save_highlight_style": "outline",
+
+	// on_save replacements
 	"on_save_sequences": [
 		// Strip dangling commas
 		{
 			"file_regex": [".*\\.sublime-(settings|commands|menu|keymap|mousemap|theme|build|project|completions|commands)"],
 			"file_pattern": ["*.json"],
-			"sequence": ["remove_json_dangling_commas"]
+			"sequence": ["remove_json_dangling_commas", "remove_trailing_spaces"]
 		},
-		// Remove trailing spaces and trim newlines
-		{"file_pattern": ["*.*"], "sequence": ["remove_trailing_spaces", "trim_excessive_newlines", "ensure_newline_at_file_end"]}
+		// Remove trim newlines
+		{
+			"file_pattern": ["*.*"],
+			"sequence": ["trim_excessive_newlines", "ensure_newline_at_file_end"]
+		}
+	],
+
+	// on_save highlights
+	"on_save_highlights": [
+		// Remove trim newlines
+		{
+			"file_pattern": ["*.*"],
+			"sequence": ["remove_trailing_spaces"]
+		}
 	],
 
 	// Show replace results in panel
