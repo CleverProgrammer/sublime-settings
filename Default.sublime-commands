@@ -1,95 +1,101 @@
 [
-	// Sort Tabs
-	{
-		"caption": "Tabs: Sort Tabs",
-		"command": "sort_tabs"
-	},
-	// HTML Compact Format
-	{
-		"caption": "Format: Compact",
-		"command": "reg_replace",
-		"args": {"replacements": ["trim_html_whitespace", "html_compact_tab_whitespace", "html_compact_space_whitespace", "html_remove_all_newlines"]}
-	},
-	// Get Selection Scope
-	{
-		"caption": "Get Selection Scope: Show Scope Under Cursor",
-		"command": "get_selection_scope"
-	},
-	// Force Copy OS Specific user files
-	{
-		"caption": "Os Specific User Files: Update User Files",
-		"command": "copy_os_user_files"
-	},
-	{
-		"caption": "Os Specific User Files: Backup User Files",
-		"command": "backup_os_user_files"
-	},
-	{
-		"caption": "Os Specific User Files: Clean Orphaned Backup Files",
-		"command": "clean_orphaned_os_user_files"
-	},
-	// Clean Up
-	{
-		"caption": "Clean Up: JSON",
-		"command": "reg_replace",
-		"args": {"replacements": ["remove_json_dangling_commas", "remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
-	},
-	{
-		"caption": "Clean Up: C/C++",
-		"command": "reg_replace",
-		"args": {"replacements": ["remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
-	},
-	{
-		"caption": "Clean Up: Python",
-		"command": "reg_replace",
-		"args": {"replacements": ["remove_trailing_spaces", "trim_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
-	},
-	// Remove Items
-	{
-		"caption": "Remove: Trailing Spaces",
-		"command": "reg_replace",
-		"args": {"replacements": ["remove_trailing_spaces"], "find_only": true}
-	},
-	{
-		"caption": "Remove: Excessive Newlines",
-		"command": "reg_replace",
-		"args": {"replacements": ["remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
-	},
-	{
-		"caption": "Remove: All Comments",
-		"command": "reg_replace",
-		"args": {"replacements": ["remove_comments", "remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
-	},
-	// Folding
-	{
-		"caption": "Code Folding: Fold All Comments",
-		"command": "reg_replace",
-		"args": {"replacements": ["remove_comments"], "action": "fold"}
-	},
-	{
-		"caption": "Code Folding: Unfold All Comments",
-		"command": "reg_replace",
-		"args": {"replacements": ["remove_comments"], "action": "unfold"}
-	},
-	// Flip Quotes
-	{
-		"caption": "Replace: Swap Quotes to Single",
-		"command": "reg_replace",
-		"args": {"replacements": ["escape_single_quotes", "swap_quotes_to_single", "unescape_double_quotes"], "find_only": true}
-	},
-	{
-		"caption": "Replace: Swap Quotes to Double",
-		"command": "reg_replace",
-		"args": {"replacements": ["escape_double_quotes", "swap_quotes_to_double", "unescape_single_quotes"], "find_only": true}
-	},
-		{
-		"caption": "Replace: Swap Raw Python Quotes to Single",
-		"command": "reg_replace",
-		"args": {"replacements": ["escape_python_raw_single_quotes", "swap_python_raw_quotes_to_single", "unescape_python_raw_double_quotes"], "find_only": true}
-	},
-	{
-		"caption": "Replace: Swap Raw Python Quotes to Double",
-		"command": "reg_replace",
-		"args": {"replacements": ["escape_python_raw_double_quotes", "swap_python_raw_quotes_to_double", "unescape_python_raw_single_quotes"], "find_only": true}
-	}
+    // Sort Tabs
+    {
+        "caption": "Tabs: Sort Tabs",
+        "command": "sort_tabs"
+    },
+    // Convert taps to spaces
+    {
+        "caption": "Format: Whitespace to 4 spaces",
+        "command": "reg_replace",
+        "args": {"replacements": ["tabs_to_spaces"], "find_only": true, "multi_pass": true}
+    },
+    // HTML Compact Format
+    {
+        "caption": "Format: Compact",
+        "command": "reg_replace",
+        "args": {"replacements": ["trim_html_whitespace", "html_compact_tab_whitespace", "html_compact_space_whitespace", "html_remove_all_newlines"]}
+    },
+    // Get Selection Scope
+    {
+        "caption": "Get Selection Scope: Show Scope Under Cursor",
+        "command": "get_selection_scope"
+    },
+    // Force Copy OS Specific user files
+    {
+        "caption": "Os Specific User Files: Update User Files",
+        "command": "copy_os_user_files"
+    },
+    {
+        "caption": "Os Specific User Files: Backup User Files",
+        "command": "backup_os_user_files"
+    },
+    {
+        "caption": "Os Specific User Files: Clean Orphaned Backup Files",
+        "command": "clean_orphaned_os_user_files"
+    },
+    // Clean Up
+    {
+        "caption": "Clean Up: JSON",
+        "command": "reg_replace",
+        "args": {"replacements": ["remove_json_dangling_commas", "remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+    },
+    {
+        "caption": "Clean Up: C/C++",
+        "command": "reg_replace",
+        "args": {"replacements": ["remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+    },
+    {
+        "caption": "Clean Up: Python",
+        "command": "reg_replace",
+        "args": {"replacements": ["remove_trailing_spaces", "trim_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+    },
+    // Remove Items
+    {
+        "caption": "Remove: Trailing Spaces",
+        "command": "reg_replace",
+        "args": {"replacements": ["remove_trailing_spaces"], "find_only": true}
+    },
+    {
+        "caption": "Remove: Excessive Newlines",
+        "command": "reg_replace",
+        "args": {"replacements": ["remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+    },
+    {
+        "caption": "Remove: All Comments",
+        "command": "reg_replace",
+        "args": {"replacements": ["remove_comments", "remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+    },
+    // Folding
+    {
+        "caption": "Code Folding: Fold All Comments",
+        "command": "reg_replace",
+        "args": {"replacements": ["remove_comments"], "action": "fold"}
+    },
+    {
+        "caption": "Code Folding: Unfold All Comments",
+        "command": "reg_replace",
+        "args": {"replacements": ["remove_comments"], "action": "unfold"}
+    },
+    // Flip Quotes
+    {
+        "caption": "Replace: Swap Quotes to Single",
+        "command": "reg_replace",
+        "args": {"replacements": ["escape_single_quotes", "swap_quotes_to_single", "unescape_double_quotes"], "find_only": true}
+    },
+    {
+        "caption": "Replace: Swap Quotes to Double",
+        "command": "reg_replace",
+        "args": {"replacements": ["escape_double_quotes", "swap_quotes_to_double", "unescape_single_quotes"], "find_only": true}
+    },
+        {
+        "caption": "Replace: Swap Raw Python Quotes to Single",
+        "command": "reg_replace",
+        "args": {"replacements": ["escape_python_raw_single_quotes", "swap_python_raw_quotes_to_single", "unescape_python_raw_double_quotes"], "find_only": true}
+    },
+    {
+        "caption": "Replace: Swap Raw Python Quotes to Double",
+        "command": "reg_replace",
+        "args": {"replacements": ["escape_python_raw_double_quotes", "swap_python_raw_quotes_to_double", "unescape_python_raw_single_quotes"], "find_only": true}
+    }
 ]
