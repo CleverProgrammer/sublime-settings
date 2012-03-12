@@ -212,10 +212,10 @@
             "file_pattern": ["*.*"],
             "sequence": ["trim_excessive_newlines", "ensure_newline_at_file_end"]
         },
-        // Remove trim newlines
+        // Highlight trailing spaces
         {
             "file_pattern": ["*.*"],
-            "sequence": ["remove_trailing_spaces", "tabs_to_spaces"],
+            "sequence": ["remove_trailing_spaces"],
             "highlight": true
         }
     ],

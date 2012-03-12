@@ -42,11 +42,8 @@
     "tag_type" : "html",
 
     //threshold distance to search
-    "search_threshold"     : 40000,
-    "tag_search_threshold" : 40000,
+    "search_threshold"     : 4000,
+    "tag_search_threshold" : 4000,
     "use_search_threshold"     : true,
-    "tag_use_search_threshold" : true,
-
-    //Debounce delay in miliseconds
-    "debounce_delay" : 500
+    "tag_use_search_threshold" : true
 }
