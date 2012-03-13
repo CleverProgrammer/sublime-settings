@@ -1,56 +1,56 @@
 {
-	// Group bytes together by bits
-	// Valid Settings (8|16|32|64|128)
-	"group_bytes_by_bits" : 16,
+    // Group bytes together by bits
+    // Valid Settings (8|16|32|64|128)
+    "group_bytes_by_bits" : 16,
 
-	// Number of 8 bit bytes per line.
-	// Will use closet number of bytes if group bytes
-	// does not align.
-	// Valid Settings (8|10|16|24|32|48|64|128|256|512)
-	"bytes_per_line" : 24,
+    // Number of 8 bit bytes per line.
+    // Will use closet number of bytes if group bytes
+    // does not align.
+    // Valid Settings (8|10|16|24|32|48|64|128|256|512)
+    "bytes_per_line" : 24,
 
-	// Use a custom font and/or font size in hex view.
-	// Use None to use the current Sublime Text font.
-	"custom_font" : "none",
+    // Use a custom font and/or font size in hex view.
+    // Use None to use the current Sublime Text font.
+    "custom_font" : "none",
 
-	// Use zero to use the current Sublime Text font size.
-	"custom_font_size" : 0,
+    // Use zero to use the current Sublime Text font size.
+    "custom_font_size" : 0,
 
-	// Show inspector panel
-	"inspector" : true,
+    // Show inspector panel
+    "inspector" : true,
 
-	// endian? (big|little)
-	"inspector_endian" : "big",
+    // endian? (big|little)
+    "inspector_endian" : "big",
 
-	// Inspector
-	"inspector_auto_show" : true,
+    // Inspector
+    "inspector_auto_show" : true,
 
-	"highlight_max_bytes" : 1000,
-	"highlight_throttle" : true,
+    "highlight_max_bytes" : 1000,
+    "highlight_throttle" : true,
 
-	// Scope? (Defined in theme files.)
-	// Examples: (keyword|string|number)
-	"highlight_scope" : "string",
+    // Scope? (Defined in theme files.)
+    // Examples: (keyword|string|number)
+    "highlight_scope" : "string",
 
-	// Icon? (dot|circle|bookmark|cross)
-	"highlight_icon" : "dot",
+    // Icon? (dot|circle|bookmark|cross)
+    "highlight_icon" : "none",
 
-	// Style? (solid|outline|underline|none)
-	"highlight_style" : "solid",
-	"highlight_edit_style" : "underline",
-	"hash_algorithm" : "md5",
+    // Style? (solid|outline|underline|none)
+    "highlight_style" : "solid",
+    "highlight_edit_style" : "underline",
+    "hash_algorithm" : "md5",
 
-		// Auto open binary files in hex viewer (uses auto_open_patterns)
-	"auto_open" : true,
+        // Auto open binary files in hex viewer (uses auto_open_patterns)
+    "auto_open" : true,
 
-	// Auto open patterns to open in hex viewer
-	"auto_open_patterns" : [
-		"*.bin","*.pyc", "*.pyo", "*.exe",
-		"*.dll", "*.obj","*.o", "*.a",
-		"*.lib", "*.so", "*.dylib", "*.jpg",
-		"*.jpeg", "*.png", "*.gif", "*.ttf",
-		"*.tga", "*.dds", "*.ico", "*.swf",
-		"*.jar", "*.zip", "*.pdb", "*.idb",
-		"*.db", "*.xcf"
-	]
+    // Auto open patterns to open in hex viewer
+    "auto_open_patterns" : [
+        "*.bin","*.pyc", "*.pyo", "*.exe",
+        "*.dll", "*.obj","*.o", "*.a",
+        "*.lib", "*.so", "*.dylib", "*.jpg",
+        "*.jpeg", "*.png", "*.gif", "*.ttf",
+        "*.tga", "*.dds", "*.ico", "*.swf",
+        "*.jar", "*.zip", "*.pdb", "*.idb",
+        "*.db", "*.xcf"
+    ]
 }
