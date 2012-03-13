@@ -27,13 +27,14 @@
     "angle_style" : "underline",
     "tag_style"   : "outline",
 
-    //Icon? (dot/circle/bookmark/cross)
-    "quote_icon" : "dot",
-    "curly_icon" : "dot",
-    "round_icon" : "dot",
-    "square_icon": "dot",
-    "angle_icon" : "dot",
-    "tag_icon"   : "dot",
+    //Icon? (dot/circle/bookmark/quote/curly_bracket/round_bracket/square_bracket/angle_bracket/none)
+    "icon_path"  : "BracketHighlighter/icons",
+    "quote_icon" : "quote",
+    "curly_icon" : "curly_bracket",
+    "round_icon" : "round_bracket",
+    "square_icon": "square_bracket",
+    "angle_icon" : "angle_bracket",
+    "tag_icon"   : "angle_bracket",
 
     //Higlight brackets of tag only instead of entire tag
     "tag_brackets_only" : false,

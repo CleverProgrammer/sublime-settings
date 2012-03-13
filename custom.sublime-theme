@@ -348,7 +348,7 @@
         "layer0.opacity": 1.0,
         "layer0.inner_margin": [4, 5, 4, 3],
 
-        "layer1.texture": "Theme - Default/input_field_shadow.png",
+        "layer1.texture": "User/Theme/input_field_shadow.png",
         "layer1.opacity": 1.0,
         "layer1.inner_margin": [4, 5, 4, 3],
         "tint_index": 1,
