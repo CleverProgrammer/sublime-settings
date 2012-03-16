@@ -230,5 +230,8 @@
     "find_highlight_color": "invalid",
 
     // Highlight style? (outline|solid|underline)
-    "find_highlight_style": "outline"
+    "find_highlight_style": "outline",
+
+    // Search under selection(s) if and only if exists
+    "selection_only": false
 }
