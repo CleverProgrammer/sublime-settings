@@ -25,9 +25,9 @@
 				<string>#9D550F</string>
 				<key>selectionForeground</key>
 				<string>#fffff8</string>
-				<!-- <key>inactiveSelection</key>
-				<string>#bbbbbb</string>
-				<key>inactiveSelectionForeground</key>
+				<key>inactiveSelection</key>
+				<string>#9D550FAA</string>
+				<!-- <key>inactiveSelectionForeground</key>
 				<string>#222222</string> -->
 				<key>findHighlight</key>
 				<string>#FFE792</string>
@@ -35,6 +35,8 @@
 				<string>#000000</string>
 				<key>activeGuide</key>
 				<string>#9D550FB0</string>
+				<key>gutterForeground</key>
+				<string>#AE81FF</string>
 
 				<key>bracketsForeground</key>
 				<string>#F8F8F2A5</string>

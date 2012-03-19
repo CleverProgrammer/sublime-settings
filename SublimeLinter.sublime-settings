@@ -4,10 +4,7 @@
     "sublimelinter_executable_map": {
     },
     "sublimelinter_fill_outlines": false,
-    "sublimelinter_gutter_marks": false,
-    "sublimelinter_low_profile": true,
     "sublimelinter_objj_check_ascii": false,
-    "sublimelinter_symbol_type_marks": false,
     "sublimelinter_syntax_map": {
         "Python Django": "python"
     },
@@ -19,6 +16,7 @@
     ],
     "pyflakes_ignore": [
     ],
+    "javascript_linter": "jshint",
     "jshint_options":
     {
         "asi": false,

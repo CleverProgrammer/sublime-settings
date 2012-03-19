@@ -20,7 +20,7 @@
     "inspector" : true,
 
     // endian? (big|little)
-    "inspector_endian" : "big",
+    "inspector_endian" : "little",
 
     // Inspector
     "inspector_auto_show" : true,

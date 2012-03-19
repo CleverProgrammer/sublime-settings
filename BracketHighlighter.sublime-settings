@@ -1,17 +1,41 @@
 {
-    //exclude or include bracket by language type (example: C++ for C++.tmLanguage)
-    //Note: this is particularly useful with Angle. Some languages do not attribute any special scope to angle brackets making it hard
-    //to tell when the bracket is beign used in a valid scenario.  C++ is a perfect example.  It is better to disable completely than
-    //to ignore angle.  Ignoring will not show angle matches, but will also interfere with other bracket matches.
+    //Enable bracket matching on type
+    "quote_enable" : true,
+    "curly_enable" : true,
+    "round_enable" : true,
+    "square_enable": true,
+    "angle_enable" : true,
+    // Higlight tags if tag is selected. angle_enable must be true for tags to work
+    // if you would like to ignore non tags then set ignore_non_tags to true
+    "tag_enable"   : true,
+
+    // don't show non tag angle matches
+    "ignore_non_tags" : false,
+
+    // match brackets only when the cursor is adjacent to one
+    "match_adjacent_only" : false,
+
+    // exclude or include bracket by language type (example: C++ for C++.tmLanguage)
+    // Note: this is particularly useful with Angle. Some languages do not attribute any special scope to angle brackets making it hard
+    // to tell when the bracket is beign used in a valid scenario.  C++ is a perfect example.  It is better to disable completely than
+    // to ignore angle.  Ignoring will not show angle matches, but will also interfere with other bracket matches.
     "angle_language_list" : ["HTML","HTML 5","XML","PHP"],
     "tag_language_list"   : ["HTML","HTML 5","XML","PHP"],
-    "quote_language_list" : ["Plain text","Hex"],
-    "curly_language_list" : ["Plain text","Hex"],
-    "round_language_list" : ["Plain text","Hex"],
-    "square_language_list": ["Plain text","Hex"],
+    "quote_language_list" : ["Plain text"],
+    "curly_language_list" : ["Plain text"],
+    "round_language_list" : ["Plain text"],
+    "square_language_list": ["Plain text"],
 
-    //Scope? (Defined in theme files.) ->
-    //Examples: (keyword/string/number)
+    //filter type (whitelist|blacklist)
+    "angle_language_filter" : "whitelist",
+    "tag_language_filter"   : "whitelist",
+    "quote_language_filter" : "blacklist",
+    "curly_language_filter" : "blacklist",
+    "round_language_filter" : "blacklist",
+    "square_language_filter": "blacklist",
+
+    // Scope? (Defined in theme files.)
+    // Examples: (keyword|string|number)
     "quote_scope" : "bracket.quote",
     "curly_scope" : "bracket.curly",
     "round_scope" : "bracket.round",
@@ -19,7 +43,7 @@
     "angle_scope" : "bracket.angle",
     "tag_scope"   : "bracket.tag",
 
-    //Outline? (solid/outline/underline/none) ->
+    // Outline? (solid|outline|underline|none)
     "quote_style" : "underline",
     "curly_style" : "underline",
     "round_style" : "underline",
@@ -27,8 +51,13 @@
     "angle_style" : "underline",
     "tag_style"   : "outline",
 
+    // Path to gutter icons (relative to Packages)
+    "icon_path" : "BracketHighlighter/icons",
+
+    // Disable gutter icons when doing multi-select
+    "no_multi_select_icons": true,
+
     //Icon? (dot/circle/bookmark/quote/curly_bracket/round_bracket/square_bracket/angle_bracket/none)
-    "icon_path"  : "BracketHighlighter/icons",
     "quote_icon" : "quote",
     "curly_icon" : "curly_bracket",
     "round_icon" : "round_bracket",
@@ -46,5 +75,18 @@
     "search_threshold"     : 4000,
     "tag_search_threshold" : 4000,
     "use_search_threshold"     : true,
-    "tag_use_search_threshold" : true
+    "tag_use_search_threshold" : true,
+
+    // When matching quoted strings, match brackets internally in the string as well.
+    // Particularly useful for strings containing regex
+    "match_string_brackets": true,
+
+    // Find brackets in non-quoted scoped strings
+    "find_brackets_in_any_string": true,
+
+    // Ignore highlighting strings but highlight brackets that are found inside.
+    "highlight_string_brackets_only": false,
+
+    // Match brackets only when cursor is between the brackets
+    "match_brackets_only_when_between": true
 }
