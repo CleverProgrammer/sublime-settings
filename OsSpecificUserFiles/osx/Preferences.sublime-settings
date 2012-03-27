@@ -15,12 +15,12 @@
     "hot_exit": false,
     "ignored_packages":
     [
-        "Vintage",
-        "Python",
         "Batch File",
+        "Python",
+        "Vintage",
         "JavaScript",
-        "Perl",
         "C++",
+        "Perl",
         "PHP",
         "CSS"
     ],
@@ -111,7 +111,6 @@
     {
     },
     "sublimelinter_fill_outlines": false,
-    "sublimelinter_gutter_marks": false,
     "sublimelinter_objj_check_ascii": false,
     "sublimelinter_syntax_map":
     {
