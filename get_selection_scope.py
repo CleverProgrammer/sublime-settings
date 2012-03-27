@@ -4,6 +4,6 @@ import sublime_plugin
 
 class GetSelectionScopeCommand(sublime_plugin.TextCommand):
     def run(self, edit):
-        sel = self.view.sel()
-        if len(sel) > 0:
-            sublime.error_message(self.view.scope_name(sel[0].begin()))
+        scope = self.view.scope_name(self.view.sel()[0].b)
+        if sublime.ok_cancel_dialog('Scope:\n' + scope + '\n\nCopy to clipboard?', 'Copy'):
+            sublime.set_clipboard(scope)
