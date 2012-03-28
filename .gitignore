@@ -13,3 +13,5 @@ Preferences.sublime-settings
 Package Control.sublime-settings
 
 SublimeREPLHistory
+
+favorite_files_list.json
