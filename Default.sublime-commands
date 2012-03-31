@@ -16,12 +16,6 @@
         "command": "reg_replace",
         "args": {"replacements": ["trim_html_whitespace", "html_compact_tab_whitespace", "html_compact_space_whitespace", "html_remove_all_newlines"]}
     },
-    // Get Selection Scope
-    {
-        "caption": "Get Selection Scope: Show Scope Under Cursor",
-        "command": "get_selection_scope",
-        "args": {"show_panel": true, "points": true, "rowcol": true, "multiselect": true}
-    },
     // Force Copy OS Specific user files
     {
         "caption": "Os Specific User Files: Update User Files",
