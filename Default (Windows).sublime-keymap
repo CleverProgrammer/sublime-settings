@@ -1,2 +1,3 @@
 [
+    { "keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" }
 ]
