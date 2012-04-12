@@ -44,6 +44,12 @@
             "rules": [
                 {"file_name": ".*\\.hidden-tmLanguage"}
             ]
+        },
+        {
+            "name": "AAALanguages/Better Javascript/JSON",
+            "rules": [
+                {"file_name": ".*\\.recipe"}
+            ]
         }
     ]
 }
