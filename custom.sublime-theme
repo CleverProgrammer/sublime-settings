@@ -312,7 +312,7 @@
     },
     {
         "class": "sidebar_heading",
-        "color": [210, 210, 210],
+        "color": [255, 255, 255],
         "font.bold": true,
         "shadow_color": [0, 0, 0],
         "shadow_offset": [0, 1]
@@ -336,6 +336,13 @@
         "color": [210, 210, 210],
         "shadow_color": [0, 0, 0],
         "shadow_offset": [0, 1]
+    },
+    {
+        "class": "sidebar_label",
+        "parents": [{"class": "tree_row", "attributes": ["expandable"]}],
+        "settings": ["bold_folder_labels"],
+        "color": [210, 210, 210],
+        "font.bold": true
     },
     {
         "class": "minimap_control",
