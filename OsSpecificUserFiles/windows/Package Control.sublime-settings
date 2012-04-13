@@ -1,5 +1,5 @@
 {
-    "auto_upgrade_last_run": 1332186300,
+    "auto_upgrade_last_run": 1334244460,
     "installed_packages":
     [
         "AAALanguages",
@@ -12,6 +12,7 @@
         "CSV",
         "DetectSyntax",
         "EncodingHelper",
+        "FavoriteFiles",
         "FileDiffs",
         "GenerateUUID",
         "Git",
@@ -23,8 +24,12 @@
         "Logs Colorize",
         "Markdown Preview",
         "Package Control",
+        "PlistJsonConverter",
+        "PrintHtml",
         "RegReplace",
+        "ScopeHunter",
         "SideBarEnhancements",
+        "SortTabs",
         "SublimeLinter",
         "SublimeREPL",
         "SublimeTODO",
@@ -39,7 +44,7 @@
     },
     "repositories":
     [
-        "https://github.com/facelessuser/BracketHighlighter/tree/String-Improvements",
+        "https://github.com/facelessuser/PrintHtml",
         "https://github.com/facelessuser/sublime-languages",
         "http://sublime.wbond.net/testing/packages.json"
     ]
