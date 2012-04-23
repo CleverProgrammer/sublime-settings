@@ -1,51 +1,53 @@
 {
-    "auto_upgrade_last_run": 1334244460,
-    "installed_packages":
-    [
-        "AAALanguages",
-        "Alignment",
-        "ApacheConf.tmLanguage",
-        "ASCII Decorator",
-        "BracketHighlighter",
-        "Clipboard Manager",
-        "ColorPicker",
-        "CSV",
-        "DetectSyntax",
-        "EncodingHelper",
-        "FavoriteFiles",
-        "FileDiffs",
-        "GenerateUUID",
-        "Git",
-        "GitHubinator",
-        "google-search",
-        "HexViewer",
-        "HTML5",
-        "INI",
-        "Logs Colorize",
-        "Markdown Preview",
-        "Package Control",
-        "PlistJsonConverter",
-        "PrintHtml",
-        "RegReplace",
-        "ScopeHunter",
-        "SideBarEnhancements",
-        "SortTabs",
-        "SublimeLinter",
-        "SublimeREPL",
-        "SublimeTODO",
-        "SublimeWebColors",
-        "Terminal",
-        "Theme - Soda",
-        "Tortoise"
-    ],
-    "package_name_map":
-    {
-        "sublime-languages": "AAALanguages"
-    },
-    "repositories":
-    [
-        "https://github.com/facelessuser/PrintHtml",
-        "https://github.com/facelessuser/sublime-languages",
-        "http://sublime.wbond.net/testing/packages.json"
-    ]
+	"auto_upgrade_last_run": 1335194569,
+	"installed_packages":
+	[
+		"AAALanguages",
+		"Alignment",
+		"ApacheConf.tmLanguage",
+		"ASCII Decorator",
+		"BracketHighlighter",
+		"Clipboard Manager",
+		"ColorPicker",
+		"CSV",
+		"DetectSyntax",
+		"EncodingHelper",
+		"ExportHtml",
+		"FavoriteFiles",
+		"FileDiffs",
+		"GenerateUUID",
+		"Git",
+		"GitHubinator",
+		"google-search",
+		"HexViewer",
+		"HTML5",
+		"INI",
+		"Logs Colorize",
+		"Markdown Preview",
+		"Package Control",
+		"PlistJsonConverter",
+		"PrintHtml",
+		"RegReplace",
+		"ScopeHunter",
+		"SideBarEnhancements",
+		"SortTabs",
+		"SublimeLinter",
+		"SublimeREPL",
+		"SublimeTODO",
+		"SublimeWebColors",
+		"Terminal",
+		"Theme - Soda",
+		"Tortoise"
+	],
+	"package_name_map":
+	{
+		"sublime-languages": "AAALanguages"
+	},
+	"repositories":
+	[
+		"https://github.com/agibsonsw/PrintHtml",
+		"https://github.com/facelessuser/ExportHtml",
+		"https://github.com/facelessuser/sublime-languages",
+		"http://sublime.wbond.net/testing/packages.json"
+	]
 }

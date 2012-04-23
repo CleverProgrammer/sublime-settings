@@ -3,11 +3,11 @@
     // You can define a string path to an alternate default
     // Color scheme here, it must be relative to the
     // Example:
-    //     "alternate_scheme": "Packages/PrintHtml/themes/Print-Color.tmTheme"
+    //     "alternate_scheme": "Packages/ExportHtml/themes/Print-Color.tmTheme"
     "alternate_scheme": false,
 
-    // Define configurations for the drop down print menu
-    "print_panel": [
+    // Define configurations for the drop down export menu
+    "html_panel": [
         // Browser print color (selections and multi-selections allowed)
         {
             "Browser Print - Color": {
@@ -15,7 +15,9 @@
                 "wrap": 900,
                 "browser_print": true,
                 "multi_select": true,
-                "color_scheme": "Packages/PrintHtml/ColorSchemes/Print-Color.tmTheme"
+                "color_scheme": "Packages/User/Color Scheme/Monokai Light Bright Custom.tmTheme",
+                "style_gutter": false,
+                "no_header": true
             }
         },
 
@@ -26,7 +28,9 @@
                 "wrap": 900,
                 "browser_print": true,
                 "multi_select": true,
-                "color_scheme": "Packages/PrintHtml/ColorSchemes/Print-Grayscale.tmTheme"
+                "color_scheme": "Packages/ExportHtml/ColorSchemes/Print-Grayscale.tmTheme",
+                "style_gutter": false,
+                "no_header": true
             }
         },
 
@@ -39,7 +43,9 @@
                 "wrap": 900,
                 "browser_print": true,
                 "highlight_selections": true,
-                "color_scheme": "Packages/PrintHtml/ColorSchemes/Print-Color.tmTheme"
+                "color_scheme": "Packages/User/Color Scheme/Monokai Light Bright Custom.tmTheme",
+                "style_gutter": false,
+                "no_header": true
             }
         },
 
@@ -52,15 +58,26 @@
                 "wrap": 900,
                 "browser_print": true,
                 "highlight_selections": true,
-                "color_scheme": "Packages/PrintHtml/ColorSchemes/Print-Grayscale.tmTheme"
+                "color_scheme": "Packages/ExportHtml/ColorSchemes/Print-Grayscale.tmTheme",
+                "style_gutter": false,
+                "no_header": true
             }
         },
+
+        // Browser view color (selections and multi-selections allowed)
+        {
+            "Browser View - Current Color": {
+                "numbers": true,
+                "multi_select": true
+            }
+        },
+
         // Browser view color (selections and multi-selections allowed)
         {
             "Browser View - Color": {
                 "numbers": true,
                 "multi_select": true,
-                "color_scheme": "Packages/PrintHtml/ColorSchemes/Print-Color.tmTheme"
+                "color_scheme":"Packages/User/Color Scheme/Monokai Light Bright Custom.tmTheme"
             }
         },
 
@@ -69,7 +86,7 @@
             "Browser View - Grayscale": {
                 "numbers": true,
                 "multi_select": true,
-                "color_scheme": "Packages/PrintHtml/ColorSchemes/Print-Grayscale.tmTheme"
+                "color_scheme": "Packages/ExportHtml/ColorSchemes/Print-Grayscale.tmTheme"
             }
         },
 
@@ -78,7 +95,7 @@
             "Browser View - Color (Selection Highlights)": {
                 "numbers": true,
                 "highlight_selections": true,
-                "color_scheme": "Packages/PrintHtml/ColorSchemes/Print-Color.tmTheme"
+                "color_scheme": "Packages/User/Color Scheme/Monokai Light Bright Custom.tmTheme"
             }
         },
 
@@ -87,7 +104,29 @@
             "Browser View - Grayscale (Selection Highlights)": {
                 "numbers": true,
                 "highlight_selections": true,
-                "color_scheme": "Packages/PrintHtml/ColorSchemes/Print-Grayscale.tmTheme"
+                "color_scheme": "Packages/ExportHtml/ColorSchemes/Print-Grayscale.tmTheme"
+            }
+        },
+
+        // Sublime view grayscale HTML source; (selections and multi-selections allowed)
+        {
+            "Sublime View - Color": {
+                "view_open": true,
+                "numbers": true,
+                "wrap": 900,
+                "multi_select": true,
+                "color_scheme": "Packages/ExportHtml/ColorSchemes/Print-Grayscale.tmTheme"
+            }
+        },
+
+        // Sublime view grayscale HTML source; (selections and multi-selections allowed)
+        {
+            "Sublime View - Grayscale": {
+                "view_open": true,
+                "numbers": true,
+                "wrap": 900,
+                "multi_select": true,
+                "color_scheme": "Packages/ExportHtml/ColorSchemes/Print-Grayscale.tmTheme"
             }
         }
     ]
