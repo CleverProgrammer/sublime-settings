@@ -6,7 +6,7 @@
 	"draw_white_space": "all",
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 12,
+	"font_size": 11,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"highlight_word_outline_style": true,
@@ -15,14 +15,14 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Python",
 		"Batch File",
+		"Vintage",
 		"JavaScript",
-		"Perl",
 		"C++",
+		"Perl",
 		"PHP",
-		"CSS"
+		"CSS",
+		"Python"
 	],
 	"indent_guide_options":
 	[

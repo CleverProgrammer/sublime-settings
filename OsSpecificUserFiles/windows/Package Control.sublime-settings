@@ -1,5 +1,5 @@
 {
-	"auto_upgrade_last_run": 1335194569,
+	"auto_upgrade_last_run": 1335885024,
 	"installed_packages":
 	[
 		"AAALanguages",
@@ -9,7 +9,6 @@
 		"BracketHighlighter",
 		"Clipboard Manager",
 		"ColorPicker",
-		"CSV",
 		"DetectSyntax",
 		"EncodingHelper",
 		"ExportHtml",
@@ -26,7 +25,6 @@
 		"Markdown Preview",
 		"Package Control",
 		"PlistJsonConverter",
-		"PrintHtml",
 		"RegReplace",
 		"ScopeHunter",
 		"SideBarEnhancements",
@@ -45,9 +43,6 @@
 	},
 	"repositories":
 	[
-		"https://github.com/agibsonsw/PrintHtml",
-		"https://github.com/facelessuser/ExportHtml",
-		"https://github.com/facelessuser/sublime-languages",
-		"http://sublime.wbond.net/testing/packages.json"
+		"https://github.com/facelessuser/sublime-languages"
 	]
 }
