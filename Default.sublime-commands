@@ -1,4 +1,12 @@
 [
+    {
+        "caption": "Package File Search: Menu",
+        "command": "get_package_files_menu"
+    },
+    {
+        "caption": "Package File Search: Input Search Pattern",
+        "command": "get_package_files_input"
+    },
     // Sort Tabs
     {
         "caption": "Tabs: Sort Tabs",

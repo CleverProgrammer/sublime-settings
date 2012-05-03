@@ -11,18 +11,18 @@ from os import listdir, walk
 from fnmatch import fnmatch
 
 
-DEFAULT_FILES = {
-    "Settings":      ("*.sublime-settings", True),
-    "Keymaps":       ("*.sublime-keymap", True),
-    "Commands":      ("*.sublime-commands", True),
-    "Readmes":       ("*readme*", True),
-    "Languages":     ("*tmLanguage", True),
-    "Snippets":      ("*.sublime-snippets", True),
-    "Preferences":   ("*.tmPreferences", True),
-    "Color Schemes": ("*.tmTheme", True),
-    "Themes":        ("*.sublime-theme", True),
-    "Python Source": ("*.py", True)
-}
+DEFAULT_FILES = [
+    {"caption": "Settings Files",        "search": {"pattern": "*.sublime-settings", "deep_search": True}},
+    {"caption": "Keymap Files",          "search": {"pattern": "*.sublime-keymap",   "deep_search": True}},
+    {"caption": "Command Files",         "search": {"pattern": "*.sublime-commands", "deep_search": True}},
+    {"caption": "Readme Files",          "search": {"pattern": "*readme*",           "deep_search": True}},
+    {"caption": "Language Syntax Files", "search": {"pattern": "*tmLanguage",        "deep_search": True}},
+    {"caption": "Snippet Files",         "search": {"pattern": "*.sublime-snippet",  "deep_search": True}},
+    {"caption": "Preference Files",      "search": {"pattern": "*.tmPreferences",    "deep_search": True}},
+    {"caption": "Color Scheme Files",    "search": {"pattern": "*.tmTheme",          "deep_search": True}},
+    {"caption": "Theme Files",           "search": {"pattern": "*.sublime-theme",    "deep_search": True}},
+    {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "deep_search": True}}
+]
 
 
 class GetPackageFilesInputCommand(sublime_plugin.WindowCommand):
@@ -44,14 +44,14 @@ class GetPackageFilesMenuCommand(sublime_plugin.WindowCommand):
     def find_files(self, value, patterns):
         if value > -1:
             pat = patterns[value]
-            self.window.run_command("get_package_files", {"pattern": pat[0], "deep_search": pat[1]})
+            self.window.run_command("get_package_files", {"pattern": pat["pattern"], "deep_search": pat["deep_search"]})
 
     def run(self, pattern_list=DEFAULT_FILES):
         patterns = []
         types = []
-        for k, v in pattern_list.items():
-            patterns.append(v)
-            types.append(k)
+        for item in pattern_list:
+            patterns.append(item["search"])
+            types.append(item["caption"])
         self.window.show_quick_panel(
             types,
             lambda x: self.find_files(x, patterns=patterns)
