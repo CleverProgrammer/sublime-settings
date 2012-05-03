@@ -1,5 +1,5 @@
 {
-    "auto_upgrade_last_run": 1334124775,
+    "auto_upgrade_last_run": 1336003759,
     "installed_packages":
     [
         "AAALanguages",
@@ -38,7 +38,6 @@
     },
     "repositories":
     [
-        "https://github.com/facelessuser/sublime-languages",
-        "http://sublime.wbond.net/testing/packages.json"
+        "https://github.com/facelessuser/sublime-languages"
     ]
 }
