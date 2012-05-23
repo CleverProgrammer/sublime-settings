@@ -1,48 +1,48 @@
 {
-	"auto_upgrade_last_run": 1335885024,
-	"installed_packages":
-	[
-		"AAALanguages",
-		"Alignment",
-		"ApacheConf.tmLanguage",
-		"ASCII Decorator",
-		"BracketHighlighter",
-		"Clipboard Manager",
-		"ColorPicker",
-		"DetectSyntax",
-		"EncodingHelper",
-		"ExportHtml",
-		"FavoriteFiles",
-		"FileDiffs",
-		"GenerateUUID",
-		"Git",
-		"GitHubinator",
-		"google-search",
-		"HexViewer",
-		"HTML5",
-		"INI",
-		"Logs Colorize",
-		"Markdown Preview",
-		"Package Control",
-		"PlistJsonConverter",
-		"RegReplace",
-		"ScopeHunter",
-		"SideBarEnhancements",
-		"SortTabs",
-		"SublimeLinter",
-		"SublimeREPL",
-		"SublimeTODO",
-		"SublimeWebColors",
-		"Terminal",
-		"Theme - Soda",
-		"Tortoise"
-	],
-	"package_name_map":
-	{
-		"sublime-languages": "AAALanguages"
-	},
-	"repositories":
-	[
-		"https://github.com/facelessuser/sublime-languages"
-	]
+    "auto_upgrade_last_run": 1337273425,
+    "installed_packages":
+    [
+        "AAALanguages",
+        "Alignment",
+        "ApacheConf.tmLanguage",
+        "ASCII Decorator",
+        "BracketHighlighter",
+        "Clipboard Manager",
+        "ColorPicker",
+        "DetectSyntax",
+        "EncodingHelper",
+        "ExportHtml",
+        "FavoriteFiles",
+        "FileDiffs",
+        "GenerateUUID",
+        "Git",
+        "GitHubinator",
+        "google-search",
+        "HexViewer",
+        "HTML5",
+        "INI",
+        "Logs Colorize",
+        "Markdown Preview",
+        "Package Control",
+        "PlistJsonConverter",
+        "RegReplace",
+        "ScopeHunter",
+        "SideBarEnhancements",
+        "SortTabs",
+        "SublimeLinter",
+        "SublimeREPL",
+        "SublimeTODO",
+        "SublimeWebColors",
+        "Terminal",
+        "Theme - Soda",
+        "Tortoise"
+    ],
+    "package_name_map":
+    {
+        "sublime-languages": "AAALanguages"
+    },
+    "repositories":
+    [
+        "https://github.com/facelessuser/sublime-languages"
+    ]
 }
