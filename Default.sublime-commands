@@ -1,5 +1,9 @@
 [
     {
+        "caption": "Insert: Date",
+        "command": "insert_date"
+    },
+    {
         "caption": "Package File Search: Menu",
         "command": "get_package_files_menu"
     },
