@@ -1,3 +1,5 @@
 [
-    { "keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" }
+    { "keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" },
+    { "keys": ["ctrl+o"], "command": "fuzzy_start_from_file" },
+    { "keys": ["ctrl+shift+o"], "command": "fuzzy_bookmarks_load" }
 ]

@@ -1,9 +1,9 @@
 {
     // Show scope in status bar
-    "show_statusbar": true,
+    "show_statusbar": false,
 
     // Show scope in auto-popup panel
-    "show_panel": false,
+    "show_panel": true,
 
     // Copy scopes to clipboard
     "clipboard": false,
@@ -14,10 +14,10 @@
     // Show scope extent in line/char format
     "extent_line_char": false,
 
-    "console_log": true,
+    "console_log": false,
 
     // Show scope extent in point format
-    "extent_points": true,
+    "extent_points": false,
 
     // Highlight scope extent?
     "highlight_extent": true,
