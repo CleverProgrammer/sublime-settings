@@ -1,5 +1,5 @@
 {
-    "auto_upgrade_last_run": 1344866169,
+    "auto_upgrade_last_run": 1345089444,
     "installed_packages":
     [
         "AAALanguages",
@@ -31,6 +31,7 @@
         "SublimeTODO",
         "SublimeWebColors",
         "Terminal",
+        "Theme - Phoenix",
         "Theme - Soda"
     ],
     "package_name_map":
@@ -39,6 +40,7 @@
     },
     "repositories":
     [
-        "https://github.com/facelessuser/sublime-languages"
+        "https://github.com/facelessuser/sublime-languages",
+        "https://github.com/netatoo/phoenix-theme"
     ]
 }

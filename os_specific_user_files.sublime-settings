@@ -1,40 +1,41 @@
 {
-	"windows": {
-		"files": {
-			"Package Control.sublime-settings": "Package Control.sublime-settings",
-			"Terminal.sublime-settings": "Terminal.sublime-settings",
-			"Preferences.sublime-settings": "Preferences.sublime-settings"
-		},
-		"directories": {
-			"SideBarEnhancements": "SideBarEnhancements"
-		},
-		"rename": {
-			"SideBarEnhancements/Open With/Side Bar.sublime-menu.json": "SideBarEnhancements/Open With/Side Bar.sublime-menu"
-		}
-	},
-	"osx": {
-		"files": {
-			"Package Control.sublime-settings": "Package Control.sublime-settings",
-			"Terminal.sublime-settings": "Terminal.sublime-settings",
-			"Preferences.sublime-settings": "Preferences.sublime-settings"
-		},
-		"directories": {
-			"SideBarEnhancements": "SideBarEnhancements"
-		},
-		"rename": {
-			"SideBarEnhancements/Open With/Side Bar.sublime-menu.json": "SideBarEnhancements/Open With/Side Bar.sublime-menu"
-		}
-	},
-	"linux":{
-		"files": {
-			"Package Control.sublime-settings": "Package Control.sublime-settings",
-			"Preferences.sublime-settings": "Preferences.sublime-settings"
-		},
-		"directories": {
-			"SideBarEnhancements": "SideBarEnhancements"
-		},
-		"rename": {
-			"SideBarEnhancements/Open With/Side Bar.sublime-menu.json": "SideBarEnhancements/Open With/Side Bar.sublime-menu"
-		}
-	}
+    "windows": {
+        "files": {
+            "Package Control.sublime-settings": "Package Control.sublime-settings",
+            "Terminal.sublime-settings": "Terminal.sublime-settings",
+            "Preferences.sublime-settings": "Preferences.sublime-settings"
+        },
+        "directories": {
+            "SideBarEnhancements": "SideBarEnhancements"
+        },
+        "rename": {
+            "SideBarEnhancements/Open With/Side Bar.sublime-menu.json": "SideBarEnhancements/Open With/Side Bar.sublime-menu"
+        }
+    },
+    "osx": {
+        "files": {
+            "Package Control.sublime-settings": "Package Control.sublime-settings",
+            "Terminal.sublime-settings": "Terminal.sublime-settings",
+            "Preferences.sublime-settings": "Preferences.sublime-settings",
+            "Git.sublime-settings": "Git.sublime-settings"
+        },
+        "directories": {
+            "SideBarEnhancements": "SideBarEnhancements"
+        },
+        "rename": {
+            "SideBarEnhancements/Open With/Side Bar.sublime-menu.json": "SideBarEnhancements/Open With/Side Bar.sublime-menu"
+        }
+    },
+    "linux":{
+        "files": {
+            "Package Control.sublime-settings": "Package Control.sublime-settings",
+            "Preferences.sublime-settings": "Preferences.sublime-settings"
+        },
+        "directories": {
+            "SideBarEnhancements": "SideBarEnhancements"
+        },
+        "rename": {
+            "SideBarEnhancements/Open With/Side Bar.sublime-menu.json": "SideBarEnhancements/Open With/Side Bar.sublime-menu"
+        }
+    }
 }
