@@ -1,5 +1,5 @@
 {
-	"auto_upgrade_last_run": 1344873074,
+	"auto_upgrade_last_run": 1351175831,
 	"installed_packages":
 	[
 		"AAALanguages",
@@ -30,6 +30,7 @@
 		"RegReplace",
 		"ScopeHunter",
 		"SideBarEnhancements",
+		"SmartCursor",
 		"SortTabs",
 		"SublimeLinter",
 		"SublimeLog",
@@ -37,7 +38,8 @@
 		"SublimeTODO",
 		"SublimeWebColors",
 		"Terminal",
-		"Theme - Soda"
+		"Theme - Phoenix",
+		"VBScript"
 	],
 	"package_name_map":
 	{
@@ -45,6 +47,9 @@
 	},
 	"repositories":
 	[
+		"https://github.com/facelessuser/BracketHighlighter/tree/BH2",
+		"https://github.com/netatoo/phoenix-theme",
+		"https://github.com/bizoo/SmartCursor",
 		"https://github.com/facelessuser/sublime-languages",
 		"https://github.com/facelessuser/FuzzyFileNav"
 	]

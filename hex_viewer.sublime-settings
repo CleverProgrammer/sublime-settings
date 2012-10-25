@@ -30,7 +30,7 @@
 
     // Scope? (Defined in theme files.)
     // Examples: (keyword|string|number)
-    "highlight_scope" : "string",
+    "highlight_scope" : "hexviewer.highlight",
 
     // Icon? (dot|circle|bookmark|cross)
     "highlight_icon" : "none",
