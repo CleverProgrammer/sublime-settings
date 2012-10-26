@@ -214,23 +214,23 @@ def theme_loop():
         ThreadMgr.kill = False
 
 
-def manage_thread(first_time=False):
+def manage_thread(first_time=False, restart=False):
     """
     Manage killing, starting, and restarting the thread
     """
 
     global running_theme_scheduler_loop
     if not multiget(SETTINGS, 'enabled', 'False'):
-        ThreadMgr.kill
         running_theme_scheduler_loop = False
+        ThreadMgr.kill
         print "Theme Scheduler: Kill Thread"
-    elif first_time or not running_theme_scheduler_loop:
+    elif not restart and (first_time or not running_theme_scheduler_loop):
         running_theme_scheduler_loop = True
         thread.start_new_thread(theme_loop, ())
         print "Theme Scheduler: Start Thread"
     else:
-        ThreadMgr.restart = True
         running_theme_scheduler_loop = False
+        ThreadMgr.restart = True
         print "Theme Scheduler: Restart Thread"
 
 settings_file = __name__ + '.sublime-settings'
@@ -240,8 +240,9 @@ if not exists(settings_path):
 
 # Init the settings object
 SETTINGS = sublime.load_settings(settings_file)
+SETTINGS.clear_on_change('reload')
 SETTINGS.add_on_change('reload', manage_thread)
 
 first_time = not 'running_theme_scheduler_loop' in globals()
 running_theme_scheduler_loop = not first_time
-manage_thread(first_time)
+manage_thread(first_time, not first_time)
