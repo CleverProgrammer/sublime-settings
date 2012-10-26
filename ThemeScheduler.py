@@ -67,7 +67,7 @@ def translate_time(t):
     return total_seconds(timedelta(hours=tm.tm_hour, minutes=tm.tm_min, seconds=tm.tm_sec))
 
 
-class ThemeRecord(namedtuple('ThemeRecord', ["time", "theme"])):
+class ThemeRecord(namedtuple('ThemeRecord', ["time", "theme", "msg"])):
     pass
 
 
@@ -94,7 +94,8 @@ class ThemeScheduler(object):
         for t in multiget(SETTINGS, "themes", []):
             theme_time = translate_time(t["time"])
             theme = t["theme"]
-            cls.themes.append(ThemeRecord(theme_time, theme))
+            msg = t.get("msg", None)
+            cls.themes.append(ThemeRecord(theme_time, theme, msg))
         cls.get_next_change()
         cls.set_startup_theme()
         cls.ready = True
@@ -118,7 +119,7 @@ class ThemeScheduler(object):
                 closest = cls.next_change if greatest is None else greatest
 
             if closest is not None:
-                cls.update_theme(closest.theme)
+                cls.update_theme(closest.theme, closest.msg)
 
     @classmethod
     def get_next_change(cls):
@@ -155,13 +156,13 @@ class ThemeScheduler(object):
 
         # Change the theme
         if cls.next_change is not None and cls.next_change.theme != cls.current_theme:
-            cls.update_theme(cls.next_change.theme)
+            cls.update_theme(cls.next_change.theme, cls.next_change.msg)
             cls.current_theme = cls.next_change.theme
         # Get the next time point to change the theme
         cls.get_next_change()
 
     @classmethod
-    def update_theme(cls, theme):
+    def update_theme(cls, theme, msg):
         # When sublime is loading, the User preference file isn't available yet.
         # Sublime provides no real way to tell when things are intialized.
         # Handling the preference file ourselves allows us to avoid obliterating the User preference file.
@@ -180,6 +181,8 @@ class ThemeScheduler(object):
         try:
             with open(pref_file, 'w') as f:
                 f.write(j + "\n")
+            if msg is not None and isinstance(msg, basestring):
+                sublime.message_dialog(msg)
         except:
             pass
 
