@@ -19,6 +19,11 @@ Example Theme file (ThemeScheduler.sublime-settings):
         }
     ]
 }
+
+Uses multiconf for "enabled" and "themes" key for platform or host specific settings.
+See multiconf.py for more details.
+
+Creates theme file if it doesn't exists (turned off by default).
 """
 
 from datetime import datetime, timedelta
@@ -234,8 +239,9 @@ if not exists(settings_path):
     create_settings(settings_path)
 
 # Init the settings object
-SETTINGS = sublime.load_settings('ThemeScheduler.sublime-settings')
+SETTINGS = sublime.load_settings(settings_file)
 SETTINGS.add_on_change('reload', manage_thread)
 
-running_theme_scheduler_loop = not 'running_theme_scheduler_loop' in globals()
-manage_thread(running_theme_scheduler_loop)
+first_time = not 'running_theme_scheduler_loop' in globals()
+running_theme_scheduler_loop = not first_time
+manage_thread(first_time)
