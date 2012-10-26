@@ -10,7 +10,7 @@
                     },
                     {
                         // Work alert to go home
-                        "theme": "Packages/User/Color Scheme/faceless.ttheme",
+                        "theme": "Packages/User/Color Scheme/faceless.tmTheme",
                         "time": "17:00"
                     }
                 ]
