@@ -1,131 +1,133 @@
 {
-    "bold_folder_labels": true,
-    "caret_style": "phase",
-    "color_scheme": "Packages/User/Color Scheme/Monokai Bright Custom.tmTheme",
-    "detect_slow_plugins": false,
-    "draw_indent_guides": true,
-    "draw_white_space": "all",
-    "find_selected_text": true,
-    "font_face": "Consolas",
-    "font_size": 13.0,
-    "highlight_line": true,
-    "highlight_modified_tabs": true,
-    "highlight_word_outline_style": true,
-    "highlight_word_require_word_select": true,
-    "highlight_word_theme_selector": "highlightword",
-    "hot_exit": false,
-    "ignored_packages":
-    [
-        "Batch File",
-        "Python",
-        "Vintage",
-        "C++",
-        "JavaScript",
-        "Perl",
-        "PHP",
-        "CSS"
-    ],
-    "indent_guide_options":
-    [
-        "draw_normal",
-        "draw_active"
-    ],
-    "jshint_options":
-    {
-        "asi": false,
-        "bitwise": true,
-        "boss": true,
-        "browser": true,
-        "couch": false,
-        "curly": false,
-        "debug": false,
-        "devel": true,
-        "dojo": false,
-        "eqeqeq": false,
-        "eqnull": true,
-        "es5": true,
-        "evil": false,
-        "expr": false,
-        "forin": false,
-        "globalstrict": false,
-        "immed": false,
-        "jquery": false,
-        "latedef": true,
-        "laxbreak": false,
-        "loopfunc": true,
-        "maxerr": 10,
-        "mootools": false,
-        "newcap": true,
-        "noarg": true,
-        "node": false,
-        "noempty": true,
-        "nomen": false,
-        "nonew": true,
-        "onevar": true,
-        "passfail": false,
-        "plusplus": false,
-        "predef":
-        [
-            "$",
-            "easyJS",
-            "DOMParser"
-        ],
-        "prototypejs": false,
-        "regexdash": false,
-        "regexp": false,
-        "rhino": false,
-        "scripturl": false,
-        "shadow": false,
-        "strict": true,
-        "sub": false,
-        "supernew": false,
-        "trailing": true,
-        "undef": true,
-        "white": false,
-        "wsh": true
-    },
-    "margin": 0,
-    "match_brackets": false,
-    "match_brackets_angle": false,
-    "match_brackets_braces": false,
-    "match_brackets_content": false,
-    "match_brackets_square": false,
-    "match_selection": false,
-    "match_tags": false,
-    "move_to_limit_on_up_down": false,
-    "open_files_in_new_window": false,
-    "pep8_ignore":
-    [
-        "E501"
-    ],
-    "phoenix_color_blue": true,
-    "phoenix_color_expanded_folder": true,
-    "phoenix_highlight_current_tab": true,
-    "phoenix_tabs_small": true,
-    "pyflakes_ignore":
-    [
-    ],
-    "scroll_past_end": true,
-    "show_full_path": true,
-    "spell_check": false,
-    "sublimelinter": true,
-    "sublimelinter_delay": 2,
-    "sublimelinter_disable":
-    [
-    ],
-    "sublimelinter_executable_map":
-    {
-    },
-    "sublimelinter_fill_outlines": false,
-    "sublimelinter_objj_check_ascii": false,
-    "sublimelinter_syntax_map":
-    {
-        "Python Django": "python"
-    },
-    "sublimelinter_wrap_find": true,
-    "tab_size": 4,
-    "theme": "Phoenix Dark.sublime-theme",
-    "translate_tabs_to_spaces": false,
-    "use_tab_stops": true,
-    "word_wrap": false
+	"bold_folder_labels": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+	"detect_slow_plugins": false,
+	"draw_indent_guides": true,
+	"draw_white_space": "all",
+	"find_selected_text": true,
+	"font_face": "Consolas",
+	"font_size": 13.0,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"highlight_word_outline_style": true,
+	"highlight_word_require_word_select": true,
+	"highlight_word_theme_selector": "highlightword",
+	"hot_exit": false,
+	"ignored_packages":
+	[
+		"Batch File",
+		"Python",
+		"Vintage",
+		"C++",
+		"JavaScript",
+		"Perl",
+		"PHP",
+		"CSS",
+		"ThemeChanger"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"jshint_options":
+	{
+		"asi": false,
+		"bitwise": true,
+		"boss": true,
+		"browser": true,
+		"couch": false,
+		"curly": false,
+		"debug": false,
+		"devel": true,
+		"dojo": false,
+		"eqeqeq": false,
+		"eqnull": true,
+		"es5": true,
+		"evil": false,
+		"expr": false,
+		"forin": false,
+		"globalstrict": false,
+		"immed": false,
+		"jquery": false,
+		"latedef": true,
+		"laxbreak": false,
+		"loopfunc": true,
+		"maxerr": 10,
+		"mootools": false,
+		"newcap": true,
+		"noarg": true,
+		"node": false,
+		"noempty": true,
+		"nomen": false,
+		"nonew": true,
+		"onevar": true,
+		"passfail": false,
+		"plusplus": false,
+		"predef":
+		[
+			"$",
+			"easyJS",
+			"DOMParser"
+		],
+		"prototypejs": false,
+		"regexdash": false,
+		"regexp": false,
+		"rhino": false,
+		"scripturl": false,
+		"shadow": false,
+		"strict": true,
+		"sub": false,
+		"supernew": false,
+		"trailing": true,
+		"undef": true,
+		"white": false,
+		"wsh": true
+	},
+	"margin": 0,
+	"match_brackets": false,
+	"match_brackets_angle": false,
+	"match_brackets_braces": false,
+	"match_brackets_content": false,
+	"match_brackets_square": false,
+	"match_selection": false,
+	"match_tags": false,
+	"move_to_limit_on_up_down": false,
+	"open_files_in_new_window": false,
+	"pep8_ignore":
+	[
+		"E501"
+	],
+	"phoenix_color_blue": true,
+	"phoenix_color_expanded_folder": true,
+	"phoenix_eighties": true,
+	"phoenix_highlight_current_tab": true,
+	"phoenix_tabs_small": true,
+	"pyflakes_ignore":
+	[
+	],
+	"scroll_past_end": true,
+	"show_full_path": true,
+	"spell_check": false,
+	"sublimelinter": true,
+	"sublimelinter_delay": 2,
+	"sublimelinter_disable":
+	[
+	],
+	"sublimelinter_executable_map":
+	{
+	},
+	"sublimelinter_fill_outlines": false,
+	"sublimelinter_objj_check_ascii": false,
+	"sublimelinter_syntax_map":
+	{
+		"Python Django": "python"
+	},
+	"sublimelinter_wrap_find": true,
+	"tab_size": 4,
+	"theme": "Phoenix Dark.sublime-theme",
+	"translate_tabs_to_spaces": false,
+	"use_tab_stops": true,
+	"word_wrap": false
 }
