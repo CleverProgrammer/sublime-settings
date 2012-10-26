@@ -1,4 +1,39 @@
 {
-    "enabled": false,
-    "themes": []
+    "enabled": true,
+    "themes": {
+        "#multiconf#": [
+            {
+                "os:windows": [
+                    {
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "time": "08:00"
+                    },
+                    {
+                        // Work alert to go home
+                        "theme": "Packages/User/Color Scheme/faceless.ttheme",
+                        "time": "17:00"
+                    }
+                ]
+            },
+            {
+                "os:osx": [
+                    {
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "time": "08:00"
+                    },
+                    {
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
+                        "time": "19:00"
+                    },
+                    {
+                        // Get off the computer
+                        "theme": "Packages/User/Color Scheme/faceless.tmTheme",
+                        "time": "23:00"
+                    }
+                ]
+            },
+            // Need to configure when I start using linux again
+            {"os:linux": []}
+        ]
+    }
 }

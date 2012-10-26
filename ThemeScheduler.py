@@ -27,6 +27,7 @@ import sublime
 from collections import namedtuple
 import thread
 from ThemeSchedulerLib.file_strip.json import sanitize_json
+from ThemeSchedulerLib.multiconf import get as multiget
 import json
 from os.path import exists, join, abspath, dirname
 
@@ -85,7 +86,7 @@ class ThemeScheduler(object):
         cls.ready = False
 
         cls.themes = []
-        for t in SETTINGS.get("themes", []):
+        for t in multiget(SETTINGS, "themes", []):
             theme_time = translate_time(t["time"])
             theme = t["theme"]
             cls.themes.append(ThemeRecord(theme_time, theme))
@@ -214,7 +215,7 @@ def manage_thread(first_time=False):
     """
 
     global running_theme_scheduler_loop
-    if not SETTINGS.get('enabled', 'False'):
+    if not multiget(SETTINGS, 'enabled', 'False'):
         ThreadMgr.kill
         running_theme_scheduler_loop = False
         print "Theme Scheduler: Kill Thread"
