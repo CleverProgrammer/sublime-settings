@@ -342,9 +342,9 @@
 		</dict>
 		<dict>
 			<key>name</key>
-			<string>Bracket Invalid</string>
+			<string>Bracket Unmatched</string>
 			<key>scope</key>
-			<string>brackethighlighter.invalid</string>
+			<string>brackethighlighter.unmatched</string>
 			<key>settings</key>
 			<dict>
 				<key>foreground</key>

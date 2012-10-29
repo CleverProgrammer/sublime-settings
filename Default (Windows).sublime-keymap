@@ -138,7 +138,7 @@
             "lines" : true,
             "plugin":
             {
-                "type": ["quote", "pyquote"],
+                "type": ["single_quote", "double_quote", "py_single_quote", "py_double_quote"],
                 "command": "bh_modules.swapquotes"
             }
         }
@@ -164,19 +164,5 @@
     {
         "keys": ["ctrl+alt+super+w"],
         "command": "wrap_brackets"
-    },
-    // Navigate tabstops in wrapped selection
-    {
-        "keys": ["tab"],
-        "command": "bh_next_wrap_sel",
-        "context":
-        [
-            {
-                "operand": true,
-                "operator": "equal",
-                "match_all": true,
-                "key": "bh_wrapping"
-            }
-        ]
     }
 ]
