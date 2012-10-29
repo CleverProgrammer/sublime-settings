@@ -82,6 +82,7 @@ class ThemeScheduler(object):
     next_change = None
     day = None
     ready = False
+    busy = False
 
     @classmethod
     def init(cls):
@@ -166,6 +167,7 @@ class ThemeScheduler(object):
         # When sublime is loading, the User preference file isn't available yet.
         # Sublime provides no real way to tell when things are intialized.
         # Handling the preference file ourselves allows us to avoid obliterating the User preference file.
+        cls.busy = True
         pref_file = join(sublime.packages_path(), 'User', 'Preferences.sublime-settings')
         pref = {}
         if exists(pref_file):
@@ -185,6 +187,7 @@ class ThemeScheduler(object):
                 sublime.message_dialog(msg)
         except:
             pass
+        cls.busy = False
 
 
 def theme_loop():
@@ -195,7 +198,7 @@ def theme_loop():
     def is_update_time():
         update = False
         seconds, now = get_current_time()
-        if ThemeScheduler.next_change is not None:
+        if not ThemeScheduler.busy and ThemeScheduler.next_change is not None:
             update = (
                 (ThemeScheduler.day is None and seconds >= ThemeScheduler.next_change.time) or
                 (ThemeScheduler.day != now.day and seconds >= ThemeScheduler.next_change.time)
