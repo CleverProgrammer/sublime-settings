@@ -23,8 +23,10 @@
 				<string>#393939</string>
 				<key>selection</key>
 				<string>#515151</string>
-				<!-- <key>gutter</key>
-				<string>#2D2D2D</string> -->
+				<key>gutterForeground</key>
+				<string>#888888</string>
+				<key>gutter</key>
+				<string>#3D3D3D</string>
 			</dict>
 		</dict>
 		<dict>

@@ -74,6 +74,18 @@
 
         // Browser view color (selections and multi-selections allowed)
         {
+            "Browser View - Distribute Current Theme": {
+                "numbers": true,
+                "highlight_selections": true,
+                "no_header": true,
+                "save_location": "C:\\Users\\muse_i\\export_html",
+                "time_stamp": "",
+                "wrap": 900
+            }
+        },
+
+        // Browser view color (selections and multi-selections allowed)
+        {
             "Browser View - Color": {
                 "numbers": true,
                 "multi_select": true,
