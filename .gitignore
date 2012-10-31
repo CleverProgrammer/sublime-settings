@@ -4,6 +4,8 @@
 Thumbs.db
 *.pyc
 
+terminal-notifier.*
+
 SideBarEnhancements/Open With/Side Bar.sublime-menu
 
 Terminal.sublime-settings
