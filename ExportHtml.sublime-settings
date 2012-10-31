@@ -74,11 +74,11 @@
 
         // Browser view color (selections and multi-selections allowed)
         {
-            "Browser View - Distribute Current Theme": {
+            "Browser View - Publish Current Theme": {
                 "numbers": true,
                 "highlight_selections": true,
                 "no_header": true,
-                "save_location": "C:\\Users\\muse_i\\export_html",
+                "save_location": "/Users/facelessuser/export_html/ExportHtml",
                 "time_stamp": "",
                 "wrap": 900
             }

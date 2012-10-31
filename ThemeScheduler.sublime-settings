@@ -10,7 +10,7 @@
                     },
                     {
                         // Lunch
-                        "theme": "Packages/User/Color Scheme/faceless.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Monokai Blue.tmTheme",
                         "time": "12:00",
                         "msg": "Lunch time!"
                     },
@@ -61,7 +61,7 @@
                     },
                     {
                         // Get off the computer
-                        "theme": "Packages/User/Color Scheme/faceless.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Monokai Blue.tmTheme",
                         "time": "23:00"
                     }
                 ]
