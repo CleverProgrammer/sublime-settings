@@ -152,15 +152,19 @@ class ThemeScheduler(object):
     @classmethod
     def change_theme(cls):
         """
-        Change the theme and then get the next time point to change themes.
+        Change the theme and get the next time point to change themes.
         """
 
         # Change the theme
         if cls.next_change is not None and cls.next_change.theme != cls.current_theme:
-            cls.update_theme(cls.next_change.theme, cls.next_change.msg)
+            theme, msg = cls.next_change.theme, cls.next_change.msg
+            # Get the next before changing
+            cls.get_next_change()
+            cls.update_theme(theme, msg)
             cls.current_theme = cls.next_change.theme
-        # Get the next time point to change the theme
-        cls.get_next_change()
+        else:
+            # Get the next time point to change the theme
+            cls.get_next_change()
 
     @classmethod
     def update_theme(cls, theme, msg):
