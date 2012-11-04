@@ -164,5 +164,37 @@
     {
         "keys": ["ctrl+alt+super+w"],
         "command": "wrap_brackets"
+    },
+    {
+        "keys": ["ctrl+super+alt+c"],
+        "command": "calendar"
+    },
+    {
+        "keys": ["alt+right"],
+        "command": "calendar_month_nav",
+        "context":
+        [
+            {
+                "operand": true,
+                "operator": "equal",
+                "match_all": true,
+                "key": "calendar_view"
+            }
+        ],
+        "args": {"reverse": false}
+    },
+    {
+        "keys": ["alt+left"],
+        "command": "calendar_month_nav",
+        "context":
+        [
+            {
+                "operand": true,
+                "operator": "equal",
+                "match_all": true,
+                "key": "calendar_view"
+            }
+        ],
+        "args": {"reverse": true}
     }
 ]
