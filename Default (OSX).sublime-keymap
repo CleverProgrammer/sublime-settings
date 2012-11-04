@@ -148,6 +148,10 @@
         "command": "calendar"
     },
     {
+        "keys": ["ctrl+super+alt+shift+c"],
+        "command": "calendar_lookup"
+    },
+    {
         "keys": ["alt+right"],
         "command": "calendar_month_nav",
         "context":

@@ -11,6 +11,7 @@ from datetime import date
 import sublime_plugin
 import sublime
 from CalendarLib.enum import enum
+import re
 
 
 months = enum("January February March April May June July August September October November December", start=1, name="Months")
@@ -43,10 +44,21 @@ class Day(object):
         self.month = month
         self.year = int(year)
 
+    def __str__(self):
+        return "%d/%d/%d" % (self.month.value, self.day, self.year)
+
 
 def get_today():
     obj = date.today()
     return Day(obj.day, months(obj.month), obj.year)
+
+
+def tx_day(day):
+    m = re.match(r"^(\d+)[^\d](\d+)[^\d](\d+)$", day)
+    if m:
+        return Day(m.group(2), months(int(m.group(1))), m.group(3))
+    else:
+        return get_today()
 
 
 def is_leap_year(year):
@@ -137,8 +149,30 @@ def show_calendar_month(year, month, day=0, sunday_first=True):
     return bfr
 
 
-class CalendarCommand(sublime_plugin.WindowCommand):
+class CalendarLookupCommand(sublime_plugin.WindowCommand):
+    def lookup(self, value):
+        if value != "":
+            m = re.match(r"^(\d+)[^\d](\d+)[^\d](\d+)$", value)
+            if m:
+                win = sublime.active_window()
+                if win is not None:
+                    win.run_command("calendar", {"day": value})
+
     def run(self):
+        today = get_today()
+        # Ask for date
+        v = self.window.show_input_panel(
+            "Date to Look Up: ",
+            str(today),
+            self.lookup,
+            None,
+            None
+        )
+        v.run_command("select_all")
+
+
+class CalendarCommand(sublime_plugin.WindowCommand):
+    def run(self, day=None):
         calendar_view_exists = False
         for v in self.window.views():
             if v.settings().get("calendar_today", None) is not None:
@@ -154,7 +188,7 @@ class CalendarCommand(sublime_plugin.WindowCommand):
             self.window.focus_view(view)
 
         edit = view.begin_edit()
-        today = get_today()
+        today = get_today() if day is None else tx_day(day)
         view.replace(edit, sublime.Region(0, view.size()), show_calendar_month(today.year, today.month, today.day))
         view.end_edit(edit)
         view.sel().clear()
