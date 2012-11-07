@@ -12,6 +12,7 @@ import sublime_plugin
 import sublime
 from CalendarLib.enum import enum
 import re
+from os.path import join
 
 
 months = enum("January February March April May June July August September October November December", start=1, name="Months")
@@ -20,14 +21,20 @@ cal_header = u"|{0:^69}|\n"
 cal_row_top_div = u"-----------------------------------------------------------------------\n"
 cal_row_mid_div = u"-----------------------------------------------------------------------\n"
 cal_row_btm_div = u"-----------------------------------------------------------------------\n"
-cal_cell_center_highlight = u"...{0:.^3}..."
-cal_cell_outer_highlight = u"........."
+# cal_cell_center_highlight = u"...{0:.^3}..."
+# cal_cell_outer_highlight = u"........."
+cal_cell_center_highlight = u"   {0: ^3}   "
+cal_cell_outer_highlight = u"         "
+cal_cell_center_holiday = u"   {0: ^3}   "
+cal_cell_outer_holiday = u"         "
 cal_cell_center = u"   {0:^3}   "
 cal_cell_outer = u"         "
 cal_cell_empty = u"         "
 cal_cell_empty_wall = u" "
 cal_cell_wall = u"|"
 cal_header_days = u"|   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |\n"
+
+holidays = {}
 
 
 class CalendarEventListener(sublime_plugin.EventListener):
@@ -44,13 +51,20 @@ class Day(object):
         self.month = month
         self.year = int(year)
 
+    def __unicode__(self):
+        return self.str
+
     def __str__(self):
-        return "%d/%d/%d" % (self.month.value, self.day, self.year)
+        return (u"%d/%d/%d" % (self.month.value, self.day, self.year)).encode('utf-8')
 
 
 def get_today():
     obj = date.today()
     return Day(obj.day, months(obj.month), obj.year)
+
+
+def is_holiday(month, day):
+    return holidays.get(str(month), {}).get(day, None) is not None
 
 
 def tx_day(day):
@@ -74,7 +88,7 @@ def days_in_months(month, year):
     return days
 
 
-def show_calendar_row(first, last, today, empty_cells=(0, 0)):
+def show_calendar_row(first, last, today, month, empty_cells=(0, 0)):
     pos = enum("left center right")
     row = u""
 
@@ -86,12 +100,17 @@ def show_calendar_row(first, last, today, empty_cells=(0, 0)):
         for d in range(first, last):
             if d == today:
                 if p == pos.center:
-                    row += cal_cell_center_highlight.format(str(d))
+                    row += cal_cell_center_highlight.format(unicode(d))
                 else:
                     row += cal_cell_outer_highlight
+            elif is_holiday(month, d):
+                if p == pos.center:
+                    row += cal_cell_center_holiday.format(unicode(d))
+                else:
+                    row += cal_cell_outer_holiday
             else:
                 if p == pos.center:
-                    row += cal_cell_center.format(str(d))
+                    row += cal_cell_center.format(unicode(d))
                 else:
                     row += cal_cell_outer
             row += cal_cell_wall
@@ -107,9 +126,9 @@ def show_calendar_header(month, year, sunday_first):
     bfr += cal_header.format(u"%s %d" % (month, year))
     bfr += cal_row_mid_div
     if sunday_first:
-        bfr += (cal_header_days % ((str(weekdays.Sunday)[0:3],) + tuple(str(weekdays[x])[0:3] for x in range(0, 6))))
+        bfr += (cal_header_days % ((unicode(weekdays.Sunday)[0:3],) + tuple(unicode(weekdays[x])[0:3] for x in range(0, 6))))
     else:
-        bfr += (cal_header_days % tuple(str(weekdays[x])[0:3] for x in range(0, 7)))
+        bfr += (cal_header_days % tuple(unicode(weekdays[x])[0:3] for x in range(0, 7)))
     return bfr
 
 
@@ -144,7 +163,7 @@ def show_calendar_month(year, month, day=0, sunday_first=True):
             start = 1 + 7 - offset + (7 * (r - 1))
             end = start + 7
             empty_cells = (0, 0)
-        bfr += show_calendar_row(start, end, day, empty_cells)
+        bfr += show_calendar_row(start, end, day, month, empty_cells)
     bfr += cal_row_btm_div.encode('utf8')
     return bfr
 
@@ -183,19 +202,52 @@ class CalendarCommand(sublime_plugin.WindowCommand):
         if not calendar_view_exists:
             view = self.window.new_file()
             view.set_name(".calendar")
+            view.settings().set("draw_white_space", "none")
         else:
             view.set_read_only(False)
             self.window.focus_view(view)
 
         edit = view.begin_edit()
         today = get_today() if day is None else tx_day(day)
-        view.replace(edit, sublime.Region(0, view.size()), show_calendar_month(today.year, today.month, today.day))
+        bfr = show_calendar_month(today.year, today.month, today.day)
+        view.set_syntax_file(join(sublime.packages_path(), "User", "Calendar.tmLanguage"))
+        view.replace(edit, sublime.Region(0, view.size()), bfr)
         view.end_edit(edit)
         view.sel().clear()
         view.settings().set("calendar_current", {"month": str(today.month), "year": today.year})
         view.settings().set("calendar_today", {"month": str(today.month), "year": today.year, "day": today.day})
         view.set_scratch(True)
         view.set_read_only(True)
+
+
+# class ImportIcalCommand(sublime_plugin.TextCommand):
+#     entries = re.compile("BEGIN:VEVENT(.*)END:VEVENT", re.DOTALL | re.MULTILINE)
+
+#     def get_entries(self, bfr):
+#         entry = {}
+#         found_entry = False
+#         for line in bfr.split('\n'):
+#             if not found_entry:
+#                 if line == "BEGIN:VEVENT":
+#                     found_entry = True
+#                 continue
+#             else:
+#                 m = re.match(r"(?:(DTSTART)|(DTEND));VALUE=DATE:(.*)")
+#                 if m is not None:
+#                     entry["start" if m.group(1) else "end"] = m.group(3)
+#                     continue
+
+#                 m = re.match(r"SUMMARY")
+
+#     def run(self, edit, append=False):
+#         bfr = self.view.substr(sublime.Region(0, self.view.size()))
+#         if not bfr.startswith("BEGIN:VCALENDAR"):
+#             return
+
+#         holidays.clear()
+#         for entry in self.get_entries(bfr):
+#             print "\nentry"
+#             # print entry
 
 
 class CalendarMonthNavCommand(sublime_plugin.TextCommand):
