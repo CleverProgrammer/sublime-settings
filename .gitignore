@@ -19,3 +19,5 @@ SublimeREPLHistory
 favorite_files_list.json
 
 Git.sublime-settings
+
+SortTabsInternal.sublime-settings
