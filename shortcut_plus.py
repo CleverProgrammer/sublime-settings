@@ -72,6 +72,8 @@ import sublime_plugin
 class ShortcutMode(object):
     enabled = False
     profile = ""
+    view = None
+    window = None
 
 
 class ShortcutPlusModeListener(sublime_plugin.EventListener):
@@ -81,24 +83,25 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
             handeled = True
         elif ShortcutMode.enabled and key.startswith("shortcut_plus:"):
             if ShortcutMode.profile == key[len("shortcut_plus:"):len(key)]:
+                ShortcutMode.view = view
+                ShortcutMode.window = view.window()
                 handeled = True
         return handeled
 
 
 class ShortcutPlusCommand(sublime_plugin.ApplicationCommand):
     def run(self, command_type, command, args):
+        view = ShortcutMode.view
+        window = ShortcutMode.window
+        ShortcutMode.view = None
+        ShortcutMode.window = None
+
         if command_type == "application":
             sublime.run_command(command, args)
-        else:
-            window = sublime.active_window()
-            if window is not None:
-                if command_type == "window":
-                    window.run_command(command, args)
-                else:
-                    view = window.active_view()
-                    if view is not None:
-                        if command_type == "text":
-                            view.run_command(command, args)
+        elif command_type == "window" and window is not None:
+            window.run_command(command, args)
+        elif command_type == "text" and view is not None:
+            view.run_command(command, args)
 
 
 class ToggleShortcutPlusCommand(sublime_plugin.ApplicationCommand):
