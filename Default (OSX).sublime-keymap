@@ -178,5 +178,17 @@
             }
         ],
         "args": {"reverse": true}
+    },
+    // Shortcut Plus Toggle
+    {
+        "keys": ["alt+`"],
+        "command": "toggle_shortcut_plus",
+        "args": {"profile": "MyProfile1"}
+    },
+    // Shortcut Plus Toggle
+    {
+        "keys": ["ctrl+alt+`"],
+        "command": "toggle_shortcut_plus",
+        "args": {"profile": "MyProfile2"}
     }
 ]

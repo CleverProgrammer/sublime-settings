@@ -74,6 +74,15 @@
 
         // Browser view color (selections and multi-selections allowed)
         {
+            "Browser View - Current Color (EMAIL)": {
+                "numbers": true,
+                "multi_select": true,
+                "shift_brightness": true
+            }
+        },
+
+        // Browser view color (selections and multi-selections allowed)
+        {
             "Browser View - Publish Current Theme": {
                 "numbers": true,
                 "highlight_selections": true,
