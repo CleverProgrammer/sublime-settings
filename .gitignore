@@ -1,5 +1,6 @@
 *.stTheme.cache
 *.tmTheme.cache
+*.tmLanguage.cache
 .DS_Store
 Thumbs.db
 *.pyc
@@ -21,3 +22,7 @@ favorite_files_list.json
 Git.sublime-settings
 
 SortTabsInternal.sublime-settings
+
+notify.py
+
+version.json
