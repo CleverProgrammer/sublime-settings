@@ -1,8 +1,38 @@
 [
+    //////////////////////////////////
+    // ShortcutPlus
+    //////////////////////////////////
+    // Shortcut Plus Toggle
+    {
+        "keys": ["alt+`"],
+        "command": "toggle_shortcut_plus",
+        "context": [{"key": "toggle_shortcut_plus"}],
+        "args": {"profile": "Alternate Profile"}
+    },
+    // Shortcut Plus Toggle
+    {
+        "keys": ["ctrl+alt+`"],
+        "command": "toggle_shortcut_plus",
+        "context": [{"key": "toggle_shortcut_plus"}],
+        "args": {"profile": "Reserved"}
+    },
+
+    //////////////////////////////////
+    // Scope Hunter
+    //////////////////////////////////
     { "keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" },
+
+    //////////////////////////////////
+    // Fuzzy File Nav
+    //////////////////////////////////
     { "keys": ["ctrl+o"], "command": "fuzzy_start_from_file" },
     { "keys": ["ctrl+shift+o"], "command": "fuzzy_bookmarks_load" },
-    // Add alt+up/down for SmartCursor
+    { "keys": ["ctrl+super+alt+o"], "command": "fuzzy_file_nav", "args": {"start": "C:\\workbench" }},
+
+    //////////////////////////////////
+    // Smart Cursor
+    //////////////////////////////////
+    // Replace standard alt+up and alt+down  with SmartCursor
     { "keys": ["alt+up"], "command": "smart_cursor", "args": {"cmd": "move", "by": "lines", "forward": false}, "context":
         [
             { "key": "auto_complete_visible", "operator": "equal", "operand": false }
@@ -24,6 +54,10 @@
             { "key": "auto_complete_visible", "operator": "equal", "operand": false }
         ]
     },
+
+    //////////////////////////////////
+    // Bracket Highlighter
+    //////////////////////////////////
     // Search to end of file for bracket
     {
         "keys": ["ctrl+alt+super+b"],
@@ -196,5 +230,118 @@
             }
         ],
         "args": {"reverse": true}
+    },
+    // Toggle high visibility mode
+    {
+        "keys": ["ctrl+alt+super+v"],
+        "command": "bh_toggle_high_visibility"
+    },
+
+    //////////////////////////////////////////////////////////////
+    // Alternate Profile shortcuts
+    //////////////////////////////////////////////////////////////
+    //////////////////////////////////
+    // Origami
+    //////////////////////////////////
+    {
+        "keys": ["ctrl+up"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "travel_to_pane", "args": {"direction": "up"} }
+    },
+    {
+        "keys": ["ctrl+right"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "travel_to_pane", "args": {"direction": "right"} }
+    },
+    {
+        "keys": ["ctrl+down"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "travel_to_pane", "args": {"direction": "down"} }
+    },
+    {
+        "keys": ["ctrl+left"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "travel_to_pane", "args": {"direction": "left"} }
+    },
+
+    {
+        "keys": ["shift+ctrl+up"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "carry_file_to_pane", "args": {"direction": "up"} }
+    },
+    {
+        "keys": ["shift+ctrl+right"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "carry_file_to_pane", "args": {"direction": "right"} }
+    },
+    {
+        "keys": ["shift+ctrl+down"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "carry_file_to_pane", "args": {"direction": "down"} }
+    },
+    {
+        "keys": ["shift+ctrl+left"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "carry_file_to_pane", "args": {"direction": "left"} }
+    },
+
+    {
+        "keys": ["alt+up"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "clone_file_to_pane", "args": {"direction": "up"} }
+    },
+    {
+        "keys": ["alt+right"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "clone_file_to_pane", "args": {"direction": "right"} }
+    },
+    {
+        "keys": ["alt+down"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "clone_file_to_pane", "args": {"direction": "down"} }
+    },
+    {
+        "keys": ["alt+left"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "clone_file_to_pane", "args": {"direction": "left"} }
+    },
+
+    {
+        "keys": ["ctrl+alt+super+up"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "create_pane", "args": {"direction": "up"} }
+    },
+    {
+        "keys": ["ctrl+alt+super+right"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "create_pane", "args": {"direction": "right"} }
+    },
+    {
+        "keys": ["ctrl+alt+super+down"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "create_pane", "args": {"direction": "down"} }
+    },
+    {
+        "keys": ["ctrl+alt+super+left"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "create_pane", "args": {"direction": "left"} }
+    },
+
+    {
+        "keys": ["shift+ctrl+alt+super+up"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "destroy_pane", "args": {"direction": "up"} }
+    },
+    {
+        "keys": ["shift+ctrl+alt+super+right"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "destroy_pane", "args": {"direction": "right"} }
+    },
+    {
+        "keys": ["shift+ctrl+alt+super+down"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "destroy_pane", "args": {"direction": "down"} }
+    },
+    {
+        "keys": ["shift+ctrl+alt+super+left"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "destroy_pane", "args": {"direction": "left"} }
+    },
+
+    {
+        "keys": ["shift+alt+up"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "create_pane_with_file", "args": {"direction": "up"} }
+    },
+    {
+        "keys": ["shift+alt+right"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "create_pane_with_file", "args": {"direction": "right"} }
+    },
+    {
+        "keys": ["shift+alt+down"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "create_pane_with_file", "args": {"direction": "down"} }
+    },
+    {
+        "keys": ["shift+alt+left"], "command": "shortcut_plus", "context": [{"key": "shortcut_plus:Alternate Profile"}],
+        "args": {"command_type": "window", "command": "create_pane_with_file", "args": {"direction": "left"} }
     }
 ]

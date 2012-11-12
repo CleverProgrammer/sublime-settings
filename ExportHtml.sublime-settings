@@ -6,6 +6,9 @@
     //     "alternate_scheme": "Packages/ExportHtml/themes/Print-Color.tmTheme"
     "alternate_scheme": false,
 
+    // Minum allowed background lumens a.k.a brightness (0-255)
+    "bg_min_lumen_threshold": 62,
+
     // Define configurations for the drop down export menu
     "html_panel": [
         // Browser print color (selections and multi-selections allowed)
@@ -69,6 +72,15 @@
             "Browser View - Current Color": {
                 "numbers": true,
                 "multi_select": true
+            }
+        },
+
+        // Browser view color (selections and multi-selections allowed)
+        {
+            "Browser View - Current Color (EMAIL)": {
+                "numbers": true,
+                "multi_select": true,
+                "shift_brightness": true
             }
         },
 
