@@ -69,6 +69,15 @@
 
         // Browser view color (selections and multi-selections allowed)
         {
+            "Browser View - Current Color (filter)": {
+                "numbers": true,
+                "multi_select": true,
+                "filter": "colorize(0)"
+            }
+        },
+
+        // Browser view color (selections and multi-selections allowed)
+        {
             "Browser View - Current Color": {
                 "numbers": true,
                 "multi_select": true

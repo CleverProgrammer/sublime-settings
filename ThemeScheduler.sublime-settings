@@ -21,7 +21,7 @@
                     },
                     {
                         // Work alert to go home
-                        "theme": "Packages/User/Color Scheme/faceless - Alert.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Alert.tmTheme",
                         "time": "17:00"
                     },
                     {
@@ -30,7 +30,7 @@
                     },
                     {
                         // Work alert to go home really go home
-                        "theme": "Packages/User/Color Scheme/faceless - Alert.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Alert.tmTheme",
                         "time": "17:30"
                     },
                     {
@@ -39,7 +39,7 @@
                     },
                     {
                         // Final Work alert to go home
-                        "theme": "Packages/User/Color Scheme/faceless - Alert.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Alert.tmTheme",
                         "time": "18:00",
                         "msg": "Seriously, go home!"
                     },
@@ -61,8 +61,9 @@
                     },
                     {
                         // Get off the computer
-                        "theme": "Packages/User/Color Scheme/Monokai Blue.tmTheme",
-                        "time": "23:00"
+                        "theme": "Packages/User/Color Scheme/Alert.tmTheme",
+                        "time": "23:00",
+                        "msg": "Turn off the computer"
                     }
                 ]
             },
