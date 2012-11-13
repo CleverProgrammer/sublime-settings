@@ -123,7 +123,7 @@ class ThemeScheduler(object):
                 cls.update_theme(closest.theme, closest.msg)
 
     @classmethod
-    def get_next_change(cls):
+    def get_next_change(cls, next_time=None):
         """
         Get the next time point in which the theme should change.  Store the theme record.
         """
@@ -135,7 +135,7 @@ class ThemeScheduler(object):
         # Try and find the closest time point to switch the theme
         closest = None
         lowest = None
-        seconds, now = get_current_time()
+        seconds, now = get_current_time() if next_time is None else next_time
         for t in cls.themes:
             if seconds <= t.time and (closest is None or t.time < closest.time):
                 closest = t
@@ -159,11 +159,13 @@ class ThemeScheduler(object):
         if cls.next_change is not None and cls.next_change.theme != cls.current_theme:
             theme, msg = cls.next_change.theme, cls.next_change.msg
             # Get the next before changing
-            cls.get_next_change()
+            cls.get_next_change(cls.next_change.time + 1)
             cls.update_theme(theme, msg)
             cls.current_theme = cls.next_change.theme
-        else:
+        elif cls.next_change is not None:
             # Get the next time point to change the theme
+            cls.get_next_change(cls.next_change.time + 1)
+        else:
             cls.get_next_change()
 
     @classmethod
