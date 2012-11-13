@@ -37,6 +37,11 @@ import json
 from os.path import exists, join, abspath, dirname
 
 
+def debug_log(s):
+    if SETTINGS.get("debug", False):
+        print "ThemeScheduler: %s" % s
+
+
 def create_settings(settings_path):
     err = False
     default_theme = {
@@ -97,7 +102,8 @@ class ThemeScheduler(object):
             theme = t["theme"]
             msg = t.get("msg", None)
             cls.themes.append(ThemeRecord(theme_time, theme, msg))
-        cls.get_next_change()
+        seconds, now = get_current_time()
+        cls.get_next_change(seconds, now)
         cls.set_startup_theme()
         cls.ready = True
 
@@ -123,7 +129,7 @@ class ThemeScheduler(object):
                 cls.update_theme(closest.theme, closest.msg)
 
     @classmethod
-    def get_next_change(cls, next_time=None):
+    def get_next_change(cls, seconds, now):
         """
         Get the next time point in which the theme should change.  Store the theme record.
         """
@@ -135,7 +141,6 @@ class ThemeScheduler(object):
         # Try and find the closest time point to switch the theme
         closest = None
         lowest = None
-        seconds, now = get_current_time() if next_time is None else next_time
         for t in cls.themes:
             if seconds <= t.time and (closest is None or t.time < closest.time):
                 closest = t
@@ -149,8 +154,10 @@ class ThemeScheduler(object):
             cls.next_change = lowest
             cls.day = now.day
 
+        debug_log("Next Change @ %s" % str(cls.next_change))
+
     @classmethod
-    def change_theme(cls):
+    def change_theme(cls, next_sec, next_now):
         """
         Change the theme and get the next time point to change themes.
         """
@@ -158,15 +165,12 @@ class ThemeScheduler(object):
         # Change the theme
         if cls.next_change is not None and cls.next_change.theme != cls.current_theme:
             theme, msg = cls.next_change.theme, cls.next_change.msg
-            # Get the next before changing
-            cls.get_next_change(cls.next_change.time + 1)
-            cls.update_theme(theme, msg)
             cls.current_theme = cls.next_change.theme
-        elif cls.next_change is not None:
-            # Get the next time point to change the theme
-            cls.get_next_change(cls.next_change.time + 1)
+            # Get the next before changing
+            cls.get_next_change(next_sec, next_now)
+            cls.update_theme(theme, msg)
         else:
-            cls.get_next_change()
+            cls.get_next_change(next_sec, next_now)
 
     @classmethod
     def update_theme(cls, theme, msg):
@@ -201,9 +205,8 @@ def theme_loop():
     Loop for checking when to change the theme.
     """
 
-    def is_update_time():
+    def is_update_time(seconds, now):
         update = False
-        seconds, now = get_current_time()
         if not ThemeScheduler.busy and ThemeScheduler.next_change is not None:
             update = (
                 (ThemeScheduler.day is None and seconds >= ThemeScheduler.next_change.time) or
@@ -215,8 +218,11 @@ def theme_loop():
 
     while not ThreadMgr.restart and not ThreadMgr.kill:
         # Pop back into the main thread and check if time to change theme
-        if ThemeScheduler.ready and is_update_time():
-            sublime.set_timeout(ThemeScheduler.change_theme, 0)
+        seconds, now = get_current_time()
+        if ThemeScheduler.ready and is_update_time(seconds, now):
+            seconds += 1
+            now = now + timedelta(0, 1)
+            sublime.set_timeout(lambda: ThemeScheduler.change_theme(seconds, now), 0)
         time.sleep(1)
 
     if ThreadMgr.restart:
@@ -235,15 +241,15 @@ def manage_thread(first_time=False, restart=False):
     if not multiget(SETTINGS, 'enabled', 'False'):
         running_theme_scheduler_loop = False
         ThreadMgr.kill
-        print "Theme Scheduler: Kill Thread"
+        debug_log("Kill Thread")
     elif not restart and (first_time or not running_theme_scheduler_loop):
         running_theme_scheduler_loop = True
         thread.start_new_thread(theme_loop, ())
-        print "Theme Scheduler: Start Thread"
+        debug_log("Start Thread")
     else:
         running_theme_scheduler_loop = False
         ThreadMgr.restart = True
-        print "Theme Scheduler: Restart Thread"
+        debug_log("Restart Thread")
 
 settings_file = __name__ + '.sublime-settings'
 settings_path = join(dirname(abspath(__file__)), settings_file)
