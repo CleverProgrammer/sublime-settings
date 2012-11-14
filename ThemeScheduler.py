@@ -194,7 +194,7 @@ class ThemeScheduler(object):
             with open(pref_file, 'w') as f:
                 f.write(j + "\n")
             if msg is not None and isinstance(msg, basestring):
-                sublime.message_dialog(msg)
+                sublime.set_timeout(lambda: sublime.message_dialog(msg), 3000)
         except:
             pass
         cls.busy = False

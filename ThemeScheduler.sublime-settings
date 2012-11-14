@@ -11,7 +11,7 @@
                     },
                     {
                         // Lunch
-                        "theme": "Packages/User/Color Scheme/Monokai Blue.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Info.tmTheme",
                         "time": "12:00",
                         "msg": "Lunch time!"
                     },
