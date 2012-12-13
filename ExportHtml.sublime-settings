@@ -6,6 +6,10 @@
     //     "alternate_scheme": "Packages/ExportHtml/themes/Print-Color.tmTheme"
     "alternate_scheme": false,
 
+    "alternate_font_face": "Courier",
+
+    "alternate_font_size": 13,
+
     // Minum allowed background lumens a.k.a brightness (0-255)
     "bg_min_lumen_threshold": 62,
 
