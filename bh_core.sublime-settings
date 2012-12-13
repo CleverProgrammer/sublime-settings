@@ -236,6 +236,18 @@
             "language_filter": "whitelist",
             "language_list": ["C++", "C"],
             "enabled": true
+        },
+        // PHP conditional keywords
+        {
+            "name": "php_keywords",
+            "open": "(?:^\\s*|<\\?(?:php)?\\s*)?\\b(if|foreach|for|while|switch)\\b(?=.*:\\s*(?:\\?>\\s*)?$)",
+            "close": "(?:^\\s*|<\\?(?:php)?\\s*)?\\b(endif|endfor|endforeach|endwhile|endswitch)\\b(?=\\s*;\\s*(?:\\?>\\s*)?$)",
+            "style": "default",
+            "language_filter": "whitelist",
+            "scope_exclude": ["string", "comment"],
+            "plugin_library": "bh_modules.phpkeywords",
+            "language_list": ["HTML", "HTML 5", "XML", "PHP", "HTML+CFML", "ColdFusion", "ColdFusionCFC"],
+            "enabled": true
         }
     ],
 
@@ -328,6 +340,7 @@
     // Style to use for matched tags
     "tag_style": "tag",
 
+    // scopes to exclude from tag search
     "tag_scope_exclude": ["string", "comment"],
 
     // Determine which style of tag-matching to use in which syntax
