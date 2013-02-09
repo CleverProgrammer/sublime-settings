@@ -30,16 +30,16 @@ from datetime import datetime, timedelta
 import time
 import sublime
 from collections import namedtuple
-import _thread as thread
-from User.ThemeSchedulerLib.file_strip.json import sanitize_json
-from User.ThemeSchedulerLib.multiconf import get as multiget
+import thread
+from ThemeSchedulerLib.file_strip.json import sanitize_json
+from ThemeSchedulerLib.multiconf import get as multiget
 import json
 from os.path import exists, join, abspath, dirname
 
 
 def debug_log(s):
     if SETTINGS.get("debug", False):
-        print("ThemeScheduler: %s" % s)
+        print "ThemeScheduler: %s" % s
 
 
 def create_settings(settings_path):
@@ -193,7 +193,7 @@ class ThemeScheduler(object):
         try:
             with open(pref_file, 'w') as f:
                 f.write(j + "\n")
-            if msg is not None and isinstance(msg, str):
+            if msg is not None and isinstance(msg, basestring):
                 sublime.set_timeout(lambda: sublime.message_dialog(msg), 3000)
         except:
             pass
@@ -251,19 +251,16 @@ def manage_thread(first_time=False, restart=False):
         ThreadMgr.restart = True
         debug_log("Restart Thread")
 
-def plugin_loaded():
-    global SETTINGS
-    settings_file = "ThemeScheduler.sublime-settings"
-    settings_path = join(dirname(abspath(__file__)), settings_file)
-    if not exists(settings_path):
-        create_settings(settings_path)
+settings_file = __name__ + '.sublime-settings'
+settings_path = join(dirname(abspath(__file__)), settings_file)
+if not exists(settings_path):
+    create_settings(settings_path)
 
-    # Init the settings object
-    SETTINGS = sublime.load_settings(settings_file)
-    SETTINGS.clear_on_change('reload')
-    SETTINGS.add_on_change('reload', manage_thread)
+# Init the settings object
+SETTINGS = sublime.load_settings(settings_file)
+SETTINGS.clear_on_change('reload')
+SETTINGS.add_on_change('reload', manage_thread)
 
-    first_time = not 'running_theme_scheduler_loop' in globals()
-    global running_theme_scheduler_loop
-    running_theme_scheduler_loop = not first_time
-    manage_thread(first_time, not first_time)
+first_time = not 'running_theme_scheduler_loop' in globals()
+running_theme_scheduler_loop = not first_time
+manage_thread(first_time, not first_time)
