@@ -7,7 +7,7 @@ License: MIT
 
 from collections import namedtuple
 import operator
-from immutable import Immutable
+from User.CalendarLib.immutable import Immutable
 
 _ENUM_VALUE = 0
 _ENUM_SET = 1
@@ -136,7 +136,7 @@ def _enum_factory(symbols, start, name):
 
             if isenumvalue(index):
                 value = index.value
-            elif isinstance(index, basestring):
+            elif isinstance(index, str):
                 compare_idx = 0
             elif not isinstance(index, int):
                 raise TypeError("An enum set can only translate types(int, str, EnumValue)!")
@@ -181,7 +181,7 @@ def _enum_factory(symbols, start, name):
 
 
 def enum(sequence, **kwargs):
-    symbols = sequence.split() if isinstance(sequence, basestring) else sequence
+    symbols = sequence.split() if isinstance(sequence, str) else sequence
     start = int(kwargs.get("start", 0))
     name = str(kwargs.get("name", "enum"))
     if start < 0:

@@ -62,13 +62,16 @@ class GetPackageFilesMenuCommand(sublime_plugin.WindowCommand):
     def find_files(self, value, patterns):
         if value > -1:
             pat = patterns[value]
-            self.window.run_command(
-                "get_package_files",
-                {
-                    "pattern": pat["pattern"],
-                    "deep_search": pat["deep_search"],
-                    "regex": pat["regex"]
-                }
+            sublime.set_timeout(
+                lambda: self.window.run_command(
+                    "get_package_files",
+                    {
+                        "pattern": pat["pattern"],
+                        "deep_search": pat["deep_search"],
+                        "regex": pat["regex"]
+                    }
+                ),
+                100
             )
 
     def run(self, pattern_list=DEFAULT_FILES):

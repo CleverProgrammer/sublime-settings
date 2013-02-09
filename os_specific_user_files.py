@@ -83,13 +83,6 @@ import threading
 import json
 from glob import glob
 
-osplatform = sublime.platform()
-user = os.path.join(sublime.packages_path(), 'User')
-plugin_storage = os.path.join(user, 'OsSpecificUserFiles')
-ospath = os.path.join(plugin_storage, osplatform)
-settings = 'os_specific_user_files.sublime-settings'
-running_thread = True
-
 
 def os_specific_alert():
     sublime.error_message('OS Specific User Files encountered one or more errors.\nPlease see the console for more info.')
@@ -194,9 +187,9 @@ def copy_file(src, dest):
     status = False
     try:
         shutil.copyfile(src, dest)
-        print "OS Specific User Files: SUCCESS - Copied to User: %s" % src
+        print("OS Specific User Files: SUCCESS - Copied to User: %s" % src)
     except:
-        print "OS Specific User Files: ERROR - Could not copy file: %d" % src
+        print("OS Specific User Files: ERROR - Could not copy file: %d" % src)
         status = True
     return status
 
@@ -205,18 +198,18 @@ def copy_directory(src, dest):
     status = False
     try:
         if os.path.exists(dest):
-            print "OS Specific User Files: REMOVING - Directory already exists: %s" % dest
+            print("OS Specific User Files: REMOVING - Directory already exists: %s" % dest)
             shutil.rmtree(dest)
     except:
-        print "OS Specific User Files: ERROR - Could not remove: %s" % dest
+        print("OS Specific User Files: ERROR - Could not remove: %s" % dest)
         status = True
         return status
 
     try:
         shutil.copytree(src, dest)
-        print "OS Specific User Files: SUCCESS - Copied to User: %s" % src
+        print("OS Specific User Files: SUCCESS - Copied to User: %s" % src)
     except:
-        print "OS Specific User Files: ERROR - Could not copy directory: %d" % src
+        print("OS Specific User Files: ERROR - Could not copy directory: %d" % src)
         status = True
     return status
 
@@ -227,24 +220,24 @@ def move_files(src, dest):
         if os.path.isdir(dest):
             try:
                 if os.path.exists(dest):
-                    print "OS Specific User Files: REMOVING - Directory already exists: %s" % dest
+                    print("OS Specific User Files: REMOVING - Directory already exists: %s" % dest)
                     shutil.rmtree(dest)
             except:
-                print "OS Specific User Files: ERROR - Could not remove: %s" % dest
+                print("OS Specific User Files: ERROR - Could not remove: %s" % dest)
                 status = True
                 return status
         else:
             try:
-                print "OS Specific User Files: REMOVING - File already exists: %s" % dest
+                print("OS Specific User Files: REMOVING - File already exists: %s" % dest)
                 os.remove(dest)
             except:
-                print "OS Specific User Files: ERROR - Could not remove: %s" % dest
+                print("OS Specific User Files: ERROR - Could not remove: %s" % dest)
                 status = True
                 return status
     try:
         shutil.move(src, dest)
     except:
-        print "OS Specific User Files: ERROR - Could not move %s" % src
+        print("OS Specific User Files: ERROR - Could not move %s" % src)
         status = True
     return status
 
@@ -253,9 +246,9 @@ def make_dir(directory):
     error = False
     try:
         os.makedirs(directory)
-        print "OS Specific User Files: ERROR - Successfully created directory: %s" % directory
+        print("OS Specific User Files: ERROR - Successfully created directory: %s" % directory)
     except:
-        print "OS Specific User Files: ERROR - Could not create directory: %s" % directory
+        print("OS Specific User Files: ERROR - Could not create directory: %s" % directory)
         error = True
     return error
 
@@ -334,7 +327,7 @@ class CleanOrphanedFiles(OsUserFiles):
 
         # Search all OS folders
         for os_folder in ospaths:
-            print "OS Specific User Files: SEARCHING - OS folder: %s" % os_folder
+            print("OS Specific User Files: SEARCHING - OS folder: %s" % os_folder)
             for item in glob(os.path.join(os_folder, "*")):
                 directories = []
                 files = []
@@ -353,11 +346,11 @@ class CleanOrphanedFiles(OsUserFiles):
                             break
                     if not found:
                         try:
-                            print "OS Specific User Files: REMOVING - Orphaned file: %s" % found_file
+                            print("OS Specific User Files: REMOVING - Orphaned file: %s" % found_file)
                             os.remove(found_file)
                             count += 1
                         except:
-                            print "OS Specific User Files: ERROR - Could not remove: %s" % found_file
+                            print("OS Specific User Files: ERROR - Could not remove: %s" % found_file)
                             self.errors |= True
 
                 # Search for orphaned directories
@@ -370,12 +363,12 @@ class CleanOrphanedFiles(OsUserFiles):
                             break
                     if not found:
                         try:
-                            print "OS Specific User Files: REMOVING - Orphaned directory: %s" % found_dir
+                            print("OS Specific User Files: REMOVING - Orphaned directory: %s" % found_dir)
                             shutil.rmtree(found_dir)
                             count += 1
-                        except Exception, e:
-                            print e
-                            print "OS Specific User Files: ERROR - Could not remove: %s" % found_dir
+                        except Exception as e:
+                            print (e)
+                            print ("OS Specific User Files: ERROR - Could not remove: %s" % found_dir)
                             self.errors |= True
 
         if not self.errors:
@@ -465,40 +458,56 @@ class CopyOsUserFiles(OsUserFiles):
 
 class CleanOrphanedOsUserFilesCommand(sublime_plugin.ApplicationCommand):
     def run(self):
-        print "OS Specific User Files: Searching for orphaned backed up files..."
+        print("OS Specific User Files: Searching for orphaned backed up files...")
         run_orphan_thread(force=True)
 
 
 class BackupOsUserFilesCommand(sublime_plugin.ApplicationCommand):
     def run(self):
-        print "OS Specific User Files: Backing up User to OsSpecificUserFiles..."
+        print("OS Specific User Files: Backing up User to OsSpecificUserFiles...")
         run_backup_thread(force=True)
 
 
 class CopyOsUserFilesCommand(sublime_plugin.ApplicationCommand):
     def run(self):
-        print "OS Specific User Files: Copying files to User..."
+        print("OS Specific User Files: Copying files to User...")
         run_copy_thread(force=True)
 
 
-# Setup
-print "OS Specific User Files: Checking if setup is required..."
-file_errors = setup()
-if len(file_errors) > 0:
-    for f in file_errors:
-        print "OS Specific User Files: Could not setup file or directory: %s" % f
-    os_specific_alert()
-else:
-    # Setup success; enable running the backup/copy threads when invoked
-    running_thread = False
+def plugin_loaded():
+    global osplatform
+    global user
+    global plugin_storage
+    global ospath
+    global settings
+    global running_thread
+    global ossettings
 
-    # Load settings
-    ossettings = sublime.load_settings(settings)
+    osplatform = sublime.platform()
+    user = os.path.join(sublime.packages_path(), 'User')
+    plugin_storage = os.path.join(user, 'OsSpecificUserFiles')
+    ospath = os.path.join(plugin_storage, osplatform)
+    settings = 'os_specific_user_files.sublime-settings'
+    running_thread = True
 
-    # Run copy thread, but only copy if file is not already present
-    print "OS Specific User Files: Checking for files that have never been copied over..."
-    run_copy_thread(force=False)
+    # Setup
+    print("OS Specific User Files: Checking if setup is required...")
+    file_errors = setup()
+    if len(file_errors) > 0:
+        for f in file_errors:
+            print("OS Specific User Files: Could not setup file or directory: %s" % f)
+        os_specific_alert()
+    else:
+        # Setup success; enable running the backup/copy threads when invoked
+        running_thread = False
 
-    # Run backup thread, but only copy if file is not already backed up
-    print "OS Specific User Files: Checking for files that have never been backed up..."
-    queue_thread(lambda: run_backup_thread(force=False))
+        # Load settings
+        ossettings = sublime.load_settings(settings)
+
+        # Run copy thread, but only copy if file is not already present
+        print("OS Specific User Files: Checking for files that have never been copied over...")
+        run_copy_thread(force=False)
+
+        # Run backup thread, but only copy if file is not already backed up
+        print("OS Specific User Files: Checking for files that have never been backed up...")
+        queue_thread(lambda: run_backup_thread(force=False))
