@@ -36,7 +36,7 @@ class HighlightCurrentWord(sublime_plugin.EventListener):
             return
 
         # The default separator does not include whitespace, so I add that here no matter what
-        separatorString = view.settings().get('word_separators', u"") + u" \n\r\t"
+        separatorString = view.settings().get('word_separators', "") + " \n\r\t"
         themeSelector = view.settings().get('highlight_word_theme_selector', SCOPE)
 
         currentRegion = view.word(selections[0])
@@ -106,11 +106,11 @@ class HighlightCurrentWord(sublime_plugin.EventListener):
         style = sublime.DRAW_OUTLINED if view.settings().get('highlight_word_outline_style', False) == True else 0
 
         view.add_regions(
-          KEY,
-          validRegions,
-          themeSelector,
-          "",
-          style
+            KEY,
+            validRegions,
+            themeSelector,
+            "",
+            style
         )
 
     def on_selection_modified(self, view):

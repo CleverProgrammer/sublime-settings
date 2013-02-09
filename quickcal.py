@@ -10,7 +10,7 @@ License: MIT
 from datetime import date
 import sublime_plugin
 import sublime
-from CalendarLib.enum import enum
+from User.CalendarLib.enum import enum
 import re
 from os.path import join
 
@@ -55,7 +55,7 @@ class Day(object):
         return self.str
 
     def __str__(self):
-        return (u"%d/%d/%d" % (self.month.value, self.day, self.year)).encode('utf-8')
+        return (u"%d/%d/%d" % (self.month.value, self.day, self.year))
 
 
 def get_today():
@@ -100,17 +100,17 @@ def show_calendar_row(first, last, today, month, empty_cells=(0, 0)):
         for d in range(first, last):
             if d == today:
                 if p == pos.center:
-                    row += cal_cell_center_highlight.format(unicode(d))
+                    row += cal_cell_center_highlight.format(d)
                 else:
                     row += cal_cell_outer_highlight
             elif is_holiday(month, d):
                 if p == pos.center:
-                    row += cal_cell_center_holiday.format(unicode(d))
+                    row += cal_cell_center_holiday.format(d)
                 else:
                     row += cal_cell_outer_holiday
             else:
                 if p == pos.center:
-                    row += cal_cell_center.format(unicode(d))
+                    row += cal_cell_center.format(d)
                 else:
                     row += cal_cell_outer
             row += cal_cell_wall
@@ -126,9 +126,9 @@ def show_calendar_header(month, year, sunday_first):
     bfr += cal_header.format(u"%s %d" % (month, year))
     bfr += cal_row_mid_div
     if sunday_first:
-        bfr += (cal_header_days % ((unicode(weekdays.Sunday)[0:3],) + tuple(unicode(weekdays[x])[0:3] for x in range(0, 6))))
+        bfr += (cal_header_days % ((str(weekdays.Sunday)[0:3],) + tuple(str(weekdays[x])[0:3] for x in range(0, 6))))
     else:
-        bfr += (cal_header_days % tuple(unicode(weekdays[x])[0:3] for x in range(0, 7)))
+        bfr += (cal_header_days % tuple(str(weekdays[x])[0:3] for x in range(0, 7)))
     return bfr
 
 
@@ -149,7 +149,7 @@ def show_calendar_month(year, month, day=0, sunday_first=True):
         end_offset = (7 * end_row) - (num_days + offset)
 
     bfr = show_calendar_header(month, year, sunday_first)
-    for r in range(0, end_row + 1):
+    for r in range(0, int(end_row) + 1):
         bfr += cal_row_mid_div
         if r == start_row and offset:
             start = 1
@@ -164,7 +164,7 @@ def show_calendar_month(year, month, day=0, sunday_first=True):
             end = start + 7
             empty_cells = (0, 0)
         bfr += show_calendar_row(start, end, day, month, empty_cells)
-    bfr += cal_row_btm_div.encode('utf8')
+    bfr += cal_row_btm_div
     return bfr
 
 
@@ -207,12 +207,16 @@ class CalendarCommand(sublime_plugin.WindowCommand):
             view.set_read_only(False)
             self.window.focus_view(view)
 
-        edit = view.begin_edit()
+        view.run_command("show_calendar", {"day": day})
+
+
+class ShowCalendarCommand(sublime_plugin.TextCommand):
+    def run(self, edit, day):
+        view = self.view
         today = get_today() if day is None else tx_day(day)
         bfr = show_calendar_month(today.year, today.month, today.day)
-        view.set_syntax_file(join(sublime.packages_path(), "User", "Calendar.tmLanguage"))
+        view.set_syntax_file(join("Packages", "User", "Calendar.tmLanguage"))
         view.replace(edit, sublime.Region(0, view.size()), bfr)
-        view.end_edit(edit)
         view.sel().clear()
         view.settings().set("calendar_current", {"month": str(today.month), "year": today.year})
         view.settings().set("calendar_today", {"month": str(today.month), "year": today.year, "day": today.day})
