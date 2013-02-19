@@ -401,6 +401,32 @@
 				<string>#888888</string>
 			</dict>
 		</dict>
+		<dict>
+			<key>name</key>
+			<string>Calendar Selected Day</string>
+			<key>scope</key>
+			<string>selected_day</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#2D2D2D</string>
+				<key>background</key>
+				<string>#F2777A</string>
+			</dict>
+		</dict>
+		<dict>
+			<key>name</key>
+			<string>Calendar Holiday</string>
+			<key>scope</key>
+			<string>holiday</string>
+			<key>settings</key>
+			<dict>
+				<key>foreground</key>
+				<string>#2D2D2D</string>
+				<key>background</key>
+				<string>#66CCCC</string>
+			</dict>
+		</dict>
 	</array>
 	<key>uuid</key>
 	<string>DE477E5B-BD4D-46B0-BF80-2EA32A2814D5</string>

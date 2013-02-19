@@ -31,8 +31,8 @@ import time
 import sublime
 from collections import namedtuple
 import _thread as thread
-from User.ThemeSchedulerLib.file_strip.json import sanitize_json
-from User.ThemeSchedulerLib.multiconf import get as multiget
+from User.lib.file_strip.json import sanitize_json
+from User.lib.multiconf import get as multiget
 import json
 from os.path import exists, join, abspath, dirname
 

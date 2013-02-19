@@ -10,29 +10,29 @@ License: MIT
 from datetime import date
 import sublime_plugin
 import sublime
-from User.CalendarLib.enum import enum
+from User.lib.enum.enum import enum
 import re
 from os.path import join
 
 
 months = enum("January February March April May June July August September October November December", start=1, name="Months")
 weekdays = enum("Monday Tuesday Wednesday Thursday Friday Saturday Sunday", start=1, name="Days")
-cal_header = u"|{0:^69}|\n"
-cal_row_top_div = u"-----------------------------------------------------------------------\n"
-cal_row_mid_div = u"-----------------------------------------------------------------------\n"
-cal_row_btm_div = u"-----------------------------------------------------------------------\n"
-# cal_cell_center_highlight = u"...{0:.^3}..."
-# cal_cell_outer_highlight = u"........."
-cal_cell_center_highlight = u"   {0: ^3}   "
-cal_cell_outer_highlight = u"         "
-cal_cell_center_holiday = u"   {0: ^3}   "
-cal_cell_outer_holiday = u"         "
-cal_cell_center = u"   {0:^3}   "
-cal_cell_outer = u"         "
-cal_cell_empty = u"         "
-cal_cell_empty_wall = u" "
-cal_cell_wall = u"|"
-cal_header_days = u"|   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |\n"
+cal_header = "|{0:^69}|\n"
+cal_row_top_div = "-----------------------------------------------------------------------\n"
+cal_row_mid_div = "-----------------------------------------------------------------------\n"
+cal_row_btm_div = "-----------------------------------------------------------------------\n"
+# cal_cell_center_highlight = "...{0:.^3}..."
+# cal_cell_outer_highlight = "........."
+cal_cell_center_highlight = "   {0: ^3}   "
+cal_cell_outer_highlight = "         "
+cal_cell_center_holiday = "   {0: ^3}   "
+cal_cell_outer_holiday = "         "
+cal_cell_center = "   {0:^3}   "
+cal_cell_outer = "         "
+cal_cell_empty = "         "
+cal_cell_empty_wall = " "
+cal_cell_wall = "|"
+cal_header_days = "|   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |\n"
 
 holidays = {}
 
@@ -55,7 +55,7 @@ class Day(object):
         return self.str
 
     def __str__(self):
-        return (u"%d/%d/%d" % (self.month.value, self.day, self.year))
+        return ("%d/%d/%d" % (self.month.value, self.day, self.year))
 
 
 def get_today():
@@ -90,7 +90,7 @@ def days_in_months(month, year):
 
 def show_calendar_row(first, last, today, month, empty_cells=(0, 0)):
     pos = enum("left center right")
-    row = u""
+    row = ""
 
     for p in pos:
         row += cal_cell_wall
@@ -123,7 +123,7 @@ def show_calendar_row(first, last, today, month, empty_cells=(0, 0)):
 
 def show_calendar_header(month, year, sunday_first):
     bfr = cal_row_top_div
-    bfr += cal_header.format(u"%s %d" % (month, year))
+    bfr += cal_header.format("%s %d" % (month, year))
     bfr += cal_row_mid_div
     if sunday_first:
         bfr += (cal_header_days % ((str(weekdays.Sunday)[0:3],) + tuple(str(weekdays[x])[0:3] for x in range(0, 6))))
@@ -215,7 +215,7 @@ class ShowCalendarCommand(sublime_plugin.TextCommand):
         view = self.view
         today = get_today() if day is None else tx_day(day)
         bfr = show_calendar_month(today.year, today.month, today.day)
-        view.set_syntax_file(join("Packages", "User", "Calendar.tmLanguage"))
+        view.set_syntax_file("Packages/User/Calendar.tmLanguage")
         view.replace(edit, sublime.Region(0, view.size()), bfr)
         view.sel().clear()
         view.settings().set("calendar_current", {"month": str(today.month), "year": today.year})
