@@ -17,13 +17,13 @@
 	"ignored_packages":
 	[
 		"Batch File",
-		"Python",
-		"Vintage",
+		"PHP",
 		"C++",
 		"JavaScript",
+		"Python",
+		"CSS",
 		"Perl",
-		"PHP",
-		"CSS"
+		"Vintage"
 	],
 	"indent_guide_options":
 	[

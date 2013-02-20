@@ -127,10 +127,10 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
 
         if file_name is not None:
             with zipfile.ZipFile(zip_package, 'r') as z:
-                text = z.read(z.getinfo(zip_file)).decode('utf-8')
+                text = z.read(z.getinfo(zip_file))
                 name, ext = splitext(basename(zip_file))
                 t_dir = tempfile.mkdtemp(prefix='pkg_file_search_')
-                with open(join(t_dir, name + ext), 'w+') as f:
+                with open(join(t_dir, name + ext), 'wb') as f:
                     f.write(text)
                 view = self.window.open_file(f.name)
 

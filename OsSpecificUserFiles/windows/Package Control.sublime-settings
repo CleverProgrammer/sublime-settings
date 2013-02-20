@@ -1,45 +1,20 @@
 {
-	"auto_upgrade_last_run": 1351175831,
 	"installed_packages":
 	[
 		"AAALanguages",
-		"Alignment",
-		"ApacheConf.tmLanguage",
-		"ASCII Decorator",
 		"BracketHighlighter",
-		"Clipboard Manager",
 		"ColorPicker",
-		"Crypto",
-		"DetectSyntax",
-		"EncodingHelper",
 		"ExportHtml",
 		"FavoriteFiles",
-		"FileDiffs",
 		"FuzzyFileNav",
-		"GenerateUUID",
-		"Git",
-		"GitHubinator",
-		"google-search",
 		"HexViewer",
-		"HTML5",
-		"INI",
-		"Logs Colorize",
-		"Markdown Preview",
+		"Origami",
 		"Package Control",
+		"PlainTasks",
 		"PlistJsonConverter",
 		"RegReplace",
 		"ScopeHunter",
-		"SideBarEnhancements",
-		"SmartCursor",
-		"SortTabs",
-		"SublimeLinter",
-		"SublimeLog",
-		"SublimeREPL",
-		"SublimeTODO",
-		"SublimeWebColors",
-		"Terminal",
-		"Theme - Phoenix",
-		"VBScript"
+		"Theme - Phoenix"
 	],
 	"package_name_map":
 	{
@@ -47,10 +22,15 @@
 	},
 	"repositories":
 	[
-		"https://github.com/facelessuser/BracketHighlighter/tree/BH2",
-		"https://github.com/netatoo/phoenix-theme",
-		"https://github.com/bizoo/SmartCursor",
-		"https://github.com/facelessuser/sublime-languages",
-		"https://github.com/facelessuser/FuzzyFileNav"
+		"https://github.com/SublimeLinter/SublimeLinter/tree/sublime-text-3",
+		"https://github.com/facelessuser/BracketHighlighter/tree/BH2ST3",
+		"https://github.com/facelessuser/FuzzyFileNav/tree/ST3",
+		"https://github.com/facelessuser/ExportHtml/tree/ST3",
+		"https://github.com/facelessuser/FavoriteFiles/tree/ST3",
+		"https://github.com/facelessuser/ScopeHunter/tree/ST3",
+		"https://github.com/facelessuser/HexViewer/tree/ST3",
+		"https://github.com/facelessuser/RegReplace/tree/ST3",
+		"https://github.com/facelessuser/PlistJsonConverter/tree/ST3",
+		"https://github.com/facelessuser/sublime-languages"
 	]
 }
