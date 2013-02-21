@@ -6,11 +6,10 @@ Copyright (c) 2012 Isaac Muse <isaacmuse@gmail.com>
 
 import sublime
 import sublime_plugin
-from os.path import join, isdir, normpath, basename, splitext, exists, sep
+from os.path import join, isdir, normpath, dirname, basename, splitext, exists
 from os import listdir, walk
 from fnmatch import fnmatch
 import re
-import User.lib.package_resources as pr
 import zipfile
 import tempfile
 
@@ -27,6 +26,10 @@ DEFAULT_FILES = [
     {"caption": "Theme Files",           "search": {"pattern": "*.sublime-theme",    "regex": False}},
     {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "regex": False}}
 ]
+
+
+def sublime_package_paths():
+    return [sublime.installed_packages_path(), join(dirname(sublime.executable_path()), 'Packages')]
 
 
 class GetPackageFilesInputCommand(sublime_plugin.WindowCommand):
@@ -116,7 +119,7 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
         file_name = None
         zip_package = None
         zip_file = None
-        for zp in pr.zipped_package_locations():
+        for zp in sublime_package_paths():
             items = fn.replace('\\', '/').split('/')
             zip_package = items.pop(0)
             zip_file = '/'.join(items)
@@ -128,9 +131,8 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
         if file_name is not None:
             with zipfile.ZipFile(zip_package, 'r') as z:
                 text = z.read(z.getinfo(zip_file))
-                name, ext = splitext(basename(zip_file))
                 t_dir = tempfile.mkdtemp(prefix='pkg_file_search_')
-                with open(join(t_dir, name + ext), 'wb') as f:
+                with open(join(t_dir, basename(zip_file)), 'wb') as f:
                     f.write(text)
                 view = self.window.open_file(f.name)
 
@@ -140,7 +142,7 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
 
     def search_zipped_files(self):
         plugins = []
-        for zp in pr.zipped_package_locations():
+        for zp in sublime_package_paths():
             plugins += self.get_zip_packages(zp)
         return plugins
 
