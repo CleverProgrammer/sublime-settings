@@ -135,6 +135,7 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
                 with open(join(t_dir, basename(zip_file)), 'wb') as f:
                     f.write(text)
                 view = self.window.open_file(f.name)
+                view.set_read_only(True)
 
     def get_zip_packages(self, file_path):
         plugins = [join(file_path, item) for item in listdir(file_path) if fnmatch(item, "*.sublime-package")]
