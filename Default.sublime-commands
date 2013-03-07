@@ -11,6 +11,10 @@
         "caption": "Package File Search: Input Search Pattern",
         "command": "get_package_files_input"
     },
+    {
+        "caption": "Sublime API Docs",
+        "command": "show_sublime_api"
+    },
     // Sort Tabs
     {
         "caption": "Tabs: Sort Tabs",

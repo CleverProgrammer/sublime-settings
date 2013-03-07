@@ -11,9 +11,10 @@ from os import listdir, walk
 from fnmatch import fnmatch
 import re
 import zipfile
-import tempfile
+# import tempfile
 
 
+# Syntax will only be used when extracting a file from an archive.
 DEFAULT_FILES = [
     {"caption": "Settings Files",        "search": {"pattern": "*.sublime-settings", "regex": False}},
     {"caption": "Keymap Files",          "search": {"pattern": "*.sublime-keymap",   "regex": False}},
@@ -32,15 +33,22 @@ def sublime_package_paths():
     return [sublime.installed_packages_path(), join(dirname(sublime.executable_path()), 'Packages')]
 
 
+class WriteArchivedPackageContentCommand(sublime_plugin.TextCommand):
+    bfr = None
+    def run(self, edit):
+        cls = WriteArchivedPackageContentCommand
+        if cls.bfr is not None:
+            self.view.set_read_only(False)
+            self.view.set_scratch(True)
+            self.view.insert(edit, 0, cls.bfr)
+            cls.bfr = None
+            self.view.set_read_only(True)
+
+
 class GetPackageFilesInputCommand(sublime_plugin.WindowCommand):
     def find_pattern(self, pattern):
         regex = False
-        # deep_search = True
         if pattern != "":
-            # m = re.match(r"^\[deep_search=(true|false)\](.*)", pattern)
-            # if m != None:
-            #     deep_search = True if m.group(1) == "true" else False
-            #     pattern = m.group(2)
             m = re.match(r"^[ \t]*`(.*)`[ \t]*$", pattern)
             if m != None:
                 regex = True
@@ -104,9 +112,6 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
         for base, dirs, files in walk(plugin):
             files = [join(base, f) for f in files]
             self.find_files(files, pattern, settings, regex)
-        # else:
-        #     files = [join(plugin, item) for item in listdir(plugin) if not isdir(join(plugin, item))]
-        #     self.find_files(files, pattern, settings, regex)
 
     def open_file(self, value, settings):
         if value > -1:
@@ -131,11 +136,10 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
         if file_name is not None:
             with zipfile.ZipFile(zip_package, 'r') as z:
                 text = z.read(z.getinfo(zip_file))
-                t_dir = tempfile.mkdtemp(prefix='pkg_file_search_')
-                with open(join(t_dir, basename(zip_file)), 'wb') as f:
-                    f.write(text)
-                view = self.window.open_file(f.name)
-                view.set_read_only(True)
+                view = self.window.open_file(file_name)
+                WriteArchivedPackageContentCommand.bfr = text.decode('utf-8')
+                sublime.set_timeout(lambda: view.run_command("write_archived_package_content"), 0)
+
 
     def get_zip_packages(self, file_path):
         plugins = [join(file_path, item) for item in listdir(file_path) if fnmatch(item, "*.sublime-package")]
