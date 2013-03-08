@@ -102,23 +102,25 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
     def find_files(self, files, pattern, settings, regex):
         for f in files:
             if regex:
-                if re.match(pattern, f, re.IGNORECASE) != None:
-                    settings.append(f.replace(self.packages, "").lstrip("\\").lstrip("/"))
+                if re.match(pattern, f[0], re.IGNORECASE) != None:
+                    settings.append([f[0].replace(self.packages, "").lstrip("\\").lstrip("/"), f[1]])
+                    print(f[1])
             else:
-                if fnmatch(f, pattern):
-                    settings.append(f.replace(self.packages, "").lstrip("\\").lstrip("/"))
+                if fnmatch(f[0], pattern):
+                    settings.append([f[0].replace(self.packages, "").lstrip("\\").lstrip("/"), f[1]])
+                    print(f[1])
 
     def walk(self, settings, plugin, pattern, regex=False):
         for base, dirs, files in walk(plugin):
-            files = [join(base, f) for f in files]
+            files = [(join(base, f), self.packages) for f in files]
             self.find_files(files, pattern, settings, regex)
 
     def open_file(self, value, settings):
         if value > -1:
             if value >= self.zipped_idx:
-                self.open_zip_file(settings[value])
+                self.open_zip_file(settings[value][0])
             else:
-                self.window.open_file(join(self.packages, settings[value]))
+                self.window.open_file(join(self.packages, settings[value][0]))
 
     def open_zip_file(self, fn):
         file_name = None
@@ -142,7 +144,7 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
 
 
     def get_zip_packages(self, file_path):
-        plugins = [join(file_path, item) for item in listdir(file_path) if fnmatch(item, "*.sublime-package")]
+        plugins = [(join(file_path, item), file_path) for item in listdir(file_path) if fnmatch(item, "*.sublime-package")]
         return plugins
 
     def search_zipped_files(self):
@@ -153,8 +155,8 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
 
     def walk_zip(self, settings, plugin, pattern, regex):
         # psuedo_path = join(normpath(sublime.packages_path()), splitext(basename(plugin))[0])
-        with zipfile.ZipFile(plugin, 'r') as z:
-            zipped = [join(basename(plugin), normpath(fn)) for fn in sorted(z.namelist())]
+        with zipfile.ZipFile(plugin[0], 'r') as z:
+            zipped = [(join(basename(plugin[0]), normpath(fn)), plugin[1]) for fn in sorted(z.namelist())]
             self.find_files(zipped, pattern, settings, regex)
 
     def run(self, pattern, regex=False):
@@ -169,6 +171,8 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
         zipped_plugins = self.search_zipped_files()
         for plugin in zipped_plugins:
             self.walk_zip(settings, plugin, pattern.strip(), regex)
+
+        print(settings)
 
         self.window.show_quick_panel(
             settings,
