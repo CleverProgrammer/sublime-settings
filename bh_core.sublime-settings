@@ -251,6 +251,18 @@
             "plugin_library": "bh_modules.phpkeywords",
             "language_list": ["HTML", "HTML 5", "XML", "PHP", "HTML+CFML", "ColdFusion", "ColdFusionCFC"],
             "enabled": true
+        },
+        // TREX
+        {
+            "name": "trex",
+            "open": "^\\s*\\b(if|subr|bytemap|enum|command|for|while|do)\\b",
+            "close": "\\b(e(?:if|subr|bytemap|enum|command|for|while)|until)\\b",
+            "style": "default",
+            "scope_exclude": ["string", "comment"],
+            "plugin_library": "Western Digital.trexkeywords",
+            "language_filter": "whitelist",
+            "language_list": ["Trex"],
+            "enabled": true
         }
     ],
 

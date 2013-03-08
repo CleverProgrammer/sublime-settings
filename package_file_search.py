@@ -40,7 +40,10 @@ class WriteArchivedPackageContentCommand(sublime_plugin.TextCommand):
         if cls.bfr is not None:
             self.view.set_read_only(False)
             self.view.set_scratch(True)
-            self.view.insert(edit, 0, cls.bfr)
+            self.view.replace(edit, sublime.Region(0, self.view.size()), cls.bfr)
+            sels = self.view.sel()
+            sels.clear()
+            sels.add(0)
             cls.bfr = None
             self.view.set_read_only(True)
 
@@ -170,8 +173,6 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
         zipped_plugins = self.search_zipped_files()
         for plugin in zipped_plugins:
             self.walk_zip(settings, plugin, pattern.strip(), regex)
-
-        print(settings)
 
         self.window.show_quick_panel(
             settings,
