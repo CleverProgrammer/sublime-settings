@@ -104,15 +104,13 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
             if regex:
                 if re.match(pattern, f[0], re.IGNORECASE) != None:
                     settings.append([f[0].replace(self.packages, "").lstrip("\\").lstrip("/"), f[1]])
-                    print(f[1])
             else:
                 if fnmatch(f[0], pattern):
                     settings.append([f[0].replace(self.packages, "").lstrip("\\").lstrip("/"), f[1]])
-                    print(f[1])
 
     def walk(self, settings, plugin, pattern, regex=False):
         for base, dirs, files in walk(plugin):
-            files = [(join(base, f), self.packages) for f in files]
+            files = [(join(base, f), "Packages") for f in files]
             self.find_files(files, pattern, settings, regex)
 
     def open_file(self, value, settings):
@@ -143,14 +141,15 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
                 sublime.set_timeout(lambda: view.run_command("write_archived_package_content"), 0)
 
 
-    def get_zip_packages(self, file_path):
-        plugins = [(join(file_path, item), file_path) for item in listdir(file_path) if fnmatch(item, "*.sublime-package")]
+    def get_zip_packages(self, file_path, package_type):
+        plugins = [(join(file_path, item), package_type) for item in listdir(file_path) if fnmatch(item, "*.sublime-package")]
         return plugins
 
     def search_zipped_files(self):
         plugins = []
-        for zp in sublime_package_paths():
-            plugins += self.get_zip_packages(zp)
+        st_packages = sublime_package_paths()
+        plugins += self.get_zip_packages(st_packages[0], "Installed")
+        plugins += self.get_zip_packages(st_packages[1], "Default")
         return plugins
 
     def walk_zip(self, settings, plugin, pattern, regex):
