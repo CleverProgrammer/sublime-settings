@@ -140,7 +140,7 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
             with zipfile.ZipFile(zip_package, 'r') as z:
                 text = z.read(z.getinfo(zip_file))
                 view = self.window.open_file(file_name)
-                WriteArchivedPackageContentCommand.bfr = text.decode('utf-8')
+                WriteArchivedPackageContentCommand.bfr = text.decode('utf-8').replace('\r', '')
                 sublime.set_timeout(lambda: view.run_command("write_archived_package_content"), 0)
 
 
