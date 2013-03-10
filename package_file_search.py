@@ -1,8 +1,8 @@
-'''
+"""
 Package File Search
 Licensed under MIT
 Copyright (c) 2012 Isaac Muse <isaacmuse@gmail.com>
-'''
+"""
 
 import sublime
 import sublime_plugin
@@ -11,7 +11,6 @@ from os import listdir, walk
 from fnmatch import fnmatch
 import re
 import zipfile
-# import tempfile
 
 
 # Syntax will only be used when extracting a file from an archive.

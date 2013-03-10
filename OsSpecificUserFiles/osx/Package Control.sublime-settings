@@ -1,47 +1,48 @@
 {
-    "auto_upgrade_last_run": 1352434621,
-    "installed_packages":
-    [
-        "AAALanguages",
-        "Alignment",
-        "ApacheConf.tmLanguage",
-        "ASCII Decorator",
-        "Auto Semi-Colon",
-        "BracketHighlighter",
-        "Clipboard Manager",
-        "ColorPicker",
-        "Crypto",
-        "DetectSyntax",
-        "EncodingHelper",
-        "FileDiffs",
-        "FuzzyFileNav",
-        "GenerateUUID",
-        "GitHubinator",
-        "google-search",
-        "HexViewer",
-        "HTML5",
-        "Indent XML",
-        "INI",
-        "Logs Colorize",
-        "Markdown Preview",
-        "Package Control",
-        "PlainTasks",
-        "RegReplace",
-        "SideBarEnhancements",
-        "SortTabs",
-        "SublimeLinter",
-        "SublimeREPL",
-        "SublimeTODO",
-        "SublimeWebColors",
-        "Terminal",
-        "Theme - Phoenix"
-    ],
-    "package_name_map":
-    {
-        "sublime-languages": "AAALanguages"
-    },
-    "repositories":
-    [
-        "https://github.com/facelessuser/sublime-languages"
-    ]
+	"auto_upgrade_last_run": null,
+	"installed_packages":
+	[
+		"AAALanguages",
+		"Alignment",
+		"ApacheConf.tmLanguage",
+		"ASCII Decorator",
+		"Auto Semi-Colon",
+		"BracketHighlighter",
+		"Clipboard Manager",
+		"ColorPicker",
+		"Crypto",
+		"DetectSyntax",
+		"EncodingHelper",
+		"FileDiffs",
+		"FuzzyFileNav",
+		"GenerateUUID",
+		"GitHubinator",
+		"google-search",
+		"HexViewer",
+		"HTML5",
+		"Indent XML",
+		"INI",
+		"Logs Colorize",
+		"Markdown Preview",
+		"Package Control",
+		"PlainTasks",
+		"RegReplace",
+		"SideBarEnhancements",
+		"SortTabs",
+		"SublimeLinter",
+		"SublimeREPL",
+		"SublimeTODO",
+		"SublimeWebColors",
+		"Sundried Color Scheme",
+		"Terminal",
+		"Theme - Phoenix"
+	],
+	"package_name_map":
+	{
+		"sublime-languages": "AAALanguages"
+	},
+	"repositories":
+	[
+		"https://github.com/facelessuser/sublime-languages"
+	]
 }
