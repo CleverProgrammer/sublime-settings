@@ -72,6 +72,11 @@ def translate_time(t):
     return total_seconds(timedelta(hours=tm.tm_hour, minutes=tm.tm_min, seconds=tm.tm_sec))
 
 
+def blocking_message(msg):
+    sublime.ok_cancel_dialog(msg)
+    ThemeScheduler.busy = False
+
+
 class ThemeRecord(namedtuple('ThemeRecord', ["time", "theme", "msg"])):
     pass
 
@@ -178,6 +183,7 @@ class ThemeScheduler(object):
         # Sublime provides no real way to tell when things are intialized.
         # Handling the preference file ourselves allows us to avoid obliterating the User preference file.
         cls.busy = True
+        relase_busy = True
         pref_file = join(sublime.packages_path(), 'User', 'Preferences.sublime-settings')
         pref = {}
         if exists(pref_file):
@@ -194,10 +200,13 @@ class ThemeScheduler(object):
             with open(pref_file, 'w') as f:
                 f.write(j + "\n")
             if msg is not None and isinstance(msg, str):
-                sublime.set_timeout(lambda: sublime.message_dialog(msg), 3000)
+                relase_busy = False
+                sublime.set_timeout(lambda: blocking_message(msg), 3000)
         except:
             pass
-        cls.busy = False
+
+        if relase_busy:
+            cls.busy = False
 
 
 def theme_loop():

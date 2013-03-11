@@ -2,6 +2,7 @@
 	"installed_packages":
 	[
 		"AAALanguages",
+		"ApplySyntax",
 		"BracketHighlighter",
 		"ColorPicker",
 		"ExportHtml",
@@ -31,6 +32,7 @@
 		"https://github.com/facelessuser/HexViewer/tree/ST3",
 		"https://github.com/facelessuser/RegReplace/tree/ST3",
 		"https://github.com/facelessuser/PlistJsonConverter/tree/ST3",
-		"https://github.com/facelessuser/sublime-languages"
+		"https://github.com/facelessuser/sublime-languages",
+		"https://github.com/facelessuser/ApplySyntax/tree/ST3"
 	]
 }
