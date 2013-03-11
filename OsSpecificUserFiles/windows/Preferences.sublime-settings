@@ -16,14 +16,14 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
+		"Perl",
+		"C++",
 		"Batch File",
 		"PHP",
-		"C++",
-		"JavaScript",
+		"Vintage",
 		"Python",
-		"CSS",
-		"Perl",
-		"Vintage"
+		"JavaScript",
+		"CSS"
 	],
 	"indent_guide_options":
 	[
