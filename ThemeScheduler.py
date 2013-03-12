@@ -162,7 +162,7 @@ class ThemeScheduler(object):
         debug_log("Next Change @ %s" % str(cls.next_change))
 
     @classmethod
-    def change_theme(cls, next_sec, next_now):
+    def change_theme(cls):
         """
         Change the theme and get the next time point to change themes.
         """
@@ -172,10 +172,9 @@ class ThemeScheduler(object):
             theme, msg = cls.next_change.theme, cls.next_change.msg
             cls.current_theme = cls.next_change.theme
             # Get the next before changing
-            cls.get_next_change(next_sec, next_now)
             cls.update_theme(theme, msg)
-        else:
-            cls.get_next_change(next_sec, next_now)
+        seconds, now = get_current_time()
+        cls.get_next_change(seconds, now)
 
     @classmethod
     def update_theme(cls, theme, msg):
@@ -229,9 +228,7 @@ def theme_loop():
         # Pop back into the main thread and check if time to change theme
         seconds, now = get_current_time()
         if ThemeScheduler.ready and is_update_time(seconds, now):
-            seconds += 1
-            now = now + timedelta(0, 1)
-            sublime.set_timeout(lambda: ThemeScheduler.change_theme(seconds, now), 0)
+            sublime.set_timeout(lambda: ThemeScheduler.change_theme(), 0)
         time.sleep(1)
 
     if ThreadMgr.restart:
