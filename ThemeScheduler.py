@@ -74,7 +74,7 @@ def translate_time(t):
 
 def blocking_message(msg):
     sublime.ok_cancel_dialog(msg)
-    ThemeScheduler.busy = False
+    ThemeScheduler.update = True
 
 
 class ThemeRecord(namedtuple('ThemeRecord', ["time", "theme", "msg"])):
@@ -93,6 +93,7 @@ class ThemeScheduler(object):
     day = None
     ready = False
     busy = False
+    update = False
 
     @classmethod
     def init(cls):
@@ -108,8 +109,7 @@ class ThemeScheduler(object):
             msg = t.get("msg", None)
             cls.themes.append(ThemeRecord(theme_time, theme, msg))
         seconds, now = get_current_time()
-        cls.get_next_change(seconds, now)
-        cls.set_startup_theme()
+        cls.get_next_change(seconds, now, startup=True)
         cls.ready = True
 
     @classmethod
@@ -134,7 +134,7 @@ class ThemeScheduler(object):
                 cls.update_theme(closest.theme, closest.msg)
 
     @classmethod
-    def get_next_change(cls, seconds, now):
+    def get_next_change(cls, seconds, now, startup=False):
         """
         Get the next time point in which the theme should change.  Store the theme record.
         """
@@ -160,6 +160,9 @@ class ThemeScheduler(object):
             cls.day = now.day
 
         debug_log("Next Change @ %s" % str(cls.next_change))
+
+        if startup:
+            cls.set_startup_theme()
 
     @classmethod
     def change_theme(cls):
@@ -215,7 +218,7 @@ def theme_loop():
 
     def is_update_time(seconds, now):
         update = False
-        if not ThemeScheduler.busy and ThemeScheduler.next_change is not None:
+        if not ThemeScheduler.busy and ThemeScheduler.next_change is not None and not ThemeScheduler.update:
             update = (
                 (ThemeScheduler.day is None and seconds >= ThemeScheduler.next_change.time) or
                 (ThemeScheduler.day != now.day and seconds >= ThemeScheduler.next_change.time)
@@ -227,7 +230,11 @@ def theme_loop():
     while not ThreadMgr.restart and not ThreadMgr.kill:
         # Pop back into the main thread and check if time to change theme
         seconds, now = get_current_time()
-        if ThemeScheduler.ready and is_update_time(seconds, now):
+        if ThemeScheduler.update:
+            ThemeScheduler.update = False
+            ThemeScheduler.busy = False
+            sublime.set_timeout(lambda: ThemeScheduler.get_next_change(seconds, now, startup=True), 0)
+        elif ThemeScheduler.ready and is_update_time(seconds, now):
             sublime.set_timeout(lambda: ThemeScheduler.change_theme(), 0)
         time.sleep(1)
 
