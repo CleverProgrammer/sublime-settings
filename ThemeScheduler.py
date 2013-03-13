@@ -94,6 +94,7 @@ class ThemeScheduler(object):
     ready = False
     busy = False
     update = False
+    current_time = None
 
     @classmethod
     def init(cls):
@@ -131,7 +132,11 @@ class ThemeScheduler(object):
                 closest = cls.next_change if greatest is None else greatest
 
             if closest is not None:
-                cls.update_theme(closest.theme, closest.msg)
+                if cls.current_time is not None and closest.time == cls.current_time:
+                    cls.update_theme(closest.theme, None)
+                else:
+                    cls.current_time = closest.time
+                    cls.update_theme(closest.theme, closest.msg)
 
     @classmethod
     def get_next_change(cls, seconds, now, startup=False):
