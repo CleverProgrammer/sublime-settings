@@ -109,7 +109,7 @@ class QuickCal(object):
         dates = holidays.get(year, [])
         target = "%4d-%02d-%02d" % (year, month, day)
         for date in dates:
-            if date["date"] == target:
+            if date["date"] == target and date["region"] in ["", sublime.load_settings("quickcal.sublime-settings").get("region", "")]:
                 return True
         return False
 
