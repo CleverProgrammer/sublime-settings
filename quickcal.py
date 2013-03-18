@@ -12,7 +12,10 @@ import sublime_plugin
 import sublime
 from User.lib.enum.enum import enum
 import re
-from os.path import join
+from os.path import join, exists
+from os import makedirs
+import json
+import urllib
 
 
 months = enum("January February March April May June July August September October November December", start=1, name="Months")
@@ -21,8 +24,6 @@ cal_header = "|{0:^69}|\n"
 cal_row_top_div = "-----------------------------------------------------------------------\n"
 cal_row_mid_div = "-----------------------------------------------------------------------\n"
 cal_row_btm_div = "-----------------------------------------------------------------------\n"
-# cal_cell_center_highlight = "...{0:.^3}..."
-# cal_cell_outer_highlight = "........."
 cal_cell_center_highlight = "   {0: ^3}   "
 cal_cell_outer_highlight = "         "
 cal_cell_center_holiday = "   {0: ^3}   "
@@ -35,6 +36,7 @@ cal_cell_wall = "|"
 cal_header_days = "|   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |\n"
 
 holidays = {}
+cal_events = ""
 
 
 class CalendarEventListener(sublime_plugin.EventListener):
@@ -63,8 +65,46 @@ def get_today():
     return Day(obj.day, months(obj.month), obj.year)
 
 
-def is_holiday(month, day):
-    return holidays.get(str(month), {}).get(day, None) is not None
+def init_holidays(year, force=False):
+    global holidays
+    local = sublime.load_settings("quickcal.sublime-settings").get("local", "en-US")
+    holiday_list = join(cal_events, "%d_%s.json" % (year, local))
+    print(holiday_list)
+    if force:
+        holidays = {}
+    if year not in holidays:
+        if not exists(holiday_list):
+            html_file = "http://holidata.net/%s/%d.json" % (local, year)
+            try:
+                response = urllib.request.urlretrieve(html_file, holiday_list)
+            except:
+                return
+        with open(holiday_list, 'r') as f:
+            holidays[year] = json.loads("[%s]" % ','.join(f.readlines()))
+
+
+def list_holidays(year, month):
+    bfr = ""
+    dates = holidays.get(year, [])
+    target = "%4d-%02d-" % (year, month)
+    for date in dates:
+        if date["date"].startswith(target):
+            if date["region"] in ["", sublime.load_settings("quickcal.sublime-settings").get("region", "")]:
+                bfr += "* %s: %s %s\n" % (
+                    date["date"],
+                    date["description"],
+                    "(Region: %s)" % date["region"] if date["region"] != "" else ""
+                )
+    return bfr
+
+
+def is_holiday(year, month, day):
+    dates = holidays.get(year, [])
+    target = "%4d-%02d-%02d" % (year, month, day)
+    for date in dates:
+        if date["date"] == target:
+            return True
+    return False
 
 
 def tx_day(day):
@@ -88,7 +128,7 @@ def days_in_months(month, year):
     return days
 
 
-def show_calendar_row(first, last, today, month, empty_cells=(0, 0)):
+def show_calendar_row(first, last, today, month, year, empty_cells=(0, 0)):
     pos = enum("left center right")
     row = ""
 
@@ -103,7 +143,7 @@ def show_calendar_row(first, last, today, month, empty_cells=(0, 0)):
                     row += cal_cell_center_highlight.format(d)
                 else:
                     row += cal_cell_outer_highlight
-            elif is_holiday(month, d):
+            elif is_holiday(year, month, d):
                 if p == pos.center:
                     row += cal_cell_center_holiday.format(d)
                 else:
@@ -132,7 +172,8 @@ def show_calendar_header(month, year, sunday_first):
     return bfr
 
 
-def show_calendar_month(year, month, day=0, sunday_first=True):
+def show_calendar_month(year, month, day=0, sunday_first=True, force_update=False):
+    init_holidays(year, force_update)
     num_days = days_in_months(month, year)
     weekday_month_start = weekdays(date(year, month, 1).isoweekday())
     if sunday_first:
@@ -163,8 +204,10 @@ def show_calendar_month(year, month, day=0, sunday_first=True):
             start = 1 + 7 - offset + (7 * (r - 1))
             end = start + 7
             empty_cells = (0, 0)
-        bfr += show_calendar_row(start, end, day, month, empty_cells)
+        bfr += show_calendar_row(start, end, day, month, year, empty_cells)
     bfr += cal_row_btm_div
+
+    bfr += list_holidays(year, month)
     return bfr
 
 
@@ -214,7 +257,13 @@ class ShowCalendarCommand(sublime_plugin.TextCommand):
     def run(self, edit, day):
         view = self.view
         today = get_today() if day is None else tx_day(day)
-        bfr = show_calendar_month(today.year, today.month, today.day)
+        bfr = show_calendar_month(
+            today.year,
+            today.month,
+            today.day,
+            sunday_first=sublime.load_settings("quickcal.sublime-settings").get("sunday_first", True),
+            force_update=True
+        )
         view.set_syntax_file("Packages/User/Calendar.tmLanguage")
         view.replace(edit, sublime.Region(0, view.size()), bfr)
         view.sel().clear()
@@ -224,36 +273,6 @@ class ShowCalendarCommand(sublime_plugin.TextCommand):
         view.set_read_only(True)
 
 
-# class ImportIcalCommand(sublime_plugin.TextCommand):
-#     entries = re.compile("BEGIN:VEVENT(.*)END:VEVENT", re.DOTALL | re.MULTILINE)
-
-#     def get_entries(self, bfr):
-#         entry = {}
-#         found_entry = False
-#         for line in bfr.split('\n'):
-#             if not found_entry:
-#                 if line == "BEGIN:VEVENT":
-#                     found_entry = True
-#                 continue
-#             else:
-#                 m = re.match(r"(?:(DTSTART)|(DTEND));VALUE=DATE:(.*)")
-#                 if m is not None:
-#                     entry["start" if m.group(1) else "end"] = m.group(3)
-#                     continue
-
-#                 m = re.match(r"SUMMARY")
-
-#     def run(self, edit, append=False):
-#         bfr = self.view.substr(sublime.Region(0, self.view.size()))
-#         if not bfr.startswith("BEGIN:VCALENDAR"):
-#             return
-
-#         holidays.clear()
-#         for entry in self.get_entries(bfr):
-#             print "\nentry"
-#             # print entry
-
-
 class CalendarMonthNavCommand(sublime_plugin.TextCommand):
     def run(self, edit, reverse=False):
         current_month = self.view.settings().get("calendar_current", None)
@@ -261,7 +280,16 @@ class CalendarMonthNavCommand(sublime_plugin.TextCommand):
         if current_month is not None and today is not None:
             self.view.set_read_only(False)
             next = self.next(current_month, today) if not reverse else self.previous(current_month, today)
-            self.view.replace(edit, sublime.Region(0, self.view.size()), show_calendar_month(next.year, next.month, next.day))
+            self.view.replace(
+                edit,
+                sublime.Region(0, self.view.size()),
+                show_calendar_month(
+                    next.year,
+                    next.month,
+                    next.day,
+                    sunday_first=sublime.load_settings("quickcal.sublime-settings").get("sunday_first", True)
+                )
+            )
             self.view.sel().clear()
             self.view.settings().set("calendar_current", {"month": str(next.month), "year": next.year})
             self.view.set_read_only(True)
@@ -279,3 +307,9 @@ class CalendarMonthNavCommand(sublime_plugin.TextCommand):
         year = current["year"] - 1 if previous == months.December else current["year"]
         day = today["day"] if today["month"] == str(previous) and year == today["year"] else 0
         return Day(day, previous, year)
+
+def plugin_loaded():
+    global cal_events
+    cal_events = join(sublime.packages_path(), "User", "CalendarEvents")
+    if not exists(cal_events):
+        makedirs(cal_events)
