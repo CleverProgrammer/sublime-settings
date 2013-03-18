@@ -134,12 +134,18 @@ class QuickCal(object):
                 row += (cal_cell_empty * empty_cells[0]) + (cal_cell_empty_wall * (empty_cells[0] - 1))
                 row += cal_cell_wall
             for d in range(first, last):
-                if d == today:
+                is_holiday = self.is_holiday(year, month, d)
+                if d == today and is_holiday:
+                    if p == pos.center:
+                        row += cal_cell_center_holiday.format(d)
+                    else:
+                        row += cal_cell_outer_highlight
+                elif d == today:
                     if p == pos.center:
                         row += cal_cell_center_highlight.format(d)
                     else:
                         row += cal_cell_outer_highlight
-                elif self.is_holiday(year, month, d):
+                elif is_holiday:
                     if p == pos.center:
                         row += cal_cell_center_holiday.format(d)
                     else:
