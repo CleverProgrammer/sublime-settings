@@ -74,9 +74,7 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
         if key == "toggle_shortcut_plus":
             handeled = True
         elif ShortcutMode.enabled and key.startswith("shortcut_plus:"):
-            print("here")
             if ShortcutMode.profile == key[len("shortcut_plus:"):len(key)]:
-                print("success")
                 ShortcutMode.view = view
                 ShortcutMode.window = view.window()
                 handeled = True
