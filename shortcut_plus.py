@@ -64,8 +64,6 @@ import sublime_plugin
 class ShortcutMode(object):
     enabled = False
     profile = ""
-    view = None
-    window = None
 
 
 class ShortcutPlusModeListener(sublime_plugin.EventListener):
@@ -75,8 +73,6 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
             handeled = True
         elif ShortcutMode.enabled and key.startswith("shortcut_plus:"):
             if ShortcutMode.profile == key[len("shortcut_plus:"):len(key)]:
-                ShortcutMode.view = view
-                ShortcutMode.window = view.window()
                 handeled = True
         return handeled
 
