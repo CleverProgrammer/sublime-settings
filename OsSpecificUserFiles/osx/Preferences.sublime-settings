@@ -2,7 +2,7 @@
     "always_show_minimap_viewport": false,
     "bold_folder_labels": true,
     "caret_style": "phase",
-    "color_scheme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+    "color_scheme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
     "detect_slow_plugins": false,
     "draw_indent_guides": true,
     "draw_white_space": "all",
@@ -24,16 +24,13 @@
         "C++",
         "Perl",
         "PHP",
-        "CSS",
-        "Origami"
+        "CSS"
     ],
-    "indent_guide_options":
-    [
+    "indent_guide_options": [
         "draw_normal",
         "draw_active"
     ],
-    "jshint_options":
-    {
+    "jshint_options": {
         "asi": false,
         "bitwise": true,
         "boss": true,
@@ -66,8 +63,7 @@
         "onevar": true,
         "passfail": false,
         "plusplus": false,
-        "predef":
-        [
+        "predef": [
             "$",
             "easyJS",
             "DOMParser"
@@ -96,8 +92,7 @@
     "match_tags": false,
     "move_to_limit_on_up_down": false,
     "open_files_in_new_window": false,
-    "pep8_ignore":
-    [
+    "pep8_ignore": [
         "E501"
     ],
     "phoenix_color_blue": true,
@@ -106,24 +101,17 @@
     "phoenix_highlight_current_tab": true,
     "phoenix_sidebar_tree_small": true,
     "phoenix_tabs_small": true,
-    "pyflakes_ignore":
-    [
-    ],
+    "pyflakes_ignore": [],
     "scroll_past_end": true,
     "show_full_path": true,
     "spell_check": false,
     "sublimelinter": true,
     "sublimelinter_delay": 2,
-    "sublimelinter_disable":
-    [
-    ],
-    "sublimelinter_executable_map":
-    {
-    },
+    "sublimelinter_disable": [],
+    "sublimelinter_executable_map": {},
     "sublimelinter_fill_outlines": false,
     "sublimelinter_objj_check_ascii": false,
-    "sublimelinter_syntax_map":
-    {
+    "sublimelinter_syntax_map": {
         "Python Django": "python"
     },
     "sublimelinter_wrap_find": true,
