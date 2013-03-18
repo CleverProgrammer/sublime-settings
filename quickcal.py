@@ -37,6 +37,7 @@ cal_header_days = "|   %s   |   %s   |   %s   |   %s   |   %s   |   %s   |   %s 
 
 holidays = {}
 cal_events = ""
+qcal = None
 
 
 class CalendarEventListener(sublime_plugin.EventListener):
@@ -65,48 +66,6 @@ def get_today():
     return Day(obj.day, months(obj.month), obj.year)
 
 
-def init_holidays(year, force=False):
-    global holidays
-    local = sublime.load_settings("quickcal.sublime-settings").get("local", "en-US")
-    holiday_list = join(cal_events, "%d_%s.json" % (year, local))
-    print(holiday_list)
-    if force:
-        holidays = {}
-    if year not in holidays:
-        if not exists(holiday_list):
-            html_file = "http://holidata.net/%s/%d.json" % (local, year)
-            try:
-                response = urllib.request.urlretrieve(html_file, holiday_list)
-            except:
-                return
-        with open(holiday_list, 'r') as f:
-            holidays[year] = json.loads("[%s]" % ','.join(f.readlines()))
-
-
-def list_holidays(year, month):
-    bfr = ""
-    dates = holidays.get(year, [])
-    target = "%4d-%02d-" % (year, month)
-    for date in dates:
-        if date["date"].startswith(target):
-            if date["region"] in ["", sublime.load_settings("quickcal.sublime-settings").get("region", "")]:
-                bfr += "* %s: %s %s\n" % (
-                    date["date"],
-                    date["description"],
-                    "(Region: %s)" % date["region"] if date["region"] != "" else ""
-                )
-    return bfr
-
-
-def is_holiday(year, month, day):
-    dates = holidays.get(year, [])
-    target = "%4d-%02d-%02d" % (year, month, day)
-    for date in dates:
-        if date["date"] == target:
-            return True
-    return False
-
-
 def tx_day(day):
     m = re.match(r"^(\d+)[^\d](\d+)[^\d](\d+)$", day)
     if m:
@@ -115,100 +74,135 @@ def tx_day(day):
         return get_today()
 
 
-def is_leap_year(year):
-    return ((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0)
+class QuickCal(object):
+    def init_holidays(self, year, force=False):
+        global holidays
+        local = sublime.load_settings("quickcal.sublime-settings").get("local", "en-US")
+        holiday_list = join(cal_events, "%d_%s.json" % (year, local))
+        if force:
+            holidays = {}
+        if year not in holidays:
+            if not exists(holiday_list):
+                html_file = "http://holidata.net/%s/%d.json" % (local, year)
+                try:
+                    response = urllib.request.urlretrieve(html_file, holiday_list)
+                except:
+                    return
+            with open(holiday_list, 'r') as f:
+                holidays[year] = json.loads("[%s]" % ','.join(f.readlines()))
 
+    def list_holidays(self, year, month):
+        bfr = ""
+        dates = holidays.get(year, [])
+        target = "%4d-%02d-" % (year, month)
+        for date in dates:
+            if date["date"].startswith(target):
+                if date["region"] in ["", sublime.load_settings("quickcal.sublime-settings").get("region", "")]:
+                    bfr += "* %s: %s %s\n" % (
+                        date["date"],
+                        date["description"],
+                        "(Region: %s)" % date["region"] if date["region"] != "" else ""
+                    )
+        return bfr
 
-def days_in_months(month, year):
-    days = 31
-    if month == months.February:
-        days = 29 if is_leap_year(year) else 28
-    elif month in [months.September, months.April, months.June, months.November]:
-        days = 30
-    return days
+    def is_holiday(self, year, month, day):
+        dates = holidays.get(year, [])
+        target = "%4d-%02d-%02d" % (year, month, day)
+        for date in dates:
+            if date["date"] == target:
+                return True
+        return False
 
+    def is_leap_year(self, year):
+        return ((year % 4 == 0) and (year % 100 != 0)) or (year % 400 == 0)
 
-def show_calendar_row(first, last, today, month, year, empty_cells=(0, 0)):
-    pos = enum("left center right")
-    row = ""
+    def days_in_months(self, month, year):
+        days = 31
+        if month == months.February:
+            days = 29 if self.is_leap_year(year) else 28
+        elif month in [months.September, months.April, months.June, months.November]:
+            days = 30
+        return days
 
-    for p in pos:
-        row += cal_cell_wall
-        if empty_cells[0] > 0:
-            row += (cal_cell_empty * empty_cells[0]) + (cal_cell_empty_wall * (empty_cells[0] - 1))
+    def show_calendar_row(self, first, last, today, month, year, empty_cells=(0, 0)):
+        pos = enum("left center right")
+        row = ""
+
+        for p in pos:
             row += cal_cell_wall
-        for d in range(first, last):
-            if d == today:
-                if p == pos.center:
-                    row += cal_cell_center_highlight.format(d)
+            if empty_cells[0] > 0:
+                row += (cal_cell_empty * empty_cells[0]) + (cal_cell_empty_wall * (empty_cells[0] - 1))
+                row += cal_cell_wall
+            for d in range(first, last):
+                if d == today:
+                    if p == pos.center:
+                        row += cal_cell_center_highlight.format(d)
+                    else:
+                        row += cal_cell_outer_highlight
+                elif self.is_holiday(year, month, d):
+                    if p == pos.center:
+                        row += cal_cell_center_holiday.format(d)
+                    else:
+                        row += cal_cell_outer_holiday
                 else:
-                    row += cal_cell_outer_highlight
-            elif is_holiday(year, month, d):
-                if p == pos.center:
-                    row += cal_cell_center_holiday.format(d)
-                else:
-                    row += cal_cell_outer_holiday
-            else:
-                if p == pos.center:
-                    row += cal_cell_center.format(d)
-                else:
-                    row += cal_cell_outer
-            row += cal_cell_wall
-        if empty_cells[1] > 0:
-            row += (cal_cell_empty * empty_cells[1]) + (cal_cell_empty_wall * (empty_cells[1] - 1))
-            row += cal_cell_wall
-        row += "\n"
-    return row
+                    if p == pos.center:
+                        row += cal_cell_center.format(d)
+                    else:
+                        row += cal_cell_outer
+                row += cal_cell_wall
+            if empty_cells[1] > 0:
+                row += (cal_cell_empty * empty_cells[1]) + (cal_cell_empty_wall * (empty_cells[1] - 1))
+                row += cal_cell_wall
+            row += "\n"
+        return row
 
-
-def show_calendar_header(month, year, sunday_first):
-    bfr = cal_row_top_div
-    bfr += cal_header.format("%s %d" % (month, year))
-    bfr += cal_row_mid_div
-    if sunday_first:
-        bfr += (cal_header_days % ((str(weekdays.Sunday)[0:3],) + tuple(str(weekdays[x])[0:3] for x in range(0, 6))))
-    else:
-        bfr += (cal_header_days % tuple(str(weekdays[x])[0:3] for x in range(0, 7)))
-    return bfr
-
-
-def show_calendar_month(year, month, day=0, sunday_first=True, force_update=False):
-    init_holidays(year, force_update)
-    num_days = days_in_months(month, year)
-    weekday_month_start = weekdays(date(year, month, 1).isoweekday())
-    if sunday_first:
-        offset = int(weekday_month_start) if weekday_month_start != weekdays.Sunday else 0
-    else:
-        offset = int(weekday_month_start) - 1 if weekday_month_start != weekdays.Sunday else 6
-
-    start_row = 0
-    if (num_days + offset) % 7:
-        end_row = (num_days + offset) / 7
-        end_offset = (7 * (end_row + 1)) - (num_days + offset)
-    else:
-        end_row = ((num_days + offset) / 7) - 1
-        end_offset = (7 * end_row) - (num_days + offset)
-
-    bfr = show_calendar_header(month, year, sunday_first)
-    for r in range(0, int(end_row) + 1):
+    def show_calendar_header(self, month, year, sunday_first):
+        bfr = cal_row_top_div
+        bfr += cal_header.format("%s %d" % (month, year))
         bfr += cal_row_mid_div
-        if r == start_row and offset:
-            start = 1
-            end = 7 - offset + 1
-            empty_cells = (offset, 0)
-        elif r == end_row and end_offset:
-            start = 1 + 7 - offset + (7 * (r - 1))
-            end = num_days + 1
-            empty_cells = (0, end_offset)
+        if sunday_first:
+            bfr += (cal_header_days % ((str(weekdays.Sunday)[0:3],) + tuple(str(weekdays[x])[0:3] for x in range(0, 6))))
         else:
-            start = 1 + 7 - offset + (7 * (r - 1))
-            end = start + 7
-            empty_cells = (0, 0)
-        bfr += show_calendar_row(start, end, day, month, year, empty_cells)
-    bfr += cal_row_btm_div
+            bfr += (cal_header_days % tuple(str(weekdays[x])[0:3] for x in range(0, 7)))
+        return bfr
 
-    bfr += list_holidays(year, month)
-    return bfr
+    def show_calendar_month(self, year, month, day=0, sunday_first=True, force_update=False):
+        self.init_holidays(year, force_update)
+        num_days = self.days_in_months(month, year)
+        weekday_month_start = weekdays(date(year, month, 1).isoweekday())
+        if sunday_first:
+            offset = int(weekday_month_start) if weekday_month_start != weekdays.Sunday else 0
+        else:
+            offset = int(weekday_month_start) - 1 if weekday_month_start != weekdays.Sunday else 6
+
+        start_row = 0
+        if (num_days + offset) % 7:
+            end_row = (num_days + offset) / 7
+            end_offset = (7 * (end_row + 1)) - (num_days + offset)
+        else:
+            end_row = ((num_days + offset) / 7) - 1
+            end_offset = (7 * end_row) - (num_days + offset)
+
+        bfr = self.show_calendar_header(month, year, sunday_first)
+        for r in range(0, int(end_row) + 1):
+            bfr += cal_row_mid_div
+            if r == start_row and offset:
+                start = 1
+                end = 7 - offset + 1
+                empty_cells = (offset, 0)
+            elif r == end_row and end_offset:
+                start = 1 + 7 - offset + (7 * (r - 1))
+                end = num_days + 1
+                empty_cells = (0, end_offset)
+            else:
+                start = 1 + 7 - offset + (7 * (r - 1))
+                end = start + 7
+                empty_cells = (0, 0)
+            bfr += self.show_calendar_row(start, end, day, month, year, empty_cells)
+        bfr += cal_row_btm_div
+
+        bfr += self.list_holidays(year, month)
+        return bfr
 
 
 class CalendarLookupCommand(sublime_plugin.WindowCommand):
@@ -257,7 +251,7 @@ class ShowCalendarCommand(sublime_plugin.TextCommand):
     def run(self, edit, day):
         view = self.view
         today = get_today() if day is None else tx_day(day)
-        bfr = show_calendar_month(
+        bfr = qcal.show_calendar_month(
             today.year,
             today.month,
             today.day,
@@ -283,7 +277,7 @@ class CalendarMonthNavCommand(sublime_plugin.TextCommand):
             self.view.replace(
                 edit,
                 sublime.Region(0, self.view.size()),
-                show_calendar_month(
+                qcal.show_calendar_month(
                     next.year,
                     next.month,
                     next.day,
@@ -310,6 +304,8 @@ class CalendarMonthNavCommand(sublime_plugin.TextCommand):
 
 def plugin_loaded():
     global cal_events
+    global qcal
+    qcal = QuickCal()
     cal_events = join(sublime.packages_path(), "User", "CalendarEvents")
     if not exists(cal_events):
         makedirs(cal_events)
