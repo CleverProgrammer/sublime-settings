@@ -32,35 +32,27 @@ Example: This shows how to create shortcuts that execute only in a given shorcut
     // Shortcut Plus Test
     {
         "keys": ["escape"],
-        "command": "shortcut_plus",
+        "command": "shortcut_plus_test",
         "context":
         [
             {"key": "shortcut_plus:MyProfile1"},
             {"key": "selection_empty", "operator": "equal", "operand": true, "match_all": true}
         ],
         "args": {
-            "command_type": "window",
-            "command": "shortcut_plus_test",
-            "args": {
-                "msg": "All selection are empty!"
-            }
+            "msg": "All selection are empty!"
         }
     },
     // Shortcut Plus Test
     {
         "keys": ["escape"],
-        "command": "shortcut_plus",
+        "command": "shortcut_plus_test",
         "context":
         [
             {"key": "shortcut_plus:MyProfile2"},
             {"key": "selection_empty", "operator": "equal", "operand": false, "match_all": true}
         ],
         "args": {
-            "command_type": "window",
-            "command": "shortcut_plus_test",
-            "args": {
-                "msg": "All selections are not empty!"
-            }
+            "msg": "All selections are not empty!"
         }
     }
 """
@@ -82,26 +74,13 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
         if key == "toggle_shortcut_plus":
             handeled = True
         elif ShortcutMode.enabled and key.startswith("shortcut_plus:"):
+            print("here")
             if ShortcutMode.profile == key[len("shortcut_plus:"):len(key)]:
+                print("success")
                 ShortcutMode.view = view
                 ShortcutMode.window = view.window()
                 handeled = True
         return handeled
-
-
-class ShortcutPlusCommand(sublime_plugin.ApplicationCommand):
-    def run(self, command_type, command, args):
-        view = ShortcutMode.view
-        window = ShortcutMode.window
-        ShortcutMode.view = None
-        ShortcutMode.window = None
-
-        if command_type == "application":
-            sublime.run_command(command, args)
-        elif command_type == "window" and window is not None:
-            window.run_command(command, args)
-        elif command_type == "text" and view is not None:
-            view.run_command(command, args)
 
 
 class ToggleShortcutPlusCommand(sublime_plugin.ApplicationCommand):

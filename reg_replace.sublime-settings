@@ -216,7 +216,7 @@
         {
             "file_pattern": ["*.*"],
             "sequence": ["remove_trailing_spaces"],
-            "highlight": true
+            "action": "mark"
         }
     ],
 
