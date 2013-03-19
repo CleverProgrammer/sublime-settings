@@ -5,14 +5,18 @@
 		"ApplySyntax",
 		"BracketHighlighter",
 		"ColorPicker",
+		"CursorRuler",
 		"ExportHtml",
 		"FavoriteFiles",
+		"FindKeyConflicts",
 		"FuzzyFileNav",
+		"google-search",
 		"HexViewer",
 		"Origami",
 		"Package Control",
 		"PlainTasks",
 		"PlistJsonConverter",
+		"QuickCal",
 		"RegReplace",
 		"ScopeHunter",
 		"Theme - Phoenix"
@@ -33,6 +37,7 @@
 		"https://github.com/facelessuser/RegReplace/tree/ST3",
 		"https://github.com/facelessuser/PlistJsonConverter/tree/ST3",
 		"https://github.com/facelessuser/sublime-languages",
-		"https://github.com/facelessuser/ApplySyntax/tree/ST3"
+		"https://github.com/facelessuser/ApplySyntax/tree/ST3",
+		"https://github.com/facelessuser/QuickCal"
 	]
 }
