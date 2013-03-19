@@ -17,10 +17,20 @@
         "args": {"profile": "Reserved"}
     },
 
-    // FuzzyFileNav shortcuts
+    //////////////////////////////////
+    // Scope Hunter
+    //////////////////////////////////
+    { "keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope"},
+
+    //////////////////////////////////
+    // Fuzzy File Nav
+    //////////////////////////////////
     { "keys": ["super+o"], "command": "fuzzy_start_from_file" },
     { "keys": ["super+shift+o"], "command": "fuzzy_bookmarks_load" },
 
+    //////////////////////////////////
+    // Bracket Highlighter
+    //////////////////////////////////
     // Search to end of file for bracket
     {
         "keys": ["ctrl+alt+super+b"],
@@ -161,6 +171,15 @@
         "keys": ["ctrl+alt+super+w"],
         "command": "wrap_brackets"
     },
+    // Toggle high visibility mode
+    {
+        "keys": ["ctrl+alt+super+v"],
+        "command": "bh_toggle_high_visibility"
+    },
+
+    //////////////////////////////////////////////////////////////
+    // Calendar Shortcuts
+    //////////////////////////////////////////////////////////////
     {
         "keys": ["ctrl+super+alt+c"],
         "command": "calendar"

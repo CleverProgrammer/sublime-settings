@@ -74,6 +74,10 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
         elif ShortcutMode.enabled and key.startswith("shortcut_plus:"):
             if ShortcutMode.profile == key[len("shortcut_plus:"):len(key)]:
                 handeled = True
+        elif key.startswith("shortcut_plus(platform):"):
+            print("platform")
+            if sublime.platform() == key[len("shortcut_plus(platform):"):len(key)]:
+                handeled = True
         return handeled
 
 
