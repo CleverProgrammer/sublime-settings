@@ -10,6 +10,7 @@
 		"FavoriteFiles",
 		"FindKeyConflicts",
 		"FuzzyFileNav",
+		"GenerateUUID",
 		"google-search",
 		"HexViewer",
 		"Origami",
@@ -19,6 +20,8 @@
 		"QuickCal",
 		"RegReplace",
 		"ScopeHunter",
+		"SmartCursor",
+		"SortTabs",
 		"Theme - Phoenix"
 	],
 	"package_name_map":
@@ -38,6 +41,8 @@
 		"https://github.com/facelessuser/PlistJsonConverter/tree/ST3",
 		"https://github.com/facelessuser/sublime-languages",
 		"https://github.com/facelessuser/ApplySyntax/tree/ST3",
-		"https://github.com/facelessuser/QuickCal"
+		"https://github.com/facelessuser/QuickCal",
+		"https://github.com/bizoo/SmartCursor",
+		"https://github.com/facelessuser/SortTabs"
 	]
 }
