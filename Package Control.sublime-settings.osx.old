@@ -1,28 +1,26 @@
 {
-    "auto_upgrade_last_run": 1351175831,
+    "auto_upgrade_last_run": null,
     "installed_packages":
     [
         "Alignment",
         "ApacheConf.tmLanguage",
         "ASCII Decorator",
+        "Auto Semi-Colon",
         "Clipboard Manager",
         "Crypto",
         "EncodingHelper",
-        "FileDiffs",
-        "Git",
         "GitHubinator",
         "HTML5",
+        "Indent XML",
         "INI",
         "Logs Colorize",
         "Markdown Preview",
         "SideBarEnhancements",
         "SublimeLinter",
-        "SublimeLog",
         "SublimeREPL",
         "SublimeTODO",
         "SublimeWebColors",
-        "Terminal",
-        "VBScript"
+        "Terminal"
     ],
     "package_name_map":
     {
@@ -30,10 +28,6 @@
     },
     "repositories":
     [
-        "https://github.com/facelessuser/BracketHighlighter/tree/BH2",
-        "https://github.com/netatoo/phoenix-theme",
-        "https://github.com/bizoo/SmartCursor",
-        "https://github.com/facelessuser/sublime-languages",
-        "https://github.com/facelessuser/FuzzyFileNav"
+        "https://github.com/facelessuser/sublime-languages"
     ]
 }
