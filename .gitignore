@@ -5,8 +5,6 @@
 Thumbs.db
 *.pyc
 
-terminal-notifier.*
-
 SideBarEnhancements/Open With/Side Bar.sublime-menu
 
 Terminal.sublime-settings
@@ -23,8 +21,6 @@ Git.sublime-settings
 
 SortTabsInternal.sublime-settings
 
-notify.py
-
-version.json
-
 /Package Control.last-run
+
+CalendarEvents/*
