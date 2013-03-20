@@ -61,8 +61,8 @@ import sublime
 import sublime_plugin
 import socket
 
-__CURRENT_HOSTNAME = None
-__CURRENT_PLATFORM = None
+CURRENT_PLATFORM = sublime.platform()
+CURRENT_HOSTNAME = socket.gethostname().lower()
 
 
 class ShortcutMode(object):
@@ -79,10 +79,10 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
             if ShortcutMode.profile == key[len("shortcut_plus:"):len(key)]:
                 handeled = True
         elif key.startswith("shortcut_plus(platform):"):
-            if __CURRENT_PLATFORM == key[len("shortcut_plus(platform):"):len(key)]:
+            if CURRENT_PLATFORM == key[len("shortcut_plus(platform):"):len(key)]:
                 handeled = True
         elif key.startswith("shortcut_plus(hostname):"):
-            if __CURRENT_HOSTNAME == key[len("shortcut_plus(hostname):"):len(key)]:
+            if CURRENT_HOSTNAME == key[len("shortcut_plus(hostname):"):len(key)]:
                 handeled = True
         return handeled
 
@@ -104,11 +104,3 @@ class ToggleShortcutPlusCommand(sublime_plugin.ApplicationCommand):
 class ShortcutPlusTestCommand(sublime_plugin.WindowCommand):
     def run(self, msg):
         sublime.message_dialog(msg)
-
-
-def plugin_loaded():
-    global __CURRENT_PLATFORM
-    global __CURRENT_HOSTNAME
-    __CURRENT_PLATFORM = sublime.platform()
-    __CURRENT_HOSTNAME = socket.gethostname().lower()
-    print(__CURRENT_HOSTNAME)
