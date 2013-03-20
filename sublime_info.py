@@ -8,6 +8,7 @@ Platform:        %(platform)s
 Hostname:        %(hostname)s
 Sublime Version: %(version)s
 Architecture:    %(arch)s
+IP:              %(ip)s
 '''
 
 
