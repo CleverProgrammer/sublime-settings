@@ -28,7 +28,7 @@
     // Windows
     { "keys": ["ctrl+o"], "command": "fuzzy_start_from_file", "context": [{"key": "shortcut_plus(platform):windows"}] },
     { "keys": ["ctrl+shift+o"], "command": "fuzzy_bookmarks_load",  "context": [{"key": "shortcut_plus(platform):windows"}] },
-    { "keys": ["ctrl+super+alt+o"], "command": "fuzzy_file_nav", "args": {"start": "C:\\workbench"}, "context": [{"key": "shortcut_plus(platform):windows"}] },
+    { "keys": ["ctrl+super+alt+o"], "command": "fuzzy_file_nav", "args": {"start": "C:\\workbench"}, "context": [{"key": "shortcut_plus(hostname):musei-opt990"}] },
 
     // Linux
     { "keys": ["ctrl+o"], "command": "fuzzy_start_from_file", "context": [{"key": "shortcut_plus(platform):linux"}] },

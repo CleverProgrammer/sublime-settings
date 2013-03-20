@@ -1,8 +1,15 @@
 [
+    //////////////////////////////////
+    // Insertion Commands
+    //////////////////////////////////
     {
         "caption": "Insert: Date",
         "command": "insert_date"
     },
+
+    //////////////////////////////////
+    // Package File Search Commands
+    //////////////////////////////////
     {
         "caption": "Package File Search: Menu",
         "command": "get_package_files_menu"
@@ -11,15 +18,22 @@
         "caption": "Package File Search: Input Search Pattern",
         "command": "get_package_files_input"
     },
+
+    //////////////////////////////////
+    // Info Commands
+    //////////////////////////////////
     {
         "caption": "Sublime API Docs",
         "command": "show_sublime_api"
     },
-    // Sort Tabs
     {
-        "caption": "Tabs: Sort Tabs",
-        "command": "sort_tabs"
+        "caption": "Sublime Info",
+        "command": "sublime_info"
     },
+
+    //////////////////////////////////
+    // RegReplace Commands
+    //////////////////////////////////
     // Convert taps to spaces
     {
         "caption": "Format: Whitespace to 4 spaces",
@@ -32,20 +46,7 @@
         "command": "reg_replace",
         "args": {"replacements": ["trim_html_whitespace", "html_compact_tab_whitespace", "html_compact_space_whitespace", "html_remove_all_newlines"]}
     },
-    // Force Copy OS Specific user files
-    {
-        "caption": "Os Specific User Files: Update User Files",
-        "command": "copy_os_user_files"
-    },
-    {
-        "caption": "Os Specific User Files: Backup User Files",
-        "command": "backup_os_user_files"
-    },
-    {
-        "caption": "Os Specific User Files: Clean Orphaned Backup Files",
-        "command": "clean_orphaned_os_user_files"
-    },
-    // Clean Up
+        // Clean Up
     {
         "caption": "Clean Up: JSON",
         "command": "reg_replace",
@@ -108,5 +109,22 @@
         "caption": "Replace: Swap Raw Python Quotes to Double",
         "command": "reg_replace",
         "args": {"replacements": ["escape_python_raw_double_quotes", "swap_python_raw_quotes_to_double", "unescape_python_raw_single_quotes"], "find_only": true}
+    },
+
+    //////////////////////////////////
+    // OS Specific User Files commands
+    //////////////////////////////////
+    // Force Copy OS Specific user files
+    {
+        "caption": "Os Specific User Files: Update User Files",
+        "command": "copy_os_user_files"
+    },
+    {
+        "caption": "Os Specific User Files: Backup User Files",
+        "command": "backup_os_user_files"
+    },
+    {
+        "caption": "Os Specific User Files: Clean Orphaned Backup Files",
+        "command": "clean_orphaned_os_user_files"
     }
 ]
