@@ -50,17 +50,17 @@
     {
         "caption": "Clean Up: JSON",
         "command": "reg_replace",
-        "args": {"replacements": ["remove_json_dangling_commas", "remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+        "args": {"replacements": ["remove_json_dangling_commas", "remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true, "regex_full_file_with_selections": true}
     },
     {
         "caption": "Clean Up: C/C++",
         "command": "reg_replace",
-        "args": {"replacements": ["remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+        "args": {"replacements": ["remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true, "regex_full_file_with_selections": true}
     },
     {
         "caption": "Clean Up: Python",
         "command": "reg_replace",
-        "args": {"replacements": ["remove_trailing_spaces", "trim_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+        "args": {"replacements": ["remove_trailing_spaces", "trim_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true, "regex_full_file_with_selections": true}
     },
     // Remove Items
     {
@@ -71,12 +71,12 @@
     {
         "caption": "Remove: Excessive Newlines",
         "command": "reg_replace",
-        "args": {"replacements": ["remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+        "args": {"replacements": ["remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true, "regex_full_file_with_selections": true}
     },
     {
         "caption": "Remove: All Comments",
         "command": "reg_replace",
-        "args": {"replacements": ["remove_comments", "remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true}
+        "args": {"replacements": ["remove_comments", "remove_trailing_spaces", "remove_excessive_newlines", "ensure_newline_at_file_end"], "find_only": true, "regex_full_file_with_selections": true}
     },
     // Folding
     {
