@@ -6,6 +6,10 @@
         "caption": "Insert: Date",
         "command": "insert_date"
     },
+    {
+        "caption": "Insert: UTC Date",
+        "command": "insert_utc_date"
+    },
 
     //////////////////////////////////
     // Package File Search Commands

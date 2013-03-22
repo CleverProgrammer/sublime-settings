@@ -33,7 +33,7 @@ Example: This shows how to create shortcuts that execute only in a given shorcut
         "command": "shortcut_plus_test",
         "context":
         [
-            {"key": "shortcut_plus:MyProfile1"},
+            {"key": "shortcut_plus(profile):MyProfile1"},
             {"key": "selection_empty", "operator": "equal", "operand": true, "match_all": true}
         ],
         "args": {
@@ -46,7 +46,7 @@ Example: This shows how to create shortcuts that execute only in a given shorcut
         "command": "shortcut_plus_test",
         "context":
         [
-            {"key": "shortcut_plus:MyProfile2"},
+            {"key": "shortcut_plus(profile):MyProfile2"},
             {"key": "selection_empty", "operator": "equal", "operand": false, "match_all": true}
         ],
         "args": {
@@ -92,8 +92,8 @@ class ShortcutMode(object):
 class ShortcutPlusModeListener(sublime_plugin.EventListener):
     def on_query_context(self, view, key, operator, operand, match_all):
         handeled = False
-        if ShortcutMode.enabled and key.startswith("shortcut_plus:"):
-            if ShortcutMode.profile == key[len("shortcut_plus:"):len(key)]:
+        if ShortcutMode.enabled and key.startswith("shortcut_plus(profile):"):
+            if ShortcutMode.profile == key[len("shortcut_plus(profile):"):len(key)]:
                 handeled = True
         elif key.startswith("shortcut_plus(platform):"):
             if CURRENT_PLATFORM == key[len("shortcut_plus(platform):"):len(key)]:
