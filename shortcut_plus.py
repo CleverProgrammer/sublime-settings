@@ -101,6 +101,9 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
         elif key.startswith("shortcut_plus(hostname):"):
             if CURRENT_HOSTNAME == key[len("shortcut_plus(hostname):"):len(key)]:
                 handeled = True
+        elif key.startswith("shortcut_plus(ip):"):
+            if socket.gethostbyname(socket.gethostname()) == key[len("shortcut_plus(ip):"):len(key)]:
+                handeled = True
         elif key.startswith("shortcut_plus(timeframe):"):
             current_time, _ = get_current_time()
             t_min, t_max = translate_time(key[len("shortcut_plus(timeframe):"):len(key)])
