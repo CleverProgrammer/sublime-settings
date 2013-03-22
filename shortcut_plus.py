@@ -102,14 +102,11 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
             if CURRENT_HOSTNAME == key[len("shortcut_plus(hostname):"):len(key)]:
                 handeled = True
         elif key.startswith("shortcut_plus(timeframe):"):
-            print("timeframe")
             current_time, _ = get_current_time()
             t_min, t_max = translate_time(key[len("shortcut_plus(timeframe):"):len(key)])
             if t_min < t_max and t_min <= current_time  < t_max:
-                print("got it")
                 handeled = True
             elif t_min > t_max and (t_min <= current_time or current_time < t_max):
-                print("got it 2")
                 handled = True
         return handeled
 
