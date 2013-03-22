@@ -6,21 +6,19 @@
     {
         "keys": ["alt+`"],
         "command": "toggle_shortcut_plus",
-        "context": [{"key": "toggle_shortcut_plus"}],
         "args": {"profile": "Alternate Profile"}
     },
     // Shortcut Plus Toggle
     {
         "keys": ["ctrl+alt+`"],
         "command": "toggle_shortcut_plus",
-        "context": [{"key": "toggle_shortcut_plus"}],
         "args": {"profile": "Reserved"}
     },
 
     //////////////////////////////////
     // Scope Hunter
     //////////////////////////////////
-    { "keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" },
+    {"keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" },
 
     //////////////////////////////////
     // Fuzzy File Nav

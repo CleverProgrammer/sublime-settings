@@ -10,14 +10,12 @@ Example:  This shows how to define two shortcut profiles bound to shortcuts
     {
         "keys": ["alt+`"],
         "command": "toggle_shortcut_plus",
-        "context": [{"key": "toggle_shortcut_plus"}],
         "args": {"profile": "MyProfile1"}
     },
     // Shortcut Plus Toggle
     {
         "keys": ["ctrl+alt+`"],
         "command": "toggle_shortcut_plus",
-        "context": [{"key": "toggle_shortcut_plus"}],
         "args": {"profile": "MyProfile2"}
     },
 
@@ -60,10 +58,31 @@ Example: This shows how to create shortcuts that execute only in a given shorcut
 import sublime
 import sublime_plugin
 import socket
+from datetime import datetime, timedelta
+import time
 
 CURRENT_PLATFORM = sublime.platform()
 CURRENT_HOSTNAME = socket.gethostname().lower()
 
+
+def total_seconds(t):
+    return int((t.microseconds + (t.seconds + t.days * 24 * 3600) * 10 ** 6) / 10 ** 6)
+
+
+def get_current_time():
+    now = datetime.now()
+    seconds = total_seconds(timedelta(hours=now.hour, minutes=now.minute, seconds=now.second))
+    return seconds, now
+
+
+def translate_time(t):
+    mn, mx = t.replace(" ", "").split('-')
+    t_min = time.strptime(mn, '%H:%M')
+    t_max = time.strptime(mx, '%H:%M')
+    return (
+        total_seconds(timedelta(hours=t_min.tm_hour, minutes=t_min.tm_min, seconds=t_min.tm_sec)),
+        total_seconds(timedelta(hours=t_max.tm_hour, minutes=t_max.tm_min, seconds=t_max.tm_sec))
+    )
 
 class ShortcutMode(object):
     enabled = False
@@ -73,9 +92,7 @@ class ShortcutMode(object):
 class ShortcutPlusModeListener(sublime_plugin.EventListener):
     def on_query_context(self, view, key, operator, operand, match_all):
         handeled = False
-        if key == "toggle_shortcut_plus":
-            handeled = True
-        elif ShortcutMode.enabled and key.startswith("shortcut_plus:"):
+        if ShortcutMode.enabled and key.startswith("shortcut_plus:"):
             if ShortcutMode.profile == key[len("shortcut_plus:"):len(key)]:
                 handeled = True
         elif key.startswith("shortcut_plus(platform):"):
@@ -84,6 +101,16 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
         elif key.startswith("shortcut_plus(hostname):"):
             if CURRENT_HOSTNAME == key[len("shortcut_plus(hostname):"):len(key)]:
                 handeled = True
+        elif key.startswith("shortcut_plus(timeframe):"):
+            print("timeframe")
+            current_time, _ = get_current_time()
+            t_min, t_max = translate_time(key[len("shortcut_plus(timeframe):"):len(key)])
+            if t_min < t_max and t_min <= current_time  < t_max:
+                print("got it")
+                handeled = True
+            elif t_min > t_max and (t_min <= current_time or current_time < t_max):
+                print("got it 2")
+                handled = True
         return handeled
 
 
