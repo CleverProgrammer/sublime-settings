@@ -107,7 +107,7 @@ class ShortcutPlusModeListener(sublime_plugin.EventListener):
         elif key.startswith("shortcut_plus(timeframe):"):
             current_time, _ = get_current_time()
             t_min, t_max = translate_time(key[len("shortcut_plus(timeframe):"):len(key)])
-            if t_min < t_max and t_min <= current_time  < t_max:
+            if t_min < t_max and t_min <= current_time < t_max:
                 handeled = True
             elif t_min > t_max and (t_min <= current_time or current_time < t_max):
                 handled = True

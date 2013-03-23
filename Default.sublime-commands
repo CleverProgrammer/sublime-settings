@@ -4,11 +4,12 @@
     //////////////////////////////////
     {
         "caption": "Insert: Date",
-        "command": "insert_date"
+        "command": "insert_date_time"
     },
     {
-        "caption": "Insert: UTC Date",
-        "command": "insert_utc_date"
+        "caption": "Insert: UTC Date Time",
+        "command": "insert_date_time",
+        "args": { "format": "%Y-%m-%d %H:%M:%S", "utc": true }
     },
 
     //////////////////////////////////
