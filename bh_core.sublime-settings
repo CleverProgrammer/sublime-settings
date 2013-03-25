@@ -189,7 +189,7 @@
             "style": "tag",
             "scope_exclude": ["string", "comment"],
             "language_filter": "whitelist",
-            "language_list": ["HTML+CFML", "ColdFusion", "ColdFusionCFC", "python"],
+            "language_list": ["HTML+CFML", "ColdFusion", "ColdFusionCFC"],
             "plugin_library": "bh_modules.tags",
             "find_in_sub_search": "only",
             "enabled": false

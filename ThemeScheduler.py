@@ -180,7 +180,11 @@ class ThemeScheduler(object):
             theme, msg = cls.next_change.theme, cls.next_change.msg
             cls.current_theme = cls.next_change.theme
             # Get the next before changing
-            cls.update_theme(theme, msg)
+            if cls.current_time is not None and cls.next_change.time == cls.current_time:
+                cls.update_theme(theme, None)
+            else:
+                cls.current_time = cls.next_change.time
+                cls.update_theme(theme, msg)
         seconds, now = get_current_time()
         cls.get_next_change(seconds, now)
 
