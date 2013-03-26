@@ -5,7 +5,7 @@
 	<key>comment</key>
 	<string>http://chriskempson.com</string>
 	<key>name</key>
-	<string>Tomorrow Night - Eighties</string>
+	<string>Tomorrow Night - Eighties (Faceless Mod)</string>
 	<key>settings</key>
 	<array>
 		<dict>
@@ -17,16 +17,16 @@
 				<string>#CCCCCC</string>
 				<key>foreground</key>
 				<string>#CCCCCC</string>
+				<key>gutter</key>
+				<string>#3D3D3D</string>
+				<key>gutterForeground</key>
+				<string>#888888</string>
 				<key>invisibles</key>
 				<string>#6A6A6A</string>
 				<key>lineHighlight</key>
 				<string>#393939</string>
 				<key>selection</key>
 				<string>#515151</string>
-				<key>gutterForeground</key>
-				<string>#888888</string>
-				<key>gutter</key>
-				<string>#3D3D3D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -119,7 +119,6 @@
 			<string>Function, Special Method, Block Level</string>
 			<key>scope</key>
 			<string>entity.name.function, meta.function-call.generic, meta.function-call.object, meta.function-call.static, support.function, keyword.other.special-method</string>
-			<!-- <string>entity.name.function, meta.function-call, support.function, keyword.other.special-method, meta.block-level</string> -->
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
@@ -224,10 +223,10 @@
 			<string>meta.diff.header.from-file, meta.diff.header.to-file</string>
 			<key>settings</key>
 			<dict>
-				<key>foreground</key>
-				<string>#FFFFFF</string>
 				<key>background</key>
 				<string>#4271ae</string>
+				<key>foreground</key>
+				<string>#FFFFFF</string>
 			</dict>
 		</dict>
 		<dict>
@@ -382,10 +381,10 @@
 			<string>hexviewer.highlight</string>
 			<key>settings</key>
 			<dict>
-				<key>foreground</key>
-				<string>#2D2D2D</string>
 				<key>background</key>
 				<string>#F2777A</string>
+				<key>foreground</key>
+				<string>#2D2D2D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -395,10 +394,10 @@
 			<string>highlightword</string>
 			<key>settings</key>
 			<dict>
-				<key>foreground</key>
-				<string>#2D2D2D</string>
 				<key>background</key>
 				<string>#888888</string>
+				<key>foreground</key>
+				<string>#2D2D2D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -408,10 +407,10 @@
 			<string>selected_day</string>
 			<key>settings</key>
 			<dict>
-				<key>foreground</key>
-				<string>#2D2D2D</string>
 				<key>background</key>
 				<string>#F2777A</string>
+				<key>foreground</key>
+				<string>#2D2D2D</string>
 			</dict>
 		</dict>
 		<dict>
@@ -421,10 +420,10 @@
 			<string>holiday</string>
 			<key>settings</key>
 			<dict>
-				<key>foreground</key>
-				<string>#2D2D2D</string>
 				<key>background</key>
 				<string>#66CCCC</string>
+				<key>foreground</key>
+				<string>#2D2D2D</string>
 			</dict>
 		</dict>
 	</array>

@@ -5,26 +5,28 @@
 	<key>comment</key>
 	<string>http://chriskempson.com</string>
 	<key>name</key>
-	<string>Tomorrow Night - Eighties (Faceless Mod)</string>
+	<string>Tomorrow Night - Eighties - Blue (Faceless Mod)</string>
 	<key>settings</key>
 	<array>
 		<dict>
 			<key>settings</key>
 			<dict>
 				<key>background</key>
-				<string>#151515</string>
+				<string>#002451</string>
 				<key>caret</key>
 				<string>#CCCCCC</string>
 				<key>foreground</key>
 				<string>#CCCCCC</string>
 				<key>gutter</key>
-				<string>#252525</string>
+				<string>#103461</string>
+				<key>gutterForeground</key>
+				<string>#888888</string>
 				<key>invisibles</key>
 				<string>#6A6A6A</string>
 				<key>lineHighlight</key>
-				<string>#2D2D2D</string>
+				<string>#00346E</string>
 				<key>selection</key>
-				<string>#393939</string>
+				<string>#003F8E</string>
 			</dict>
 		</dict>
 		<dict>
