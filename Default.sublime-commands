@@ -39,6 +39,12 @@
     //////////////////////////////////
     // RegReplace Commands
     //////////////////////////////////
+    // Buggy clean up for wxFormBuilder Windows
+    {
+        "caption": "Clean Up: wxFormBuilder",
+        "command": "reg_replace",
+        "args": {"replacements": ["wxformbuilder_class", "wxformbuilder_init", "wxformbuilder_def"], "find_only": true}
+    },
     // Convert taps to spaces
     {
         "caption": "Format: Whitespace to 4 spaces",
