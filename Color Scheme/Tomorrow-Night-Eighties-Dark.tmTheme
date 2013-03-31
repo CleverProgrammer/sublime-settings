@@ -45,8 +45,6 @@
 			<string>keyword.operator.class, constant.other, source.php.embedded.line</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#CCCCCC</string>
 			</dict>
@@ -69,8 +67,6 @@
 			<string>constant.numeric, constant.language, support.constant, constant.character, variable.parameter, punctuation.section.embedded, keyword.other.unit</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#F99157</string>
 			</dict>
@@ -82,8 +78,6 @@
 			<string>entity.name.class, entity.name.type.class, support.type, support.class</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#FFCC66</string>
 			</dict>
@@ -95,8 +89,6 @@
 			<string>string, constant.other.symbol, entity.other.inherited-class, markup.heading</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#99CC99</string>
 			</dict>
@@ -119,8 +111,6 @@
 			<string>entity.name.function, meta.function-call.generic, meta.function-call.object, meta.function-call.static, support.function, keyword.other.special-method</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#6699CC</string>
 			</dict>
@@ -132,8 +122,6 @@
 			<string>keyword, storage, storage.type, entity.name.tag.css</string>
 			<key>settings</key>
 			<dict>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#CC99CC</string>
 			</dict>
@@ -147,8 +135,6 @@
 			<dict>
 				<key>background</key>
 				<string>#F2777A</string>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#CDCDCD</string>
 			</dict>
@@ -175,8 +161,6 @@
 			<dict>
 				<key>background</key>
 				<string>#CC99CC</string>
-				<key>fontStyle</key>
-				<string></string>
 				<key>foreground</key>
 				<string>#CDCDCD</string>
 			</dict>
@@ -429,3 +413,4 @@
 	<string>DE477E5B-BD4D-46B0-BF80-2EA32A2814D5</string>
 </dict>
 </plist>
+
