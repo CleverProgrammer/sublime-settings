@@ -2,7 +2,8 @@ import sublime
 import sublime_plugin
 from os.path import join, exists, basename, normpath, dirname
 from os import makedirs
-from subprocess import Popen as call
+import subprocess
+from os import popen as call
 
 PLUGIN_NAME = "User"
 
@@ -33,7 +34,7 @@ class ColorSchemeEditorCommand(sublime_plugin.ApplicationCommand):
                 scheme_file = settings.set('color_scheme', "Packages/User/ColorSchemeEditorTemp/%s" % basename(scheme_file))
 
             # Call the editor with the theme file
-            call([THEME_EDITOR, actual_scheme_file])
+            subprocess.Popen([THEME_EDITOR, actual_scheme_file])
 
 
 def plugin_loaded():
@@ -44,6 +45,9 @@ def plugin_loaded():
     if platform == "osx":
         THEME_EDITOR = join(sublime.packages_path(), PLUGIN_NAME, "subclrschm.app", "Contents", "MacOS", "subclrschm")
     elif platform == "windows":
-        THEME_EDITOR = join(sublime.packages_path(), PLUGIN_NAME, "subclrschm.exe")
+        if sublime.arch() == "x64":
+            THEME_EDITOR = join(sublime.packages_path(), PLUGIN_NAME, "subclrschm64.exe")
+        else:
+            sublime.error_message("Color Scheme Editor:\nx86 is not supported right now.\nx86 support coming in the future.")
     elif platform == "linux":
         sublime.error_message("Color Scheme Editor:\nSorry, currently no love for the penguin.\nLinux support coming in the future.")
