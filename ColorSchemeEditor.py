@@ -29,7 +29,8 @@ class ColorSchemeEditorCommand(sublime_plugin.ApplicationCommand):
                 with open(actual_scheme_file, "wb") as f:
                     f.write(text)
 
-                # TODO: option to set temp theme to current theme for live editing
+                # Load unarchived theme
+                scheme_file = settings.set('color_scheme', "Packages/User/ColorSchemeEditorTemp/%s" % basename(scheme_file))
 
             # Call the editor with the theme file
             call([THEME_EDITOR, actual_scheme_file])

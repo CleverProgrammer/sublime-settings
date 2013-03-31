@@ -25,7 +25,6 @@
             "name": "Foreground",
             "scope": "keyword.operator.class, constant.other, source.php.embedded.line",
             "settings": {
-                "fontStyle": "",
                 "foreground": "#CCCCCC"
             }
         },
@@ -40,7 +39,6 @@
             "name": "Number, Constant, Function Argument, Tag Attribute, Embedded",
             "scope": "constant.numeric, constant.language, support.constant, constant.character, variable.parameter, punctuation.section.embedded, keyword.other.unit",
             "settings": {
-                "fontStyle": "",
                 "foreground": "#F99157"
             }
         },
@@ -48,7 +46,6 @@
             "name": "Class, Support",
             "scope": "entity.name.class, entity.name.type.class, support.type, support.class",
             "settings": {
-                "fontStyle": "",
                 "foreground": "#FFCC66"
             }
         },
@@ -56,7 +53,6 @@
             "name": "String, Symbols, Inherited Class, Markup Heading",
             "scope": "string, constant.other.symbol, entity.other.inherited-class, markup.heading",
             "settings": {
-                "fontStyle": "",
                 "foreground": "#99CC99"
             }
         },
@@ -71,7 +67,6 @@
             "name": "Function, Special Method, Block Level",
             "scope": "entity.name.function, meta.function-call.generic, meta.function-call.object, meta.function-call.static, support.function, keyword.other.special-method",
             "settings": {
-                "fontStyle": "",
                 "foreground": "#6699CC"
             }
         },
@@ -79,7 +74,6 @@
             "name": "Keyword, Storage",
             "scope": "keyword, storage, storage.type, entity.name.tag.css",
             "settings": {
-                "fontStyle": "",
                 "foreground": "#CC99CC"
             }
         },
@@ -88,7 +82,6 @@
             "scope": "invalid",
             "settings": {
                 "background": "#F2777A",
-                "fontStyle": "",
                 "foreground": "#CDCDCD"
             }
         },
@@ -105,7 +98,6 @@
             "scope": "invalid.deprecated",
             "settings": {
                 "background": "#CC99CC",
-                "fontStyle": "",
                 "foreground": "#CDCDCD"
             }
         },
