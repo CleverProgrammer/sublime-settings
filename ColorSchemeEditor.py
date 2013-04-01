@@ -45,9 +45,6 @@ def plugin_loaded():
     if platform == "osx":
         THEME_EDITOR = join(sublime.packages_path(), PLUGIN_NAME, "subclrschm.app", "Contents", "MacOS", "subclrschm")
     elif platform == "windows":
-        if sublime.arch() == "x64":
-            THEME_EDITOR = join(sublime.packages_path(), PLUGIN_NAME, "subclrschm64.exe")
-        else:
-            sublime.error_message("Color Scheme Editor:\nx86 is not supported right now.\nx86 support coming in the future.")
+        THEME_EDITOR = join(sublime.packages_path(), PLUGIN_NAME, "subclrschm.exe")
     elif platform == "linux":
         sublime.error_message("Color Scheme Editor:\nSorry, currently no love for the penguin.\nLinux support coming in the future.")

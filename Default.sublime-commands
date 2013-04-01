@@ -50,7 +50,7 @@
     {
         "caption": "Clean Up: wxFormBuilder",
         "command": "reg_replace",
-        "args": {"replacements": ["wxformbuilder_class", "wxformbuilder_init", "wxformbuilder_def"], "find_only": true}
+        "args": {"replacements": ["wxformbuilder_class", "wxformbuilder_init", "wxformbuilder_def", "wxformbuilder_bind"], "find_only": true}
     },
     // Convert taps to spaces
     {
