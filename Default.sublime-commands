@@ -6,6 +6,11 @@
         "caption": "Edit Color Scheme",
         "command": "color_scheme_editor"
     },
+    {
+        "caption": "Edit Color Scheme (direct write)",
+        "command": "color_scheme_editor",
+        "args": { "no_direct_edit": false }
+    },
     //////////////////////////////////
     // Insertion Commands
     //////////////////////////////////
