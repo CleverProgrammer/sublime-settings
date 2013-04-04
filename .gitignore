@@ -24,3 +24,7 @@ SortTabsInternal.sublime-settings
 /Package Control.last-run
 
 CalendarEvents/*
+
+*.log
+
+ColorSchemeEditorTemp/*
