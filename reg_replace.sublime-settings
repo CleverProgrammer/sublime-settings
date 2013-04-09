@@ -188,11 +188,11 @@
             "multi_pass_regex": true
         },
         "wxformbuilder_init": {
-            "find" : "(wx\\.(?:Panel|Frame)\\.__init__ \\(.*\\))(wx\\.(?:Panel|Frame).*)",
+            "find" : "(wx\\.(?:Panel|Frame|Dialog)\\.__init__ \\(.*\\))(wx\\.(?:Panel|Frame|Dialog).*)",
             "replace": "\\1"
         },
         "wxformbuilder_class": {
-            "find" : "(wx\\.(?:Panel|Frame))( wx\\.(?:Panel|Frame))",
+            "find" : "(wx\\.(?:Panel|Frame|Dialog))( wx\\.(?:Panel|Frame|Dialog))",
             "replace": "\\1"
         },
         "wxformbuilder_def": {
