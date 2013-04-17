@@ -1,7 +1,7 @@
 """
 Raw Line Edit
 Licensed under MIT
-Copyright (c) 2011 Isaac Muse <isaacmuse@gmail.com>
+Copyright (c) 2013 Isaac Muse <isaacmuse@gmail.com>
 """
 import sublime
 import sublime_plugin
@@ -55,7 +55,7 @@ class ToggleRawLineEditCommand(sublime_plugin.TextCommand):
             else:
                 if self.view.is_dirty():
                     if sublime.ok_cancel_dialog("Raw Line Edit:\nFile has unsaved changes.  Save?"):
-                        sublime.view.run_command("save")
+                        self.view.run_command("save")
                 with codecs.open(file_name, "r", "utf-8") as f:
                     self.view.replace(edit, sublime.Region(0, self.view.size()), add_newline_glyph(f.read()))
                     self.view.set_line_endings("Unix")
