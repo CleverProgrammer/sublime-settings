@@ -1,15 +1,1 @@
-{
-    "fileTypes": [
-        "Raw Line Edits"
-    ],
-    "keyEquivalent": "~^R",
-    "name": "raw-line-edit",
-    "patterns": [
-        {
-            "match": "\\r*¬$",
-            "name": "keyword.line-end"
-        }
-    ],
-    "scopeName": "source.raw-line-edit",
-    "uuid": "d4af8d08-01af-4b2e-8bd5-5671c87b7237"
-}
+{    "fileTypes": [        "Raw Line Edits"    ],    "keyEquivalent": "~^R",    "name": "raw-line-edit",    "patterns": [        {            "match": "\\r*¬$",            "name": "keyword.line-end"        }    ],    "scopeName": "source.raw-line-edit",    "uuid": "d4af8d08-01af-4b2e-8bd5-5671c87b7237"}

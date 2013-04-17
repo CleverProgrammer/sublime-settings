@@ -109,6 +109,7 @@ class RawLineEditListener(sublime_plugin.EventListener):
             view.run_command("raw_lines_edit_replace")
             view.set_scratch(True)
             view.set_read_only(True)
+            view.set_syntax_file("Packages/User/RawLineEdit.hidden-tmLanguage")
 
     def on_query_context(self, view, key, operator, operand, match_all):
         handeled = False

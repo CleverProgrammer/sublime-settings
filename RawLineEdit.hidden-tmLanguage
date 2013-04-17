@@ -14,9 +14,15 @@
 	<array>
 		<dict>
 			<key>match</key>
-			<string>\r*¬$</string>
+			<string>\r</string>
 			<key>name</key>
-			<string>keyword.line-end</string>
+			<string>glyph.carriage-return</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>¬$</string>
+			<key>name</key>
+			<string>glyph.new-line</string>
 		</dict>
 	</array>
 	<key>scopeName</key>
