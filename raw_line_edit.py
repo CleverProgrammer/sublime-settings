@@ -7,15 +7,26 @@ import sublime
 import sublime_plugin
 import codecs
 from os.path import basename
+
 import re
+
+new_line = "¬"
+
+
+def strip_newline_glyph(text):
+    return re.sub(r"%s\n" % new_line, "\n", text)
+
+
+def add_newline_glyph(text):
+    return re.sub(r"\n", "%s\n" % new_line, text)
 
 
 def strip_carriage_returns(text):
-    return re.sub(r"\r", "", text)
+    return re.sub(r"\r*%s\n" % new_line, "%s\n" % new_line, text)
 
 
 def add_carriage_returns(text):
-    return re.sub(r"(?<!\r)\n", "\r\n", text)
+    return re.sub(r"(?<!\r)%s\n" % new_line, "\r%s\n" % new_line, text)
 
 
 class ToggleRawLineEditCommand(sublime_plugin.TextCommand):
@@ -28,6 +39,7 @@ class ToggleRawLineEditCommand(sublime_plugin.TextCommand):
                         self.view.run_command("save")
                 self.view.set_scratch(True)
                 file_name = self.view.settings().get("RawLineEditFilename")
+                syntax = self.view.settings().get("RawLineEditSyntax")
                 win = self.view.window()
                 temp = None
                 if len(win.views()) <= 1:
@@ -39,15 +51,18 @@ class ToggleRawLineEditCommand(sublime_plugin.TextCommand):
                     win.focus_view(temp)
                     win.run_command("close_file")
                 win.focus_view(new_view)
+                new_view.set_syntax_file(syntax)
             else:
                 if self.view.is_dirty():
                     if sublime.ok_cancel_dialog("Raw Line Edit:\nFile has unsaved changes.  Save?"):
                         sublime.view.run_command("save")
                 with codecs.open(file_name, "r", "utf-8") as f:
-                    self.view.replace(edit, sublime.Region(0, self.view.size()), f.read())
+                    self.view.replace(edit, sublime.Region(0, self.view.size()), add_newline_glyph(f.read()))
                     self.view.set_line_endings("Unix")
                     self.view.settings().set("RawLineEdit", True)
+                    self.view.settings().set("RawLineEditSyntax", self.view.settings().get('syntax'))
                     self.view.settings().set("RawLineEditFilename", file_name)
+                    self.view.set_syntax_file("Packages/User/RawLineEdit.hidden-tmLanguage")
                     self.view.set_scratch(True)
                     self.view.set_read_only(True)
 
@@ -65,7 +80,36 @@ class RawLineInsertCommand(sublime_plugin.TextCommand):
         self.view.set_read_only(True)
 
 
+class RawLinesEditReplaceCommand(sublime_plugin.TextCommand):
+    text = None
+    region = None
+
+    def run(self, edit):
+        cls = RawLinesEditReplaceCommand
+        if cls.text is not None and cls.region is not None:
+            self.view.replace(edit, cls.region, cls.text)
+        cls.text = None
+        cls.region = None
+
+
 class RawLineEditListener(sublime_plugin.EventListener):
+    def on_pre_save(self, view):
+        if view.settings().get("RawLineEdit", False):
+            RawLinesEditReplaceCommand.region = sublime.Region(0, view.size())
+            RawLinesEditReplaceCommand.text = strip_newline_glyph(view.substr(RawLinesEditReplaceCommand.region))
+            view.set_read_only(False)
+            view.run_command("raw_lines_edit_replace")
+            view.set_read_only(True)
+
+    def on_post_save(self, view):
+        if view.settings().get("RawLineEdit", False):
+            RawLinesEditReplaceCommand.region = sublime.Region(0, view.size())
+            RawLinesEditReplaceCommand.text = add_newline_glyph(view.substr(RawLinesEditReplaceCommand.region))
+            view.set_read_only(False)
+            view.run_command("raw_lines_edit_replace")
+            view.set_scratch(True)
+            view.set_read_only(True)
+
     def on_query_context(self, view, key, operator, operand, match_all):
         handeled = False
         if view.settings().get("RawLineEdit", False) and key.startswith("raw_line_edit"):

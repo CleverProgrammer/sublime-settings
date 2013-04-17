@@ -18,7 +18,6 @@
     //////////////////////////////////
     // Raw Line Edit
     //////////////////////////////////
-    // Navigate tabstops in wrapped selection
     {
         "keys": ["enter"],
         "command": "raw_line_insert",
