@@ -16,6 +16,33 @@
     },
 
     //////////////////////////////////
+    // Raw Line Edit
+    //////////////////////////////////
+    // Navigate tabstops in wrapped selection
+    {
+        "keys": ["enter"],
+        "command": "raw_line_insert",
+        "context":
+        [
+            {
+                "key": "raw_line_edit"
+            }
+        ],
+        "args": { "style": "Unix" }
+    },
+    {
+        "keys": ["shift+enter"],
+        "command": "raw_line_insert",
+        "context":
+        [
+            {
+                "key": "raw_line_edit"
+            }
+        ],
+        "args": { "style": "Windows" }
+    },
+
+    //////////////////////////////////
     // Scope Hunter
     //////////////////////////////////
     {"keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" },
