@@ -1,0 +1,4 @@
+{
+    // Use a buffer instead of the output panel
+    "use_buffer": true
+}
