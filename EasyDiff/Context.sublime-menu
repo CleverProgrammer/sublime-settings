@@ -1,0 +1,38 @@
+[
+    { "caption": "-" },
+    {
+        "caption": "EasyDiff",
+        "children":
+        [
+            {
+                "caption": "Set Left Buffer",
+                "command": "easy_diff_set_left"
+            },
+            {
+                "caption": "Compare View with \"**selection**\"",
+                "command": "easy_diff_compare_both"
+            },
+            { "caption": "-"},
+            {
+                "caption": "Set Clipboard to Left Buffer",
+                "command": "easy_diff_set_left_clipboard"
+            },
+            {
+                "caption": "Compare Clipboard with \"**selection**\"",
+                "command": "easy_diff_compare_both",
+                "args": { "special": "clip" }
+            },
+            { "caption": "-"},
+            {
+                "caption": "Set Selection(s) to Left Buffer",
+                "command": "easy_diff_set_left_selection"
+            },
+            {
+                "caption": "Compare Selection(s) with \"**selection**\"",
+                "command": "easy_diff_compare_both",
+                "args": { "special": "selection" }
+            }
+        ]
+    },
+    { "caption": "-"}
+]
