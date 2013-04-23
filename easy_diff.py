@@ -30,9 +30,8 @@ DIFF_MENU = '''[
                 "command": "easy_diff_set_left_clipboard"
             },
             {
-                "caption": "Compare Clipboard with \\"%(file_name_clip)s\\"",
-                "command": "easy_diff_compare_both",
-                "args": { "special": "clip" }
+                "caption": "Compare Clipboard with \\"%(file_name)s\\"",
+                "command": "easy_diff_compare_both_clipboard"
             },
             { "caption": "-"},
             {
@@ -40,15 +39,24 @@ DIFF_MENU = '''[
                 "command": "easy_diff_set_left_selection"
             },
             {
-                "caption": "Compare Selection(s) with \\"%(file_name_clip)s\\"",
-                "command": "easy_diff_compare_both",
-                "args": { "special": "selection" }
+                "caption": "Compare Selection(s) with \\"%(file_name)s\\"",
+                "command": "easy_diff_compare_both_selection"
             }
         ]
     },
     { "caption": "-"}
 ]
 '''
+
+
+def update_menu(name="..."):
+    menu_path = join(sublime.packages_path(), "User", MENU_FOLDER)
+    if not exists(menu_path):
+        makedirs(menu_path)
+    if exists(menu_path):
+        menu = join(menu_path, CONTEXT_MENU)
+        with open(menu, "w") as f:
+            f.write(DIFF_MENU % {"file_name": name})
 
 
 class EasyDiffView(object):
@@ -126,16 +134,6 @@ class EasyDiff(object):
             win.run_command("show_panel", {"panel": "output.easy_diff"})
 
 
-def update_menu(name="..."):
-    menu_path = join(sublime.packages_path(), "User", MENU_FOLDER)
-    if not exists(menu_path):
-        makedirs(menu_path)
-    if exists(menu_path):
-        menu = join(menu_path, CONTEXT_MENU)
-        with open(menu, "w") as f:
-            f.write(DIFF_MENU % {"file_name": name, "file_name_clip": name})
-
-
 class EasyDiffSetLeftCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         global LEFT
@@ -146,23 +144,16 @@ class EasyDiffSetLeftCommand(sublime_plugin.TextCommand):
         update_menu(basename(name))
 
 
-class EasyDiffSetRightCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
-        global RIGHT
-        RIGHT = {"win_id": self.view.window().id(), "view_id": self.view.id(), "clip": None}
-
-
 class EasyDiffSetLeftClipboardCommand(sublime_plugin.TextCommand):
     def run(self, edit):
         global LEFT
         LEFT = {"win_id": None, "view_id": None, "clip": EasyDiffView("**clipboard**", sublime.get_clipboard())}
         update_menu("**clipboard**")
 
+    def is_enabled(self):
+        return bool(sublime.load_settings("easy_diff.sublime-settings").get("use_clipboard", True))
 
-class EasyDiffSetRightClipboardCommand(sublime_plugin.TextCommand):
-    def run(self, edit):
-        global RIGHT
-        RIGHT = {"win_id": None, "view_id": None, "clip": EasyDiffView("**clipboard**", sublime.get_clipboard())}
+    is_visible = is_enabled
 
 
 class EasyDiffSelection(object):
@@ -170,11 +161,21 @@ class EasyDiffSelection(object):
         bfr = ""
         length = len(self.view.sel())
         for s in self.view.sel():
+            if s.size() == 0:
+                continue
             bfr += self.view.substr(s)
             if length > 1:
                 bfr += "\n"
             length -= 1
         return bfr
+
+    def has_selections(self):
+        selections = False
+        for s in self.view.sel():
+            if s.size() > 0:
+                selections = True
+                break
+        return selections
 
 
 class EasyDiffSetLeftSelectionCommand(sublime_plugin.TextCommand, EasyDiffSelection):
@@ -183,23 +184,21 @@ class EasyDiffSetLeftSelectionCommand(sublime_plugin.TextCommand, EasyDiffSelect
         LEFT = {"win_id": None, "view_id": None, "clip": EasyDiffView("**selection**", self.get_selections())}
         update_menu("**selection**")
 
+    def is_enabled(self):
+        return bool(sublime.load_settings("easy_diff.sublime-settings").get("use_selections", True)) and self.has_selections()
 
-class EasyDiffSetRightSelectionCommand(sublime_plugin.TextCommand, EasyDiffSelection):
-    def run(self, edit):
-        global RIGHT
-        RIGHT = {"win_id": None, "view_id": None, "clip": EasyDiffView("**selection**", self.get_selections())}
+    is_visible = is_enabled
 
 
 class EasyDiffCompareBothCommand(sublime_plugin.TextCommand):
-    def run(self, edit, special=None):
-        if special is None:
-            self.view.run_command("easy_diff_set_right")
-        elif special == "clip":
-            self.view.run_command("easy_diff_set_right_clipboard")
-        elif special == "selection":
-            self.view.run_command("easy_diff_set_right_selection")
-        else:
-            return
+    special = None
+
+    def set_right(self):
+        self.right = {"win_id": self.view.window().id(), "view_id": self.view.id(), "clip": None}
+
+    def run(self, edit):
+        self.set_right()
+
         lw = None
         rw = None
         lv = None
@@ -208,7 +207,7 @@ class EasyDiffCompareBothCommand(sublime_plugin.TextCommand):
         for w in sublime.windows():
             if w.id() == LEFT["win_id"]:
                 lw = w
-            if w.id() == RIGHT["win_id"]:
+            if w.id() == self.right["win_id"]:
                 rw = w
             if lw is not None and rw is not None:
                 break
@@ -224,20 +223,37 @@ class EasyDiffCompareBothCommand(sublime_plugin.TextCommand):
 
         if rw is not None:
             for v in rw.views():
-                if v.id() == RIGHT["view_id"]:
+                if v.id() == self.right["view_id"]:
                     rv = v
                     break
         else:
-            if RIGHT["clip"]:
-                rv = RIGHT["clip"]
+            if self.right["clip"]:
+                rv = self.right["clip"]
 
         if lv is not None and rv is not None:
             EasyDiff.compare(EasyDiffInput(lv, rv))
         else:
             print("Can't compare")
 
+
     def is_enabled(self):
-        return LEFT is not None
+        return LEFT is not None and self.is_visible()
+
+
+class EasyDiffCompareBothClipboardCommand(EasyDiffCompareBothCommand):
+    def set_right(self):
+        self.right = {"win_id": None, "view_id": None, "clip": EasyDiffView("**clipboard**", sublime.get_clipboard())}
+
+    def is_visible(self):
+        return bool(sublime.load_settings("easy_diff.sublime-settings").get("use_clipboard", True))
+
+
+class EasyDiffCompareBothSelectionCommand(EasyDiffCompareBothCommand, EasyDiffSelection):
+    def set_right(self):
+        self.right = {"win_id": None, "view_id": None, "clip": EasyDiffView("**selection**", self.get_selections())}
+
+    def is_visible(self):
+        return bool(sublime.load_settings("easy_diff.sublime-settings").get("use_selections", True)) and self.has_selections()
 
 
 class EasyDiffListener(sublime_plugin.EventListener):
