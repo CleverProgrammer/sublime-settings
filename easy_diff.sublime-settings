@@ -6,5 +6,9 @@
     "use_clipboard": true,
 
     // Enable selection commands
-    "use_selections": true
+    "use_selections": true,
+
+    // If enabled, this allows for multiple selections.
+    // Each selection is separated with a new line.
+    "multi_select": false
 }
