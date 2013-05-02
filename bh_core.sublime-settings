@@ -1,6 +1,6 @@
 {
     // Enable debug logging
-    "debug_enable": false,
+    "debug_enable": true,
 
     // Path to find icons at
     "icon_path": "BracketHighlighter/icons",
@@ -194,15 +194,26 @@
             "find_in_sub_search": "only",
             "enabled": false
         },
-        // Angle
+        // PHP Angle
         {
-            "name": "angle",
-            "open": "(<)",
-            "close": "(>)",
+            "name": "php_angle",
+            "open": "(<\\?)(?:php)?",
+            "close": "(\\?>)",
             "style": "angle",
             "scope_exclude": ["string", "comment", "keyword.operator"],
             "language_filter": "whitelist",
-            "language_list": ["HTML", "HTML 5", "XML", "PHP", "HTML (Jinja Templates)", "HTML+CFML", "ColdFusion", "ColdFusionCFC"],
+            "language_list": ["HTML", "HTML 5", "PHP"],
+            "enabled": true
+        },
+        // Angle
+        {
+            "name": "angle",
+            "open": "(<)(?!\\?)",
+            "close": "(?<!\\?)(>)",
+            "style": "angle",
+            "scope_exclude": ["string", "comment", "keyword.operator", "source.ruby.rails.embedded.html", "source.ruby.embedded.html"],
+            "language_filter": "whitelist",
+            "language_list": ["HTML", "HTML 5", "XML", "PHP", "HTML (Rails)", "HTML (Jinja Templates)", "HTML+CFML", "ColdFusion", "ColdFusionCFC"],
             "plugin_library": "bh_modules.tags",
             "enabled": true
         },
@@ -217,16 +228,29 @@
             "language_list": ["CSS"],
             "enabled": true
         },
+        // Ruby embedded HTML
+        {
+            "name": "ruby_embedded_html",
+            "open": "((?:<%\\s*\\b|^\\s*\\b)(?:if|case|until|unless|while|begin|class|module|def\\b[\\p{Ll}\\p{Lu}]*)|\\bdo)\\b",
+            "close": "\\b(end)\\b",
+            "style": "default",
+            "scope_exclude": ["source", "comment", "string"],
+            "scope_exclude_exceptions": ["source.ruby.rails.embedded.html", "source.ruby.embedded.html"],
+            "plugin_library": "bh_modules.rubykeywords",
+            "language_filter": "whitelist",
+            "language_list": ["HTML", "HTML 5", "PHP", "HTML (Rails)"],
+            "enabled": true
+        },
         // Ruby conditional statements
         {
             "name": "ruby",
-            "open": "(^\\s*\\b(?:if|case|until|unless|while|begin|class|module|def\\b\\s*[a-zA-Z_\\d]+)|\\bdo)\\b",
+            "open": "(^\\s*\\b(?:if|case|until|unless|while|begin|class|module|def\\b[\\p{Ll}\\p{Lu}]*)|\\bdo)\\b",
             "close": "\\b(end)\\b",
             "style": "default",
             "scope_exclude": ["string", "comment"],
             "plugin_library": "bh_modules.rubykeywords",
             "language_filter": "whitelist",
-            "language_list": ["Ruby"],
+            "language_list": ["Ruby", "Ruby on Rails"],
             "enabled": true
         },
         // C/C++ compile switches
@@ -361,7 +385,7 @@
     // Determine which style of tag-matching to use in which syntax
     "tag_mode": {
         "xhtml": ["XML"],
-        "html": ["HTML", "HTML 5", "PHP", "HTML (Jinja Templates)"],
+        "html": ["HTML", "HTML 5", "PHP", "HTML (Jinja Templates)", "HTML (Rails)"],
         "cfml": ["HTML+CFML", "ColdFusion", "ColdFusionCFC"]
     }
 }
