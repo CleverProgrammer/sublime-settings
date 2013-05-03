@@ -20,6 +20,9 @@ SCHEME = "color_scheme"
 FILTER_MATCH = re.compile(r'^(?:(brightness|saturation|hue|colorize|glow)\((-?[\d]+|[\d]*\.[\d]+)\)|(sepia|grayscale|invert))$')
 TWEAK_MODE = False
 
+def packages_path(pth):
+    return join(dirname(sublime.packages_path()), normpath(pth))
+
 
 class ToggleThemeTweakerModeCommand(sublime_plugin.ApplicationCommand):
     def run(self):
@@ -102,21 +105,21 @@ class ThemeTweakerRedoCommand(sublime_plugin.ApplicationCommand):
 
 class ThemeTweaker(object):
     def _ensure_temp(self):
-        temp = join(dirname(sublime.packages_path()), TEMP_PATH)
+        temp = packages_path(TEMP_PATH)
         if not exists(temp):
             makedirs(temp)
 
     def _theme_valid(self, scheme_file):
         is_working = scheme_file.startswith(TEMP_PATH + '/')
-        if is_working and self.scheme_map is not None and self.scheme_map["working"] == scheme_file and exists(join(dirname(sublime.packages_path()), normpath(self.scheme_map["original"]))):
-            self.scheme_file = join(dirname(sublime.packages_path()), normpath(self.scheme_map["original"]))
-            self.scheme_clone = join(dirname(sublime.packages_path()), normpath(self.scheme_map["working"]))
+        if is_working and self.scheme_map is not None and self.scheme_map["working"] == scheme_file and exists(packages_path(self.scheme_map["original"])):
+            self.scheme_file = packages_path(self.scheme_map["original"])
+            self.scheme_clone = packages_path(self.scheme_map["working"])
             return True
         elif not is_working:
             self._ensure_temp()
             content = sublime.load_binary_resource(scheme_file)
-            self.scheme_file = join(dirname(sublime.packages_path()), normpath(scheme_file))
-            self.scheme_clone = join(dirname(sublime.packages_path()), normpath(TEMP_PATH), basename(scheme_file))
+            self.scheme_file = packages_path(scheme_file)
+            self.scheme_clone = packages_path(join(normpath(TEMP_PATH), basename(scheme_file)))
             try:
                 with open(self.scheme_clone, "wb") as f:
                     f.write(content)
@@ -207,13 +210,18 @@ class ThemeTweaker(object):
                 filters.append(f[0] + "(%f)" % f[1])
         return filters
 
-    def clear(self):
+    def _setup(self):
+        self.filters = []
         self.settings = sublime.load_settings(PREFERENCES)
         self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
         scheme_file = self.settings.get(SCHEME, None)
         self.scheme_map = self.p_settings.get("scheme_map", None)
+        self.theme_valid = self._theme_valid(scheme_file)
 
-        if self._theme_valid(scheme_file):
+    def clear(self):
+        self._setup()
+
+        if self.theme_valid:
             with open(self.scheme_clone, "wb") as f:
                 f.write(sublime.load_binary_resource(self.scheme_map["original"]))
                 self.scheme_map["redo"] = ""
@@ -222,25 +230,18 @@ class ThemeTweaker(object):
                 sublime.save_settings(PLUGIN_SETTINGS)
 
     def clear_history(self):
-        self.settings = sublime.load_settings(PREFERENCES)
-        self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
-        scheme_file = self.settings.get(SCHEME, None)
-        self.scheme_map = self.p_settings.get("scheme_map", None)
+        self._setup()
 
-        if self._theme_valid(scheme_file):
+        if self.theme_valid:
             self.scheme_map["redo"] = ""
             self.scheme_map["undo"] = ""
             self.p_settings.set("scheme_map", self.scheme_map)
             sublime.save_settings(PLUGIN_SETTINGS)
 
     def undo(self):
-        self.filters = []
-        self.settings = sublime.load_settings(PREFERENCES)
-        self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
-        scheme_file = self.settings.get(SCHEME, None)
-        self.scheme_map = self.p_settings.get("scheme_map", None)
+        self._setup()
 
-        if self._theme_valid(scheme_file):
+        if self.theme_valid:
             plist = sublime.load_binary_resource(self.scheme_map["original"])
             undo = self.scheme_map["undo"].split(";")
             if len(undo) == 0:
@@ -259,13 +260,9 @@ class ThemeTweaker(object):
                 sublime.save_settings(PLUGIN_SETTINGS)
 
     def redo(self):
-        self.filters = []
-        self.settings = sublime.load_settings(PREFERENCES)
-        self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
-        scheme_file = self.settings.get(SCHEME, None)
-        self.scheme_map = self.p_settings.get("scheme_map", None)
+        self._setup()
 
-        if self._theme_valid(scheme_file):
+        if self.theme_valid:
             plist = sublime.load_binary_resource(self.scheme_map["original"])
             redo = self.scheme_map["redo"].split(";")
             if len(redo) == 0:
@@ -284,13 +281,9 @@ class ThemeTweaker(object):
                 sublime.save_settings(PLUGIN_SETTINGS)
 
     def run(self, filters):
-        self.filters = []
-        self.settings = sublime.load_settings(PREFERENCES)
-        self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
-        scheme_file = self.settings.get(SCHEME, None)
-        self.scheme_map = self.p_settings.get("scheme_map", None)
+        self._setup()
 
-        if self._theme_valid(scheme_file):
+        if self.theme_valid:
             plist = sublime.load_binary_resource(self.scheme_map["working"])
             self.plist_file = self._apply_filters(
                 readPlistFromBytes(plist),
