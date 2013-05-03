@@ -366,6 +366,7 @@
     {"keys": ["ctrl+2"], "command": "theme_tweaker_colorize", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
     {"keys": ["ctrl+3"], "command": "theme_tweaker_sepia", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
     {"keys": ["ctrl+4"], "command": "theme_tweaker_grayscale", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
+    {"keys": ["ctrl+5"], "command": "theme_tweaker_glow", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
     {"keys": ["ctrl+z"], "command": "theme_tweaker_undo", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
     {"keys": ["ctrl+shift+z"], "command": "theme_tweaker_redo", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
     {"keys": ["escape"], "command": "theme_tweaker_clear", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]}

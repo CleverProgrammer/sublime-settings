@@ -17,7 +17,7 @@ TEMP_FOLDER = "ThemeTweaker"
 TEMP_PATH = "Packages/User/%s" % TEMP_FOLDER
 TWEAKED = TEMP_PATH + "/tweaked.tmTheme"
 SCHEME = "color_scheme"
-FILTER_MATCH = re.compile(r'^(?:(brightness|saturation|hue|colorize)\((-?[\d]+|[\d]*\.[\d]+)\)|(sepia|grayscale|invert))$')
+FILTER_MATCH = re.compile(r'^(?:(brightness|saturation|hue|colorize|glow)\((-?[\d]+|[\d]*\.[\d]+)\)|(sepia|grayscale|invert))$')
 TWEAK_MODE = False
 
 
@@ -67,6 +67,12 @@ class ThemeTweakerColorizeCommand(sublime_plugin.ApplicationCommand):
     def run(self):
         value = int(sublime.load_settings(PLUGIN_SETTINGS).get("colorize_hue", 0))
         ThemeTweaker().run("colorize(%d)" % value)
+
+
+class ThemeTweakerGlowCommand(sublime_plugin.ApplicationCommand):
+    def run(self):
+        value = float(sublime.load_settings(PLUGIN_SETTINGS).get("glow_intensity", .2))
+        ThemeTweaker().run("glow(%f)" % value)
 
 
 class ThemeTweakerGrayscaleCommand(sublime_plugin.ApplicationCommand):
@@ -145,7 +151,29 @@ class ThemeTweaker(object):
                     rgba.hue(value)
                 elif name == "colorize":
                     rgba.colorize(value)
+                elif name == "glow":
+                    self.glow = value
             return rgba.get_rgba()
+
+        def filter_colors(fg, bg):
+            self.glow = None
+            if fg is not None:
+                try:
+                    fg = filter_color(fg)
+                    if self.glow is not None and (bg is None or bg.strip() == ""):
+                        rgba = RGBA(fg)
+                        rgba.apply_alpha(self.bground if self.bground != "" else "#FFFFFF")
+                        bg = rgba.get_rgb() + ("%02X" % int((255.0 * self.glow)))
+                        return fg, bg
+                except:
+                    pass
+            if bg is not None:
+                try:
+                    bg = filter_color(bg)
+                except:
+                    pass
+
+            return fg, bg
 
 
         for f in filters.split(";"):
@@ -167,15 +195,12 @@ class ThemeTweaker(object):
                             pass
                     general_settings_read = True
                     continue
-
-                try:
-                    settings["settings"]["foreground"] = filter_color(settings["settings"]["foreground"])
-                except:
-                    pass
-                try:
-                    settings["settings"]["background"] = filter_color(settings["settings"]["background"])
-                except:
-                    pass
+                self.bground = RGBA(tmtheme["settings"][0]["settings"].get("background", '#FFFFFF')).get_rgb()
+                foreground, background = filter_colors(settings["settings"].get("foreground", None), settings["settings"].get("background", None))
+                if foreground is not None:
+                    settings["settings"]["foreground"] = foreground
+                if background is not None:
+                    settings["settings"]["background"] = background
         return tmtheme
 
     def _get_filters(self):
