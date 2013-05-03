@@ -1,5 +1,6 @@
 {
 	"brightness_step": 0.01,
+	"colorize_hue": 0,
 	"hue_step": 10,
 	"saturation_step": 0.1,
 	"scheme_map":

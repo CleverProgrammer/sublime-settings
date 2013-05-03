@@ -63,6 +63,12 @@ class ThemeTweakerSepiaCommand(sublime_plugin.ApplicationCommand):
         ThemeTweaker().run("sepia")
 
 
+class ThemeTweakerColorizeCommand(sublime_plugin.ApplicationCommand):
+    def run(self):
+        value = int(sublime.load_settings(PLUGIN_SETTINGS).get("colorize_hue", 0))
+        ThemeTweaker().run("colorize(%d)" % value)
+
+
 class ThemeTweakerGrayscaleCommand(sublime_plugin.ApplicationCommand):
     def run(self):
         ThemeTweaker().run("grayscale")
