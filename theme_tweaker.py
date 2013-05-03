@@ -131,51 +131,44 @@ class ThemeTweaker(object):
                 return
         return False
 
+    def _apply_filter(self, color, f_name, value=None):
+        if isinstance(color, RGBA):
+            if value is None:
+                color.__getattribute__(f_name)()
+            else:
+                color.__getattribute__(f_name)(value)
+
+    def _filter_colors(self, bg=None, fg=None):
+        try:
+            assert(fg is not None)
+            rgba_fg = RGBA(fg)
+        except:
+            rgba_fg = fg
+        try:
+            assert(bg is not None)
+            rgba_bg = RGBA(bg)
+        except:
+            rgba_bg = bg
+        for f in self.filters:
+            name = f[0]
+            value = f[1]
+            if name in ["grayscale", "sepia", "invert"]:
+                self._apply_filter(rgba_fg, name)
+                self._apply_filter(rgba_bg, name)
+            elif name in ["saturation", "brightness", "hue", "colorize"]:
+                self._apply_filter(rgba_fg, name, value)
+                self._apply_filter(rgba_bg, name, value)
+            elif name == "glow" and isinstance(rgba_fg, RGBA) and (bg is None or bg.strip() == ""):
+                rgba = RGBA(rgba_fg.get_rgba())
+                rgba.apply_alpha(self.bground if self.bground != "" else "#FFFFFF")
+                bg = rgba.get_rgb() + ("%02X" % int((255.0 * value)))
+                try:
+                    rgba_bg = RGBA(bg)
+                except:
+                    rgba_bg = bg
+        return (rgba_bg.get_rgba() if isinstance(rgba_bg, RGBA) else rgba_bg, rgba_fg.get_rgba() if isinstance(rgba_fg, RGBA) else rgba_fg)
+
     def _apply_filters(self, tmtheme, filters):
-        def filter_color(color):
-            rgba = RGBA(color)
-            for f in self.filters:
-                name = f[0]
-                value = f[1]
-                if name == "grayscale":
-                    rgba.grayscale()
-                elif name == "sepia":
-                    rgba.sepia()
-                elif name == "saturation":
-                    rgba.saturation(value)
-                elif name == "invert":
-                    rgba.invert()
-                elif name == "brightness":
-                    rgba.brightness(value)
-                elif name == "hue":
-                    rgba.hue(value)
-                elif name == "colorize":
-                    rgba.colorize(value)
-                elif name == "glow":
-                    self.glow = value
-            return rgba.get_rgba()
-
-        def filter_colors(fg, bg):
-            self.glow = None
-            if fg is not None:
-                try:
-                    fg = filter_color(fg)
-                    if self.glow is not None and (bg is None or bg.strip() == ""):
-                        rgba = RGBA(fg)
-                        rgba.apply_alpha(self.bground if self.bground != "" else "#FFFFFF")
-                        bg = rgba.get_rgb() + ("%02X" % int((255.0 * self.glow)))
-                        return fg, bg
-                except:
-                    pass
-            if bg is not None:
-                try:
-                    bg = filter_color(bg)
-                except:
-                    pass
-
-            return fg, bg
-
-
         for f in filters.split(";"):
             m = FILTER_MATCH.match(f)
             if m:
@@ -189,18 +182,18 @@ class ThemeTweaker(object):
             for settings in tmtheme["settings"]:
                 if not general_settings_read:
                     for k, v in settings["settings"].items():
-                        try:
-                            settings["settings"][k] = filter_color(v)
-                        except:
-                            pass
+                        v, _ = self._filter_colors(v)
+                        settings["settings"][k] = v
                     general_settings_read = True
                     continue
                 self.bground = RGBA(tmtheme["settings"][0]["settings"].get("background", '#FFFFFF')).get_rgb()
-                foreground, background = filter_colors(settings["settings"].get("foreground", None), settings["settings"].get("background", None))
+                self.fground = RGBA(tmtheme["settings"][0]["settings"].get("foreground", '#000000')).get_rgba()
+                background, foreground = self._filter_colors(settings["settings"].get("background", None), settings["settings"].get("foreground", None))
                 if foreground is not None:
                     settings["settings"]["foreground"] = foreground
                 if background is not None:
                     settings["settings"]["background"] = background
+
         return tmtheme
 
     def _get_filters(self):

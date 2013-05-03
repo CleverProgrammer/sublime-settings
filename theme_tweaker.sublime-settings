@@ -1,14 +1,14 @@
 {
 	"brightness_step": 0.01,
 	"colorize_hue": 0,
-	"glow_intensity": 0.2,
+	"glow_intensity": 0.1,
 	"hue_step": 10,
 	"saturation_step": 0.1,
 	"scheme_map":
 	{
-		"original": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
+		"original": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
 		"redo": "",
 		"undo": "",
-		"working": "Packages/User/ThemeTweaker/Tomorrow-Night-Eighties-Dark.tmTheme"
+		"working": "Packages/User/ThemeTweaker/Tomorrow-Night-Eighties.tmTheme"
 	}
 }
