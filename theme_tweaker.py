@@ -18,7 +18,6 @@ TEMP_PATH = "Packages/User/%s" % TEMP_FOLDER
 TWEAKED = TEMP_PATH + "/tweaked.tmTheme"
 SCHEME = "color_scheme"
 FILTER_MATCH = re.compile(r'^(?:(brightness|saturation|hue|colorize)\((-?[\d]+|[\d]*\.[\d]+)\)|(sepia|grayscale|invert))$')
-IFILTER_MATCH = re.compile(r'^(?:(brightness|saturation|hue|colorize)\((-?[\d]+|-?[\d]*\.[\d]+)\)|(sepia|grayscale|invert))$')
 TWEAK_MODE = False
 
 
