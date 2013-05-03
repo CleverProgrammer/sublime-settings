@@ -30,46 +30,28 @@ class ToggleThemeTweakerModeCommand(sublime_plugin.ApplicationCommand):
             ThemeTweaker().clear_history()
 
 
-class ThemeTweakerBrightnessUpCommand(sublime_plugin.ApplicationCommand):
-    def run(self, increment=".01"):
-        value = float(increment)
-        if value > 0.0 and value < 1.0:
-            ThemeTweaker().run("brightness(%s)" % increment, increment=True)
+class ThemeTweakerBrightnessCommand(sublime_plugin.ApplicationCommand):
+    def run(self, direction="+"):
+        magnitude = -1.0 if direction == "-" else 1.0
+        value = float(sublime.load_settings(PLUGIN_SETTINGS).get("brightness_step", .01)) * magnitude
+        if value > -1.0 and value < 1.0:
+            ThemeTweaker().run("brightness(%f)" % (value + 1.0))
 
 
-class ThemeTweakerBrightnessDownCommand(sublime_plugin.ApplicationCommand):
-    def run(self, increment="-.01"):
-        value = float(increment)
-        if value < 0.0 and value > -1.0:
-            ThemeTweaker().run("brightness(%s)" % increment, increment=True)
+class ThemeTweakerSaturationCommand(sublime_plugin.ApplicationCommand):
+    def run(self, direction="+"):
+        magnitude = -1.0 if direction == "-" else 1.0
+        value = float(sublime.load_settings(PLUGIN_SETTINGS).get("saturation_step", .1)) * magnitude
+        if value > -1.0 and value < 1.0:
+            ThemeTweaker().run("saturation(%f)" % (value + 1.0))
 
 
-class ThemeTweakerSaturationUpCommand(sublime_plugin.ApplicationCommand):
-    def run(self, increment=".1"):
-        value = float(increment)
-        if value > 0.0 and value < 1.0:
-            ThemeTweaker().run("saturation(%s)" % increment, increment=True)
-
-
-class ThemeTweakerSaturationDownCommand(sublime_plugin.ApplicationCommand):
-    def run(self, increment="-.1"):
-        value = float(increment)
-        if value < 0.0 and value > -1.0:
-            ThemeTweaker().run("saturation(%s)" % increment, increment=True)
-
-
-class ThemeTweakerHueRightCommand(sublime_plugin.ApplicationCommand):
-    def run(self, increment="10"):
-        value = int(increment)
-        if value > 0 and value <= 360:
-            ThemeTweaker().run("hue(%d)" % value, increment=True)
-
-
-class ThemeTweakerHueLeftCommand(sublime_plugin.ApplicationCommand):
-    def run(self, increment="-10"):
-        value = int(increment)
-        if value < 0 and value >= -360:
-            ThemeTweaker().run("hue(%d)" % value, increment=True)
+class ThemeTweakerHueCommand(sublime_plugin.ApplicationCommand):
+    def run(self, direction="+"):
+        magnitude = -1 if direction == "-" else 1
+        value = int(sublime.load_settings(PLUGIN_SETTINGS).get("hue_step", 10)) * magnitude
+        if value >= -360 and value <= 360:
+            ThemeTweaker().run("hue(%d)" % value)
 
 
 class ThemeTweakerInvertCommand(sublime_plugin.ApplicationCommand):
@@ -88,8 +70,8 @@ class ThemeTweakerGrayscaleCommand(sublime_plugin.ApplicationCommand):
 
 
 class ThemeTweakerCustomCommand(sublime_plugin.ApplicationCommand):
-    def run(self, filters, increment=False):
-        ThemeTweaker().run(filters, increment)
+    def run(self, filters):
+        ThemeTweaker().run(filters)
 
 
 class ThemeTweakerClearCommand(sublime_plugin.ApplicationCommand):
@@ -160,25 +142,14 @@ class ThemeTweaker(object):
                     rgba.colorize(value)
             return rgba.get_rgba()
 
-        if self.increment:
-            for f in filters.split(";"):
-                m = IFILTER_MATCH.match(f)
-                if m:
-                    if m.group(1):
-                        if m.group(1) not in ["hue", "colorize"]:
-                            self.filters.append([m.group(1), float(m.group(2)) + 1.0])
-                        else:
-                            self.filters.append([m.group(1), float(m.group(2))])
-                    else:
-                        self.filters.append([m.group(3), 0.0])
-        else:
-            for f in filters.split(";"):
-                m = FILTER_MATCH.match(f)
-                if m:
-                    if m.group(1):
-                        self.filters.append([m.group(1), float(m.group(2))])
-                    else:
-                        self.filters.append([m.group(3), 0.0])
+
+        for f in filters.split(";"):
+            m = FILTER_MATCH.match(f)
+            if m:
+                if m.group(1):
+                    self.filters.append([m.group(1), float(m.group(2))])
+                else:
+                    self.filters.append([m.group(3), 0.0])
 
         if len(self.filters):
             general_settings_read = False
@@ -241,7 +212,6 @@ class ThemeTweaker(object):
 
     def undo(self):
         self.filters = []
-        self.increment = False
         self.settings = sublime.load_settings(PREFERENCES)
         self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
         scheme_file = self.settings.get(SCHEME, None)
@@ -267,7 +237,6 @@ class ThemeTweaker(object):
 
     def redo(self):
         self.filters = []
-        self.increment = False
         self.settings = sublime.load_settings(PREFERENCES)
         self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
         scheme_file = self.settings.get(SCHEME, None)
@@ -291,9 +260,8 @@ class ThemeTweaker(object):
                 self.p_settings.set("scheme_map", self.scheme_map)
                 sublime.save_settings(PLUGIN_SETTINGS)
 
-    def run(self, filters, increment=False):
+    def run(self, filters):
         self.filters = []
-        self.increment = bool(increment)
         self.settings = sublime.load_settings(PREFERENCES)
         self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
         scheme_file = self.settings.get(SCHEME, None)

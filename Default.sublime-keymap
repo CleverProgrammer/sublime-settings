@@ -356,12 +356,12 @@
     //////////////////////////////////
     // Theme Tweaker
     //////////////////////////////////
-    {"keys": ["up"], "command": "theme_tweaker_brightness_up", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
-    {"keys": ["down"], "command": "theme_tweaker_brightness_down", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
-    {"keys": ["shift+up"], "command": "theme_tweaker_saturation_up", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
-    {"keys": ["shift+down"], "command": "theme_tweaker_saturation_down", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
-    {"keys": ["shift+left"], "command": "theme_tweaker_hue_left", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
-    {"keys": ["shift+right"], "command": "theme_tweaker_hue_right", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
+    {"keys": ["up"], "command": "theme_tweaker_brightness", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}], "args": {"direction": "+"}},
+    {"keys": ["down"], "command": "theme_tweaker_brightness", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}], "args": {"direction": "-"}},
+    {"keys": ["shift+up"], "command": "theme_tweaker_saturation", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}], "args": {"direction": "+"}},
+    {"keys": ["shift+down"], "command": "theme_tweaker_saturation", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}], "args": {"direction": "-"}},
+    {"keys": ["shift+left"], "command": "theme_tweaker_hue", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}], "args": {"direction": "-"}},
+    {"keys": ["shift+right"], "command": "theme_tweaker_hue", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}], "args": {"direction": "+"}},
     {"keys": ["ctrl+1"], "command": "theme_tweaker_invert", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
     {"keys": ["ctrl+2"], "command": "theme_tweaker_sepia", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
     {"keys": ["ctrl+3"], "command": "theme_tweaker_grayscale", "context": [{"key": "shortcut_plus(profile):Theme Tweaking"}]},
