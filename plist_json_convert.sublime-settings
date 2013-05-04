@@ -23,5 +23,11 @@
         {"plist": "tmLanguage", "json": "tmLanguage.JSON"},
         {"plist": "tmPreferences", "json": "tmPreferences.JSON"},
         {"plist": "tmTheme", "json": "tmTheme.JSON"}
+    ],
+
+    "json_to_plist_on_save": [
+        "tmLanguage.JSON",
+        "tmPreferences.JSON",
+        "tmTheme.JSON"
     ]
 }
