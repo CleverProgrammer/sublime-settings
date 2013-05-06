@@ -109,9 +109,21 @@ class ThemeTweaker(object):
         if not exists(temp):
             makedirs(temp)
 
+    def _exists(self, pth):
+        found = False
+        if exists(packages_path(pth)):
+            found = True
+        else:
+            try:
+                sublime.load_settings(pth)
+                found = True
+            except:
+                pass
+        return found
+
     def _theme_valid(self, scheme_file):
         is_working = scheme_file.startswith(TEMP_PATH + '/')
-        if is_working and self.scheme_map is not None and self.scheme_map["working"] == scheme_file and exists(packages_path(self.scheme_map["original"])):
+        if is_working and self.scheme_map is not None and self.scheme_map["working"] == scheme_file and self._exists(self.scheme_map["original"]):
             self.scheme_file = packages_path(self.scheme_map["original"])
             self.scheme_clone = packages_path(self.scheme_map["working"])
             return True

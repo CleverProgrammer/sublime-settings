@@ -6,9 +6,9 @@
 	"saturation_step": 0.1,
 	"scheme_map":
 	{
-		"original": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
+		"original": "Packages/Color Scheme - Default/LAZY.tmTheme",
 		"redo": "",
-		"undo": "",
-		"working": "Packages/User/ThemeTweaker/Tomorrow-Night-Eighties-Dark.tmTheme"
+		"undo": ";invert",
+		"working": "Packages/User/ThemeTweaker/LAZY.tmTheme"
 	}
 }
