@@ -22,30 +22,36 @@
                     },
                     {
                         // Work alert to go home
-                        "theme": "Packages/User/Color Scheme/Alert.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "filters": "colorize(0)",
                         "time": "17:00"
                     },
                     {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "filters": "brightness(.9)@bg",
                         "time": "17:05"
                     },
                     {
                         // Work alert to go home really go home
-                        "theme": "Packages/User/Color Scheme/Alert.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "filters": "colorize(0)",
                         "time": "17:30"
                     },
                     {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "filters": "brightness(.9)@bg",
                         "time": "17:40"
                     },
                     {
                         // Final Work alert to go home
-                        "theme": "Packages/User/Color Scheme/Alert.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "filters": "colorize(0)",
                         "time": "18:00",
                         "msg": "Seriously, go home!"
                     },
                     {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "filters": "brightness(.9)@bg",
                         "time": "18:15"
                     }
                 ]
@@ -57,12 +63,14 @@
                         "time": "07:00"
                     },
                     {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "filters": "brightness(.9)@bg",
                         "time": "19:00"
                     },
                     {
                         // Get off the computer
-                        "theme": "Packages/User/Color Scheme/Alert.tmTheme",
+                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
+                        "filters": "colorize(0)",
                         "time": "23:00",
                         "msg": "Turn off the computer"
                     }

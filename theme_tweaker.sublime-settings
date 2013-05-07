@@ -8,7 +8,7 @@
 	{
 		"original": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
 		"redo": "",
-		"undo": ";brightness(1.010000);brightness(1.010000);brightness(1.010000);brightness(1.010000);brightness(1.010000);brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg",
+		"undo": ";colorize(180)",
 		"working": "Packages/User/ThemeTweaker/Tomorrow-Night-Eighties.tmTheme"
 	}
 }

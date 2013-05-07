@@ -35,6 +35,10 @@ from User.lib.file_strip.json import sanitize_json
 from User.lib.multiconf import get as multiget
 import json
 from os.path import exists, join, abspath, dirname
+try:
+    from User.theme_tweaker import ThemeTweaker
+except:
+    ThemeTweaker = None
 
 
 def debug_log(s):
@@ -77,7 +81,7 @@ def blocking_message(msg):
     ThemeScheduler.update = True
 
 
-class ThemeRecord(namedtuple('ThemeRecord', ["time", "theme", "msg"])):
+class ThemeRecord(namedtuple('ThemeRecord', ["time", "theme", "msg", "filters"])):
     pass
 
 
@@ -108,7 +112,8 @@ class ThemeScheduler(object):
             theme_time = translate_time(t["time"])
             theme = t["theme"]
             msg = t.get("msg", None)
-            cls.themes.append(ThemeRecord(theme_time, theme, msg))
+            filters = t.get("filters", None)
+            cls.themes.append(ThemeRecord(theme_time, theme, msg, filters))
         seconds, now = get_current_time()
         cls.get_next_change(seconds, now, startup=True)
         cls.ready = True
@@ -133,10 +138,10 @@ class ThemeScheduler(object):
 
             if closest is not None:
                 if cls.current_time is not None and closest.time == cls.current_time:
-                    cls.update_theme(closest.theme, None)
+                    cls.update_theme(closest.theme, None, closest.filters)
                 else:
                     cls.current_time = closest.time
-                    cls.update_theme(closest.theme, closest.msg)
+                    cls.update_theme(closest.theme, closest.msg, closest.filters)
 
     @classmethod
     def get_next_change(cls, seconds, now, startup=False):
@@ -177,19 +182,19 @@ class ThemeScheduler(object):
 
         # Change the theme
         if cls.next_change is not None and cls.next_change.theme != cls.current_theme:
-            theme, msg = cls.next_change.theme, cls.next_change.msg
+            theme, msg, filters = cls.next_change.theme, cls.next_change.msg, cls.next_change.filters
             cls.current_theme = cls.next_change.theme
             # Get the next before changing
             if cls.current_time is not None and cls.next_change.time == cls.current_time:
-                cls.update_theme(theme, None)
+                cls.update_theme(theme, None, filters)
             else:
                 cls.current_time = cls.next_change.time
-                cls.update_theme(theme, msg)
+                cls.update_theme(theme, msg, filters)
         seconds, now = get_current_time()
         cls.get_next_change(seconds, now)
 
     @classmethod
-    def update_theme(cls, theme, msg):
+    def update_theme(cls, theme, msg, filters):
         # When sublime is loading, the User preference file isn't available yet.
         # Sublime provides no real way to tell when things are intialized.
         # Handling the preference file ourselves allows us to avoid obliterating the User preference file.
@@ -197,24 +202,30 @@ class ThemeScheduler(object):
         relase_busy = True
         pref_file = join(sublime.packages_path(), 'User', 'Preferences.sublime-settings')
         pref = {}
-        if exists(pref_file):
-            try:
-                with open(pref_file, "r") as f:
-                    # Allow C style comments and be forgiving of trailing commas
-                    content = sanitize_json(f.read(), True)
-                pref = json.loads(content)
-            except:
-                pass
-        pref['color_scheme'] = theme
-        j = json.dumps(pref, sort_keys=True, indent=4, separators=(',', ': '))
-        try:
-            with open(pref_file, 'w') as f:
-                f.write(j + "\n")
+        if filters is not None and ThemeTweaker is not None:
+            ThemeTweaker(True, theme).run(filters)
             if msg is not None and isinstance(msg, str):
                 relase_busy = False
                 sublime.set_timeout(lambda: blocking_message(msg), 3000)
-        except:
-            pass
+        else:
+            if exists(pref_file):
+                try:
+                    with open(pref_file, "r") as f:
+                        # Allow C style comments and be forgiving of trailing commas
+                        content = sanitize_json(f.read(), True)
+                    pref = json.loads(content)
+                except:
+                    pass
+            pref['color_scheme'] = theme
+            j = json.dumps(pref, sort_keys=True, indent=4, separators=(',', ': '))
+            try:
+                with open(pref_file, 'w') as f:
+                    f.write(j + "\n")
+                if msg is not None and isinstance(msg, str):
+                    relase_busy = False
+                    sublime.set_timeout(lambda: blocking_message(msg), 3000)
+            except:
+                pass
 
         if relase_busy:
             cls.busy = False
