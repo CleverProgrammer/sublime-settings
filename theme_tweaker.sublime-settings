@@ -6,9 +6,9 @@
 	"saturation_step": 0.1,
 	"scheme_map":
 	{
-		"original": "Packages/Color Scheme - Default/LAZY.tmTheme",
+		"original": "Packages/User/Color Scheme/Tomorrow-Night-Eighties.tmTheme",
 		"redo": "",
-		"undo": ";invert",
-		"working": "Packages/User/ThemeTweaker/LAZY.tmTheme"
+		"undo": ";brightness(1.010000);brightness(1.010000);brightness(1.010000);brightness(1.010000);brightness(1.010000);brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg;brightness(1.010000)@fg",
+		"working": "Packages/User/ThemeTweaker/Tomorrow-Night-Eighties.tmTheme"
 	}
 }

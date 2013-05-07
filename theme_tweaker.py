@@ -17,7 +17,7 @@ TEMP_FOLDER = "ThemeTweaker"
 TEMP_PATH = "Packages/User/%s" % TEMP_FOLDER
 TWEAKED = TEMP_PATH + "/tweaked.tmTheme"
 SCHEME = "color_scheme"
-FILTER_MATCH = re.compile(r'^(?:(brightness|saturation|hue|colorize|glow)\((-?[\d]+|[\d]*\.[\d]+)\)|(sepia|grayscale|invert))$')
+FILTER_MATCH = re.compile(r'^(?:(brightness|saturation|hue|colorize|glow)\((-?[\d]+|[\d]*\.[\d]+)\)|(sepia|grayscale|invert))(?:@(fg|bg))?$')
 TWEAK_MODE = False
 
 def packages_path(pth):
@@ -33,43 +33,60 @@ class ToggleThemeTweakerModeCommand(sublime_plugin.ApplicationCommand):
 
 
 class ThemeTweakerBrightnessCommand(sublime_plugin.ApplicationCommand):
-    def run(self, direction="+"):
+    def run(self, direction="+", context=None):
         magnitude = -1.0 if direction == "-" else 1.0
         value = float(sublime.load_settings(PLUGIN_SETTINGS).get("brightness_step", .01)) * magnitude
         if value > -1.0 and value < 1.0:
-            ThemeTweaker().run("brightness(%f)" % (value + 1.0))
+            if context is not None and context in ["fg", "bg"]:
+                ThemeTweaker().run("brightness(%f)@%s" % (value + 1.0, context))
+            else:
+                ThemeTweaker().run("brightness(%f)" % (value + 1.0))
 
 
 class ThemeTweakerSaturationCommand(sublime_plugin.ApplicationCommand):
-    def run(self, direction="+"):
+    def run(self, direction="+", context=None):
         magnitude = -1.0 if direction == "-" else 1.0
         value = float(sublime.load_settings(PLUGIN_SETTINGS).get("saturation_step", .1)) * magnitude
         if value > -1.0 and value < 1.0:
-            ThemeTweaker().run("saturation(%f)" % (value + 1.0))
+            if context is not None and context in ["fg", "bg"]:
+                ThemeTweaker().run("saturation(%f)@%s" % (value + 1.0, context))
+            else:
+                ThemeTweaker().run("saturation(%f)" % (value + 1.0))
 
 
 class ThemeTweakerHueCommand(sublime_plugin.ApplicationCommand):
-    def run(self, direction="+"):
+    def run(self, direction="+", context=None):
         magnitude = -1 if direction == "-" else 1
         value = int(sublime.load_settings(PLUGIN_SETTINGS).get("hue_step", 10)) * magnitude
         if value >= -360 and value <= 360:
-            ThemeTweaker().run("hue(%d)" % value)
+            if context is not None and context in ["fg", "bg"]:
+                ThemeTweaker().run("hue(%d)@%s" % (value, context))
+            else:
+                ThemeTweaker().run("hue(%d)" % value)
 
 
 class ThemeTweakerInvertCommand(sublime_plugin.ApplicationCommand):
-    def run(self):
-        ThemeTweaker().run("invert")
-
+    def run(self, context=None):
+        if context is not None and context in ["fg", "bg"]:
+            ThemeTweaker().run("invert@%s" % context)
+        else:
+            ThemeTweaker().run("invert")
 
 class ThemeTweakerSepiaCommand(sublime_plugin.ApplicationCommand):
-    def run(self):
-        ThemeTweaker().run("sepia")
+    def run(self, context=None):
+        if context is not None and context in ["fg", "bg"]:
+            ThemeTweaker().run("sepia@%s" % context)
+        else:
+            ThemeTweaker().run("sepia")
 
 
 class ThemeTweakerColorizeCommand(sublime_plugin.ApplicationCommand):
-    def run(self):
+    def run(self, context=None):
         value = int(sublime.load_settings(PLUGIN_SETTINGS).get("colorize_hue", 0))
-        ThemeTweaker().run("colorize(%d)" % value)
+        if context is not None and context in ["fg", "bg"]:
+            ThemeTweaker().run("colorize(%d)@%s" % (value, context))
+        else:
+            ThemeTweaker().run("colorize(%d)" % value)
 
 
 class ThemeTweakerGlowCommand(sublime_plugin.ApplicationCommand):
@@ -79,13 +96,17 @@ class ThemeTweakerGlowCommand(sublime_plugin.ApplicationCommand):
 
 
 class ThemeTweakerGrayscaleCommand(sublime_plugin.ApplicationCommand):
-    def run(self):
-        ThemeTweaker().run("grayscale")
+    def run(self, context=None):
+        if context is not None and context in ["fg", "bg"]:
+            ThemeTweaker().run("grayscale@%s" % context)
+        else:
+            ThemeTweaker().run("grayscale")
 
 
 class ThemeTweakerCustomCommand(sublime_plugin.ApplicationCommand):
     def run(self, filters):
-        ThemeTweaker().run(filters)
+        if context is not None and context in ["fg", "bg"]:
+            ThemeTweaker().run(filters)
 
 
 class ThemeTweakerClearCommand(sublime_plugin.ApplicationCommand):
@@ -153,7 +174,19 @@ class ThemeTweaker(object):
             else:
                 color.__getattribute__(f_name)(value)
 
-    def _filter_colors(self, bg=None, fg=None):
+    def _filter_colors(self, *args, global_settings=False):
+        dual_colors = False
+        if len(args) == 1:
+            fg = args[0]
+            bg = None
+        elif len(args) == 2:
+            fg = args[0]
+            bg = args[1]
+            if not global_settings:
+                dual_colors = True
+        else:
+            return None, None
+
         try:
             assert(fg is not None)
             rgba_fg = RGBA(fg)
@@ -164,16 +197,22 @@ class ThemeTweaker(object):
             rgba_bg = RGBA(bg)
         except:
             rgba_bg = bg
+
         for f in self.filters:
             name = f[0]
             value = f[1]
+            context = f[2]
             if name in ["grayscale", "sepia", "invert"]:
-                self._apply_filter(rgba_fg, name)
-                self._apply_filter(rgba_bg, name)
+                if context != "bg":
+                    self._apply_filter(rgba_fg, name)
+                if context != "fg":
+                    self._apply_filter(rgba_bg, name)
             elif name in ["saturation", "brightness", "hue", "colorize"]:
-                self._apply_filter(rgba_fg, name, value)
-                self._apply_filter(rgba_bg, name, value)
-            elif name == "glow" and isinstance(rgba_fg, RGBA) and (bg is None or bg.strip() == ""):
+                if context != "bg":
+                    self._apply_filter(rgba_fg, name, value)
+                if context != "fg":
+                    self._apply_filter(rgba_bg, name, value)
+            elif name == "glow" and dual_colors and isinstance(rgba_fg, RGBA) and (bg is None or bg.strip() == ""):
                 rgba = RGBA(rgba_fg.get_rgba())
                 rgba.apply_alpha(self.bground if self.bground != "" else "#FFFFFF")
                 bg = rgba.get_rgb() + ("%02X" % int((255.0 * value)))
@@ -181,29 +220,38 @@ class ThemeTweaker(object):
                     rgba_bg = RGBA(bg)
                 except:
                     rgba_bg = bg
-        return (rgba_bg.get_rgba() if isinstance(rgba_bg, RGBA) else rgba_bg, rgba_fg.get_rgba() if isinstance(rgba_fg, RGBA) else rgba_fg)
+        return (
+            rgba_fg.get_rgba() if isinstance(rgba_fg, RGBA) else rgba_fg,
+            rgba_bg.get_rgba() if isinstance(rgba_bg, RGBA) else rgba_bg
+        )
 
     def _apply_filters(self, tmtheme, filters):
         for f in filters.split(";"):
             m = FILTER_MATCH.match(f)
             if m:
                 if m.group(1):
-                    self.filters.append([m.group(1), float(m.group(2))])
+                    self.filters.append([m.group(1), float(m.group(2)), m.group(4) if m.group(4) else "all"])
                 else:
-                    self.filters.append([m.group(3), 0.0])
+                    self.filters.append([m.group(3), 0.0, m.group(4) if m.group(4) else "all"])
 
         if len(self.filters):
             general_settings_read = False
             for settings in tmtheme["settings"]:
                 if not general_settings_read:
                     for k, v in settings["settings"].items():
-                        v, _ = self._filter_colors(v)
+                        if k in ["background", "gutter", "lineHighlight", "selection"]:
+                            _, v = self._filter_colors(None, v, global_settings=True)
+                        else:
+                            v, _ = self._filter_colors(v, global_settings=True)
                         settings["settings"][k] = v
                     general_settings_read = True
                     continue
                 self.bground = RGBA(tmtheme["settings"][0]["settings"].get("background", '#FFFFFF')).get_rgb()
                 self.fground = RGBA(tmtheme["settings"][0]["settings"].get("foreground", '#000000')).get_rgba()
-                background, foreground = self._filter_colors(settings["settings"].get("background", None), settings["settings"].get("foreground", None))
+                foreground, background = self._filter_colors(
+                    settings["settings"].get("foreground", None),
+                    settings["settings"].get("background", None)
+                )
                 if foreground is not None:
                     settings["settings"]["foreground"] = foreground
                 if background is not None:
@@ -216,13 +264,17 @@ class ThemeTweaker(object):
         for f in self.filters:
             if f[0] in ["invert", "grayscale", "sepia"]:
                 filters.append(f[0])
-            if f[0] in ["hue", "colorize"]:
+            elif f[0] in ["hue", "colorize"]:
                 filters.append(f[0] + "(%d)" % int(f[1]))
-            if f[0] in ["saturation", "brightness"]:
+            elif f[0] in ["saturation", "brightness"]:
                 filters.append(f[0] + "(%f)" % f[1])
+            else:
+                continue
+            if f[2] != "all":
+                filters[-1] = filters[-1] + ("@%s" % f[2])
         return filters
 
-    def _setup(self):
+    def _setup(self, context=None):
         self.filters = []
         self.settings = sublime.load_settings(PREFERENCES)
         self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
@@ -292,7 +344,7 @@ class ThemeTweaker(object):
                 self.p_settings.set("scheme_map", self.scheme_map)
                 sublime.save_settings(PLUGIN_SETTINGS)
 
-    def run(self, filters):
+    def run(self, filters, ):
         self._setup()
 
         if self.theme_valid:
