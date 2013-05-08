@@ -48,7 +48,8 @@
         {
             "name": "AAALanguages/Better Javascript/JSON",
             "rules": [
-                {"file_name": ".*\\.recipe"}
+                {"file_name": ".*\\.recipe"},
+                {"file_name": ".*\\.tweak-settings"}
             ]
         }
     ]

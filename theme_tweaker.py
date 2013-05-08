@@ -14,6 +14,7 @@ from User.lib.file_strip.json import sanitize_json
 import json
 
 PLUGIN_SETTINGS = "theme_tweaker.sublime-settings"
+TWEAK_SETTINGS = "theme_tweaker.tweak-settings"
 PREFERENCES = 'Preferences.sublime-settings'
 TEMP_FOLDER = "ThemeTweaker"
 TEMP_PATH = "Packages/User/%s" % TEMP_FOLDER
@@ -131,6 +132,29 @@ class ThemeTweaker(object):
         self.set_safe = set_safe
         self.init_theme = init_theme
 
+    def _load_tweak_settings(self):
+        self._ensure_temp()
+        p_settings = {}
+        tweaks = packages_path(join(normpath(TEMP_PATH), basename(TWEAK_SETTINGS)))
+        if exists(tweaks):
+            try:
+                with open(tweaks, "r") as f:
+                    # Allow C style comments and be forgiving of trailing commas
+                    content = sanitize_json(f.read(), True)
+                p_settings = json.loads(content)
+            except:
+                pass
+        return p_settings
+
+    def _save_tweak_settings(self):
+        tweaks = packages_path(join(normpath(TEMP_PATH), basename(TWEAK_SETTINGS)))
+        j = json.dumps(self.p_settings, sort_keys=True, indent=4, separators=(',', ': '))
+        try:
+            with open(tweaks, 'w') as f:
+                f.write(j + "\n")
+        except:
+            pass
+
     def _set_theme_safely(self, name):
         pref_file = join(sublime.packages_path(), 'User', 'Preferences.sublime-settings')
         pref = {}
@@ -186,8 +210,8 @@ class ThemeTweaker(object):
                     self._set_theme_safely(self.scheme_map["working"])
                 else:
                     self.settings.set(SCHEME, self.scheme_map["working"])
-                self.p_settings.set("scheme_map", self.scheme_map)
-                sublime.save_settings(PLUGIN_SETTINGS)
+                self.p_settings["scheme_map"] = self.scheme_map
+                self._save_tweak_settings()
                 return True
             except Exception as e:
                 print(e)
@@ -305,7 +329,7 @@ class ThemeTweaker(object):
     def _setup(self, context=None):
         self.filters = []
         self.settings = sublime.load_settings(PREFERENCES)
-        self.p_settings = sublime.load_settings(PLUGIN_SETTINGS)
+        self.p_settings = self._load_tweak_settings()
         scheme_file = self.settings.get(SCHEME, None) if self.init_theme is None else self.init_theme
         self.scheme_map = self.p_settings.get("scheme_map", None)
         self.theme_valid = self._theme_valid(scheme_file)
@@ -318,8 +342,8 @@ class ThemeTweaker(object):
                 f.write(sublime.load_binary_resource(self.scheme_map["original"]))
                 self.scheme_map["redo"] = ""
                 self.scheme_map["undo"] = ""
-                self.p_settings.set("scheme_map", self.scheme_map)
-                sublime.save_settings(PLUGIN_SETTINGS)
+                self.p_settings["scheme_map"] = self.scheme_map
+                self._save_tweak_settings()
 
     def clear_history(self):
         self._setup()
@@ -327,8 +351,8 @@ class ThemeTweaker(object):
         if self.theme_valid:
             self.scheme_map["redo"] = ""
             self.scheme_map["undo"] = ""
-            self.p_settings.set("scheme_map", self.scheme_map)
-            sublime.save_settings(PLUGIN_SETTINGS)
+            self.p_settings["scheme_map"] = self.scheme_map
+            self._save_tweak_settings()
 
     def undo(self):
         self._setup()
@@ -348,8 +372,8 @@ class ThemeTweaker(object):
             )
             with open(self.scheme_clone, "wb") as f:
                 f.write(writePlistToBytes(self.plist_file))
-                self.p_settings.set("scheme_map", self.scheme_map)
-                sublime.save_settings(PLUGIN_SETTINGS)
+                self.p_settings["scheme_map"] = self.scheme_map
+                self._save_tweak_settings()
 
     def redo(self):
         self._setup()
@@ -369,8 +393,8 @@ class ThemeTweaker(object):
             )
             with open(self.scheme_clone, "wb") as f:
                 f.write(writePlistToBytes(self.plist_file))
-                self.p_settings.set("scheme_map", self.scheme_map)
-                sublime.save_settings(PLUGIN_SETTINGS)
+                self.p_settings["scheme_map"] = self.scheme_map
+                self._save_tweak_settings()
 
     def run(self, filters):
         self._setup()
@@ -387,8 +411,8 @@ class ThemeTweaker(object):
                 undo = self.scheme_map["undo"].split(";") + self._get_filters()
                 self.scheme_map["redo"] = ""
                 self.scheme_map["undo"] = ";".join(undo)
-                self.p_settings.set("scheme_map", self.scheme_map)
-                sublime.save_settings(PLUGIN_SETTINGS)
+                self.p_settings["scheme_map"] = self.scheme_map
+                self._save_tweak_settings()
 
 
 class ThemeTweakerListener(sublime_plugin.EventListener):
