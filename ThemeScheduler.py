@@ -29,6 +29,7 @@ Creates theme file if it doesn't exists (turned off by default).
 from datetime import datetime, timedelta
 import time
 import sublime
+import sublime_plugin
 from collections import namedtuple
 import _thread as thread
 from User.lib.file_strip.json import sanitize_json
@@ -79,6 +80,16 @@ def translate_time(t):
 def blocking_message(msg):
     sublime.ok_cancel_dialog(msg)
     ThemeScheduler.update = True
+
+
+class ThemeSchedulerGetNextChangeCommand(sublime_plugin.ApplicationCommand):
+    def run(self):
+        sublime.message_dialog("ThemeScheduler: Next Change @\n" + str(ThemeScheduler.next_change))
+
+
+class ThemeSchedulerRefreshCommand(sublime_plugin.ApplicationCommand):
+    def run(self):
+        manage_thread()
 
 
 class ThemeRecord(namedtuple('ThemeRecord', ["time", "theme", "msg", "filters"])):

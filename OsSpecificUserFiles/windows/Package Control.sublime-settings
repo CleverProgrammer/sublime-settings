@@ -1,48 +1,51 @@
 {
-	"installed_packages":
-	[
-		"AAALanguages",
-		"ApplySyntax",
-		"BracketHighlighter",
-		"ColorPicker",
-		"CursorRuler",
-		"ExportHtml",
-		"FavoriteFiles",
-		"FindKeyConflicts",
-		"FuzzyFileNav",
-		"GenerateUUID",
-		"google-search",
-		"HexViewer",
-		"Origami",
-		"Package Control",
-		"PlainTasks",
-		"PlistJsonConverter",
-		"QuickCal",
-		"RegReplace",
-		"ScopeHunter",
-		"SmartCursor",
-		"SortTabs",
-		"Theme - Phoenix"
-	],
-	"package_name_map":
-	{
-		"sublime-languages": "AAALanguages"
-	},
-	"repositories":
-	[
-		"https://github.com/SublimeLinter/SublimeLinter/tree/sublime-text-3",
-		"https://github.com/facelessuser/BracketHighlighter/tree/BH2ST3",
-		"https://github.com/facelessuser/FuzzyFileNav/tree/ST3",
-		"https://github.com/facelessuser/ExportHtml/tree/ST3",
-		"https://github.com/facelessuser/FavoriteFiles/tree/ST3",
-		"https://github.com/facelessuser/ScopeHunter/tree/ST3",
-		"https://github.com/facelessuser/HexViewer/tree/ST3",
-		"https://github.com/facelessuser/RegReplace/tree/ST3",
-		"https://github.com/facelessuser/PlistJsonConverter/tree/ST3",
-		"https://github.com/facelessuser/sublime-languages",
-		"https://github.com/facelessuser/ApplySyntax/tree/ST3",
-		"https://github.com/facelessuser/QuickCal",
-		"https://github.com/bizoo/SmartCursor",
-		"https://github.com/facelessuser/SortTabs"
-	]
+    "installed_packages":
+    [
+        "AAALanguages",
+        "ApplySyntax",
+        "BracketHighlighter",
+        "ColorPicker",
+        "Crypto",
+        "CursorRuler",
+        "ExportHtml",
+        "GenerateUUID",
+        "google-search",
+        "FavoriteFiles",
+        "FindKeyConflicts",
+        "FuzzyFileNav",
+        "HexViewer",
+        "Origami",
+        "Package Control",
+        "PlainTasks",
+        "PlistJsonConverter",
+        "QuickCal",
+        "RawLineEdit",
+        "RegReplace",
+        "ScopeHunter",
+        "SmartCursor",
+        "SortTabs",
+        "Theme - Phoenix",
+        "Terminal"
+    ],
+    "package_name_map":
+    {
+        "sublime-languages": "AAALanguages"
+    },
+    "repositories":
+    [
+        "https://github.com/facelessuser/BracketHighlighter/tree/BH2ST3",
+        "https://github.com/facelessuser/FuzzyFileNav/tree/ST3",
+        "https://github.com/facelessuser/ExportHtml/tree/ST3",
+        "https://github.com/facelessuser/FavoriteFiles/tree/ST3",
+        "https://github.com/facelessuser/ScopeHunter/tree/ST3",
+        "https://github.com/facelessuser/HexViewer/tree/ST3",
+        "https://github.com/facelessuser/RegReplace/tree/ST3",
+        "https://github.com/facelessuser/PlistJsonConverter/tree/ST3",
+        "https://github.com/facelessuser/sublime-languages",
+        "https://github.com/facelessuser/ApplySyntax/tree/ST3",
+        "https://github.com/facelessuser/QuickCal",
+        "https://github.com/bizoo/SmartCursor",
+        "https://github.com/facelessuser/SortTabs",
+        "https://github.com/facelessuser/SublimeText-Crypto"
+    ]
 }

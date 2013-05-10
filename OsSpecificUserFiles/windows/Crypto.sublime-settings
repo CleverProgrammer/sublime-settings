@@ -1,0 +1,8 @@
+{
+    // The path to your openssl executable
+    // e.g. "/usr/bin/openssl" or "C:\\bin\\openssl.exe"
+    "openssl_command": "C:\\WesternDigital_Tools\\OpenSSL\\openssl.exe",
+
+    // The Cipher Type to use, e.g. "-des3" or "-aes256"
+    "cipher": "-aes256"
+}

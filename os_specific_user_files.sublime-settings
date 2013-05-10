@@ -3,7 +3,8 @@
         "files": {
             "Package Control.sublime-settings": "Package Control.sublime-settings",
             "Terminal.sublime-settings": "Terminal.sublime-settings",
-            "Preferences.sublime-settings": "Preferences.sublime-settings"
+            "Preferences.sublime-settings": "Preferences.sublime-settings",
+            "Crypto.sublime-settings": "Crypto.sublime-settings"
         },
         "directories": {
             "SideBarEnhancements": "SideBarEnhancements"
