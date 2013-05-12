@@ -5,6 +5,7 @@
 		"ApplySyntax",
 		"BracketHighlighter",
 		"ColorPicker",
+		"Crypto",
 		"CursorRuler",
 		"ExportHtml",
 		"FavoriteFiles",
@@ -21,6 +22,7 @@
 		"RegReplace",
 		"ScopeHunter",
 		"SmartCursor",
+		"SortTabs",
 		"Theme - Phoenix"
 	],
 	"package_name_map":

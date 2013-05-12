@@ -2,7 +2,7 @@
 	"always_show_minimap_viewport": false,
 	"bold_folder_labels": true,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Dark.tmTheme",
+	"color_scheme": "Packages/User/ThemeTweaker/Tomorrow-Night-Eighties.tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
@@ -18,14 +18,14 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Perl",
-		"C++",
-		"Python",
-		"JavaScript",
 		"CSS",
-		"PHP",
-		"Batch File"
+		"CursorRuler",
+		"Batch File",
+		"C++",
+		"Perl",
+		"JavaScript",
+		"Python",
+		"Vintage"
 	],
 	"indent_guide_options":
 	[

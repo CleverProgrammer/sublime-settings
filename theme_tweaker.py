@@ -418,3 +418,9 @@ class ThemeTweaker(object):
 class ThemeTweakerListener(sublime_plugin.EventListener):
     def on_query_context(self, view, key, operator, operand, match_all):
         return key == "theme_tweaker" and TWEAK_MODE
+
+
+def plugin_loaded():
+    # Just in case something went wrong,
+    # and a theme got removed or isn't there on startup
+    ThemeTweaker(set_safe=True).redo()
