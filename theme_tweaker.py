@@ -396,6 +396,16 @@ class ThemeTweaker(object):
                 self.p_settings["scheme_map"] = self.scheme_map
                 self._save_tweak_settings()
 
+    def refresh(self):
+        self._setup()
+
+        if self.theme_valid:
+            plist = sublime.load_binary_resource(self.scheme_map["original"])
+            self.plist_file = self._apply_filters(
+                readPlistFromBytes(plist),
+                self.scheme_map["undo"]
+            )
+
     def run(self, filters):
         self._setup()
 
@@ -423,4 +433,4 @@ class ThemeTweakerListener(sublime_plugin.EventListener):
 def plugin_loaded():
     # Just in case something went wrong,
     # and a theme got removed or isn't there on startup
-    ThemeTweaker(set_safe=True).redo()
+    ThemeTweaker(set_safe=True).refresh()
