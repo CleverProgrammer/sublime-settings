@@ -24,7 +24,8 @@ DEFAULT_FILES = [
     {"caption": "Preference Files",      "search": {"pattern": "*.tmPreferences",    "regex": False}},
     {"caption": "Color Scheme Files",    "search": {"pattern": "*.tmTheme",          "regex": False}},
     {"caption": "Theme Files",           "search": {"pattern": "*.sublime-theme",    "regex": False}},
-    {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "regex": False}}
+    {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "regex": False}},
+    {"caption": "Sublime Menues",        "search": {"pattern": "*.sublime-menu",     "regex": False}}
 ]
 
 

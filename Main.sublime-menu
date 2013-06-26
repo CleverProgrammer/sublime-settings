@@ -1,5 +1,27 @@
 [
     {
+        "caption": "File",
+        "mnemonic": "f",
+        "id": "file",
+        "children":
+        [
+            { "caption": "-" },
+            {
+                "command": "export_html",
+                "args": {
+                    "numbers": true,
+                    "wrap": 900,
+                    "browser_print": true,
+                    "multi_select": true,
+                    "color_scheme": "Packages/ExportHtml/ColorSchemes/Print-Grayscale.tmTheme",
+                    "style_gutter": false
+                },
+                "caption": "Print (Export HTML)"
+            },
+            { "caption": "-" }
+        ]
+    },
+    {
         "caption": "Preferences",
         "mnemonic": "n",
         "id": "preferences",
