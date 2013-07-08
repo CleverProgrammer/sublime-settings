@@ -12,28 +12,7 @@ ERRS = {
 }
 
 
-class Rummage(object):
-    def is_text_cmd(self):
-        return isinstance(self, sublime_plugin.TextCommand)
-
-    def is_win_cmd(self):
-        return isinstance(self, sublime_plugin.WindowCommand)
-
-    def get_target(self, paths=[]):
-        target = None
-        fail_code = NO_TARGET
-        if len(paths):
-            target = paths[0]
-        elif self.is_text_cmd():
-            filename = self.view.file_name()
-            if filename is not None and exists(filename):
-                target = filename
-            else:
-                self.fail(fail_code)
-        else:
-            self.fail(fail_code)
-        return target
-
+class RummageBase(object):
     def fail(self, code, alert=True):
         if alert:
             sublime.error_message(ERRS[code])
@@ -50,6 +29,29 @@ class Rummage(object):
         if binary is not None and not exists(binary):
             binary = None
         return binary
+
+
+class Rummage(RummageBase):
+    def is_text_cmd(self):
+        return isinstance(self, sublime_plugin.TextCommand)
+
+    def is_win_cmd(self):
+        return isinstance(self, sublime_plugin.WindowCommand)
+
+    def get_target(self, paths=[]):
+        target = None
+        fail_code = NO_RUMMAGE
+        if len(paths):
+            target = paths[0]
+        elif self.is_text_cmd():
+            filename = self.view.file_name()
+            if filename is not None and exists(filename):
+                target = filename
+            else:
+                self.fail(fail_code)
+        else:
+            self.fail(fail_code)
+        return target
 
     def rummage(self, paths=[]):
         target = self.get_target(paths)
@@ -74,3 +76,15 @@ class RummageFileCommand(sublime_plugin.TextCommand, Rummage):
 class RummageFolderCommand(sublime_plugin.WindowCommand, Rummage):
     def run(self, paths=[]):
         self.rummage(paths)
+
+
+class RummageRegexTesterCommand(sublime_plugin.ApplicationCommand, RummageBase):
+    def run(self):
+        binary = self.get_rummage()
+
+        if binary is not None:
+            subprocess.Popen(
+                [binary, "-r"]
+            )
+        else:
+            self.fail(NO_TARGET)
