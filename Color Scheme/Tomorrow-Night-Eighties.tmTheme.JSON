@@ -15,6 +15,13 @@
             }
         },
         {
+            "name": "KnockDown Background",
+            "scope": "markup.raw.block.markdown, markup.raw.inline.markdown",
+            "settings": {
+                "background": "#262626"
+            }
+        },
+        {
             "name": "Comment",
             "scope": "comment, string.quoted.double.block.python",
             "settings": {
@@ -252,6 +259,20 @@
             "settings": {
                 "background": "#66CCCC",
                 "foreground": "#2D2D2D"
+            }
+        },
+        {
+            "name": "Raw New Line: Carriage Rerturn",
+            "scope": "glyph.carriage-return",
+            "settings": {
+                "foreground": "#66CCCC"
+            }
+        },
+        {
+            "name": "Raw New Line: New Line Glyph",
+            "scope": "glyph.new-line",
+            "settings": {
+                "foreground": "#F2777A"
             }
         }
     ],
