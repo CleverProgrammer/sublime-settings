@@ -35,3 +35,7 @@ EasyDiff/Context.sublime-menu
 
 
 Crypto.sublime-settings
+
+Package Control.ca-bundle
+
+Package Control.ca-list
