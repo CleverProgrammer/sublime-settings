@@ -5,6 +5,7 @@
     "sublimelinter_executable_map": {
     },
     "sublimelinter_fill_outlines": false,
+    "sublimelinter_gutter_marks": false,
     "sublimelinter_objj_check_ascii": false,
     "sublimelinter_syntax_map": {
         "Python Django": "python"
