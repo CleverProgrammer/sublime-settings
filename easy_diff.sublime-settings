@@ -1,4 +1,17 @@
 {
+    //SVN path
+    "svn":  {
+        "#multiconf#": [
+            {"os:windows": "svn.exe"}
+        ]
+    },
+
+    "git":  {
+        "#multiconf#": [
+            {"os:windows": "C:\\Program Files (x86)\\Git\\bin\\git.exe"}
+        ]
+    },
+
     // Use a buffer instead of the output panel
     "use_buffer": true,
 

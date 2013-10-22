@@ -32,6 +32,7 @@
 
     // Bookmarked paths
     "bookmarks": [
+        {"name": "Home", "path": "~/"},
         {"name": "My Computer", "path": {"#multiconf#": [{"os:windows": ""}]}},
         {"name": "Root", "path": {"#multiconf#": [{"os:linux": "/"}, {"os:osx": "/"}]}}
     ]

@@ -11,6 +11,12 @@ from os import stat as osstat
 from os import makedirs
 from os.path import basename, join, exists
 import difflib
+import User.lib.svn as svn
+import User.lib.git as git
+from User.lib.multiconf import get as multiget
+
+SVN_ENABLED = False
+GIT_ENABLED = False
 
 MENU_FOLDER = "EasyDiff"
 CONTEXT_MENU = "Context.sublime-menu"
@@ -54,9 +60,28 @@ DIFF_MENU = '''[
             }
         ]
     },
+    {
+        "caption": "EasyDiff SVN",
+        "command": "easy_diff_svn_last_rev"
+    },
+    {
+        "caption": "EasyDiff Git",
+        "command": "easy_diff_git_last_rev"
+    },
     { "caption": "-"}
 ]
 '''
+
+DEBUG = False
+
+
+def log(msg):
+    print("EasyDiff: %s" % str(msg))
+
+
+def debug(msg):
+    if DEBUG:
+        log(msg)
 
 
 def update_menu(name="..."):
@@ -244,8 +269,7 @@ class _EasyDiffCompareBothCommand(sublime_plugin.TextCommand):
         if lv is not None and rv is not None:
             EasyDiff.compare(EasyDiffInput(lv, rv))
         else:
-            print("Can't compare")
-
+            log("Can't compare")
 
     def is_enabled(self):
         return LEFT is not None and self.is_visible()
@@ -275,6 +299,84 @@ class EasyDiffCompareBothSelectionCommand(_EasyDiffCompareBothCommand, _EasyDiff
         return bool(sublime.load_settings(SETTINGS).get("use_selections", True)) and self.has_selections()
 
 
+class EasyDiffSvnLastRevCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        name = self.view.file_name() if self.view is not None else None
+        if name is not None:
+            if svn.is_versioned(name):
+                result = svn.diff_current(name).decode("utf-8").replace('\r', '')
+                if result == "":
+                    sublime.status_message("No Difference")
+                    return
+
+                use_buffer = bool(sublime.load_settings(SETTINGS).get("use_buffer", False))
+
+                win = sublime.active_window()
+                if use_buffer:
+                    v = win.new_file()
+                    v.set_name("EasyDiff: SVN (%s)" % basename(name))
+                    v.set_scratch(True)
+                    v.assign_syntax('Packages/Diff/Diff.tmLanguage')
+                    v.run_command('append', {'characters': result})
+                else:
+                    v = win.create_output_panel('easy_diff')
+                    v.assign_syntax('Packages/Diff/Diff.tmLanguage')
+                    v.run_command('append', {'characters': result})
+                    win.run_command("show_panel", {"panel": "output.easy_diff"})
+
+    def is_visible(self):
+        return SVN_ENABLED
+
+    def is_enabled(self):
+        name = self.view.file_name() if self.view != None else None
+        if name is not None:
+            try:
+                versioned = svn.is_versioned(name)
+                return SVN_ENABLED and versioned
+            except Exception as e:
+                pass
+        return False
+
+
+class EasyDiffGitLastRevCommand(sublime_plugin.TextCommand):
+    def run(self, edit):
+        name = self.view.file_name() if self.view is not None else None
+        if name is not None:
+            if git.is_versioned(name):
+                result = git.diff_current(name).decode("utf-8").replace('\r', '')
+                if result == "":
+                    sublime.status_message("No Difference")
+                    return
+
+                use_buffer = bool(sublime.load_settings(SETTINGS).get("use_buffer", False))
+
+                win = sublime.active_window()
+                if use_buffer:
+                    v = win.new_file()
+                    v.set_name("EasyDiff: Git (%s)" % basename(name))
+                    v.set_scratch(True)
+                    v.assign_syntax('Packages/Diff/Diff.tmLanguage')
+                    v.run_command('append', {'characters': result})
+                else:
+                    v = win.create_output_panel('easy_diff')
+                    v.assign_syntax('Packages/Diff/Diff.tmLanguage')
+                    v.run_command('append', {'characters': result})
+                    win.run_command("show_panel", {"panel": "output.easy_diff"})
+
+    def is_visible(self):
+        return GIT_ENABLED
+
+    def is_enabled(self):
+        name = self.view.file_name() if self.view != None else None
+        if name is not None:
+            try:
+                versioned = git.is_versioned(name)
+                return GIT_ENABLED and versioned
+            except:
+                pass
+        return False
+
+
 class EasyDiffListener(sublime_plugin.EventListener):
     def on_close(self, view):
         global LEFT
@@ -285,4 +387,25 @@ class EasyDiffListener(sublime_plugin.EventListener):
 
 
 def plugin_loaded():
+    global SVN_ENABLED
+    global GIT_ENABLED
+
     update_menu()
+    settings = sublime.load_settings(SETTINGS)
+    svn_path = multiget(settings, "svn", None)
+    git_path = multiget(settings, "git", None)
+    if svn_path is not None:
+        svn.set_svn_path(svn_path)
+    if git_path is not None:
+        git.set_git_path(git_path)
+
+    try:
+        log("svn %s" % svn.version())
+        SVN_ENABLED = True
+    except:
+        pass
+    try:
+        log("git %s" % git.version())
+        GIT_ENABLED = True
+    except:
+        pass
