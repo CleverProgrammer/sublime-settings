@@ -180,7 +180,9 @@ class ThemeScheduler(object):
             cls.next_change = lowest
             cls.day = now.day
 
-        debug_log("Next Change @ %s" % str(cls.next_change))
+        log_time = time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
+
+        debug_log("%s Next Change @ %s" % (log_time, str(cls.next_change)))
 
         if startup:
             cls.set_startup_theme()
