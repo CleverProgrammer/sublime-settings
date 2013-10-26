@@ -15,6 +15,13 @@
         ]
     },
 
+    // Mercurial path
+    "hg": {
+        "#multiconf#": [
+            {"os:osx": "/usr/local/bin/hg"}
+        ]
+    },
+
     // Turn off svn completely
     "svn_disabled": false,
 
