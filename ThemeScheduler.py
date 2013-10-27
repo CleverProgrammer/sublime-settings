@@ -37,7 +37,7 @@ from User.lib.multiconf import get as multiget
 import json
 from os.path import exists, join, abspath, dirname
 try:
-    from User.theme_tweaker import ThemeTweaker
+    from ThemeTweaker.theme_tweaker import ThemeTweaker
 except:
     ThemeTweaker = None
 
