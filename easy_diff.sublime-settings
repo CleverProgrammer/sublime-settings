@@ -22,6 +22,15 @@
         ]
     },
 
+    // External diff tool path (absolute)
+    "external_diff": {
+        "#multiconf#": [
+            {"os:windows": "C:\\Program Files\\Deltopia\\DeltaWalker 1.9\\DeltaWalker.exe"}
+        ]
+    },
+
+    "show_external": true,
+
     // Do not perform a version check on files
     // when evaluating whether version control
     // commands are enabled.  May avoid slowing
@@ -36,7 +45,7 @@
     "git_disabled": false,
 
     // Turn off (Mercurial) hg completely
-    "hg_disabled": true,
+    "hg_disabled": false,
 
     // Turn off svn menu access
     "svn_hide_menu": false,

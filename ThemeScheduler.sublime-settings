@@ -1,6 +1,6 @@
 {
     "enabled": true,
-    "debug": true,
+    "debug": false,
     "themes": {
         "#multiconf#": [
             {
