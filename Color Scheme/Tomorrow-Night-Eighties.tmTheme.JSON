@@ -15,7 +15,7 @@
             }
         },
         {
-            "name": "KnockDown Background",
+            "name": "Markdown Background",
             "scope": "markup.raw.block.markdown, markup.raw.inline.markdown",
             "settings": {
                 "background": "#262626"
@@ -146,10 +146,42 @@
             }
         },
         {
-            "name": "Markup: List",
+            "name": "Markdown: List",
             "scope": "markup.list",
             "settings": {
                 "foreground": "#99CCCC"
+            }
+        },
+        {
+            "name": "Markdown: Bold",
+            "scope": "markup.italic",
+            "settings": {
+                "fontStyle": "bold",
+                "foreground": "#CC99CC"
+            }
+        },
+        {
+            "name": "Markup: Italic",
+            "scope": "markup.italic",
+            "settings": {
+                "fontStyle": "italic",
+                "foreground": "#CC99CC"
+            }
+        },
+                {
+            "name": "Markdown: Blockquote",
+            "scope": "markup.quote, punctuation.definition.blockquote.markdown",
+            "settings": {
+                "fontStyle": "italic",
+                "foreground": "#888888"
+            }
+        },
+        {
+            "name": "Markup: Quote",
+            "scope": "markup.quote",
+            "settings": {
+                "fontStyle": " italic",
+                "foreground": "#888888"
             }
         },
         {
