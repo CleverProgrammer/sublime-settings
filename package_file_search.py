@@ -2,6 +2,59 @@
 Package File Search
 Licensed under MIT
 Copyright (c) 2012 Isaac Muse <isaacmuse@gmail.com>
+
+Example Commands:
+    //////////////////////////////////
+    // Package File Search Commands
+    //////////////////////////////////
+    {
+        "caption": "Package File Search: Menu",
+        "command": "get_package_files_menu",
+        "args": {
+            "pattern_list": [
+                {"caption": "Settings Files",        "search": {"pattern": "*.sublime-settings", "regex": false}},
+                {"caption": "Keymap Files",          "search": {"pattern": "*.sublime-keymap",   "regex": false}},
+                {"caption": "Command Files",         "search": {"pattern": "*.sublime-commands", "regex": false}},
+                {"caption": "Readme Files",          "search": {"pattern": "*readme*",           "regex": false}},
+                {"caption": "Language Syntax Files", "search": {"pattern": "*tmLanguage",        "regex": false}},
+                {"caption": "Snippet Files",         "search": {"pattern": "*.sublime-snippet",  "regex": false}},
+                {"caption": "Preference Files",      "search": {"pattern": "*.tmPreferences",    "regex": false}},
+                {"caption": "Color Scheme Files",    "search": {"pattern": "*.tmTheme",          "regex": false}},
+                {"caption": "Theme Files",           "search": {"pattern": "*.sublime-theme",    "regex": false}},
+                {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "regex": false}},
+                {"caption": "Sublime Menues",        "search": {"pattern": "*.sublime-menu",     "regex": false}}
+            ]
+        }
+    },
+    {
+        "caption": "Package false Search: Menu (find false)",
+        "command": "get_package_files_menu",
+        "args": {
+            "pattern_list": [
+                {"caption": "Settings Files",        "search": {"pattern": "*.sublime-settings", "regex": false}},
+                {"caption": "Keymap Files",          "search": {"pattern": "*.sublime-keymap",   "regex": false}},
+                {"caption": "Command Files",         "search": {"pattern": "*.sublime-commands", "regex": false}},
+                {"caption": "Readme Files",          "search": {"pattern": "*readme*",           "regex": false}},
+                {"caption": "Language Syntax Files", "search": {"pattern": "*tmLanguage",        "regex": false}},
+                {"caption": "Snippet Files",         "search": {"pattern": "*.sublime-snippet",  "regex": false}},
+                {"caption": "Preference Files",      "search": {"pattern": "*.tmPreferences",    "regex": false}},
+                {"caption": "Color Scheme Files",    "search": {"pattern": "*.tmTheme",          "regex": false}},
+                {"caption": "Theme Files",           "search": {"pattern": "*.sublime-theme",    "regex": false}},
+                {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "regex": false}},
+                {"caption": "Sublime Menues",        "search": {"pattern": "*.sublime-menu",     "regex": false}}
+            ],
+            "find_all": true
+        }
+    },
+    {
+        "caption": "Package false Search: Input Search Pattern",
+        "command": "get_package_files_input"
+    },
+    {
+        "caption": "Package File Search: Input Search Pattern (find all)",
+        "command": "get_package_files_input",
+        "args": {"find_all": true}
+    },
 """
 
 import sublime
@@ -11,22 +64,6 @@ from os import listdir, walk
 from fnmatch import fnmatch
 import re
 import zipfile
-
-
-# Syntax will only be used when extracting a file from an archive.
-DEFAULT_FILES = [
-    {"caption": "Settings Files",        "search": {"pattern": "*.sublime-settings", "regex": False}},
-    {"caption": "Keymap Files",          "search": {"pattern": "*.sublime-keymap",   "regex": False}},
-    {"caption": "Command Files",         "search": {"pattern": "*.sublime-commands", "regex": False}},
-    {"caption": "Readme Files",          "search": {"pattern": "*readme*",           "regex": False}},
-    {"caption": "Language Syntax Files", "search": {"pattern": "*tmLanguage",        "regex": False}},
-    {"caption": "Snippet Files",         "search": {"pattern": "*.sublime-snippet",  "regex": False}},
-    {"caption": "Preference Files",      "search": {"pattern": "*.tmPreferences",    "regex": False}},
-    {"caption": "Color Scheme Files",    "search": {"pattern": "*.tmTheme",          "regex": False}},
-    {"caption": "Theme Files",           "search": {"pattern": "*.sublime-theme",    "regex": False}},
-    {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "regex": False}},
-    {"caption": "Sublime Menues",        "search": {"pattern": "*.sublime-menu",     "regex": False}}
-]
 
 
 def sublime_package_paths():
@@ -49,7 +86,7 @@ class WriteArchivedPackageContentCommand(sublime_plugin.TextCommand):
 
 
 class GetPackageFilesInputCommand(sublime_plugin.WindowCommand):
-    def find_pattern(self, pattern):
+    def find_pattern(self, pattern, find_all=False):
         regex = False
         if pattern != "":
             m = re.match(r"^[ \t]*`(.*)`[ \t]*$", pattern)
@@ -60,22 +97,23 @@ class GetPackageFilesInputCommand(sublime_plugin.WindowCommand):
                 "get_package_files",
                 {
                     "pattern": pattern,
-                    "regex": regex
+                    "regex": regex,
+                    "find_all": find_all
                 }
             )
 
-    def run(self):
+    def run(self, find_all=False):
         self.window.show_input_panel(
             "File Pattern: ",
             "",
-            self.find_pattern,
+            lambda x: self.find_pattern(x, find_all=find_all),
             None,
             None
         )
 
 
 class GetPackageFilesMenuCommand(sublime_plugin.WindowCommand):
-    def find_files(self, value, patterns):
+    def find_files(self, value, patterns, find_all):
         if value > -1:
             pat = patterns[value]
             sublime.set_timeout(
@@ -83,25 +121,70 @@ class GetPackageFilesMenuCommand(sublime_plugin.WindowCommand):
                     "get_package_files",
                     {
                         "pattern": pat["pattern"],
-                        "regex": pat["regex"]
+                        "regex": pat.get("regex", False),
+                        "find_all": find_all
                     }
                 ),
                 100
             )
 
-    def run(self, pattern_list=DEFAULT_FILES):
+    def run(self, pattern_list=[], find_all=False):
         patterns = []
         types = []
         for item in pattern_list:
             patterns.append(item["search"])
             types.append(item["caption"])
+        if len(types) == 1:
+            self.find_files(0, patterns, find_all)
+        elif len(types):
+            self.window.show_quick_panel(
+                types,
+                lambda x: self.find_files(x, patterns=patterns, find_all=find_all)
+            )
+
+class GetColorSchemeFileCommand(GetPackageFilesCommand):
+    def preview_color(self, value, settings):
+        if value != -1:
+            sublime.load_settings("Preferences.sublime-settings").set("color_scheme", settings[value])
+
+    def set_color_scheme(self, value, settings):
+        if value != -1:
+            sublime.load_settings("Preferences.sublime-settings").set("color_scheme", settings[value])
+        else:
+            if self.current_color_scheme is not None:
+                sublime.load_settings("Preferences.sublime-settings").set("color_scheme", self.current_color_scheme)
+
+    def find(self, pattern, regex):
+        resources = []
+        if not regex:
+            resources = sublime.find_resources(pattern)
+        else:
+            temp = sublime.find_resources("*")
+            for t in temp:
+                if re.match(pattern, t, re.IGNORECASE) != None:
+                    resources.append(t)
+
         self.window.show_quick_panel(
-            types,
-            lambda x: self.find_files(x, patterns=patterns)
+            resources,
+            lambda x: self.set_color_scheme(x, settings=resources),
+            0,
+            0,
+            lambda x: self.preview_color(x, settings=resources)
         )
+
+    def run(self, pattern=None, regex=False, find_all=False):
+        pattern = "*.tmTheme"
+        regex = False
+        find_all = False
+        self.current_color_scheme = sublime.load_settings("Preferences.sublime-settings").get("color_scheme")
+        self.find(pattern, regex)
 
 
 class GetPackageFilesCommand(sublime_plugin.WindowCommand):
+    def open_file_quick(self, value, settings):
+        if value > -1:
+            self.window.run_command("open_file", {"file": settings[value].replace("Packages", "${packages}", 1)})
+
     def find_files(self, files, pattern, settings, regex):
         for f in files:
             if regex:
@@ -161,7 +244,7 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
             zipped = [(join(basename(plugin[0]), normpath(fn)), plugin[1]) for fn in sorted(z.namelist())]
             self.find_files(zipped, pattern, settings, regex)
 
-    def run(self, pattern, regex=False):
+    def find_all(self, pattern, regex=False):
         self.packages = normpath(sublime.packages_path())
         settings = []
         plugins = [join(self.packages, item) for item in listdir(self.packages) if isdir(join(self.packages, item))]
@@ -178,3 +261,24 @@ class GetPackageFilesCommand(sublime_plugin.WindowCommand):
             settings,
             lambda x: self.open_file(x, settings=settings)
         )
+
+    def find(self, pattern, regex):
+        resources = []
+        if not regex:
+            resources = sublime.find_resources(pattern)
+        else:
+            temp = sublime.find_resources("*")
+            for t in temp:
+                if re.match(pattern, t, re.IGNORECASE) != None:
+                    resources.append(t)
+
+        self.window.show_quick_panel(
+            resources,
+            lambda x: self.open_file_quick(x, settings=resources)
+        )
+
+    def run(self, pattern, regex=False, find_all=False):
+        if not find_all:
+            self.find(pattern, regex)
+        else:
+            self.find_all(pattern, regex)

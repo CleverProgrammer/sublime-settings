@@ -29,11 +29,55 @@
     //////////////////////////////////
     {
         "caption": "Package File Search: Menu",
-        "command": "get_package_files_menu"
+        "command": "get_package_files_menu",
+        "args": {
+            "pattern_list": [
+                {"caption": "Settings Files",        "search": {"pattern": "*.sublime-settings", "regex": false}},
+                {"caption": "Keymap Files",          "search": {"pattern": "*.sublime-keymap",   "regex": false}},
+                {"caption": "Command Files",         "search": {"pattern": "*.sublime-commands", "regex": false}},
+                {"caption": "Readme Files",          "search": {"pattern": "*readme*",           "regex": false}},
+                {"caption": "Language Syntax Files", "search": {"pattern": "*tmLanguage",        "regex": false}},
+                {"caption": "Snippet Files",         "search": {"pattern": "*.sublime-snippet",  "regex": false}},
+                {"caption": "Preference Files",      "search": {"pattern": "*.tmPreferences",    "regex": false}},
+                {"caption": "Color Scheme Files",    "search": {"pattern": "*.tmTheme",          "regex": false}},
+                {"caption": "Theme Files",           "search": {"pattern": "*.sublime-theme",    "regex": false}},
+                {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "regex": false}},
+                {"caption": "Sublime Menues",        "search": {"pattern": "*.sublime-menu",     "regex": false}}
+            ]
+        }
     },
     {
-        "caption": "Package File Search: Input Search Pattern",
+        "caption": "Package false Search: Menu (find false)",
+        "command": "get_package_files_menu",
+        "args": {
+            "pattern_list": [
+                {"caption": "Settings Files",        "search": {"pattern": "*.sublime-settings", "regex": false}},
+                {"caption": "Keymap Files",          "search": {"pattern": "*.sublime-keymap",   "regex": false}},
+                {"caption": "Command Files",         "search": {"pattern": "*.sublime-commands", "regex": false}},
+                {"caption": "Readme Files",          "search": {"pattern": "*readme*",           "regex": false}},
+                {"caption": "Language Syntax Files", "search": {"pattern": "*tmLanguage",        "regex": false}},
+                {"caption": "Snippet Files",         "search": {"pattern": "*.sublime-snippet",  "regex": false}},
+                {"caption": "Preference Files",      "search": {"pattern": "*.tmPreferences",    "regex": false}},
+                {"caption": "Color Scheme Files",    "search": {"pattern": "*.tmTheme",          "regex": false}},
+                {"caption": "Theme Files",           "search": {"pattern": "*.sublime-theme",    "regex": false}},
+                {"caption": "Python Source Files",   "search": {"pattern": "*.py",               "regex": false}},
+                {"caption": "Sublime Menues",        "search": {"pattern": "*.sublime-menu",     "regex": false}}
+            ],
+            "find_all": true
+        }
+    },
+    {
+        "caption": "Package false Search: Input Search Pattern",
         "command": "get_package_files_input"
+    },
+    {
+        "caption": "Package File Search: Input Search Pattern (find all)",
+        "command": "get_package_files_input",
+        "args": {"find_all": true}
+    },
+    {
+        "caption": "Package File Search: Set Color Scheme File",
+        "command": "get_color_scheme_file"
     },
 
     //////////////////////////////////

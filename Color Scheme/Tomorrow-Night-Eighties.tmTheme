@@ -252,7 +252,7 @@
 			<key>name</key>
 			<string>Markdown: Bold</string>
 			<key>scope</key>
-			<string>markup.italic</string>
+			<string>markup.bold</string>
 			<key>settings</key>
 			<dict>
 				<key>fontStyle</key>
