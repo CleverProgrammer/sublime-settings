@@ -25,7 +25,8 @@
     // External diff tool path (absolute)
     "external_diff": {
         "#multiconf#": [
-            {"os:windows": "C:\\Program Files\\Deltopia\\DeltaWalker 1.9\\DeltaWalker.exe"}
+            {"os:windows": "C:\\Program Files\\Deltopia\\DeltaWalker 1.9\\DeltaWalker.exe"},
+            {"os:osx": "/Users/facelessuser/bin/dw.sh"}
         ]
     },
 
