@@ -28,3 +28,9 @@ notify.py
 version.json
 
 Package Control.last-run
+
+Package Control.cache
+
+Package Control.system*
+
+ColorPicker/*
