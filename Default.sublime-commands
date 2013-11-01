@@ -47,7 +47,7 @@
         }
     },
     {
-        "caption": "Package false Search: Menu (find false)",
+        "caption": "Package File Search: Menu (find all)",
         "command": "get_package_files_menu",
         "args": {
             "pattern_list": [
@@ -67,7 +67,7 @@
         }
     },
     {
-        "caption": "Package false Search: Input Search Pattern",
+        "caption": "Package File Search: Input Search Pattern",
         "command": "get_package_files_input"
     },
     {
