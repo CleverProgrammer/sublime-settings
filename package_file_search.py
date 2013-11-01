@@ -270,9 +270,14 @@ class GetPackageFilesCommand(_PackageSearch):
         if file_name is not None:
             with zipfile.ZipFile(zip_package, 'r') as z:
                 text = z.read(z.getinfo(zip_file))
+
+                # Unpack the file in a temporary location
                 d = tempfile.mkdtemp(prefix="pkgfs")
                 with open(join(d, basename(file_name)), "wb") as f:
                     f.write(text)
+
+                # Open and then close the file in a view in order
+                # to let sublime guess encoding and syntax
                 view = self.window.open_file(f.name)
                 encoding, st_encoding = get_encoding(view)
                 self.window.focus_view(view)
@@ -280,6 +285,16 @@ class GetPackageFilesCommand(_PackageSearch):
                 syntax = view.settings().get('syntax')
                 shutil.rmtree(d)
 
+                # When a file is opened from disk, you can't rename the
+                # the path location.  If you try and use new_file,
+                # you can give it a nice file path name, but the tab
+                # will be huge.  If you use open_file, with a bogus path,
+                # the view will be created with the desired filepath, and
+                # it will properluy display the basename as the tab name,
+                # it will just report an issue reading the file in the console.
+                # Reopen a new view and configure it with the
+                # syntax and name and give the view a friendly name
+                # opposed to an ugly temp directory
                 view = self.window.open_file(file_name)
                 view.set_syntax_file(syntax)
                 view.set_encoding(st_encoding)
@@ -301,7 +316,7 @@ class GetPackageFilesCommand(_PackageSearch):
                 self.window.run_command("open_file", {"file": settings[value].replace("Packages", "${packages}", 1)})
 
 
-class GetColorSchemeFileCommand(GetPackageFilesCommand):
+class GetPackageSchemeFileCommand(_PackageSearch):
     def on_select(self, value, settings):
         if value != -1:
             sublime.load_settings("Preferences.sublime-settings").set("color_scheme", settings[value])

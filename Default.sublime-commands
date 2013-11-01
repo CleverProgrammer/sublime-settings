@@ -77,7 +77,7 @@
     },
     {
         "caption": "Package File Search: Set Color Scheme File",
-        "command": "get_color_scheme_file"
+        "command": "get_package_scheme_file"
     },
 
     //////////////////////////////////
