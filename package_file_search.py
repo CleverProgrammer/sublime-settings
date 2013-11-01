@@ -60,14 +60,36 @@ Example Commands:
 import sublime
 import sublime_plugin
 from os.path import join, isdir, normpath, dirname, basename, splitext, exists
-from os import listdir, walk
+from os import listdir, walk, remove
 from fnmatch import fnmatch
 import re
 import zipfile
+import tempfile
+import shutil
 
 
 def sublime_package_paths():
     return [sublime.installed_packages_path(), join(dirname(sublime.executable_path()), 'Packages')]
+
+
+def get_encoding(view):
+    mapping = [
+        ("with BOM", ""),
+        ("Windows", "cp"),
+        ("-", "_"),
+        (" ", "")
+    ]
+    encoding = view.encoding()
+    orig = encoding
+    print(orig)
+    m = re.match(r'.+\((.*)\)', encoding)
+    if m is not None:
+        encoding = m.group(1)
+
+    for item in mapping:
+        encoding = encoding.replace(item[0], item[1])
+
+    return ("utf_8", "UTF-8") if encoding in ["Undefined", "Hexidecimal"] else (encoding, orig)
 
 
 class WriteArchivedPackageContentCommand(sublime_plugin.TextCommand):
@@ -248,8 +270,24 @@ class GetPackageFilesCommand(_PackageSearch):
         if file_name is not None:
             with zipfile.ZipFile(zip_package, 'r') as z:
                 text = z.read(z.getinfo(zip_file))
+                d = tempfile.mkdtemp(prefix="pkgfs")
+                with open(join(d, basename(file_name)), "wb") as f:
+                    f.write(text)
+                view = self.window.open_file(f.name)
+                encoding, st_encoding = get_encoding(view)
+                self.window.focus_view(view)
+                self.window.run_command("close_file")
+                syntax = view.settings().get('syntax')
+                shutil.rmtree(d)
+
                 view = self.window.open_file(file_name)
-                WriteArchivedPackageContentCommand.bfr = text.decode('utf-8').replace('\r', '')
+                view.set_syntax_file(syntax)
+                view.set_encoding(st_encoding)
+                try:
+                    WriteArchivedPackageContentCommand.bfr = text.decode(encoding).replace('\r', '')
+                except:
+                    view.set_encoding("UTF-8")
+                    WriteArchivedPackageContentCommand.bfr = text.decode("utf-8").replace('\r', '')
                 sublime.set_timeout(lambda: view.run_command("write_archived_package_content"), 0)
 
     def process_file(self, value, settings):
