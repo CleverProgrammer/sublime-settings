@@ -1,5 +1,12 @@
 [
     //////////////////////////////////
+    // Toggle White Space Command
+    //////////////////////////////////
+    {
+        "caption": "Toggle White Space",
+        "command": "toggle_white_space"
+    },
+    //////////////////////////////////
     // Theme Scheduler Commands
     //////////////////////////////////
     {
