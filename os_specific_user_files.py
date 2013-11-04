@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
 OS Specific User Files is released under the MIT license.
 
@@ -82,6 +83,9 @@ import shutil
 import threading
 import json
 from glob import glob
+
+STATUS_THROB = "◐◓◑◒"
+STATUS_INDEX = 0
 
 
 def os_specific_alert():
@@ -256,33 +260,25 @@ def make_dir(directory):
 class MonitorThread():
     def __init__(self, t):
         self.thread = t
-        self.status_pos = 0
-        self.direction = 1
-        self.max_status = 5
         sublime.set_timeout(lambda: self.__start_monitor(), 0)
 
+    def __throb(self):
+        global STATUS_INDEX
+        if STATUS_INDEX == 3:
+            STATUS_INDEX = 0
+        else:
+            STATUS_INDEX += 1
+
+        sublime.status_message("OS Specific User Files: Busy %s" % STATUS_THROB[STATUS_INDEX])
+
     def __start_monitor(self):
-        sublime.status_message("OS Specific User Files: Busy - [>" + "-" * self.max_status + "]")
-        sublime.set_timeout(lambda: self.__monitor(), 500)
+        self.__throb()
+        sublime.set_timeout(lambda: self.__monitor(), 300)
 
     def __monitor(self):
+        self.__throb()
         if self.thread.is_alive():
-            if self.direction > 0:
-                if self.status_pos < self.max_status:
-                    self.status_pos += 1
-                else:
-                    self.direction = -1
-            else:
-                if self.status_pos > 0:
-                    self.status_pos -= 1
-                else:
-                    self.direction = 1
-
-            indicator = ">" if self.direction > 0 else "<"
-
-            leftover = 5 - self.status_pos
-            sublime.status_message("OS Specific User Files: Busy - [" + "-" * self.status_pos + indicator + "-" * leftover + "]")
-            sublime.set_timeout(self.__monitor, 1)
+            sublime.set_timeout(self.__monitor, 300)
         else:
             sublime.set_timeout(self.thread.on_complete, 500)
 
