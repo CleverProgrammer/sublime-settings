@@ -1,6 +1,6 @@
 {
     // Enable debug logging
-    "debug_enable": true,
+    "debug_enable": false,
 
     // Path to find icons at
     "icon_path": "BracketHighlighter/icons",
