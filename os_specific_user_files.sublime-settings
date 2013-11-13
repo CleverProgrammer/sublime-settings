@@ -4,7 +4,8 @@
             "Package Control.sublime-settings": "Package Control.sublime-settings",
             "Terminal.sublime-settings": "Terminal.sublime-settings",
             "Preferences.sublime-settings": "Preferences.sublime-settings",
-            "Crypto.sublime-settings": "Crypto.sublime-settings"
+            "Crypto.sublime-settings": "Crypto.sublime-settings",
+            "Side Bar.sublime-settings": "Side Bar.sublime-settings"
         },
         "directories": {
             "SideBarEnhancements": "SideBarEnhancements"
@@ -19,7 +20,8 @@
             "Terminal.sublime-settings": "Terminal.sublime-settings",
             "Preferences.sublime-settings": "Preferences.sublime-settings",
             "Git.sublime-settings": "Git.sublime-settings",
-            "Crypto.sublime-settings": "Crypto.sublime-settings"
+            "Crypto.sublime-settings": "Crypto.sublime-settings",
+            "Side Bar.sublime-settings": "Side Bar.sublime-settings"
         },
         "directories": {
             "SideBarEnhancements": "SideBarEnhancements"
@@ -31,7 +33,8 @@
     "linux":{
         "files": {
             "Package Control.sublime-settings": "Package Control.sublime-settings",
-            "Preferences.sublime-settings": "Preferences.sublime-settings"
+            "Preferences.sublime-settings": "Preferences.sublime-settings",
+            "Side Bar.sublime-settings": "Side Bar.sublime-settings"
         },
         "directories": {
             "SideBarEnhancements": "SideBarEnhancements"

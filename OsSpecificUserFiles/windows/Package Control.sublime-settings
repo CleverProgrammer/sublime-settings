@@ -20,6 +20,7 @@
 		"Markdown Preview",
 		"Origami",
 		"Package Control",
+		"PackageFileSearch",
 		"Perv - Color Scheme",
 		"PlainTasks",
 		"PlistJsonConverter",
@@ -27,8 +28,10 @@
 		"RawLineEdit",
 		"RegReplace",
 		"ScopeHunter",
+		"SideBarEnhancements",
 		"SmartCursor",
 		"SortTabs",
+		"SublimeRandomCrap",
 		"Terminal",
 		"Theme - Phoenix"
 	],
@@ -43,6 +46,8 @@
 		"https://github.com/bizoo/SmartCursor/tree/master",
 		"https://github.com/facelessuser/SortTabs/tree/master",
 		"https://github.com/facelessuser/sublime_terminal/tree/master",
-		"https://github.com/facelessuser/EasyDiff/tree/master"
+		"https://github.com/facelessuser/EasyDiff/tree/master",
+		"https://github.com/facelessuser/SublimeRandomCrap/tree/master",
+		"https://github.com/facelessuser/PackageFileSearch/tree/master"
 	]
 }
