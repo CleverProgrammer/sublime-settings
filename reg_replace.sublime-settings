@@ -225,12 +225,12 @@
         },
         // Remove trim newlines
         {
-            "file_pattern": ["*.*"],
+            "file_pattern": ["*"],
             "sequence": ["trim_excessive_newlines", "ensure_newline_at_file_end"]
         },
         // Highlight trailing spaces
         {
-            "file_pattern": ["*.*"],
+            "file_pattern": ["*"],
             "sequence": ["remove_trailing_spaces"],
             "action": "mark"
         }
