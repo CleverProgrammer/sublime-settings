@@ -6,17 +6,6 @@
         "caption": "Toggle White Space",
         "command": "toggle_white_space"
     },
-    //////////////////////////////////
-    // Theme Scheduler Commands
-    //////////////////////////////////
-    {
-        "caption": "Theme Scheduler: Show Next Change",
-        "command": "theme_scheduler_get_next_change"
-    },
-    {
-        "caption": "Theme Scheduler: Refresh",
-        "command": "theme_scheduler_refresh"
-    },
 
     //////////////////////////////////
     // Insertion Commands
