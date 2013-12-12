@@ -1,14 +1,22 @@
 {
 	"bold_folder_labels": true,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/ThemeTweaker/Tomorrow-Night-Eighties.tmTheme",
+	"color_scheme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
+	"faceless_active_bar": true,
+	"faceless_dark_blue": true,
+	"faceless_dark_dirty_red": true,
+	"faceless_dirty_bar": true,
+	"faceless_dirty_button": true,
+	"faceless_dirty_red": true,
+	"faceless_sidebar_tree_small": true,
+	"faceless_solid_tab": false,
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 15.0,
-	"highlight_line": false,
+	"font_size": 13,
+	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"highlight_word_outline_style": true,
 	"highlight_word_require_word_select": true,
@@ -16,18 +24,17 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Vintage",
-		"SmartCursor",
-		"Python",
-		"C++",
-		"QuickCal",
-		"SublimeLinter",
-		"Perl",
 		"Batch File",
-		"PHP",
+		"SublimeLinter",
 		"Markdown",
+		"Perl",
+		"PHP",
+		"CSS",
+		"SmartCursor",
 		"JavaScript",
-		"CSS"
+		"C++",
+		"Vintage",
+		"Python"
 	],
 	"indent_guide_options":
 	[
@@ -105,13 +112,6 @@
 	[
 		"E501"
 	],
-	"phoenix_color_blue": true,
-	"phoenix_color_expanded_folder": true,
-	"phoenix_dirty_bottom_bar": true,
-	"phoenix_dirty_bottom_bar_red": true,
-	"phoenix_eighties": true,
-	"phoenix_highlight_current_tab": true,
-	"phoenix_tabs_small": true,
 	"preview_on_click": false,
 	"pyflakes_ignore":
 	[
@@ -135,7 +135,7 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Phoenix Dark.sublime-theme",
+	"theme": "Faceless Dark.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
 	"wide_caret": true,
