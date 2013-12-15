@@ -127,12 +127,11 @@
                         "time": "12:00",
                         "msg": "Lunch time!"
                     },
-                    // {
-                    //     // Lunch over
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.95)@bg;",
-                    //     "time": "13:00"
-                    // },
+                    {
+                        // Lunch over
+                        "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "time": "13:00"
+                    },
                     // {
                     //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
                     //     "filters": "brightness(.94)@bg",
