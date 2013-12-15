@@ -21,7 +21,6 @@
 		"Origami",
 		"Package Control",
 		"PackageFileSearch",
-		"PackageResourceViewer",
 		"PlainTasks",
 		"PlistJsonConverter",
 		"QuickCal",
@@ -32,8 +31,7 @@
 		"SmartCursor",
 		"SortTabs",
 		"SublimeRandomCrap",
-		"Terminal",
-		"Theme - Phoenix"
+		"Terminal"
 	],
 	"package_name_map":
 	{
@@ -46,7 +44,6 @@
 		"https://github.com/bizoo/SmartCursor/tree/master",
 		"https://github.com/facelessuser/SortTabs/tree/master",
 		"https://github.com/facelessuser/sublime_terminal/tree/master",
-		"https://github.com/facelessuser/EasyDiff/tree/master",
 		"https://github.com/facelessuser/SublimeRandomCrap/tree/master",
 		"https://github.com/facelessuser/PackageFileSearch/tree/master"
 	]

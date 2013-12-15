@@ -71,5 +71,5 @@
     ],
 
     // In most this should be left true for easy reading
-    "yaml_no_inline": true
+    "yaml_default_flow_style": true
 }
