@@ -1,10 +1,13 @@
 {
+	"auto_upgrade_last_run": null,
 	"installed_packages":
 	[
 		"AAALanguages",
+		"ApacheConf.tmLanguage",
 		"ApplySyntax",
 		"BracketHighlighter",
 		"ColorPicker",
+		"CopyEdit",
 		"Crypto",
 		"CursorRuler",
 		"ExportHtml",
@@ -14,16 +17,17 @@
 		"GenerateUUID",
 		"google-search",
 		"HexViewer",
+		"Markdown Preview",
 		"Origami",
 		"Package Control",
 		"PlainTasks",
-		"PlistJsonConverter",
 		"QuickCal",
 		"RegReplace",
+		"RSpec (snippets and syntax)",
 		"ScopeHunter",
+		"SideBarEnhancements",
 		"SmartCursor",
-		"SortTabs",
-		"Theme - Phoenix"
+		"SortTabs"
 	],
 	"package_name_map":
 	{

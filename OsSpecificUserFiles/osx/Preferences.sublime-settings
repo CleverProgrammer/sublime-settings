@@ -2,14 +2,19 @@
 	"always_show_minimap_viewport": false,
 	"bold_folder_labels": true,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/ThemeTweaker/Tomorrow-Night-Eighties.tmTheme",
+	"color_scheme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
+	"faceless_active_bar": true,
+	"faceless_dark_dirty_red": true,
+	"faceless_dark_green": true,
+	"faceless_dirty_bar": true,
+	"faceless_sidebar_tree_small": true,
 	"fade_inactive_panes_delay": 300,
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 15.0,
+	"font_size": 16,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"highlight_word_outline_style": true,
@@ -18,20 +23,22 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"CSS",
-		"CursorRuler",
-		"Batch File",
 		"C++",
+		"Vintage",
+		"YAML",
 		"Perl",
 		"JavaScript",
+		"CSS",
 		"Python",
-		"Vintage"
+		"Batch File",
+		"Markdown"
 	],
 	"indent_guide_options":
 	[
 		"draw_normal",
 		"draw_active"
 	],
+	"inverse_caret_state": true,
 	"jshint_options":
 	{
 		"asi": false,
@@ -100,17 +107,12 @@
 	[
 		"E501"
 	],
-	"phoenix_color_blue": true,
-	"phoenix_color_expanded_folder": true,
-	"phoenix_eighties": true,
-	"phoenix_highlight_current_tab": true,
-	"phoenix_sidebar_tree_small": true,
-	"phoenix_tabs_small": true,
 	"pyflakes_ignore":
 	[
 	],
 	"scroll_past_end": true,
 	"show_full_path": true,
+	"show_tab_close_buttons": true,
 	"spell_check": false,
 	"sublimelinter": true,
 	"sublimelinter_delay": 2,
@@ -128,8 +130,9 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Phoenix Dark.sublime-theme",
+	"theme": "Faceless Dark.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
+	"wide_caret": true,
 	"word_wrap": false
 }
