@@ -42,7 +42,8 @@
         {
             "name": "XML",
             "rules": [
-                {"file_name": ".*\\.hidden-tmLanguage$"}
+                {"file_name": ".*\\.hidden-tmLanguage$"},
+                {"file_name": ".*\\.stTheme"}
             ]
         },
         {
