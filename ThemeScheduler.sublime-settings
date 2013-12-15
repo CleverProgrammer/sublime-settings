@@ -9,25 +9,6 @@
                         "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
                         "time": "02:00"
                     },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "time": "08:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.99)@bg",
-                    //     "time": "09:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.98)@bg",
-                    //     "time": "10:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.97)@bg",
-                    //     "time": "11:00"
-                    // },
                     {
                         // Lunch
                         "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
@@ -40,21 +21,6 @@
                         "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
                         "time": "13:00"
                     },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.94)@bg",
-                    //     "time": "14:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.93)@bg",
-                    //     "time": "15:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.92)@bg",
-                    //     "time": "16:00"
-                    // },
                     {
                         // Work alert to go home
                         "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
@@ -101,25 +67,6 @@
                         "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
                         "time": "02:00"
                     },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "time": "08:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.99)@bg",
-                    //     "time": "09:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.98)@bg",
-                    //     "time": "10:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.97)@bg",
-                    //     "time": "11:00"
-                    // },
                     {
                         // Lunch
                         "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
@@ -132,31 +79,6 @@
                         "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
                         "time": "13:00"
                     },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.94)@bg",
-                    //     "time": "14:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.93)@bg",
-                    //     "time": "15:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.92)@bg",
-                    //     "time": "16:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.91)@bg",
-                    //     "time": "17:00"
-                    // },
-                    // {
-                    //     "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                    //     "filters": "brightness(.9)@bg",
-                    //     "time": "18:00"
-                    // },
                     {
                         // Get off the computer
                         "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
@@ -170,71 +92,25 @@
             {
                 "os:linux": [
                     {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.9)@bg",
+                        "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
                         "time": "02:00"
                     },
                     {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "time": "08:00"
-                    },
-                    {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.99)@bg",
-                        "time": "09:00"
-                    },
-                    {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.98)@bg",
-                        "time": "10:00"
-                    },
-                    {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.97)@bg",
-                        "time": "11:00"
-                    },
-                    {
                         // Lunch
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.96)@bg;glow(.1)",
+                        "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "filters": "glow(.1)",
                         "time": "12:00",
                         "msg": "Lunch time!"
                     },
                     {
                         // Lunch over
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.95)@bg;",
+                        "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
                         "time": "13:00"
                     },
                     {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.94)@bg",
-                        "time": "14:00"
-                    },
-                    {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.93)@bg",
-                        "time": "15:00"
-                    },
-                    {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.92)@bg",
-                        "time": "16:00"
-                    },
-                    {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.91)@bg",
-                        "time": "17:00"
-                    },
-                    {
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.9)@bg",
-                        "time": "18:00"
-                    },
-                    {
                         // Get off the computer
-                        "theme": "Packages/User/Color Scheme/Tomorrow-Night-Eighties-Stormy.tmTheme",
-                        "filters": "brightness(.9)@bg;colorize(0)",
+                        "theme": "Packages/Theme - Faceless/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "filters": "colorize(0)",
                         "time": "23:00",
                         "msg": "Turn off the computer"
                     }
