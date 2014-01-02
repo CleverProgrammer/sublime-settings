@@ -31,16 +31,17 @@
     // if an exception occurs when processing a function, should it be reraised so the user gets feedback? This is really
     // only useful to those writing functions. The average user just wants the plugin to work, so let's not reraise the
     // exception
-    "reraise_exceptions": false,
+    "debug_enabled": true,
+    "reraise_exceptions": true,
     "syntaxes": [
         {
-            "name": "Makefile",
+            "name": "Makefile/Makefile",
             "rules": [
                 {"file_name": ".*\\.mak"}
             ]
         },
         {
-            "name": "XML",
+            "name": "XML/XML",
             "rules": [
                 {"file_name": ".*\\.hidden-tmLanguage$"},
                 {"file_name": ".*\\.stTheme"}

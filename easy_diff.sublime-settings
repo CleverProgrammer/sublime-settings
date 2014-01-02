@@ -26,7 +26,9 @@
     "external_diff": {
         "#multiconf#": [
             {"os:windows": "C:\\Program Files\\Deltopia\\DeltaWalker 1.9\\DeltaWalker.exe"},
+            // {"os:osx": "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge"}
             {"os:osx": "/Users/facelessuser/bin/dw.sh"}
+            // {"os:osx": "/usr/local/bin/ksdiff"}
         ]
     },
 
@@ -46,7 +48,7 @@
     "git_disabled": false,
 
     // Turn off (Mercurial) hg completely
-    "hg_disabled": false,
+    "hg_disabled": true,
 
     // Turn off svn menu access
     "svn_hide_menu": false,
@@ -56,6 +58,9 @@
 
     // Turn off (Mercurial) hg menu access
     "hg_hide_menu": false,
+
+    // Menus to show (view|tab|sidebar)
+    "menu_types": ["view", "tab", "sidebar"],
 
     // Use a buffer instead of the output panel
     "use_buffer": true,

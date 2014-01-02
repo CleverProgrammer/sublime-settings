@@ -34,6 +34,8 @@ ThemeTweaker/*
 
 EasyDiff/Context.sublime-menu
 
+TabsExtra/*.sublime-menu
+
 Crypto.sublime-settings
 
 Package Control.ca-bundle
@@ -48,3 +50,5 @@ ColorPicker/
 
 subclrschm/
 /Side Bar.sublime-settings
+
+Widget - Faceless *.sublime-settings
