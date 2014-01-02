@@ -11,7 +11,7 @@
 
     // Actions that can ignore the keep panel open settings
     // Available actions: delete, open, saveas, mkfile, mkdir, paste
-    "keep_panel_open_exceptions": [],
+    "keep_panel_open_exceptions": ["open"],
 
     // By default, files hidden by the system are hidden in Fuzzy File Nav
     // as well (files that start with "." in Linux\Unix and files with the

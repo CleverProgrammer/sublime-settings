@@ -32,9 +32,11 @@ ColorSchemeEditorTemp/*
 
 ThemeTweaker/*
 
-EasyDiff/Context.sublime-menu
+EasyDiff/*.sublime-menu
 
 TabsExtra/*.sublime-menu
+
+SortTabs/*.sublime-menu
 
 Crypto.sublime-settings
 
