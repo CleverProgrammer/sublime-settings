@@ -1,6 +1,7 @@
 {
     "enabled": true,
     "debug": false,
+    "use_sub_notify": true,
     "themes": {
         "#multiconf#": [
             {
