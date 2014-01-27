@@ -22,7 +22,6 @@
 		"Package Control",
 		"PackageFileSearch",
 		"PlainTasks",
-		"PlistJsonConverter",
 		"QuickCal",
 		"RawLineEdit",
 		"RegReplace",
@@ -31,6 +30,7 @@
 		"SmartCursor",
 		"SortTabs",
 		"SublimeRandomCrap",
+		"TabsExtra",
 		"Terminal"
 	],
 	"package_name_map":
@@ -42,9 +42,9 @@
 	[
 		"https://github.com/facelessuser/sublime-languages",
 		"https://github.com/bizoo/SmartCursor/tree/master",
-		"https://github.com/facelessuser/SortTabs/tree/master",
 		"https://github.com/facelessuser/sublime_terminal/tree/master",
 		"https://github.com/facelessuser/SublimeRandomCrap/tree/master",
+		"https://github.com/facelessuser/TabsExtra/tree/master",
 		"https://github.com/facelessuser/PackageFileSearch/tree/master"
 	]
 }

@@ -24,16 +24,14 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Batch File",
-		"SublimeLinter",
-		"Markdown",
-		"Perl",
 		"PHP",
-		"CSS",
+		"Markdown",
 		"SmartCursor",
-		"JavaScript",
+		"CSS",
 		"C++",
 		"Vintage",
+		"Batch File",
+		"Perl",
 		"Python"
 	],
 	"indent_guide_options":
@@ -41,6 +39,7 @@
 		"draw_normal",
 		"draw_active"
 	],
+	"index_files": false,
 	"inverse_caret_state": true,
 	"jshint_options":
 	{
