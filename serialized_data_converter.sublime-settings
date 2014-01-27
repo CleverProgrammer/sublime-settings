@@ -1,7 +1,7 @@
 {
     // Languages to use on conversion
     "json_language": "Packages/AAALanguages/Better Javascript/JSON.tmLanguage",
-    "yaml_language": "Packages/SerializedDataConverter/languages/YAML-Simple.tmLanguage",
+    "yaml_language": "Packages/YamlSimple/YAML-Simple.tmLanguage",
     "plist_language": "Packages/XML/XML.tmLanguage",
 
     // When converting buffer open conversion in new buffer
@@ -71,5 +71,5 @@
     ],
 
     // In most this should be left true for easy reading
-    "yaml_default_flow_style": true
+    "yaml_default_flow_style": "false"
 }

@@ -7,10 +7,9 @@
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
 	"faceless_active_bar": true,
+	"faceless_dark_blue": true,
 	"faceless_dark_dirty_red": true,
-	"faceless_dark_green": true,
 	"faceless_dirty_bar": true,
-	"faceless_sidebar_tree_small": true,
 	"fade_inactive_panes_delay": 300,
 	"find_selected_text": true,
 	"font_face": "Consolas",
@@ -23,15 +22,15 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"C++",
 		"Vintage",
-		"YAML",
-		"Perl",
-		"JavaScript",
 		"CSS",
-		"Python",
+		"Markdown",
+		"Perl",
+		"Pywin32",
+		"C++",
+		"JavaScript",
 		"Batch File",
-		"Markdown"
+		"Python"
 	],
 	"indent_guide_options":
 	[
