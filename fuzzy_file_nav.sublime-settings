@@ -3,7 +3,7 @@
     "home": "~",
 
     // Patterns of files/folders to exclude
-    "regex_exclude": [".*\\.(DS_Store|svn|git)$"],
+    "regex_exclude": [".*\\.(DS_Store|svn|git|pyc)$"],
 
     // Keep panel open after a file is opened, deleted, created, etc. so
     // More files can be have actions perfomred on them.

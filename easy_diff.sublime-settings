@@ -25,11 +25,8 @@
     // External diff tool path (absolute)
     "external_diff": {
         "#multiconf#": [
-            // {"os:windows": "C:\\Program Files\\Deltopia\\DeltaWalker 1.9\\DeltaWalker.exe"},
             {"os:windows": "C:\\Program Files\\Beyond Compare 3\\BCompare.exe"},
-            // {"os:osx": "/Applications/DiffMerge.app/Contents/MacOS/DiffMerge"}
-            {"os:osx": "/Users/facelessuser/bin/dw.sh"}
-            // {"os:osx": "/usr/local/bin/ksdiff"}
+            {"os:osx": "/usr/local/bin/bcomp"}
         ]
     },
 

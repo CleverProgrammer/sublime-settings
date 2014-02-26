@@ -16,6 +16,20 @@
     },
 
     //////////////////////////////////
+    // FindCursor
+    //////////////////////////////////
+    {
+        "keys": ["ctrl+."],
+        "command": "find_cursor",
+        "args":{"reverse": false, "pan": false}
+    },
+    {
+        "keys": ["ctrl+shift+."],
+        "command": "find_cursor",
+        "args":{"reverse": true, "pan": false}
+    },
+
+    //////////////////////////////////
     // Scope Hunter
     //////////////////////////////////
     {"keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" },

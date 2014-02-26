@@ -54,3 +54,7 @@ subclrschm/
 /Side Bar.sublime-settings
 
 Widget - Faceless *.sublime-settings
+
+TabsExtra/*
+
+ASCII Decorator Fonts/*
