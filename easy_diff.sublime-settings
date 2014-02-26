@@ -25,7 +25,7 @@
     // External diff tool path (absolute)
     "external_diff": {
         "#multiconf#": [
-            {"os:windows": "C:\\Program Files\\Beyond Compare 3\\BCompare.exe"},
+            {"os:windows": "C:\\Program Files (x86)\\Beyond Compare 4\\bcomp.exe"},
             {"os:osx": "/usr/local/bin/bcomp"}
         ]
     },

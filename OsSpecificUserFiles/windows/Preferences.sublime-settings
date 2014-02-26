@@ -24,15 +24,15 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"PHP",
+		"Python",
 		"Markdown",
-		"SmartCursor",
-		"CSS",
 		"C++",
 		"Vintage",
 		"Batch File",
+		"PHP",
+		"SmartCursor",
 		"Perl",
-		"Python"
+		"CSS"
 	],
 	"indent_guide_options":
 	[
