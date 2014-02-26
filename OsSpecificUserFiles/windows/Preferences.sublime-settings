@@ -117,6 +117,7 @@
 	],
 	"scroll_past_end": true,
 	"show_full_path": true,
+	"show_tab_close_buttons": false,
 	"spell_check": false,
 	"sublimelinter": true,
 	"sublimelinter_delay": 2,
