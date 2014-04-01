@@ -9,13 +9,12 @@
 	"faceless_dark_blue": true,
 	"faceless_dark_dirty_red": true,
 	"faceless_dirty_bar": true,
-	"faceless_dirty_button": true,
 	"faceless_dirty_red": true,
 	"faceless_sidebar_tree_small": true,
 	"faceless_solid_tab": false,
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 13,
+	"font_size": 14,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"highlight_word_outline_style": true,
@@ -24,15 +23,16 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
+		"JavaScript",
+		"Vintage",
 		"Python",
 		"Markdown",
+		"Perl",
 		"C++",
-		"Vintage",
+		"CSS",
 		"Batch File",
 		"PHP",
-		"SmartCursor",
-		"Perl",
-		"CSS"
+		"SmartCursor"
 	],
 	"indent_guide_options":
 	[
@@ -40,7 +40,7 @@
 		"draw_active"
 	],
 	"index_files": false,
-	"inverse_caret_state": true,
+	"inverse_caret_state": false,
 	"jshint_options":
 	{
 		"asi": false,
@@ -116,8 +116,10 @@
 	[
 	],
 	"scroll_past_end": true,
+	"show_encoding": true,
 	"show_full_path": true,
-	"show_tab_close_buttons": false,
+	"show_line_endings": true,
+	"show_tab_close_buttons": true,
 	"spell_check": false,
 	"sublimelinter": true,
 	"sublimelinter_delay": 2,

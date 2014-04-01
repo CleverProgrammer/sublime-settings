@@ -5,7 +5,7 @@
     "persistent_sticky": false,
 
     // If active window gets closed, default to (left|right|last_active)
-    "fallback_focus": "right",
+    "fallback_focus": "last_active",
 
     // Menu layout include or exclude, in whatever order you desire, the following options:
     // ["close", "sticky", "open", "clone", "save", "reveal", "path", "revert"]

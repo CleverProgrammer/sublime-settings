@@ -5,7 +5,8 @@
             "Terminal.sublime-settings": "Terminal.sublime-settings",
             "Preferences.sublime-settings": "Preferences.sublime-settings",
             "Crypto.sublime-settings": "Crypto.sublime-settings",
-            "Side Bar.sublime-settings": "Side Bar.sublime-settings"
+            "Side Bar.sublime-settings": "Side Bar.sublime-settings",
+            "SublimeREPL.sublime-settings": "SublimeREPL.sublime-settings"
         },
         "directories": {
             "SideBarEnhancements": "SideBarEnhancements"

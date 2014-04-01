@@ -205,17 +205,6 @@
             "language_list": ["HTML", "HTML 5", "PHP"],
             "enabled": true
         },
-        // PHP Angle
-        {
-            "name": "php_angle",
-            "open": "(<\\?)(?:php)?",
-            "close": "(\\?>)",
-            "style": "angle",
-            "scope_exclude": ["string", "comment", "keyword.operator"],
-            "language_filter": "whitelist",
-            "language_list": ["HTML", "HTML 5", "PHP"],
-            "enabled": true
-        },
         // Angle
         {
             "name": "angle",
@@ -297,6 +286,18 @@
             "plugin_library": "Western Digital.trexkeywords",
             "language_filter": "whitelist",
             "language_list": ["Trex"],
+            "enabled": true
+        },
+        // Erlang conditional statements
+        {
+            "name": "erlang",
+            "open": "\\s*(\\b(?:if|case|begin|try|fun(?=\\s*\\()|receive)\\b)",
+            "close": "\\b(end)\\b",
+            "style": "default",
+            "scope_exclude": ["string", "comment"],
+            "language_filter": "whitelist",
+            "plugin_library": "bh_modules.erlangcase",
+            "language_list": ["Erlang", "HTML (Erlang)"],
             "enabled": true
         }
     ],

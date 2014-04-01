@@ -1,9 +1,15 @@
 *.stTheme.cache
+
 *.tmTheme.cache
+
 *.tmLanguage.cache
+
 *.cache
+
 .DS_Store
+
 Thumbs.db
+
 *.pyc
 
 SideBarEnhancements/Open With/Side Bar.sublime-menu
@@ -51,6 +57,7 @@ Package Control.system-ca-bundle
 ColorPicker/
 
 subclrschm/
+
 /Side Bar.sublime-settings
 
 Widget - Faceless *.sublime-settings
@@ -58,3 +65,7 @@ Widget - Faceless *.sublime-settings
 TabsExtra/*
 
 ASCII Decorator Fonts/*
+
+.SublimeREPLHistory/*
+
+SublimeREPL.sublime-settings
