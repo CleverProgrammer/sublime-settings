@@ -1,4 +1,6 @@
 {
+    "debug": true,
+
     // Location of home folder
     "home": "~",
 

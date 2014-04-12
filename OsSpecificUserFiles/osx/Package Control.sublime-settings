@@ -25,7 +25,8 @@
 		"ScopeHunter",
 		"SideBarEnhancements",
 		"SmartCursor",
-		"SortTabs"
+		"SortTabs",
+		"SublimeREPL"
 	],
 	"package_name_map":
 	{
