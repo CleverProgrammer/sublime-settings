@@ -1,0 +1,104 @@
+[
+    {
+        "id": "tools",
+        "children": [
+            {
+                "caption": "SublimeREPL",
+                "mnemonic": "r",
+                "id": "SublimeREPL",
+                "children": [
+                    {
+                        "caption": "OsxPython",
+                        "children":[
+                            {
+                                "command": "repl_open",
+                                "caption": "Python 2.7.6",
+                                "id": "repl_python",
+                                "mnemonic": "p",
+                                "args": {
+                                    "type": "subprocess",
+                                    "encoding": "utf8",
+                                    "cmd": ["python2", "-i", "-u"],
+                                    "cwd": "$file_path",
+                                    "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
+                                    "external_id": "python"
+                                }
+                            },
+                            {
+                                "command": "repl_open",
+                                "caption": "Python 2.7.6 - PDB current file",
+                                "id": "repl_python_pdb",
+                                "mnemonic": "d",
+                                "args": {
+                                    "type": "subprocess",
+                                    "encoding": "utf8",
+                                    "cmd": ["python2", "-i", "-u", "-m", "pdb", "$file_basename"],
+                                    "cwd": "$file_path",
+                                    "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
+                                    "external_id": "python"
+                                }
+                            },
+                            {
+                                "command": "repl_open",
+                                "caption": "Python 2.7.6 - RUN current file",
+                                "id": "repl_python_run",
+                                "mnemonic": "d",
+                                "args": {
+                                    "type": "subprocess",
+                                    "encoding": "utf8",
+                                    "cmd": ["python2", "-u", "$file_basename"],
+                                    "cwd": "$file_path",
+                                    "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
+                                    "external_id": "python"
+                                }
+                            },
+                            {"caption": "-"},
+                            {
+                                "command": "repl_open",
+                                "caption": "Python 3.3.3",
+                                "id": "repl_python",
+                                "mnemonic": "p",
+                                "args": {
+                                    "type": "subprocess",
+                                    "encoding": "utf8",
+                                    "cmd": ["python3", "-i", "-u"],
+                                    "cwd": "$file_path",
+                                    "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
+                                    "external_id": "python"
+                                }
+                            },
+                            {
+                                "command": "repl_open",
+                                "caption": "Python 3.3.3 - PDB current file",
+                                "id": "repl_python_pdb",
+                                "mnemonic": "d",
+                                "args": {
+                                    "type": "subprocess",
+                                    "encoding": "utf8",
+                                    "cmd": ["python3", "-i", "-u", "-m", "pdb", "$file_basename"],
+                                    "cwd": "$file_path",
+                                    "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
+                                    "external_id": "python"
+                                }
+                            },
+                            {
+                                "command": "repl_open",
+                                "caption": "Python 3.3.3 - RUN current file",
+                                "id": "repl_python_run",
+                                "mnemonic": "d",
+                                "args": {
+                                    "type": "subprocess",
+                                    "encoding": "utf8",
+                                    "cmd": ["python3", "-u", "$file_basename"],
+                                    "cwd": "$file_path",
+                                    "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
+                                    "external_id": "python"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
