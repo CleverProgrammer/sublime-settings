@@ -25,15 +25,15 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Perl",
-		"C++",
-		"Batch File",
-		"Pywin32",
 		"Python",
-		"JavaScript",
+		"Batch File",
+		"Markdown",
 		"CSS",
-		"Markdown"
+		"C++",
+		"Vintage",
+		"JavaScript",
+		"Pywin32",
+		"Perl"
 	],
 	"indent_guide_options":
 	[
