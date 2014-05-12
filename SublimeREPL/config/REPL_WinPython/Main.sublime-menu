@@ -13,86 +13,98 @@
                             {
                                 "command": "repl_open",
                                 "caption": "Python 2.7.6",
-                                "id": "repl_python",
+                                "id": "repl_win_python_2.7.6",
                                 "mnemonic": "p",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-i", "-u"],
+                                    "cmd": {
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-i", "-u"]
+                                    },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "python"
+                                    "external_id": "win_python 2.7.6"
                                 }
                             },
                             {
                                 "command": "repl_open",
                                 "caption": "Python 2.7.6 - PDB current file",
-                                "id": "repl_python_pdb",
+                                "id": "repl_win_python_2.7.6_pdb",
                                 "mnemonic": "d",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-i", "-u", "-m", "pdb", "$file_basename"],
+                                    "cmd": {
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-i", "-u", "-m", "pdb", "$file_basename"]
+                                    },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "python"
+                                    "external_id": "win_python 2.7.6"
                                 }
                             },
                             {
                                 "command": "repl_open",
                                 "caption": "Python 2.7.6 - RUN current file",
-                                "id": "repl_python_run",
+                                "id": "repl_win_python_2.7.6_run",
                                 "mnemonic": "d",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-u", "$file_basename"],
+                                    "cmd": {
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-u", "$file_basename"]
+                                    },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "python"
+                                    "external_id": "win_python 2.7.6"
                                 }
                             },
                             {"caption": "-"},
                             {
                                 "command": "repl_open",
                                 "caption": "Python 3.3.3",
-                                "id": "repl_python",
+                                "id": "repl_win_python_3.3.3",
                                 "mnemonic": "p",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["C:\\PortaPy\\WinPython-32bit-3.3.3.3\\scripts\\python.bat", "-i", "-u"],
+                                    "cmd": {
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-3.3.3.3\\scripts\\python.bat", "-i", "-u"]
+                                    },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "python"
+                                    "external_id": "win_python 3.3.3"
                                 }
                             },
                             {
                                 "command": "repl_open",
                                 "caption": "Python 3.3.3 - PDB current file",
-                                "id": "repl_python_pdb",
+                                "id": "repl_win_python_3.3.3_pdb",
                                 "mnemonic": "d",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["C:\\PortaPy\\WinPython-32bit-3.3.3.3\\scripts\\python.bat", "-i", "-u", "-m", "pdb", "$file_basename"],
+                                    "cmd": {
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-3.3.3.3\\scripts\\python.bat", "-i", "-u", "-m", "pdb", "$file_basename"]
+                                    },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "python"
+                                    "external_id": "win_python 3.3.3"
                                 }
                             },
                             {
                                 "command": "repl_open",
                                 "caption": "Python 3.3.3 - RUN current file",
-                                "id": "repl_python_run",
+                                "id": "repl_win_python_3.3.3_run",
                                 "mnemonic": "d",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["C:\\PortaPy\\WinPython-32bit-3.3.3.3\\scripts\\python.bat", "-u", "$file_basename"],
+                                    "cmd": {
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-3.3.3.3\\scripts\\python.bat", "-u", "$file_basename"]
+                                    },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "python"
+                                    "external_id": "win_python 3.3.3"
                                 }
                             }
                         ]

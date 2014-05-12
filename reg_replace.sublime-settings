@@ -186,22 +186,6 @@
             "replace": "\\1\\2'\\3",
             "greedy_replace": false,
             "multi_pass_regex": true
-        },
-        "wxformbuilder_init": {
-            "find" : "(wx\\.(?:Panel|Frame|Dialog)\\.__init__ \\(.*\\))(wx\\.(?:Panel|Frame|Dialog).*)",
-            "replace": "\\1"
-        },
-        "wxformbuilder_class": {
-            "find" : "(wx\\.(?:Panel|Frame|Dialog))( wx\\.(?:Panel|Frame|Dialog))",
-            "replace": "\\1"
-        },
-        "wxformbuilder_def": {
-            "find" : "(def __init__\\( self, parent \\):) *(def __init__\\( self, parent \\):)",
-            "replace": "\\1"
-        },
-        "wxformbuilder_bind": {
-            "find": "(self\\.Bind\\([^\\)]*\\))(self\\.Bind\\([^\\)]*\\))",
-            "replace": "\\1"
         }
     },
 

@@ -35,13 +35,7 @@
     //////////////////////////////////
     // RegReplace Commands
     //////////////////////////////////
-    // Buggy clean up for wxFormBuilder Windows
-    {
-        "caption": "Clean Up: wxFormBuilder",
-        "command": "reg_replace",
-        "args": {"replacements": ["wxformbuilder_class", "wxformbuilder_init", "wxformbuilder_def", "wxformbuilder_bind"], "find_only": true}
-    },
-    // Convert taps to spaces
+    // Convert tabs to spaces
     {
         "caption": "Format: Whitespace to 4 spaces",
         "command": "reg_replace",
@@ -53,7 +47,7 @@
         "command": "reg_replace",
         "args": {"replacements": ["trim_html_whitespace", "html_compact_tab_whitespace", "html_compact_space_whitespace", "html_remove_all_newlines"]}
     },
-        // Clean Up
+    // Clean Up
     {
         "caption": "Clean Up: JSON",
         "command": "reg_replace",

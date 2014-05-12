@@ -1,0 +1,50 @@
+[
+    {
+        "caption": "SublimeREPL: WinPython 2.7.6",
+        "command": "run_existing_window_command", "args":
+        {
+            "id": "repl_win_python_2.7.6",
+            "file": "config/REPL_WinPython/Main.sublime-menu"
+        }
+    },
+    {
+        "caption": "SublimeREPL: WinPython 2.7.6 - PDB current file",
+        "command": "run_existing_window_command", "args":
+        {
+            "id": "repl_win_python_2.7.6_pdb",
+            "file": "config/REPL_WinPython/Main.sublime-menu"
+        }
+    },
+    {
+        "caption": "SublimeREPL: WinPython 2.7.6 - RUN current file",
+        "command": "run_existing_window_command", "args":
+        {
+            "id": "repl_win_python_2.7.6_run",
+            "file": "config/REPL_WinPython/Main.sublime-menu"
+        }
+    },
+    {
+        "caption": "SublimeREPL: WinPython 3.3.3",
+        "command": "run_existing_window_command", "args":
+        {
+            "id": "repl_win_python_3.3.3",
+            "file": "config/REPL_WinPython/Main.sublime-menu"
+        }
+    },
+    {
+        "caption": "SublimeREPL: WinPython 3.3.3 - PDB current file",
+        "command": "run_existing_window_command", "args":
+        {
+            "id": "repl_win_python_3.3.3_pdb",
+            "file": "config/REPL_WinPython/Main.sublime-menu"
+        }
+    },
+    {
+        "caption": "SublimeREPL: WinPython 3.3.3 - RUN current file",
+        "command": "run_existing_window_command", "args":
+        {
+            "id": "repl_win_python_3.3.3_run",
+            "file": "config/REPL_WinPython/Main.sublime-menu"
+        }
+    }
+]

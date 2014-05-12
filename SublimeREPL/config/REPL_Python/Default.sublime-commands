@@ -4,7 +4,7 @@
         "command": "run_existing_window_command", "args":
         {
             "id": "repl_python",
-            "file": "config/Python/Main.sublime-menu"
+            "file": "config/REPL_Python/Main.sublime-menu"
         }
     },
     {
@@ -12,7 +12,7 @@
         "command": "run_existing_window_command", "args":
         {
             "id": "repl_python_pdb",
-            "file": "config/Python/Main.sublime-menu"
+            "file": "config/REPL_Python/Main.sublime-menu"
         }
     },
     {
@@ -20,7 +20,7 @@
         "command": "run_existing_window_command", "args":
         {
             "id": "repl_python_run",
-            "file": "config/Python/Main.sublime-menu"
+            "file": "config/REPL_Python/Main.sublime-menu"
         }
     }
 ]

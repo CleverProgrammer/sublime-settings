@@ -23,16 +23,16 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"JavaScript",
-		"Vintage",
-		"Python",
-		"Markdown",
-		"Perl",
-		"C++",
-		"CSS",
 		"Batch File",
+		"CSS",
+		"Vintage",
+		"Markdown",
+		"SmartCursor",
 		"PHP",
-		"SmartCursor"
+		"Python",
+		"JavaScript",
+		"C++",
+		"Perl"
 	],
 	"indent_guide_options":
 	[
@@ -137,7 +137,7 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Faceless Dark.sublime-theme",
+	"theme": "Faceless Dark@st3.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
 	"wide_caret": true,
