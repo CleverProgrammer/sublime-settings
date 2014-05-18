@@ -16,6 +16,7 @@
 		"GenerateUUID",
 		"google-search",
 		"HexViewer",
+		"Julia",
 		"Markdown Preview",
 		"Origami",
 		"Package Control",
@@ -26,6 +27,9 @@
 		"SideBarEnhancements",
 		"SmartCursor",
 		"SortTabs",
+		"SublimeLinter",
+		"SublimeLinter-flake8",
+		"SublimeLinter-pep257",
 		"SublimeREPL"
 	],
 	"package_name_map":

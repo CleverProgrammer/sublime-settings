@@ -1,109 +1,54 @@
 {
-    "sublimelinter_disable": [
-        "css"
-    ],
-    "sublimelinter_executable_map": {
-    },
-    "sublimelinter_fill_outlines": false,
-    "sublimelinter_gutter_marks": false,
-    "sublimelinter_objj_check_ascii": false,
-    "sublimelinter_syntax_map": {
-        "Python Django": "python"
-    },
-    "sublimelinter": true,
-    "sublimelinter_delay": 2,
-    "sublimelinter_wrap_find": true,
-    "pep8_ignore": [
-        "E501"
-    ],
-    "pyflakes_ignore": [
-    ],
-    "javascript_linter": "jshint",
-    "csslint_options":
-    {
-        "adjoining-classes": "warning",
-        "box-model": true,
-        "box-sizing": "warning",
-        "compatible-vendor-prefixes": "warning",
-        "display-property-grouping": true,
-        "duplicate-background-images": "warning",
-        "duplicate-properties": true,
-        "empty-rules": true,
-        "errors": true,
-        "fallback-colors": "warning",
-        "floats": "warning",
-        "font-faces": "warning",
-        "font-sizes": "warning",
-        "gradients": "warning",
-        "ids": false,
-        "import": "warning",
-        "important": false,
-        "known-properties": false,
-        "outline-none": "warning",
-        "overqualified-elements": "warning",
-        "qualified-headings": "warning",
-        "regex-selectors": "warning",
-        "rules-count": "warning",
-        "shorthand": "warning",
-        "text-indent": "warning",
-        "unique-headings": "warning",
-        "universal-selector": "warning",
-        "vendor-prefix": true,
-        "zero-units": false
-    },
-    "jshint_options":
-    {
-        "asi": false,
-        "bitwise": true,
-        "boss": true,
-        "browser": true,
-        "couch": false,
-        "curly": false,
+    "user": {
         "debug": false,
-        "devel": true,
-        "dojo": false,
-        "eqeqeq": false,
-        "eqnull": true,
-        "es5": true,
-        "evil": false,
-        "expr": false,
-        "forin": false,
-        "globalstrict": false,
-        "immed": false,
-        "jquery": false,
-        "latedef": true,
-        "laxbreak": false,
-        "loopfunc": true,
-        "maxerr": 10,
-        "mootools": false,
-        "multistr": true,
-        "newcap": true,
-        "noarg": true,
-        "node": false,
-        "noempty": true,
-        "nomen": false,
-        "nonew": true,
-        "onevar": true,
-        "passfail": false,
-        "plusplus": false,
-        "predef":
-        [
-            "$",
-            "easyJS",
-            "DOMParser"
-        ],
-        "prototypejs": false,
-        "regexdash": false,
-        "regexp": false,
-        "rhino": false,
-        "scripturl": false,
-        "shadow": false,
-        "strict": true,
-        "sub": false,
-        "supernew": false,
-        "trailing": true,
-        "undef": true,
-        "white": false,
-        "wsh": true
+        "delay": 0.25,
+        "error_color": "D02000",
+        "gutter_theme": "Packages/SublimeLinter/gutter-themes/Koloria/Koloria.gutter-theme",
+        "gutter_theme_excludes": [],
+        "lint_mode": "background",
+        "linters": {
+            "flake8": {
+                "@disable": false,
+                "@python": 3,
+                "args": [],
+                "builtins": "",
+                "excludes": [],
+                "ignore": "E501,F403",
+                "max-complexity": -1,
+                "max-line-length": null,
+                "select": ""
+            },
+            "pep257": {
+                "@disable": true,
+                "args": [],
+                "excludes": [],
+                "ignore": ""
+            }
+        },
+        "mark_style": "outline",
+        "no_column_highlights_line": false,
+        "paths": {
+            "linux": [],
+            "osx": [],
+            "windows": []
+        },
+        "python_paths": {
+            "linux": [],
+            "osx": [],
+            "windows": []
+        },
+        "rc_search_limit": 3,
+        "shell_timeout": 10,
+        "show_errors_on_save": false,
+        "show_marks_in_minimap": true,
+        "syntax_map": {
+            "html (django)": "html",
+            "html (rails)": "html",
+            "html 5": "html",
+            "php": "html",
+            "python django": "python"
+        },
+        "warning_color": "DDB700",
+        "wrap_find": true
     }
 }

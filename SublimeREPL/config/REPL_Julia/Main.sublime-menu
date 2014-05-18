@@ -1,0 +1,31 @@
+[
+    {
+        "id": "tools",
+        "children":
+        [
+            {
+                "caption": "SublimeREPL",
+                "mnemonic": "r",
+                "id": "SublimeREPL",
+                "children":
+                [
+                    {
+                        "command": "repl_open",
+                        "caption": "Julia",
+                        "id": "repl_julia",
+                        "mnemonic": "o",
+                        "args": {
+                            "type": "subprocess",
+                            "encoding": "utf8",
+                            "cmd": ["/Applications/Julia-0.2.1.app/Contents/Resources/julia/bin/julia"],
+                            "cwd": "$file_path",
+                            "external_id": "julia",
+                            "syntax": "Packages/Julia/Julia.tmLanguage",
+                            "suppress_echo": false
+                        }
+                    }
+                ]
+            }
+        ]
+    }
+]

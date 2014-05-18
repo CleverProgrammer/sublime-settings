@@ -54,6 +54,15 @@
                 {"file_name": ".*\\.tweak-settings"},
                 {"file_name": ".*\\.jarvis-(conf|lang)"}
             ]
+        },
+        {
+            // Sublime recognizes .py files, but not if they don't have an extension,
+            // just a shebang
+            "name": "AAALanguages/Better Python/Python",
+            "rules": [
+                {"file_name": ".*\\.(py|pyw|py3)"},
+                {"binary": "python"}
+            ]
         }
     ]
 }
