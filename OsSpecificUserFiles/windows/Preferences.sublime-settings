@@ -52,7 +52,7 @@
 	],
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 14,
+	"font_size": 13,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"highlight_word_outline_style": true,
@@ -61,16 +61,16 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"SubNotify",
 		"C++",
-		"Markdown",
+		"Perl",
+		"Vintage",
 		"Python",
+		"Markdown",
+		"CSS",
+		"SmartCursor",
+		"SubNotify",
 		"JavaScript",
 		"Batch File",
-		"Vintage",
-		"CSS",
-		"Perl",
-		"SmartCursor",
 		"PHP"
 	],
 	"indent_guide_options":
