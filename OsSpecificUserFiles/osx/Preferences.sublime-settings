@@ -10,8 +10,8 @@
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
 	"faceless_active_bar": true,
+	"faceless_dark_blue": true,
 	"faceless_dark_dirty_red": true,
-	"faceless_dark_purple": true,
 	"faceless_dirty_bar": true,
 	"fade_inactive_panes_delay": 300,
 	"find_selected_text": true,
@@ -25,15 +25,15 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Vintage",
-		"Batch File",
-		"Pywin32",
-		"Perl",
 		"CSS",
+		"Vintage",
+		"Perl",
 		"JavaScript",
-		"Markdown",
+		"C++",
+		"Pywin32",
 		"Python",
-		"C++"
+		"Batch File",
+		"Markdown"
 	],
 	"indent_guide_options":
 	[
