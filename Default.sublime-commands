@@ -35,6 +35,26 @@
         "caption": "ASCII Table: Show",
         "command": "ascii_table"
     },
+    {
+        "caption": "ASCII Table: Search Decimal",
+        "command": "ascii_table_search",
+        "args": {"info_type": "dec"}
+    },
+    {
+        "caption": "ASCII Table: Search Hexidecimal",
+        "command": "ascii_table_search",
+        "args": {"info_type": "hex"}
+    },
+    {
+        "caption": "ASCII Table: Search Octal",
+        "command": "ascii_table_search",
+        "args": {"info_type": "oct"}
+    },
+    {
+        "caption": "ASCII Table: Search Character",
+        "command": "ascii_table_search",
+        "args": {"info_type": "chr"}
+    },
 
     //////////////////////////////////
     // Info Commands
