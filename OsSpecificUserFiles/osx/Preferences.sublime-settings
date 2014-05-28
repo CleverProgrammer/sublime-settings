@@ -1,5 +1,11 @@
 {
 	"always_show_minimap_viewport": false,
+	"aprosopo_active_bar": true,
+	"aprosopo_dark_dirty_red": true,
+	"aprosopo_dark_purple": true,
+	"aprosopo_dirty_bar": true,
+	"aprosopo_show_tab_close_buttons": true,
+	"aprosopo_show_tab_close_on_hover": true,
 	"bold_folder_labels": true,
 	"caret_extra_bottom": 0,
 	"caret_extra_top": 0,
@@ -9,10 +15,6 @@
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
-	"faceless_active_bar": true,
-	"faceless_dark_blue": true,
-	"faceless_dark_dirty_red": true,
-	"faceless_dirty_bar": true,
 	"fade_inactive_panes_delay": 300,
 	"find_selected_text": true,
 	"font_face": "Consolas",
@@ -25,15 +27,15 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"CSS",
-		"Vintage",
-		"Perl",
 		"JavaScript",
 		"C++",
-		"Pywin32",
-		"Python",
+		"CSS",
+		"Markdown",
 		"Batch File",
-		"Markdown"
+		"Vintage",
+		"Perl",
+		"Pywin32",
+		"Python"
 	],
 	"indent_guide_options":
 	[
@@ -116,7 +118,6 @@
 	"show_encoding": true,
 	"show_full_path": true,
 	"show_line_endings": true,
-	"show_tab_close_buttons": true,
 	"spell_check": false,
 	"sublimelinter": true,
 	"sublimelinter_delay": 2,
@@ -134,7 +135,7 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Faceless Dark@st3.sublime-theme",
+	"theme": "Aprosopo Dark@st3.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
 	"wide_caret": true,

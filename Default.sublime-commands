@@ -55,6 +55,11 @@
         "command": "ascii_table_search",
         "args": {"info_type": "chr"}
     },
+    {
+        "caption": "ASCII Table: Search Info",
+        "command": "ascii_table_search",
+        "args": {"info_type": "inf"}
+    },
 
     //////////////////////////////////
     // Info Commands
