@@ -1,4 +1,10 @@
 {
+	"aprosopo_active_bar": true,
+	"aprosopo_dark_dirty_red": true,
+	"aprosopo_dark_purple": true,
+	"aprosopo_dirty_bar": true,
+	"aprosopo_show_tab_close_buttons": true,
+	"aprosopo_show_tab_close_on_hover": true,
 	"binary_file_patterns":
 	[
 		"*.bin",
@@ -22,11 +28,6 @@
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
-	"faceless_active_bar": true,
-	"faceless_dark_dirty_red": true,
-	"faceless_dark_purple": true,
-	"faceless_dirty_bar": true,
-	"faceless_sidebar_tree_small": true,
 	"file_exclude_patterns":
 	[
 		"*.pyc",
@@ -61,17 +62,16 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"C++",
-		"Perl",
-		"Vintage",
-		"Python",
 		"Markdown",
-		"CSS",
-		"SmartCursor",
-		"SubNotify",
-		"JavaScript",
+		"Python",
+		"Perl",
+		"C++",
+		"Vintage",
 		"Batch File",
-		"PHP"
+		"PHP",
+		"SmartCursor",
+		"CSS",
+		"JavaScript"
 	],
 	"indent_guide_options":
 	[
@@ -176,7 +176,7 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Faceless Dark@st3.sublime-theme",
+	"theme": "Aprosopo Dark@st3.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
 	"wide_caret": true,
