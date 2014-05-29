@@ -1,11 +1,11 @@
 {
 	"extensions":
 	[
-		"py3",
-		"pyw"
+		"bash",
+		"sh",
+		"zsh"
 	],
 	"pre_apply_syntax_extensions":
 	[
-	],
-	"translate_tabs_to_spaces": true
+	]
 }

@@ -1,0 +1,17 @@
+{
+	"extensions":
+	[
+		"xml",
+		"xsd",
+		"xslt",
+		"svg",
+		"xml.dist"
+	],
+	"pre_apply_syntax_extensions":
+	[
+		"xml",
+		"xsd",
+		"xslt",
+		"svg"
+	]
+}

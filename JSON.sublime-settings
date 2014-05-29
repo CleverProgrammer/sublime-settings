@@ -1,11 +1,11 @@
 {
 	"extensions":
 	[
-		"py3",
-		"pyw"
+		"tweak-settings",
+		"jarvis-conf",
+		"jarvis-lang"
 	],
 	"pre_apply_syntax_extensions":
 	[
-	],
-	"translate_tabs_to_spaces": true
+	]
 }
