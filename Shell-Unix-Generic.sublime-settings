@@ -1,11 +1,14 @@
 {
+	"apply_syntax_extensions":
+	[
+		"bash",
+		"zsh",
+		"sh"
+	],
 	"extensions":
 	[
 		"bash",
-		"sh",
-		"zsh"
-	],
-	"pre_apply_syntax_extensions":
-	[
+		"zsh",
+		"sh"
 	]
 }

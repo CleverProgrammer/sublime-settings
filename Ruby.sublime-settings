@@ -1,15 +1,22 @@
 {
+	"apply_syntax_extensions":
+	[
+		"rb",
+		"rake",
+		"jbuilder",
+		"podspec",
+		"rabl",
+		"thor",
+		"simplecov"
+	],
 	"extensions":
 	[
-		"thor",
-		"rake",
-		"simplecov",
-		"jbuilder",
 		"rb",
+		"rake",
+		"jbuilder",
 		"podspec",
-		"rabl"
-	],
-	"pre_apply_syntax_extensions":
-	[
+		"rabl",
+		"thor",
+		"simplecov"
 	]
 }

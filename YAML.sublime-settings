@@ -1,11 +1,14 @@
 {
+	"apply_syntax_extensions":
+	[
+		"gemrc",
+		"yml.dist",
+		"yml"
+	],
 	"extensions":
 	[
 		"gemrc",
-		"yml",
-		"yml.dist"
-	],
-	"pre_apply_syntax_extensions":
-	[
+		"yml.dist",
+		"yml"
 	]
 }

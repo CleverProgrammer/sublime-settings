@@ -1,11 +1,13 @@
 {
-	"extensions":
+	"apply_syntax_extensions":
 	[
 		"py3",
 		"pyw"
 	],
-	"pre_apply_syntax_extensions":
+	"extensions":
 	[
+		"py3",
+		"pyw"
 	],
 	"translate_tabs_to_spaces": true
 }

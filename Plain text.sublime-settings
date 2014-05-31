@@ -1,9 +1,10 @@
 {
-	"extensions":
+	"apply_syntax_extensions":
 	[
 		"log"
 	],
-	"pre_apply_syntax_extensions":
+	"extensions":
 	[
+		"log"
 	]
 }

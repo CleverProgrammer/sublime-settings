@@ -1,11 +1,14 @@
 {
-	"extensions":
+	"apply_syntax_extensions":
 	[
-		"tweak-settings",
 		"jarvis-conf",
+		"tweak-settings",
 		"jarvis-lang"
 	],
-	"pre_apply_syntax_extensions":
+	"extensions":
 	[
+		"jarvis-conf",
+		"tweak-settings",
+		"jarvis-lang"
 	]
 }
