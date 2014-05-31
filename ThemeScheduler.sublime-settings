@@ -1,19 +1,26 @@
 {
     "enabled": true,
     "use_sub_notify": true,
-    "debug": true,
-    "use_sub_notify": true,
+    "debug": false,
     "themes": {
         "#multiconf#": [
             {
                 "os:windows": [
                     {
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "02:00"
+                    },
+                    {
+                        "theme": "Packages/Theme - Aprosopo/Tomorrow-Morning.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "blue", "variant": "light", "dirty_color": "red"}},
+                        "msg": "Good morning!",
+                        "time": "05:00"
                     },
                     {
                         // Lunch
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "filters": "glow(.1)",
                         "time": "12:00",
                         "msg": "Lunch time!"
@@ -21,42 +28,50 @@
                     {
                         // Lunch over
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "13:00"
                     },
                     {
                         // Work alert to go home
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "filters": "glow(.1)",
                         "time": "17:00"
                     },
                     {
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "17:05"
                     },
                     {
                         // Work alert to go home really go home
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "filters": "glow(.1)",
                         "time": "17:30"
                     },
                     {
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "17:40"
                     },
                     {
                         // Final Work alert to go home
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "filters": "colorize(0)",
                         "time": "18:00",
                         "msg": "Seriously, go home!"
                     },
                     {
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "18:15"
                     },
                     {
                         // Get off the computer
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "filters": "colorize(0)",
                         "time": "23:00",
                         "msg": "Turn off the computer"
@@ -67,23 +82,33 @@
                 "os:osx": [
                     {
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "02:00"
+                    },
+                    {
+                        "theme": "Packages/Theme - Aprosopo/Tomorrow-Morning.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "blue", "variant": "light", "dirty_color": "red"}},
+                        "msg": "Good morning!",
+                        "time": "05:00"
                     },
                     {
                         // Lunch
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
                         "filters": "glow(.1)",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "12:00",
                         "msg": "Lunch time!"
                     },
                     {
                         // Lunch over
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "13:00"
                     },
                     {
                         // Get off the computer
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "filters": "colorize(0)",
                         "time": "23:00",
                         "msg": "Turn off the computer"
@@ -95,11 +120,19 @@
                 "os:linux": [
                     {
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "02:00"
+                    },
+                    {
+                        "theme": "Packages/Theme - Aprosopo/Tomorrow-Morning.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "blue", "variant": "light", "dirty_color": "red"}},
+                        "msg": "Good morning!",
+                        "time": "05:00"
                     },
                     {
                         // Lunch
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "filters": "glow(.1)",
                         "time": "12:00",
                         "msg": "Lunch time!"
@@ -107,11 +140,13 @@
                     {
                         // Lunch over
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "time": "13:00"
                     },
                     {
                         // Get off the computer
                         "theme": "Packages/Theme - Aprosopo/Tomorrow-Night-Eighties-Stormy.tmTheme",
+                        "command": {"command": "ts_set_aprosopo", "args": {"color": "purple", "variant": "dark", "dirty_color": "red"}},
                         "filters": "colorize(0)",
                         "time": "23:00",
                         "msg": "Turn off the computer"
