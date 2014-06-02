@@ -1,15 +1,45 @@
 {
-    // Enable debug logging
+    //Debug logging
     "debug_enable": false,
-
-    // Path to find icons at
-    "icon_path": "BracketHighlighter/icons",
 
     // When only either the left or right bracket can be found
     // this defines if the unmatched bracket should be shown.
     "show_unmatched" : true,
 
-    // Rules that define find and matching brackets
+    // Do the opposite of "show_unmatched" for the languages listed below
+    "show_unmatched_exceptions": [],
+
+    // Enable high visibility by default when sublime starts up
+    // If sublime is already running and this gets changed,
+    // you will not see any changes (restart requrired to see change)
+    "high_visibility_enabled_by_default": false,
+
+    // High visibilty style and color for high visibility mode
+    // (solid|outline|underline|thin_underline|squiggly|stippled)
+    "high_visibility_style": "outline",
+
+    // (scope|__default__|__bracket__)
+    "high_visibility_color": "__bracket__",
+
+    // Match brackets only when the cursor is touching the inside of the bracket
+    "match_only_adjacent": false,
+
+    // Character threshold to search
+    "search_threshold": 10000,
+
+    // Ignore threshold
+    "ignore_threshold": false,
+
+    // Set mode for string escapes to ignore (regex|string)
+    "bracket_string_escape_mode": "string",
+
+    // Set max number of multi-select brackets that will be searched automatically
+    "auto_selection_threshold" : 10,
+
+    // Disable gutter icons when doing multi-select
+    "no_multi_select_icons": false,
+
+    // Rules that define the finding and matching of brackets
     // that are contained in a common scope.
     // Useful for bracket pairs that are the same but
     // share a common scope.  Brackets are found by
@@ -18,8 +48,6 @@
     // Use only if they cannot be targeted with traditional bracket
     // rules.
     "scope_brackets": [
-        // Any style can be assinged to a bracket definition.
-        // If on is not provided, "default will be used".
         // Quotes
         {
             "name": "py_single_quote",
@@ -50,7 +78,7 @@
             "style": "single_quote",
             "scopes": ["string"],
             "language_filter": "blacklist",
-            "language_list": ["Plain text"],
+            "language_list": ["Plain text", "Hex"],
             "sub_bracket_search": "true",
             "enabled": true
         },
@@ -61,7 +89,7 @@
             "style": "double_quote",
             "scopes": ["string"],
             "language_filter": "blacklist",
-            "language_list": ["Plain text"],
+            "language_list": ["Plain text", "Hex"],
             "sub_bracket_search": "true",
             "enabled": true
         },
@@ -95,7 +123,7 @@
             "style": "regex",
             "scopes": ["string"],
             "language_filter": "whitelist",
-            "language_list": ["Ruby"],
+            "language_list": ["Ruby", "RSpec"],
             "sub_bracket_search": "true",
             "enabled": true
         },
@@ -104,6 +132,7 @@
             "name": "mditalic",
             "open": "(\\*|_)",
             "close": "(\\*|_)",
+            "style": "default",
             "scopes": ["markup.italic"],
             "language_filter": "whitelist",
             "language_list": ["Markdown"],
@@ -114,6 +143,7 @@
             "name": "mdbold",
             "open": "(\\*\\*|__)",
             "close": "(\\*\\*|__)",
+            "style": "default",
             "scopes": ["markup.bold"],
             "language_filter": "whitelist",
             "language_list": ["Markdown"],
@@ -135,9 +165,9 @@
             "close": "(\\})",
             "style": "curly",
             "scope_exclude": ["string", "comment"],
-            "scope_exclude_exceptions": ["string.other.math.block.environment.latex", "comment.punctuation.definition.metadata.begin.clojure", "comment.punctuation.definition.metadata.end.clojure"],
+            "scope_exclude_exceptions": ["text.tex string.other.math"],
             "language_filter": "blacklist",
-            "language_list": ["Plain text"],
+            "language_list": ["Plain text", "Hex"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true
@@ -147,10 +177,10 @@
             "open": "(\\()",
             "close": "(\\))",
             "style": "round",
-            "scope_exclude_exceptions": ["string.other.math.block.environment.latex"],
-            "scope_exclude": ["string", "comment", "meta.scope.case-pattern.shell"],
+            "scope_exclude_exceptions": ["text.tex string.other.math"],
+            "scope_exclude": ["string", "comment", "punctuation.definition.case-pattern.shell"],
             "language_filter": "blacklist",
-            "language_list": ["Plain text"],
+            "language_list": ["Plain text", "Hex"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true
@@ -161,9 +191,9 @@
             "close": "(\\])",
             "style": "square",
             "scope_exclude": ["string", "comment"],
-            "scope_exclude_exceptions": ["string.other.math.block.environment.latex"],
+            "scope_exclude_exceptions": ["text.tex string.other.math"],
             "language_filter": "blacklist",
-            "language_list": ["Plain text"],
+            "language_list": ["Plain text", "Hex"],
             "find_in_sub_search": "true",
             "ignore_string_escape": true,
             "enabled": true
@@ -176,7 +206,7 @@
             "style": "tag",
             "scope_exclude": ["string", "comment"],
             "language_filter": "whitelist",
-            "language_list": ["HTML", "HTML 5", "XML", "PHP"],
+            "language_list": ["HTML", "HTML 5", "XML", "PHP", "Handlebars"],
             "plugin_library": "bh_modules.tags",
             "find_in_sub_search": "only",
             "enabled": false
@@ -213,7 +243,7 @@
             "style": "angle",
             "scope_exclude": ["string", "comment", "keyword.operator", "source.ruby.rails.embedded.html", "source.ruby.embedded.html"],
             "language_filter": "whitelist",
-            "language_list": ["HTML", "HTML 5", "XML", "PHP", "HTML (Rails)", "HTML (Jinja Templates)", "HTML+CFML", "ColdFusion", "ColdFusionCFC"],
+            "language_list": ["HTML", "HTML 5", "XML", "PHP", "HTML (Rails)", "HTML (Jinja Templates)", "HTML (Twig)", "HTML+CFML", "ColdFusion", "ColdFusionCFC", "laravel-blade", "Handlebars"],
             "plugin_library": "bh_modules.tags",
             "enabled": true
         },
@@ -250,7 +280,7 @@
             "scope_exclude": ["string", "comment"],
             "plugin_library": "bh_modules.rubykeywords",
             "language_filter": "whitelist",
-            "language_list": ["Ruby", "Ruby on Rails"],
+            "language_list": ["Ruby", "RSpec", "Ruby on Rails"],
             "enabled": true
         },
         // C/C++ compile switches
@@ -261,7 +291,7 @@
             "style": "default",
             "scope_exclude": ["string", "comment"],
             "language_filter": "whitelist",
-            "language_list": ["C++", "C"],
+            "language_list": ["C++", "C", "Objective-C"],
             "enabled": true
         },
         // PHP conditional keywords
@@ -274,18 +304,6 @@
             "scope_exclude": ["string", "comment"],
             "plugin_library": "bh_modules.phpkeywords",
             "language_list": ["HTML", "HTML 5", "XML", "PHP", "HTML+CFML", "ColdFusion", "ColdFusionCFC"],
-            "enabled": true
-        },
-        // TREX
-        {
-            "name": "trex",
-            "open": "^\\s*\\b(if|subr|bytemap|enum|command|for|while|do)\\b",
-            "close": "\\b(e(?:if|subr|bytemap|enum|command|for|while)|until)\\b",
-            "style": "default",
-            "scope_exclude": ["string", "comment"],
-            "plugin_library": "Western Digital.trexkeywords",
-            "language_filter": "whitelist",
-            "language_list": ["Trex"],
             "enabled": true
         },
         // Erlang conditional statements
@@ -303,13 +321,36 @@
         //Bash
         {
             "name": "bash",
-            "open": "(?:(?<!\\\\\\n)(?:;|^)\\s*)\\b(if|case|while|select|until|for)\\s",
-            "close": "(?:(?<!\\\\\\n)(?:;|^)\\s*)\\b(fi|esac|done)(?:\\s|$)",
+            "open": "(?:(?<!\\\\\\n)(?:;|^|&|\\|)\\s*)\\b(if|case|while|select|until|for)\\s",
+            "close": "(?:(?<!\\\\\\n)(?:;|^)\\s*)\\b(fi|esac|done)(?=;|\\s|$)",
             "style": "default",
             "scope_exclude": ["string", "comment"],
             "plugin_library": "bh_modules.bashsupport",
             "language_filter": "whitelist",
             "language_list": ["Shell-Unix-Generic"],
+            "enabled": true
+        },
+        //Fish shell
+        {
+            "name": "fish",
+            "open": "(?:(?<!\\\\\\n)(?:;|^|&|\\||and|or|not)\\s*)\\b(begin|if|while|for|switch|function)(?:;|\\s)",
+            "close": "(?:(?<!\\\\\\n)(?:;|^)\\s*)\\b(end)(?=;|\\s|$)",
+            "style": "default",
+            "scope_exclude": ["string", "comment"],
+            "language_filter": "whitelist",
+            "language_list": ["fish"],
+            "enabled": true
+        },
+        // TREX
+        {
+            "name": "trex",
+            "open": "^\\s*\\b(if|subr|bytemap|enum|command|for|while|do)\\b",
+            "close": "\\b(e(?:if|subr|bytemap|enum|command|for|while)|until)\\b",
+            "style": "default",
+            "scope_exclude": ["string", "comment"],
+            "plugin_library": "Western Digital.trexkeywords",
+            "language_filter": "whitelist",
+            "language_list": ["Trex"],
             "enabled": true
         }
     ],
@@ -328,6 +369,8 @@
         // use the color from the "default" style.
         "default": {
             "icon": "dot",
+            // BH1's original default color for reference
+            // "color": "entity.name.class",
             "color": "brackethighlighter.default",
             "style": "underline"
         },
@@ -383,33 +426,18 @@
         }
     },
 
-    // Match brackets only when the cursor is touching the inside of the bracket
-    "match_only_adjacent": false,
-
-    // Character threshold to search
-    "search_threshold": 10000,
-
-    // Set mode for string escapes to ignore (regex|string)
-    "bracket_string_escape_mode": "string",
-
-    // Set max number of multi-select brackets that will be searched automatically
-    "auto_selection_threshold" : 10,
-
-    // Disable gutter icons when doing multi-select
-    "no_multi_select_icons": false,
-
-    /* Built-in Plugin settings */
+    /* Plugin settings */
 
     // Style to use for matched tags
     "tag_style": "tag",
 
-    // scopes to exclude from tag search
+    // Scopes to exclude from tag searches
     "tag_scope_exclude": ["string", "comment"],
 
     // Determine which style of tag-matching to use in which syntax
     "tag_mode": {
         "xhtml": ["XML"],
-        "html": ["HTML", "HTML 5", "PHP", "HTML (Jinja Templates)", "HTML (Rails)"],
+        "html": ["HTML", "HTML 5", "PHP", "HTML (Jinja Templates)", "HTML (Rails)", "HTML (Twig)", "laravel-blade", "Handlebars"],
         "cfml": ["HTML+CFML", "ColdFusion", "ColdFusionCFC"]
     }
 }
