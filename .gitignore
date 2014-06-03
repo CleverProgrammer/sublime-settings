@@ -68,6 +68,7 @@ ASCII Decorator Fonts/*
 
 SublimeREPL.sublime-settings
 
+
 Side Bar Folders/*
 
 Side Bar Folders.sublime-settings
@@ -75,3 +76,7 @@ Side Bar Folders.sublime-settings
 *(SL).tmTheme
 
 FileHistory.json
+
+hex_viewer.sublime-settings
+
+!OsSpecificUserFiles/**/*

@@ -26,6 +26,13 @@
             "rules": [
                 {"extensions": ["log"]}
             ]
+        },
+        {
+            "name": "AAALanguages/Better PHP/PHP",
+            "rules": [
+                {"first_line": "^<\\?php"},
+                {"extensions": ["php3", "php4", "php5", "inc", "phtml"]}
+            ]
         }
     ]
 }

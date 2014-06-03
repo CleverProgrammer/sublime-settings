@@ -40,7 +40,12 @@
     "highlight_edit_style" : "underline",
     "hash_algorithm" : "md5",
 
-        // Auto open binary files in hex viewer (uses auto_open_patterns)
+    "external_viewer": {
+        "viewer": "C:\\Program Files (x86)\\HxD\\HxD.exe",
+        "args": ["${FILE}"]
+    },
+
+    // Auto open binary files in hex viewer (uses auto_open_patterns)
     "auto_open" : true,
 
     // Auto open patterns to open in hex viewer

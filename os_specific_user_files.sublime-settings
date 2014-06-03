@@ -6,7 +6,8 @@
             "Preferences.sublime-settings": "Preferences.sublime-settings",
             "Crypto.sublime-settings": "Crypto.sublime-settings",
             "Side Bar.sublime-settings": "Side Bar.sublime-settings",
-            "SublimeREPL.sublime-settings": "SublimeREPL.sublime-settings"
+            "SublimeREPL.sublime-settings": "SublimeREPL.sublime-settings",
+            "hex_viewer.sublime-settings": "hex_viewer.sublime-settings"
         },
         "directories": {
             "SideBarEnhancements": "SideBarEnhancements"
@@ -22,7 +23,8 @@
             "Preferences.sublime-settings": "Preferences.sublime-settings",
             "Git.sublime-settings": "Git.sublime-settings",
             "Crypto.sublime-settings": "Crypto.sublime-settings",
-            "Side Bar.sublime-settings": "Side Bar.sublime-settings"
+            "Side Bar.sublime-settings": "Side Bar.sublime-settings",
+            "hex_viewer.sublime-settings": "hex_viewer.sublime-settings"
         },
         "directories": {
             "SideBarEnhancements": "SideBarEnhancements"
@@ -35,7 +37,8 @@
         "files": {
             "Package Control.sublime-settings": "Package Control.sublime-settings",
             "Preferences.sublime-settings": "Preferences.sublime-settings",
-            "Side Bar.sublime-settings": "Side Bar.sublime-settings"
+            "Side Bar.sublime-settings": "Side Bar.sublime-settings",
+            "hex_viewer.sublime-settings": "hex_viewer.sublime-settings"
         },
         "directories": {
             "SideBarEnhancements": "SideBarEnhancements"
