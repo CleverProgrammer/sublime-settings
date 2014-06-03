@@ -1,8 +1,8 @@
 {
 	"aprosopo_active_bar": true,
-	"aprosopo_dark_dirty_red": true,
-	"aprosopo_dark_purple": true,
 	"aprosopo_dirty_bar": true,
+	"aprosopo_light_blue": true,
+	"aprosopo_light_dirty_red": true,
 	"aprosopo_show_tab_close_buttons": true,
 	"aprosopo_show_tab_close_on_hover": true,
 	"binary_file_patterns":
@@ -24,7 +24,7 @@
 	],
 	"bold_folder_labels": true,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/Tomorrow-Night-Eighties-Stormy (SL).tmTheme",
+	"color_scheme": "Packages/User/Tomorrow-Morning (SL).tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
@@ -53,7 +53,7 @@
 	],
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 13,
+	"font_size": 14,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"highlight_word_outline_style": true,
@@ -63,14 +63,14 @@
 	"ignored_packages":
 	[
 		"Markdown",
-		"Python",
-		"Perl",
 		"C++",
+		"Perl",
+		"SmartCursor",
+		"Python",
+		"PHP",
+		"CSS",
 		"Vintage",
 		"Batch File",
-		"PHP",
-		"SmartCursor",
-		"CSS",
 		"JavaScript"
 	],
 	"indent_guide_options":
@@ -176,7 +176,7 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Aprosopo Dark@st3.sublime-theme",
+	"theme": "Aprosopo Light@st3.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
 	"wide_caret": true,
