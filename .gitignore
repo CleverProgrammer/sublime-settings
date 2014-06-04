@@ -80,3 +80,4 @@ FileHistory.json
 hex_viewer.sublime-settings
 
 !OsSpecificUserFiles/**/*
+OsSpecificUserFiles/**/.DS_Store
