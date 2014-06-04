@@ -2,6 +2,9 @@
     //Debug logging
     "debug_enable": false,
 
+    // Experimental outside adjancent bracket matching
+    "bracket_outside_adjacent": true,
+
     // When only either the left or right bracket can be found
     // this defines if the unmatched bracket should be shown.
     "show_unmatched" : true,
