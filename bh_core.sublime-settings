@@ -116,7 +116,8 @@
         "tag": {
             "icon": "tag",
             "color": "brackethighlighter.tag",
-            "style": "outline"
+            "style": "outline",
+            "endpoints": true
         },
         "single_quote": {
             "icon": "single_quote",

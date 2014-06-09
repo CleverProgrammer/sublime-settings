@@ -1,11 +1,11 @@
 {
 	"always_show_minimap_viewport": false,
 	"aprosopo_active_bar": true,
+	"aprosopo_combined_dirty_active_bar": true,
 	"aprosopo_dark_dirty_red": true,
 	"aprosopo_dark_purple": true,
 	"aprosopo_dirty_bar": true,
 	"aprosopo_show_tab_close_buttons": true,
-	"aprosopo_show_tab_close_on_hover": true,
 	"bold_folder_labels": true,
 	"caret_extra_bottom": 0,
 	"caret_extra_top": 0,
@@ -27,15 +27,15 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"C++",
-		"Pywin32",
-		"Python",
-		"Vintage",
-		"JavaScript",
-		"Markdown",
+		"Batch File",
 		"Perl",
+		"Python",
+		"JavaScript",
 		"CSS",
-		"Batch File"
+		"Pywin32",
+		"C++",
+		"Vintage",
+		"Markdown"
 	],
 	"indent_guide_options":
 	[
