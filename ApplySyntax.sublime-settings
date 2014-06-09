@@ -1,5 +1,5 @@
 {
-    "debug_enabled": true,
+    "debug_enabled": false,
     "reraise_exceptions": true,
     "add_exts_to_lang_settings": true,
     "syntaxes": [
