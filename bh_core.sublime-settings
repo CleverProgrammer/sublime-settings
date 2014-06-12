@@ -119,6 +119,11 @@
             "style": "outline",
             "endpoints": true
         },
+        "c_define": {
+            "icon": "hash",
+            "color": "brackethighlighter.c_define"
+            // "style": "underline"
+        },
         "single_quote": {
             "icon": "single_quote",
             "color": "brackethighlighter.quote"
