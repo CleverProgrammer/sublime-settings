@@ -11,5 +11,7 @@
 
     // View only mode: pops up a output panel showing line endings.
     // No editing possible.
-    "view_only": false
+    "view_only": false,
+
+    "operate_on_unsaved_buffers": true
 }
