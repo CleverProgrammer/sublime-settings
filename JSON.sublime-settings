@@ -1,14 +1,8 @@
 {
-	"apply_syntax_extensions":
-	[
-		"jarvis-conf",
-		"tweak-settings",
-		"jarvis-lang"
-	],
 	"extensions":
 	[
 		"jarvis-conf",
-		"tweak-settings",
-		"jarvis-lang"
+		"jarvis-lang",
+		"tweak-settings"
 	]
 }

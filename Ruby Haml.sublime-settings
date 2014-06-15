@@ -1,8 +1,4 @@
 {
-	"apply_syntax_extensions":
-	[
-		"haml"
-	],
 	"extensions":
 	[
 		"haml"

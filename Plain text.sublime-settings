@@ -1,8 +1,4 @@
 {
-	"apply_syntax_extensions":
-	[
-		"log"
-	],
 	"extensions":
 	[
 		"log"

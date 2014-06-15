@@ -1,18 +1,10 @@
 {
-	"apply_syntax_extensions":
-	[
-		"ini.dist",
-		"npmrc",
-		"gitignore",
-		"gitattributes",
-		"gitconfig"
-	],
 	"extensions":
 	[
+		".gitignore",
+		".gitattributes",
 		"ini.dist",
-		"npmrc",
-		"gitignore",
-		"gitattributes",
-		"gitconfig"
+		".npmrc",
+		".gitconfig"
 	]
 }
