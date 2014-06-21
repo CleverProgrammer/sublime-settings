@@ -9,17 +9,17 @@
 	],
 	"INI":
 	[
-		".gitignore",
-		".gitattributes",
+		"ini.dist",
 		".npmrc",
 		".gitconfig",
-		"ini.dist"
+		".gitattributes",
+		".gitignore"
 	],
 	"JSON":
 	[
-		"jarvis-conf",
+		"jarvis-lang",
 		"tweak-settings",
-		"jarvis-lang"
+		"jarvis-conf"
 	],
 	"Plain text":
 	[
@@ -27,16 +27,16 @@
 	],
 	"Python":
 	[
-		"py3",
-		"pyw"
+		"pyw",
+		"py3"
 	],
 	"Ruby":
 	[
-		"thor",
+		"rb",
 		"simplecov",
 		"jbuilder",
+		"thor",
 		"rabl",
-		"rb",
 		"podspec",
 		"rake"
 	],
@@ -46,9 +46,9 @@
 	],
 	"Shell-Unix-Generic":
 	[
-		"bash",
 		"zsh",
-		"sh"
+		"sh",
+		"bash"
 	],
 	"XML":
 	[
@@ -56,8 +56,8 @@
 	],
 	"YAML":
 	[
-		"yml.dist",
 		"yml",
-		".gemrc"
+		".gemrc",
+		"yml.dist"
 	]
 }

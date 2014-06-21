@@ -1,63 +1,51 @@
 {
-	"auto_upgrade_last_run": null,
-	"installed_packages":
-	[
-		"AAALanguages",
-		"ApacheConf.tmLanguage",
-		"ApplySyntax",
-		"ARM Assembly",
-		"BracketHighlighter",
-		"ColorPicker",
-		"CopyEdit",
-		"Crypto",
-		"ExportHtml",
-		"FavoriteFiles",
-		"File History",
-		"FindKeyConflicts",
-		"FuzzyFileNav",
-		"GenerateUUID",
-		"google-search",
-		"HexViewer",
-		"INI",
-		"Julia",
-		"Markdown Preview",
-		"Origami",
-		"Package Control",
-		"PlainNotes",
-		"PlainTasks",
-		"PowerCursors",
-		"PreventFakeClones",
-		"QuickCal",
-		"RegReplace",
-		"ScopeHunter",
-		"SideBarEnhancements",
-		"SideBarFolders",
-		"SmartCursor",
-		"SortTabs",
-		"SublimeLinter",
-		"SublimeLinter-flake8",
-		"SublimeLinter-pep257",
-		"SublimeREPL"
-	],
-	"package_name_map":
-	{
-		"sublime-languages": "AAALanguages"
-	},
-	"repositories":
-	[
-		"https://github.com/SublimeLinter/SublimeLinter/tree/sublime-text-3",
-		"https://github.com/facelessuser/BracketHighlighter/tree/BH2ST3",
-		"https://github.com/facelessuser/FuzzyFileNav/tree/ST3",
-		"https://github.com/facelessuser/ExportHtml/tree/ST3",
-		"https://github.com/facelessuser/FavoriteFiles/tree/ST3",
-		"https://github.com/facelessuser/ScopeHunter/tree/ST3",
-		"https://github.com/facelessuser/HexViewer/tree/ST3",
-		"https://github.com/facelessuser/RegReplace/tree/ST3",
-		"https://github.com/facelessuser/PlistJsonConverter/tree/ST3",
-		"https://github.com/facelessuser/sublime-languages",
-		"https://github.com/facelessuser/ApplySyntax/tree/ST3",
-		"https://github.com/facelessuser/QuickCal",
-		"https://github.com/bizoo/SmartCursor",
-		"https://github.com/wuub/SublimeREPL/tree/st3"
-	]
+    "auto_upgrade_last_run": null,
+    "installed_packages":
+    [
+        "AAALanguages",
+        "ApacheConf.tmLanguage",
+        "ApplySyntax",
+        "ARM Assembly",
+        "ASCII Decorator",
+        "BracketHighlighter",
+        "ColorPicker",
+        "CopyEdit",
+        "Crypto",
+        "ExportHtml",
+        "FavoriteFiles",
+        "File History",
+        "FindKeyConflicts",
+        "FuzzyFileNav",
+        "GenerateUUID",
+        "google-search",
+        "HexViewer",
+        "INI",
+        "Markdown Preview",
+        "Origami",
+        "Package Control",
+        "PlainNotes",
+        "PlainTasks",
+        "PowerCursors",
+        "PreventFakeClones",
+        "QuickCal",
+        "RegReplace",
+        "ScopeHunter",
+        "SideBarEnhancements",
+        "SideBarFolders",
+        "SmartCursor",
+        "SortTabs",
+        "SublimeLinter",
+        "SublimeLinter-flake8",
+        "SublimeLinter-pep257",
+        "SublimeREPL"
+    ],
+    "package_name_map":
+    {
+        "sublime-languages": "AAALanguages"
+    },
+    "repositories":
+    [
+        "https://github.com/facelessuser/sublime-languages",
+        "https://github.com/bizoo/SmartCursor"
+    ]
 }

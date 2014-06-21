@@ -1,8 +1,8 @@
 {
 	"extensions":
 	[
-		"py3",
-		"pyw"
+		"pyw",
+		"py3"
 	],
 	"translate_tabs_to_spaces": true
 }
