@@ -5,33 +5,25 @@
     "syntaxes": [
         {
             "name": "Makefile/Makefile",
-            "rules": [
-                {"extensions": ["mak"]}
-            ]
+            "extensions": ["mak"]
         },
         {
             "name": "AAALanguages/Better Javascript/JSON",
-            "rules": [
-                {"extensions": ["tweak-settings", "jarvis-conf", "jarvis-lang"]}
-            ]
+            "extensions": ["tweak-settings", "jarvis-conf", "jarvis-lang"]
         },
         {
             "name": "AAALanguages/Better Python/Python",
-            "rules": [
-                {"extensions": ["py3", "pyw"]}
-            ]
+            "extensions": ["py3", "pyw"]
         },
         {
             "name": "Text/Plain text",
-            "rules": [
-                {"extensions": ["log"]}
-            ]
+            "extensions": ["log"]
         },
         {
-            "name": "AAALanguages/Better PHP/PHP",
+            "name": "HTML/HTML",
+            "extensions": ["php3", "php4", "php5", "inc", "phtml"],
             "rules": [
-                {"first_line": "^<\\?php"},
-                {"extensions": ["php3", "php4", "php5", "inc", "phtml"]}
+                {"first_line": "^<\\?php"}
             ]
         }
     ]

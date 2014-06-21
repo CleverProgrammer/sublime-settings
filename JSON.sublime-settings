@@ -2,7 +2,7 @@
 	"extensions":
 	[
 		"jarvis-conf",
-		"jarvis-lang",
-		"tweak-settings"
+		"tweak-settings",
+		"jarvis-lang"
 	]
 }

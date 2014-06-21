@@ -1,25 +1,25 @@
 {
+	"HTML":
+	[
+		"php5",
+		"php3",
+		"inc",
+		"php4",
+		"phtml"
+	],
 	"INI":
 	[
 		".gitignore",
 		".gitattributes",
-		"ini.dist",
 		".npmrc",
-		".gitconfig"
+		".gitconfig",
+		"ini.dist"
 	],
 	"JSON":
 	[
 		"jarvis-conf",
-		"jarvis-lang",
-		"tweak-settings"
-	],
-	"PHP":
-	[
-		"php3",
-		"php4",
-		"php5",
-		"phtml",
-		"inc"
+		"tweak-settings",
+		"jarvis-lang"
 	],
 	"Plain text":
 	[
@@ -27,18 +27,18 @@
 	],
 	"Python":
 	[
-		"pyw",
-		"py3"
+		"py3",
+		"pyw"
 	],
 	"Ruby":
 	[
-		"podspec",
 		"thor",
-		"rabl",
-		"rake",
-		"rb",
 		"simplecov",
-		"jbuilder"
+		"jbuilder",
+		"rabl",
+		"rb",
+		"podspec",
+		"rake"
 	],
 	"Ruby Haml":
 	[
@@ -46,9 +46,9 @@
 	],
 	"Shell-Unix-Generic":
 	[
+		"bash",
 		"zsh",
-		"sh",
-		"bash"
+		"sh"
 	],
 	"XML":
 	[
