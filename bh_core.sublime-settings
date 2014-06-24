@@ -53,8 +53,8 @@
         // TREX
         {
             "name": "trex",
-            "open": "^\\s*\\b(if|subr|bytemap|enum|command|for|while|do)\\b",
-            "close": "\\b(e(?:if|subr|bytemap|enum|command|for|while)|until)\\b",
+            "open": "^\\s*\\b(if|subr|bytemap|enum|command|for|while|macro|do)\\b",
+            "close": "\\b(e(?:if|subr|bytemap|enum|command|for|while|macro)|until)\\b",
             "style": "default",
             "scope_exclude": ["string", "comment"],
             "plugin_library": "Western Digital.trexkeywords",

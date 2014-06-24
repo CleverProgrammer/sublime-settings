@@ -13,5 +13,5 @@
     // No editing possible.
     "view_only": false,
 
-    "operate_on_unsaved_buffers": false
+    "operate_on_unsaved_buffers": true
 }
