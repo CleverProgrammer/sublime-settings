@@ -1,27 +1,33 @@
 {
-	"allow_css_overrides": true,
-	"browser": "default",
-	"css": "default",
-	"embed_css_for_sublime_output": true,
-	"enable_highlight": false,
-	"enable_mathjax": false,
-	"enabled_extensions": "default",
-	"extensions":
-	[
-		"extra",
-		"toc",
-		"codehilite"
-	],
-	"github_mode": "markdown",
-	"html_template": "/Users/facelessuser/Library/Application Support/Sublime Text 3/Packages/User/custom-template.html",
-	"markdown_filetypes":
-	[
-		".md",
-		".markdown",
-		".mdown"
-	],
-	"parser": "default",
-	"show_panel_on_build": true,
-	"skip_default_stylesheet": true,
-	"strip_yaml_front_matter": false
+    "allow_css_overrides": true,
+    "browser": "default",
+    "css": "default",
+    "embed_css_for_sublime_output": true,
+    "enable_highlight": true,
+    "enable_mathjax": true,
+    "enabled_extensions":
+    [
+        "extra", "github", "toc", "headerid",
+        "meta", "sane_lists", "smarty", "wikilinks", "codehilite(guess_lang=False)",
+        "admonition", "admonitionicon", "progressbar", "insert"
+    ],
+    "enabled_parsers": ["markdown", "github", "multimarkdown"],
+    "github_mode": "markdown",
+    "multimarkdown_binary": "/usr/local/bin/multimarkdown",
+    "markdown_filetypes":
+    [
+        ".md",
+        ".markdown",
+        ".mdown"
+    ],
+    "github_inject_header_ids": true,
+    "html_simple": false,
+    "parser": "default",
+    "build_action": "build",
+    "image_path_conversion": "base64",
+    "guess_language": false,
+    "show_panel_on_build": true,
+    "skip_default_stylesheet": true,
+    "strip_yaml_front_matter": true,
+    "strip_critic_marks": "accept"
 }

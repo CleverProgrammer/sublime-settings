@@ -35,22 +35,6 @@
     {"keys": ["ctrl+shift+alt+p"], "command": "get_selection_scope" },
 
     //////////////////////////////////
-    // Fuzzy File Nav
-    //////////////////////////////////
-    // Windows
-    { "keys": ["ctrl+o"], "command": "fuzzy_start_from_file", "context": [{"key": "shortcut_plus(platform):windows"}] },
-    { "keys": ["ctrl+shift+o"], "command": "fuzzy_bookmarks_load",  "context": [{"key": "shortcut_plus(platform):windows"}] },
-    { "keys": ["ctrl+super+alt+o"], "command": "fuzzy_file_nav", "args": {"start": "C:\\workbench"}, "context": [{"key": "shortcut_plus(hostname):musei-opt990"}] },
-
-    // Linux
-    { "keys": ["ctrl+o"], "command": "fuzzy_start_from_file", "context": [{"key": "shortcut_plus(platform):linux"}] },
-    { "keys": ["ctrl+shift+o"], "command": "fuzzy_bookmarks_load",  "context": [{"key": "shortcut_plus(platform):linux"}] },
-
-    //OSX
-    { "keys": ["super+o"], "command": "fuzzy_start_from_file", "context": [{"key": "shortcut_plus(platform):osx"}] },
-    { "keys": ["super+shift+o"], "command": "fuzzy_bookmarks_load", "context": [{"key": "shortcut_plus(platform):osx"}] },
-
-    //////////////////////////////////
     // Smart Cursor
     //////////////////////////////////
     // Replace standard alt+up and alt+down  with SmartCursor
@@ -83,6 +67,21 @@
     //////////////////////////////////
     // Bracket Highlighter
     //////////////////////////////////
+    {
+        "keys": ["ctrl+m"],
+        "command": "bh_key",
+        "args":
+        {
+            "no_outside_adj": true,
+            "lines" : true,
+            "plugin":
+            {
+                "type": ["__all__"],
+                "command": "bh_modules.bracketselect",
+                "args": {"select": "right", "alternate": true}
+            }
+        }
+    },
     // Search to end of file for bracket
     {
         "keys": ["ctrl+alt+super+b"],

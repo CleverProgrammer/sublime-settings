@@ -1,2 +1,9 @@
 [
+    //////////////////////////////////
+    // Fuzzy File Nav
+    //////////////////////////////////
+    // Windows
+    { "keys": ["ctrl+o"], "command": "fuzzy_start_from_file" },
+    { "keys": ["ctrl+shift+o"], "command": "fuzzy_bookmarks_load" },
+    { "keys": ["ctrl+super+alt+o"], "command": "fuzzy_file_nav", "args": {"start": "C:\\workbench"}, "context": [{"key": "shortcut_plus(hostname):musei-opt990"}] }
 ]
