@@ -9,11 +9,11 @@
 	],
 	"INI":
 	[
-		"ini.dist",
-		".npmrc",
-		".gitconfig",
 		".gitattributes",
-		".gitignore"
+		".gitconfig",
+		".gitignore",
+		".npmrc",
+		"ini.dist"
 	],
 	"JSON":
 	[
@@ -32,13 +32,13 @@
 	],
 	"Ruby":
 	[
+		"jbuilder",
+		"podspec",
+		"rabl",
+		"rake",
 		"rb",
 		"simplecov",
-		"jbuilder",
-		"thor",
-		"rabl",
-		"podspec",
-		"rake"
+		"thor"
 	],
 	"Ruby Haml":
 	[
@@ -46,9 +46,9 @@
 	],
 	"Shell-Unix-Generic":
 	[
-		"zsh",
+		"bash",
 		"sh",
-		"bash"
+		"zsh"
 	],
 	"XML":
 	[
@@ -56,8 +56,8 @@
 	],
 	"YAML":
 	[
-		"yml",
 		".gemrc",
+		"yml",
 		"yml.dist"
 	]
 }

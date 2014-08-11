@@ -3,8 +3,8 @@
 	[
 		"ini.dist",
 		".npmrc",
-		".gitconfig",
 		".gitattributes",
+		".gitconfig",
 		".gitignore"
 	]
 }
