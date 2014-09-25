@@ -1,5 +1,5 @@
 {
-    "debug": true,
+    "debug": false,
 
     //SVN path
     "svn":  {
@@ -59,6 +59,10 @@
 
     // Menus to show (view|tab|sidebar)
     "menu_types": ["view", "tab", "sidebar"],
+
+    // To reduce menu footprint, place diff menus under a parent item "EasyDiff"
+    // (view|tab|sidebar)
+    "submenu": ["tab", "sidebar"],
 
     // Use a buffer instead of the output panel
     "use_buffer": true,
