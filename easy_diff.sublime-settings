@@ -62,7 +62,7 @@
 
     // To reduce menu footprint, place diff menus under a parent item "EasyDiff"
     // (view|tab|sidebar)
-    "submenu": ["tab", "sidebar"],
+    "submenu": ["sidebar", "tab"],
 
     // Use a buffer instead of the output panel
     "use_buffer": true,
