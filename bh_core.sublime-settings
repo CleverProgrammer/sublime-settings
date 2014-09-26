@@ -12,9 +12,9 @@
     // Do the opposite of "show_unmatched" for the languages listed below
     "show_unmatched_exceptions": [],
 
-    "content_highlight_bar": true,
+    "content_highlight_bar": false,
 
-    "align_content_highlight_bar": true,
+    "align_content_highlight_bar": false,
 
     // Enable high visibility by default when sublime starts up
     // If sublime is already running and this gets changed,

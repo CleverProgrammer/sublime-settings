@@ -5,8 +5,8 @@
 
     // Point to the mdown binary
     "binary": {
-        "windows": "c:\\MyApps\\mdown.exe",
-        "osx": "/Users/facelessuser/bin/mdown",
-        "linux": "mdown"
+        "windows": "c:\\MyApps\\pymdown.exe",
+        "osx": "/Users/facelessuser/bin/pymdown",
+        "linux": "pymdown"
     }
 }
