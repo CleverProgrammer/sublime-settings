@@ -266,6 +266,12 @@
     // Origami
     //////////////////////////////////
     {
+        "keys": ["right"], "command": "next_view", "context": [{"key": "shortcut_plus(profile):Alternate Profile"}]
+    },
+    {
+        "keys": ["left"], "command": "prev_view", "context": [{"key": "shortcut_plus(profile):Alternate Profile"}]
+    },
+    {
         "keys": ["ctrl+up"], "command": "travel_to_pane", "context": [{"key": "shortcut_plus(profile):Alternate Profile"}],
         "args": {"direction": "up"}
     },

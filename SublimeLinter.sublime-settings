@@ -23,6 +23,7 @@
 				[
 				],
 				"ignore": "E501,F403",
+				"jobs": "1",
 				"max-complexity": -1,
 				"max-line-length": null,
 				"select": ""
@@ -41,6 +42,7 @@
 		},
 		"mark_style": "outline",
 		"no_column_highlights_line": false,
+		"passive_warnings": false,
 		"paths":
 		{
 			"linux":
