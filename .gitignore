@@ -12,6 +12,8 @@ Thumbs.db
 
 *.pyc
 
+FileHistory_*.json
+
 SideBarEnhancements/Open With/Side Bar.sublime-menu
 
 Terminal.sublime-settings
