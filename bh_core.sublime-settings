@@ -120,8 +120,7 @@
         "tag": {
             "icon": "tag",
             "color": "brackethighlighter.tag",
-            "style": "outline",
-            "endpoints": true
+            // "style": "underline"
         },
         "c_define": {
             "icon": "hash",
