@@ -17,9 +17,13 @@
 	],
 	"JSON":
 	[
+		"jarvis-conf",
 		"jarvis-lang",
-		"tweak-settings",
-		"jarvis-conf"
+		"tweak-settings"
+	],
+	"Makefile":
+	[
+		"mak"
 	],
 	"PHP":
 	[
