@@ -1,6 +1,6 @@
 {
     // Show scope in status bar
-    "show_statusbar": false,
+    "show_statusbar": true,
 
     // Show scope in auto-popup panel
     "show_panel": true,
