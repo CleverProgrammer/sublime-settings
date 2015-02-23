@@ -1,37 +1,84 @@
 {
+    ///////////////////////////
+    // View Options
+    ///////////////////////////
+
+    // Show popup tooltip with info about scope
+    "show_popup": true,
+
     // Show scope in status bar
     "show_statusbar": true,
 
     // Show scope in auto-popup panel
-    "show_panel": true,
+    "show_panel": false,
 
-    // Copy scopes to clipboard
-    "clipboard": false,
-
-    // Allow multi-select scope hunting
-    "multiselect": true,
-
-    // Show scope extent in line/char format
-    "extent_line_char": true,
-
+    // Show scopes in console
     "console_log": false,
+
+    ///////////////////////////
+    // Tooltip Configurations
+    ///////////////////////////
+
+    // Tooltip CSS file:
+    // PackageFolder/Sub/Directores/file.css (use forward slashes)
+    // Included:
+    //     ScopeHunter/css/dark.css
+    //     ScopeHunter/css/light.css
+    //
+    //     Use `null` if you want ScopeHunter to auto determine when to use dark or light.
+    //     Dark themes can be overriden via dark_css_override and light_css_override
+    "css_file": null,
+
+    // Overide the builtin "dark" css with the css of your choice.
+    // Use the same rules as defined above in "css_file" in regards to formatting.
+    "dark_css_override": "ScopeHunter/css/dark.css",
+
+    // Overide the builtin "light" css with the css of your choice.
+    // Use the same rules as defined above in "css_file" in regards to formatting.
+    "light_css_override": "ScopeHunter/css/light.css",
+
+    ///////////////////////////
+    // Additional Scope Info
+    ///////////////////////////
 
     // Show scope extent in point format
     "extent_points": true,
 
-    // Highlight scope extent?
+    // Show scope extent in line/char format
+    "extent_line_char": true,
+
+    // Show color scheme info responsible for the colors and style:
+    //     syntax file location,
+    //     color scheme location,
+    //     colors, style, and theme selectors
+    "show_color_scheme_info": true,
+
+    // Highlight scope extent in view
     "highlight_extent": true,
+
+    ///////////////////////////
+    // Highlight Configuration
+    ///////////////////////////
 
     // Scope to use for the color
     "highlight_scope": "invalid",
 
     // Highlight style (underline|solid|outline)
-    "highlight_style": "underline",
+    "highlight_style": "outline",
 
-    // Show color scheme info: colors, style, and theme selectors
-    // responsible for the colors and style
-    "show_color_scheme_info": true,
+    ///////////////////////////
+    // Additional Options
+    ///////////////////////////
 
-    // Max region to size to highlight
-    "highlight_max_size": 100
+    // Automatically copy scopes to clipboard
+    "clipboard": false,
+
+    // Allow multi-select scope hunting
+    "multiselect": true,
+
+    // Max region size to highlight
+    "highlight_max_size": 100,
+
+    // Use SubNotify plugin messages if installed
+    "use_sub_notify": true
 }

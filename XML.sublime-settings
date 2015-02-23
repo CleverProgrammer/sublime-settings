@@ -1,10 +1,10 @@
 {
 	"extensions":
 	[
+		"xslt",
 		"xsd",
-		"xml",
 		"svg",
 		"xml.dist",
-		"xslt"
+		"xml"
 	]
 }
