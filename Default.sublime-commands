@@ -1,5 +1,17 @@
 [
     //////////////////////////////////
+    // Mail Gunner
+    //////////////////////////////////
+    {
+        "caption": "MailGunner: Send Mail",
+        "command": "mail_gunner"
+    },
+    {
+        "caption": "MailGunner: New Mail",
+        "command": "mail_gunner_new"
+    },
+
+    //////////////////////////////////
     // PyMdown
     //////////////////////////////////
     {

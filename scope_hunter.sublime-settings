@@ -47,11 +47,21 @@
     // Show scope extent in line/char format
     "extent_line_char": true,
 
-    // Show color scheme info responsible for the colors and style:
-    //     syntax file location,
-    //     color scheme location,
-    //     colors, style, and theme selectors
-    "show_color_scheme_info": true,
+    // Show color and style at the given point
+    "styling": true,
+
+    // When showing a color with alpha transparency,
+    // Simulate what the color would look like in sublime
+    // by mixing the relevant background color,
+    "show_simulated_alpha_colors": true,
+
+    // Show the selector names and scopes
+    // responsible for the color and styles
+    "selectors": true,
+
+    // Show current syntax and color scheme paths
+    // (click to open if using tooltips)
+    "file_paths": true,
 
     // Highlight scope extent in view
     "highlight_extent": true,
@@ -63,7 +73,7 @@
     // Scope to use for the color
     "highlight_scope": "invalid",
 
-    // Highlight style (underline|solid|outline)
+    // Highlight style (underline|solid|outline|thin_underline|squiggly|stippled)
     "highlight_style": "outline",
 
     ///////////////////////////
