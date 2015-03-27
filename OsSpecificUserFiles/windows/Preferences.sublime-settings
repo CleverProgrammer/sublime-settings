@@ -1,4 +1,9 @@
 {
+	"added_words":
+	[
+		"apps"
+	],
+	"always_show_minimap_viewport": true,
 	"aprosopo_active_bar": true,
 	"aprosopo_combined_dirty_active_bar": true,
 	"aprosopo_dark_dirty_red": true,
@@ -6,6 +11,7 @@
 	"aprosopo_dirty_bar": true,
 	"aprosopo_show_tab_close_buttons": true,
 	"aprosopo_show_tab_close_on_hover": true,
+	"aprosopo_sidebar_font_large": true,
 	"aprosopo_sidebar_tree_medium": true,
 	"binary_file_patterns":
 	[
@@ -26,7 +32,7 @@
 	],
 	"bold_folder_labels": true,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/Tomorrow-Night-Eighties-Stormy (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night-Eighties-Stormy (SL).tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
@@ -55,7 +61,7 @@
 	],
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 14,
+	"font_size": 13,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"highlight_word_outline_style": true,
@@ -64,16 +70,16 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"JavaScript",
-		"Python",
-		"SmartCursor",
-		"Perl",
-		"C++",
-		"Vintage",
-		"PHP",
 		"Batch File",
 		"CSS",
-		"Markdown"
+		"Perl",
+		"Markdown",
+		"Python",
+		"JavaScript",
+		"SmartCursor",
+		"Vintage",
+		"C++",
+		"Colortip"
 	],
 	"indent_guide_options":
 	[
@@ -156,6 +162,7 @@
 	"pyflakes_ignore":
 	[
 	],
+	"remember_open_files": true,
 	"scroll_past_end": true,
 	"show_encoding": true,
 	"show_full_path": true,

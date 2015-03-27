@@ -1,10 +1,14 @@
 {
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
 		"AAALanguages",
 		"ApacheConf.tmLanguage",
 		"ApplySyntax",
 		"ARM Assembly",
+		"ASCII Decorator",
 		"AutoHotkey",
 		"BracketHighlighter",
 		"ColorPicker",
@@ -16,7 +20,7 @@
 		"FindKeyConflicts",
 		"FuzzyFileNav",
 		"GenerateUUID",
-		"google-search",
+		"Google Search",
 		"HexViewer",
 		"INI",
 		"Markdown Preview",
@@ -28,17 +32,19 @@
 		"PowerCursors",
 		"PreventFakeClones",
 		"QuickCal",
+		"QuickRulers",
 		"RawLineEdit",
 		"RegReplace",
 		"ScopeHunter",
 		"SideBarEnhancements",
 		"SideBarFolders",
 		"SmartCursor",
-		"SortTabs",
 		"SublimeLinter",
 		"SublimeLinter-flake8",
+		"SublimeLinter-pep257",
 		"SublimeRandomCrap",
 		"SublimeREPL",
+		"Syntax Highlighting for Sass",
 		"TabsExtra",
 		"Terminal"
 	],
