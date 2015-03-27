@@ -4,7 +4,7 @@
     //////////////////////////////////
     {
         "caption": "MailGunner: Send Mail",
-        "command": "mail_gunner"
+        "command": "mail_gunner_send"
     },
     {
         "caption": "MailGunner: New Mail",
