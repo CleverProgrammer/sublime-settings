@@ -1,51 +1,56 @@
 {
-    "auto_upgrade_last_run": null,
-    "installed_packages":
-    [
-        "AAALanguages",
-        "ApacheConf.tmLanguage",
-        "ApplySyntax",
-        "ARM Assembly",
-        "ASCII Decorator",
-        "BracketHighlighter",
-        "ColorPicker",
-        "CopyEdit",
-        "Crypto",
-        "ExportHtml",
-        "FavoriteFiles",
-        "File History",
-        "FindKeyConflicts",
-        "FuzzyFileNav",
-        "GenerateUUID",
-        "google-search",
-        "HexViewer",
-        "INI",
-        "Markdown Preview",
-        "Origami",
-        "Package Control",
-        "PlainNotes",
-        "PlainTasks",
-        "PowerCursors",
-        "PreventFakeClones",
-        "QuickCal",
-        "RegReplace",
-        "ScopeHunter",
-        "SideBarEnhancements",
-        "SideBarFolders",
-        "SmartCursor",
-        "SortTabs",
-        "SublimeLinter",
-        "SublimeLinter-flake8",
-        "SublimeLinter-pep257",
-        "SublimeREPL"
-    ],
-    "package_name_map":
-    {
-        "sublime-languages": "AAALanguages"
-    },
-    "repositories":
-    [
-        "https://github.com/facelessuser/sublime-languages",
-        "https://github.com/bizoo/SmartCursor"
-    ]
+	"auto_upgrade_last_run": null,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"AAALanguages",
+		"ApacheConf.tmLanguage",
+		"ApplySyntax",
+		"ARM Assembly",
+		"ASCII Decorator",
+		"BracketHighlighter",
+		"CopyEdit",
+		"Crypto",
+		"ePub",
+		"ExportHtml",
+		"FavoriteFiles",
+		"File History",
+		"FileBrowser",
+		"FindKeyConflicts",
+		"FuzzyFileNav",
+		"GenerateUUID",
+		"Google Search",
+		"HexViewer",
+		"INI",
+		"Origami",
+		"Package Control",
+		"PlainNotes",
+		"PlainTasks",
+		"PowerCursors",
+		"PreventFakeClones",
+		"QuickCal",
+		"RegReplace",
+		"Sass",
+		"ScopeHunter",
+		"SCSS",
+		"SideBarEnhancements",
+		"SideBarFolders",
+		"SmartCursor",
+		"SublimeLinter",
+		"SublimeLinter-flake8",
+		"SublimeLinter-pep257",
+		"SublimeREPL",
+		"Twig"
+	],
+	"package_name_map":
+	{
+		"sublime-languages": "AAALanguages"
+	},
+	"repositories":
+	[
+		"https://github.com/facelessuser/sublime-languages",
+		"https://github.com/bizoo/SmartCursor"
+	]
 }
