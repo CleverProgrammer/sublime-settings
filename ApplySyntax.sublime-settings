@@ -1,5 +1,6 @@
 {
     "debug_enabled": false,
+    "dev_enabled": true,
     "reraise_exceptions": true,
     "add_exts_to_lang_settings": true,
     "syntaxes": [
@@ -18,13 +19,13 @@
         {
             "name": "Text/Plain text",
             "extensions": ["log"]
-        },
-        {
-            "name": "HTML/HTML",
-            "extensions": ["php3", "php4", "php5", "inc", "phtml"],
-            "rules": [
-                {"first_line": "^<\\?php"}
-            ]
         }
+        // {
+        //     "name": "HTML/HTML",
+        //     "extensions": ["php3", "php4", "php5", "inc", "phtml"],
+        //     "rules": [
+        //         {"first_line": "^<\\?php"}
+        //     ]
+        // }
     ]
 }

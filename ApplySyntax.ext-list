@@ -1,12 +1,4 @@
 {
-	"HTML":
-	[
-		"php5",
-		"php3",
-		"inc",
-		"php4",
-		"phtml"
-	],
 	"INI":
 	[
 		".gitattributes",
