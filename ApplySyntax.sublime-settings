@@ -19,13 +19,13 @@
         {
             "name": "Text/Plain text",
             "extensions": ["log"]
-        },
-        {
-            "name": "HTML/HTML",
-            "extensions": ["php3", "php4", "php5", "inc", "phtml"],
-            "rules": [
-                {"first_line": "^<\\?php"}
-            ]
         }
+        // {
+        //     "name": "HTML/HTML",
+        //     "extensions": ["php3", "php4", "php5", "inc", "phtml"],
+        //     "rules": [
+        //         {"first_line": "^<\\?php"}
+        //     ]
+        // }
     ]
 }

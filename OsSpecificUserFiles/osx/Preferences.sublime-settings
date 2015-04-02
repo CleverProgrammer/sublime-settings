@@ -1,18 +1,35 @@
 {
 	"always_show_minimap_viewport": false,
 	"aprosopo_active_bar": true,
-	"aprosopo_combined_dirty_active_bar": true,
+	"aprosopo_dark_dirty_red": true,
+	"aprosopo_dark_purple": true,
 	"aprosopo_dirty_bar": true,
-	"aprosopo_light_blue": true,
-	"aprosopo_light_dirty_red": true,
 	"aprosopo_show_tab_close_buttons": true,
 	"aprosopo_show_tab_close_on_hover": true,
+	"aprosopo_sidebar_font_medium": true,
+	"aprosopo_sidebar_tree_medium": true,
+	"binary_file_patterns":
+	[
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip"
+	],
 	"bold_folder_labels": true,
 	"caret_extra_bottom": 0,
 	"caret_extra_top": 0,
 	"caret_extra_width": 0,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/Tomorrow-Morning (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night-Eighties-Stormy (SL).tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
@@ -20,6 +37,7 @@
 	"find_selected_text": true,
 	"font_face": "Consolas",
 	"font_size": 16,
+	"gpu_window_buffer": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"highlight_word_outline_style": true,
@@ -28,22 +46,24 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
+		"SmartCursor",
+		"PreventFakeClones",
+		"Markdown",
+		"Batch File",
+		"Perl",
+		"Pywin32",
 		"JavaScript",
 		"CSS",
-		"Pywin32",
 		"Vintage",
-		"Markdown",
-		"C++",
 		"Python",
-		"Perl",
-		"PHP",
-		"Batch File"
+		"C++"
 	],
 	"indent_guide_options":
 	[
 		"draw_normal",
 		"draw_active"
 	],
+	"index_files": false,
 	"inverse_caret_state": false,
 	"jshint_options":
 	{
@@ -116,6 +136,7 @@
 	"pyflakes_ignore":
 	[
 	],
+	"remember_open_files": true,
 	"scroll_past_end": true,
 	"show_encoding": true,
 	"show_full_path": true,
@@ -137,7 +158,7 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Aprosopo Light@st3.sublime-theme",
+	"theme": "Aprosopo Dark@st3.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
 	"wide_caret": true,
