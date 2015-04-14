@@ -4,7 +4,7 @@
         "children": [
             {
                 "caption": "SublimeREPL",
-                "mnemonic": "r",
+                "mnemonic": "R",
                 "id": "SublimeREPL",
                 "children": [
                     {
@@ -14,7 +14,6 @@
                                 "command": "repl_open",
                                 "caption": "Python 2.7.8",
                                 "id": "repl_python",
-                                "mnemonic": "p",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
@@ -28,7 +27,6 @@
                                 "command": "repl_open",
                                 "caption": "Python 2.7.8 - PDB current file",
                                 "id": "repl_python_pdb",
-                                "mnemonic": "d",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
@@ -42,7 +40,6 @@
                                 "command": "repl_open",
                                 "caption": "Python 2.7.8 - RUN current file",
                                 "id": "repl_python_run",
-                                "mnemonic": "d",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
@@ -57,7 +54,6 @@
                                 "command": "repl_open",
                                 "caption": "Python 3.4.1",
                                 "id": "repl_python",
-                                "mnemonic": "p",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
@@ -71,7 +67,6 @@
                                 "command": "repl_open",
                                 "caption": "Python 3.4.1 - PDB current file",
                                 "id": "repl_python_pdb",
-                                "mnemonic": "d",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
@@ -85,7 +80,6 @@
                                 "command": "repl_open",
                                 "caption": "Python 3.4.1 - RUN current file",
                                 "id": "repl_python_run",
-                                "mnemonic": "d",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",

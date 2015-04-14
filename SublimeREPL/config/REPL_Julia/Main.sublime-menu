@@ -5,7 +5,7 @@
         [
             {
                 "caption": "SublimeREPL",
-                "mnemonic": "r",
+                "mnemonic": "R",
                 "id": "SublimeREPL",
                 "children":
                 [
@@ -13,7 +13,6 @@
                         "command": "repl_open",
                         "caption": "Julia",
                         "id": "repl_julia",
-                        "mnemonic": "o",
                         "args": {
                             "type": "subprocess",
                             "encoding": "utf8",
