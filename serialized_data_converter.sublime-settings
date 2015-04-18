@@ -1,7 +1,7 @@
 {
     // Languages to use on conversion
     "json_language": "Packages/AAALanguages/Better Javascript/JSON.tmLanguage",
-    "yaml_language": "Packages/YamlSimple/YAML-Simple.tmLanguage",
+    "yaml_language": "Packages/YAML/YAML.tmLanguage",
     "plist_language": "Packages/XML/XML.tmLanguage",
 
     // When converting buffer open conversion in new buffer
