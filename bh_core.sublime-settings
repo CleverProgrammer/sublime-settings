@@ -46,6 +46,18 @@
     // Disable gutter icons when doing multi-select
     "no_multi_select_icons": false,
 
+    // Show brackets in the minimap.
+    // Depending on your highlight style, regions may not be visible in minimap.
+    // Normal "underline" won't show up due to it being a style consisting of
+    // multiple zero width selections to create a fat underline.
+    // But the following styles should show up fine:
+    //     - thin_underline
+    //     - solid
+    //     - outline
+    //     - squiggly
+    //     - stippled
+    "show_in_minimap": true,
+
     // user_scope_brackets and user_brackets will be appended
     // to the tail of scope_brackets and brackets respectively
     // If you have custom rules that you don't want to commit to
