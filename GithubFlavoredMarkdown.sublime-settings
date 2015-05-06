@@ -1,9 +1,10 @@
 {
-	"extensions":
-	[
-		"mdown",
-		"markdown",
-		"markdn",
-		"md"
-	]
+    "extensions":
+    [
+        "mdown",
+        "markdown",
+        "markdn",
+        "md"
+    ],
+    "spell_check": true
 }

@@ -17,7 +17,7 @@
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["python2.7", "-i", "-u"],
+                                    "cmd": ["python2", "-i", "-u"],
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
                                     "external_id": "python"
@@ -30,7 +30,7 @@
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["python2.7", "-i", "-u", "-m", "pdb", "$file_basename"],
+                                    "cmd": ["python2", "-i", "-u", "-m", "pdb", "$file_basename"],
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
                                     "external_id": "python"
@@ -43,7 +43,7 @@
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
-                                    "cmd": ["python2.7", "-u", "$file_basename"],
+                                    "cmd": ["python2", "-u", "$file_basename"],
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
                                     "external_id": "python"

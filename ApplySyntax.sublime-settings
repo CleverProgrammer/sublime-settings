@@ -1,27 +1,27 @@
 {
-    "debug_enabled": false,
-    "dev_enabled": true,
+    "debug": true,
+    "verbose_debug": false,
     "reraise_exceptions": true,
     "add_exts_to_lang_settings": true,
     "syntaxes": [
         {
-            "name": "Makefile/Makefile",
+            "syntax": "Makefile/Makefile",
             "extensions": ["mak"]
         },
         {
-            "name": "AAALanguages/Better Javascript/JSON",
-            "extensions": ["tweak-settings", "jarvis-conf", "jarvis-lang"]
+            "syntax": "AAALanguages/Better Javascript/JSON.tmLanguage",
+            "extensions": ["tweak-settings", "jarvis-conf", "jarvis-lang", "sublime-settings"]
         },
         {
-            "name": "AAALanguages/Better Python/Python",
+            "syntax": "AAALanguages/Better Python/Python",
             "extensions": ["py3", "pyw"]
         },
         {
-            "name": "Text/Plain text",
+            "syntax": "Text/Plain text",
             "extensions": ["log"]
         }
         // {
-        //     "name": "HTML/HTML",
+        //     "syntax": "HTML/HTML",
         //     "extensions": ["php3", "php4", "php5", "inc", "phtml"],
         //     "rules": [
         //         {"first_line": "^<\\?php"}

@@ -11,6 +11,7 @@
 	[
 		"jarvis-conf",
 		"jarvis-lang",
+		"sublime-settings",
 		"tweak-settings"
 	],
 	"Makefile":
@@ -31,8 +32,8 @@
 	],
 	"Python":
 	[
-		"pyw",
-		"py3"
+		"py3",
+		"pyw"
 	],
 	"Ruby":
 	[
