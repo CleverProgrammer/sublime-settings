@@ -1,14 +1,18 @@
 {
 	"added_words":
 	[
-		"apps"
+		"apps",
+		"plugin",
+		"plugins",
+		"sublicense",
+		"frontmatter"
 	],
 	"always_show_minimap_viewport": true,
 	"aprosopo_active_bar": true,
 	"aprosopo_combined_dirty_active_bar": true,
-	"aprosopo_dark_dirty_red": true,
-	"aprosopo_dark_purple": true,
 	"aprosopo_dirty_bar": true,
+	"aprosopo_light_blue": true,
+	"aprosopo_light_dirty_red": true,
 	"aprosopo_show_tab_close_buttons": true,
 	"aprosopo_show_tab_close_on_hover": true,
 	"aprosopo_sidebar_font_large": true,
@@ -32,7 +36,7 @@
 	],
 	"bold_folder_labels": true,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night-Eighties-Stormy (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Morning (SL).tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
@@ -70,16 +74,18 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Batch File",
-		"CSS",
 		"Perl",
-		"Markdown",
-		"Python",
-		"JavaScript",
+		"CSS",
 		"SmartCursor",
+		"Colortip",
 		"Vintage",
+		"Batch File",
 		"C++",
-		"Colortip"
+		"JavaScript",
+		"Rummage",
+		"Python",
+		"Markdown",
+		"SubNotify"
 	],
 	"indent_guide_options":
 	[
@@ -185,7 +191,7 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Aprosopo Dark@st3.sublime-theme",
+	"theme": "Aprosopo Light@st3.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
 	"wide_caret": true,

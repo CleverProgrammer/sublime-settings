@@ -46,7 +46,8 @@
 		"SublimeREPL",
 		"Syntax Highlighting for Sass",
 		"TabsExtra",
-		"Terminal"
+		"Terminal",
+		"TypoScript"
 	],
 	"package_name_map":
 	{
