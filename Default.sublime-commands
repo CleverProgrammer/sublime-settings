@@ -68,7 +68,7 @@
     {
         "caption": "Insert: UTC Date Time",
         "command": "insert_date_time",
-        "args": { "format": "%Y-%m-%d %H:%M:%S", "utc": true }
+        "args": {"format": "%Y-%m-%d %H:%M:%S", "utc": true}
     },
 
     //////////////////////////////////
@@ -127,6 +127,12 @@
     //////////////////////////////////
     // RegReplace Commands
     //////////////////////////////////
+    // Compress brackets
+    {
+        "caption": "Format: Compress Brackets",
+        "command": "reg_replace",
+        "args": {"replacements": ["compress_opening_brackets", "compress_closing_brackets"], "find_only": true}
+    },
     // Convert tabs to spaces
     {
         "caption": "Format: Whitespace to 4 spaces",

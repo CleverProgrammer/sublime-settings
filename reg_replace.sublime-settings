@@ -186,6 +186,21 @@
             "replace": "\\1\\2'\\3",
             "greedy_replace": false,
             "multi_pass_regex": true
+        },
+        "compress_opening_brackets": {
+            "find": "(\\[|\\(|\\{)[ \t]+",
+            "replace": "\\1",
+            "greedy": true,
+            "case": false,
+            "scope_filter": ["-comment", "-string"]
+        },
+        "compress_closing_brackets": {
+            "find": "(?<!\\s)[ \t]+(\\)|\\}|\\])",
+            "replace": "\\1",
+            "greedy": true,
+            "case": false,
+            "scope_filter":
+            ["-comment", "-string"]
         }
     },
 

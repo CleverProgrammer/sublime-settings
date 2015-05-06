@@ -1,5 +1,7 @@
 {
-	"extensions":
-	[
-	]
+    "extensions":
+    [
+    ],
+
+    "spell_check": true
 }

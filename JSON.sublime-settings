@@ -1,8 +1,9 @@
 {
 	"extensions":
 	[
-		"jarvis-conf",
+		"tweak-settings",
+		"sublime-settings",
 		"jarvis-lang",
-		"tweak-settings"
+		"jarvis-conf"
 	]
 }
