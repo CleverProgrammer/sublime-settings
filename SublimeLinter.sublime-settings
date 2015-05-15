@@ -13,17 +13,17 @@
                 "args": [],
                 "builtins": "",
                 "excludes": [],
-                "ignore": "E501,F403",
+                "ignore": "",
                 "jobs": "1",
                 "max-complexity": -1,
-                "max-line-length": null,
+                "max-line-length": 120,
                 "select": ""
             },
             "pep257": {
-                "@disable": true,
+                "@disable": false,
                 "args": [],
                 "excludes": [],
-                "ignore": ""
+                "ignore": "D202"
             }
         },
         "mark_style": "outline",

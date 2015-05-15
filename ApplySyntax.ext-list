@@ -13,6 +13,9 @@
 	],
 	"JSON":
 	[
+		".csslintrc",
+		".jscsrc",
+		".jshintrc",
 		"jarvis-conf",
 		"jarvis-lang",
 		"sublime-settings",

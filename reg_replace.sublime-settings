@@ -201,6 +201,12 @@
             "case": false,
             "scope_filter":
             ["-comment", "-string"]
+        },
+        "pep257_bad_single_line": {
+            "scope": "string",
+            "find": "^(\"{3})[ \\n]+([^\\n]+?)\\.?[ \\n]+(\"{3})$",
+            "replace": "\\1\\2.\\3",
+            "greedy_replace": false
         }
     },
 

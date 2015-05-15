@@ -127,6 +127,12 @@
     //////////////////////////////////
     // RegReplace Commands
     //////////////////////////////////
+    // Pep257 bad single line
+    {
+        "caption": "Format: Single Line Pep257",
+        "command": "reg_replace",
+        "args": {"replacements": ["pep257_bad_single_line"], "find_only": true}
+    },
     // Compress brackets
     {
         "caption": "Format: Compress Brackets",
