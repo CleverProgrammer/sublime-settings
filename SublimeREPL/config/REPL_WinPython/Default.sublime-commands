@@ -1,25 +1,25 @@
 [
     {
-        "caption": "SublimeREPL: WinPython 2.7.6",
+        "caption": "SublimeREPL: WinPython 2.7.9",
         "command": "run_existing_window_command", "args":
         {
-            "id": "repl_win_python_2.7.6",
+            "id": "repl_win_python_2.7.9",
             "file": "config/REPL_WinPython/Main.sublime-menu"
         }
     },
     {
-        "caption": "SublimeREPL: WinPython 2.7.6 - PDB current file",
+        "caption": "SublimeREPL: WinPython 2.7.9 - PDB current file",
         "command": "run_existing_window_command", "args":
         {
-            "id": "repl_win_python_2.7.6_pdb",
+            "id": "repl_win_python_2.7.9_pdb",
             "file": "config/REPL_WinPython/Main.sublime-menu"
         }
     },
     {
-        "caption": "SublimeREPL: WinPython 2.7.6 - RUN current file",
+        "caption": "SublimeREPL: WinPython 2.7.9 - RUN current file",
         "command": "run_existing_window_command", "args":
         {
-            "id": "repl_win_python_2.7.6_run",
+            "id": "repl_win_python_2.7.9_run",
             "file": "config/REPL_WinPython/Main.sublime-menu"
         }
     },

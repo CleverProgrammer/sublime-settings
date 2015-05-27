@@ -12,47 +12,47 @@
                         "children":[
                             {
                                 "command": "repl_open",
-                                "caption": "Python 2.7.6",
-                                "id": "repl_win_python_2.7.6",
+                                "caption": "Python 2.7.9",
+                                "id": "repl_win_python_2.7.9",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
                                     "cmd": {
-                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-i", "-u"]
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.9.5\\scripts\\python.bat", "-i", "-u"]
                                     },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "win_python 2.7.6"
+                                    "external_id": "win_python 2.7.9"
                                 }
                             },
                             {
                                 "command": "repl_open",
-                                "caption": "Python 2.7.6 - PDB current file",
-                                "id": "repl_win_python_2.7.6_pdb",
+                                "caption": "Python 2.7.9 - PDB current file",
+                                "id": "repl_win_python_2.7.9_pdb",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
                                     "cmd": {
-                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-i", "-u", "-m", "pdb", "$file_basename"]
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.9.5\\scripts\\python.bat", "-i", "-u", "-m", "pdb", "$file_basename"]
                                     },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "win_python 2.7.6"
+                                    "external_id": "win_python 2.7.9"
                                 }
                             },
                             {
                                 "command": "repl_open",
-                                "caption": "Python 2.7.6 - RUN current file",
-                                "id": "repl_win_python_2.7.6_run",
+                                "caption": "Python 2.7.9 - RUN current file",
+                                "id": "repl_win_python_2.7.9_run",
                                 "args": {
                                     "type": "subprocess",
                                     "encoding": "utf8",
                                     "cmd": {
-                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.6.2\\scripts\\python.bat", "-u", "$file_basename"]
+                                        "windows": ["C:\\PortaPy\\WinPython-32bit-2.7.9.5\\scripts\\python.bat", "-u", "$file_basename"]
                                     },
                                     "cwd": "$file_path",
                                     "syntax": "Packages/AAALanguages/Better Python/Python.tmLanguage",
-                                    "external_id": "win_python 2.7.6"
+                                    "external_id": "win_python 2.7.9"
                                 }
                             },
                             {"caption": "-"},
