@@ -51,7 +51,7 @@
                 "ignore-patterns": [],
                 "max-line-length": 120,
                 "profile": [
-                    "${sublime=default-prospector.yml}"
+                    "${sublime=User/default-prospector.yml}"
                 ],
                 "profile-path": "",
                 "strictness": "medium",
