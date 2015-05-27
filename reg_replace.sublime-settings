@@ -41,13 +41,13 @@
 {
     "replacements": {
         "tabs_to_spaces": {
-            "find": "^((?:[ ]{4})*)(([\\t]|[ ]{1,3}(?![ \\t])))",
-            "replace": "\\1    ",
+            "find": "^(?P<spaces>(?:[ ]{4})*)(?P<tabs>(?:[\\t]|[ ]{1,3}(?![ \\t])))",
+            "replace": "\\g<spaces>    ",
             "greedy": true
         },
         "trim_html_whitespace": {
-            "find": "\\s*(<|>)\\s*",
-            "replace": "\\1",
+            "find": "\\s*(?P<angle_brackets><|>)\\s*",
+            "replace": "\\g<angle_brackets>",
             "scope_filter": ["-source.js","-source.php", "-source.css","-string", "-comment"],
             "greedy": true
         },
@@ -71,8 +71,8 @@
         },
         // remove_json_dangling_commas (can't catch if comments are between)
         "remove_json_dangling_commas": {
-            "find": ",([\\r\\n\\s]*)(\\]|\\})",
-            "replace": "\\1\\2",
+            "find": ",(?P<leading_ws>[\\r\\n\\s]*)(?P<bracket>\\]|\\})",
+            "replace": "\\g<leading_ws>\\g<bracket>",
             "greedy": true,
             "scope_filter": ["-string", "-comment"]
         },
@@ -95,8 +95,8 @@
             "replace": ""
         },
         "ensure_newline_at_file_end":{
-            "find": "(([^\n\r])(?![\\s\\S\\r\\n]))",
-            "replace": "\\1\\n"
+            "find": "(?P<eof>([^\n\r])(?![\\s\\S\\r\\n]))",
+            "replace": "\\g<eof>\\n"
         },
         // Delete a comment or comment block
         "remove_comments": {
@@ -108,95 +108,95 @@
         // Swap quotes
         "swap_quotes_to_single": {
             "scope": "string",
-            "find" : "^\"(.*?)\"$",
-            "replace": "'\\1'",
+            "find" : "^\"(?P<content>.*?)\"$",
+            "replace": "'\\g<content>'",
             "greedy_replace": false
         },
         "escape_single_quotes": {
             "scope": "string",
-            "find" : "^(\".*?(?<!\\\\))((?:[\\\\]{2})*)'(.*?\")$",
-            "replace": "\\1\\2\\'\\3",
+            "find" : "^(?P<pre_text>\".*?(?<!\\\\))(?P<escapes>(?:[\\\\]{2})*)'(?P<post_text>.*?\")$",
+            "replace": "\\g<pre_text>\\g<escapes>\\'\\g<post_text>",
             "greedy_replace": false,
             "multi_pass_regex": true
         },
         "unescape_double_quotes": {
             "scope": "string",
-            "find" : "^('.*?(?<!\\\\))((?:[\\\\]{2})*)\\\\\"(.*?')$",
-            "replace": "\\1\\2\"\\3",
+            "find" : "^(?P<pre_text>'.*?(?<!\\\\))(?P<escapes>(?:[\\\\]{2})*)\\\\\"(?<post_text>.*?')$",
+            "replace": "\\g<pre_text>\\g<escapes>\"\\g<post_test>",
             "greedy_replace": false,
             "multi_pass_regex": true
         },
         "swap_quotes_to_double": {
             "scope": "string",
-            "find" : "^'(.*?)'$",
-            "replace": "\"\\1\"",
+            "find" : "^'(?P<content>.*?)'$",
+            "replace": "\"\\g<content>\"",
             "greedy_replace": false
         },
         "escape_double_quotes": {
             "scope": "string",
-            "find" : "^('.*?(?<!\\\\))((?:[\\\\]{2})*)\"(.*?')$",
-            "replace": "\\1\\2\\\"\\3",
+            "find" : "^(?P<pre_text>'.*?(?<!\\\\))(?P<escapes>(?:[\\\\]{2})*)\"(?P<post_text>.*?')$",
+            "replace": "\\g<pre_text>\\g<esapes>\\\"\\g<post_text>",
             "greedy_replace": false,
             "multi_pass_regex": true
         },
         "unescape_single_quotes": {
             "scope": "string",
-            "find" : "^(\".*?(?<!\\\\))((?:[\\\\]{2})*)\\\\'(.*?\")$",
-            "replace": "\\1\\2'\\3",
+            "find" : "^(?P<pre_text>\".*?(?<!\\\\))(?P<escapes>(?:[\\\\]{2})*)\\\\'(?P<post_text>.*?\")$",
+            "replace": "\\g<pre_text>\\g<escapes>'\\g<post_text>",
             "greedy_replace": false,
             "multi_pass_regex": true
         },
         // Swap Python raw quotes
         "swap_python_raw_quotes_to_single": {
             "scope": "string",
-            "find" : "^(r)\"(.*?)\"$",
-            "replace": "\\1'\\2'",
+            "find" : "^(?P<raw>r)\"(?P<content>.*?)\"$",
+            "replace": "\\g<raw>'\\g<content>'",
             "greedy_replace": false
         },
         "escape_python_raw_single_quotes": {
             "scope": "string",
-            "find" : "^(r\".*?(?<!\\\\))((?:[\\\\]{2})*)'(.*?\")$",
-            "replace": "\\1\\2\\'\\3",
+            "find" : "^(?P<pre_text>r\".*?(?<!\\\\))(?P<escapes>(?:[\\\\]{2})*)'(?P<post_text>.*?\")$",
+            "replace": "\\g<pre_text>\\g<escapes>\\'\\g<post_text>",
             "greedy_replace": false,
             "multi_pass_regex": true
         },
         "unescape_python_raw_double_quotes": {
             "scope": "string",
-            "find" : "^(r'.*?(?<!\\\\))((?:[\\\\]{2})*)\\\\\"(.*?')$",
-            "replace": "\\1\\2\"\\3",
+            "find" : "^(?P<pre_text>r'.*?(?<!\\\\))(?P<escapes>(?:[\\\\]{2})*)\\\\\"(?P<post_text>.*?')$",
+            "replace": "\\g<pre_text>\\g<escapes>\"\\g<post_text>",
             "greedy_replace": false,
             "multi_pass_regex": true
         },
         "swap_python_raw_quotes_to_double": {
             "scope": "string",
-            "find" : "^(r)'(.*?)'$",
-            "replace": "\\1\"\\2\"",
+            "find" : "^(?P<raw>r)'(?P<content>.*?)'$",
+            "replace": "\\g<raw>\"\\g<content>\"",
             "greedy_replace": false
         },
         "escape_python_raw_double_quotes": {
             "scope": "string",
-            "find" : "^(r'.*?(?<!\\\\))((?:[\\\\]{2})*)\"(.*?')$",
+            "find" : "^(?P<pre_text>r'.*?(?<!\\\\))(?P<escapes>(?:[\\\\]{2})*)\"(?P<post_text>.*?')$",
             "replace": "\\1\\2\\\"\\3",
             "greedy_replace": false,
             "multi_pass_regex": true
         },
         "unescape_python_raw_single_quotes": {
             "scope": "string",
-            "find" : "^(r\".*?(?<!\\\\))((?:[\\\\]{2})*)\\\\'(.*?\")$",
-            "replace": "\\1\\2'\\3",
+            "find" : "^(?P<pre_text>r\".*?(?<!\\\\))(?P<escapes>(?:[\\\\]{2})*)\\\\'(?P<post_text>.*?\")$",
+            "replace": "\\g<pre_text>\\g<escapes>'\\g<post_text>",
             "greedy_replace": false,
             "multi_pass_regex": true
         },
         "compress_opening_brackets": {
-            "find": "(\\[|\\(|\\{)[ \t]+",
-            "replace": "\\1",
+            "find": "(?P<open>\\[|\\(|\\{)[ \t]+",
+            "replace": "\\g<open>",
             "greedy": true,
             "case": false,
             "scope_filter": ["-comment", "-string"]
         },
         "compress_closing_brackets": {
-            "find": "(?<!\\s)[ \t]+(\\)|\\}|\\])",
-            "replace": "\\1",
+            "find": "(?<!\\s)[ \t]+(?P<close>\\)|\\}|\\])",
+            "replace": "\\g<close>",
             "greedy": true,
             "case": false,
             "scope_filter":
@@ -204,9 +204,14 @@
         },
         "pep257_bad_single_line": {
             "scope": "string",
-            "find": "^(\"{3})[ \\n]+([^\\n]+?)\\.?[ \\n]+(\"{3})$",
-            "replace": "\\1\\2.\\3",
+            "find": "^(?P<doc_open>\"{3})[ \\n]+(?P<doc_content>[^\\n]+?)\\.?[ \\n]+(?P<doc_close>\"{3})$",
+            "replace": "\\g<doc_open>\\g<doc_content>.\\g<doc_close>",
             "greedy_replace": false
+        },
+        "python_bare_exception": {
+            "find": "^(?P<except>[ \t]*except)(?P<colon>:)",
+            "replace": "\\g<except> Exception:",
+            "scope_filter": ["-string", "-comment"]
         }
     },
 
@@ -239,6 +244,11 @@
             "sequence": ["remove_trailing_spaces"],
             "action": "mark"
         }
+        // Highlight trailing spaces
+        // ,{
+        //     "file_pattern": ["*.py"],
+        //     "sequence": ["python_bare_exception"]
+        // }
     ],
 
     // Show replace results in panel
