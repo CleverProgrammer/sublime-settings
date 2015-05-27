@@ -81,7 +81,7 @@
     "quick_panel_commands": true,
 
     // Enable manual "set left side" and "compare" commands in the panel
-    "quick_panel_left_right_commands": false,
+    "quick_panel_left_right_commands": true,
 
     // Show commands in the quickpanel that use the last active
     // tab as the left side.  Selection commands will look at selections
