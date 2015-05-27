@@ -30,6 +30,33 @@
                 "args": [],
                 "excludes": [],
                 "ignore": "D202"
+            },
+            "prospector": {
+                "@alias": "prospector3.3",
+                "@disable": false,
+                "@only-project-profile": true,
+                "@project-profiles": [
+                    ".prospector.yml",
+                    ".landscape.yml"
+                ],
+                "@project-root-files": [
+                    "tox.ini",
+                    "setup.cfg",
+                    ".git",
+                    ".gitignore"
+                ],
+                "args": [],
+                "excludes": [],
+                "ignore-paths": [],
+                "ignore-patterns": [],
+                "max-line-length": 120,
+                "profile": [],
+                "profile-path": "",
+                "strictness": "medium",
+                "tools": [],
+                "uses": [],
+                "with-tool": [],
+                "without-tool": []
             }
         },
         "mark_style": "outline",
