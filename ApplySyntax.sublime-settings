@@ -10,7 +10,11 @@
         },
         {
             "syntax": "AAALanguages/Better Javascript/JSON.tmLanguage",
-            "extensions": ["tweak-settings", "jarvis-conf", "jarvis-lang", "sublime-settings"]
+            "extensions": [
+                "tweak-settings", "jarvis-conf",
+                "jarvis-lang", "sublime-settings",
+                ".jscsrc", ".jshitrc", ".csslintrc"
+            ]
         },
         {
             "syntax": "AAALanguages/Better Python/Python",

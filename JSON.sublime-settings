@@ -1,12 +1,12 @@
 {
 	"extensions":
 	[
-		".jscsrc",
-		".jshintrc",
 		"sublime-settings",
+		".jshitrc",
 		".csslintrc",
 		"jarvis-conf",
-		"jarvis-lang",
-		"tweak-settings"
+		"tweak-settings",
+		".jscsrc",
+		"jarvis-lang"
 	]
 }
