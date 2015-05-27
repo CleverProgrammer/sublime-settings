@@ -34,7 +34,7 @@
             "prospector": {
                 "@alias": "prospector3.3",
                 "@disable": false,
-                "@only-project-profile": true,
+                "@only-project-profile": false,
                 "@project-profiles": [
                     ".prospector.yml",
                     ".landscape.yml"
@@ -50,7 +50,9 @@
                 "ignore-paths": [],
                 "ignore-patterns": [],
                 "max-line-length": 120,
-                "profile": [],
+                "profile": [
+                    "${sublime=default-prospector.yml}"
+                ],
                 "profile-path": "",
                 "strictness": "medium",
                 "tools": [],

@@ -1,0 +1,10 @@
+strictness: veryhigh
+doc-warnings: true
+inherits:
+  - full_pep8
+  - flake8
+max-line-length: 120
+pep257:
+  run: true
+  disable:
+    - D202
