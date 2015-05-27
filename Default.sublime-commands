@@ -133,6 +133,12 @@
         "command": "reg_replace",
         "args": {"replacements": ["pep257_bad_single_line"], "find_only": true}
     },
+    // Python bare exceptions
+    {
+        "caption": "Format: Fix Python Bare Exceptions",
+        "command": "reg_replace",
+        "args": {"replacements": ["python_bare_exception"], "find_only": true}
+    },
     // Compress brackets
     {
         "caption": "Format: Compress Brackets",
