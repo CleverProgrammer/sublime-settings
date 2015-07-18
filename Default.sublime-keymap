@@ -72,7 +72,7 @@
         "command": "bh_key",
         "args":
         {
-            "no_outside_adj": true,
+            "no_outside_adj": null,
             "lines" : true,
             "plugin":
             {
@@ -97,7 +97,7 @@
         "command": "bh_key",
         "args":
         {
-            "no_outside_adj": true,
+            "no_outside_adj": null,
             "lines" : true,
             "plugin":
             {
@@ -113,7 +113,7 @@
         "command": "bh_key",
         "args":
         {
-            "no_outside_adj": true,
+            "no_outside_adj": null,
             "lines" : true,
             "plugin":
             {
@@ -139,7 +139,7 @@
         "command": "bh_key",
         "args":
         {
-            "no_outside_adj": true,
+            "no_outside_adj": null,
             "lines" : true,
             "plugin":
             {
