@@ -39,10 +39,8 @@
 		"SideBarFolders",
 		"SmartCursor",
 		"SublimeLinter",
-		"SublimeLinter-flake8",
 		"SublimeLinter-pep257",
-		"SublimeREPL",
-		"Twig"
+		"SublimeREPL"
 	],
 	"package_name_map":
 	{

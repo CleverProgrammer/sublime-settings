@@ -5,13 +5,14 @@
 		"regex",
 		"Plugins",
 		"plugins",
-		"frontmatter"
+		"frontmatter",
+		"Linting"
 	],
 	"always_show_minimap_viewport": false,
 	"aprosopo_active_bar": true,
+	"aprosopo_dark_dirty_red": true,
+	"aprosopo_dark_purple": true,
 	"aprosopo_dirty_bar": true,
-	"aprosopo_light_blue": true,
-	"aprosopo_light_dirty_red": true,
 	"aprosopo_show_tab_close_buttons": true,
 	"aprosopo_show_tab_close_on_hover": true,
 	"aprosopo_sidebar_font_medium": true,
@@ -37,31 +38,28 @@
 	"caret_extra_top": 0,
 	"caret_extra_width": 0,
 	"caret_style": "phase",
-	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Morning (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night-Eighties-Stormy (SL).tmTheme",
 	"detect_slow_plugins": false,
 	"draw_indent_guides": true,
 	"draw_white_space": "all",
 	"fade_inactive_panes_delay": 300,
 	"find_selected_text": true,
 	"font_face": "Consolas",
-	"font_size": 16,
+	"font_size": 14,
 	"gpu_window_buffer": true,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"Batch File",
-		"Markdown",
 		"SmartCursor",
-		"Pywin32",
+		"Markdown",
+		"Python",
 		"Perl",
 		"PreventFakeClones",
-		"C++",
 		"Vintage",
-		"Python",
-		"JavaScript",
-		"CSS"
+		"Batch File",
+		"C++"
 	],
 	"indent_guide_options":
 	[
@@ -142,6 +140,10 @@
 	[
 	],
 	"remember_open_files": true,
+	"rulers":
+	[
+		120
+	],
 	"scroll_past_end": true,
 	"show_encoding": true,
 	"show_full_path": true,
@@ -163,7 +165,7 @@
 	},
 	"sublimelinter_wrap_find": true,
 	"tab_size": 4,
-	"theme": "Aprosopo Light@st3.sublime-theme",
+	"theme": "Aprosopo Dark@st3.sublime-theme",
 	"translate_tabs_to_spaces": false,
 	"use_tab_stops": true,
 	"wide_caret": true,
