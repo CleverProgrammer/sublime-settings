@@ -78,7 +78,7 @@
         },
         // Remove trailing spaces
         "remove_trailing_spaces": {
-            "find": "[ \\t]+$",
+            "find": "[ \t]+$",
             "replace": "",
             "greedy": true,
             "case": true
