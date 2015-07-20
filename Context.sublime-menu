@@ -1,0 +1,6 @@
+[
+    { "caption": "-", "id": "file" },
+    {"command": "grep_here_file", "args": {"key": "osx"}},
+    {"command": "grep_here_file", "args": {"key": "win"}},
+    {"command": "grep_here_file", "args": {"key": "win_rummage"}}
+]
