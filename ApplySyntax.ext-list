@@ -16,7 +16,6 @@
 		".csslintrc",
 		".jscsrc",
 		".jshintrc",
-		".jshitrc",
 		"jarvis-conf",
 		"jarvis-lang",
 		"sublime-settings",

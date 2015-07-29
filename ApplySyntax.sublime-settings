@@ -13,7 +13,7 @@
             "extensions": [
                 "tweak-settings", "jarvis-conf",
                 "jarvis-lang", "sublime-settings",
-                ".jscsrc", ".jshitrc", ".csslintrc"
+                ".jscsrc", ".jshintrc", ".csslintrc"
             ]
         },
         {

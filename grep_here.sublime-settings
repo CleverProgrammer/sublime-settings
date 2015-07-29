@@ -7,12 +7,12 @@
         },
         "win_rummage": {
             "caption": "Rummage Here…",
-            "cmd": ["rummage.bat", "-s", "${PATH}"],
+            "cmd": ["rummage.bat", "--path", "${PATH}"],
             "platform": ["windows"]
         },
         "osx": {
             "caption": "Rummage Here…",
-            "cmd": ["rummage", "-s", "${PATH}"],
+            "cmd": ["rummage", "--path", "${PATH}"],
             "platform": ["osx"]
         }
     }
